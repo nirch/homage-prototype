@@ -23,6 +23,8 @@
 		F1C8EEF117CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C8EEF717CF38420093DB0A /* InfoPlist.strings */; };
 		F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */; };
+		F1C8EF0717CF3A230093DB0A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
+		F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		F1C8EEF817CF38420093DB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomagePrototypeTests.h; sourceTree = "<group>"; };
 		F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomagePrototypeTests.m; sourceTree = "<group>"; };
+		F1C8EF0517CF3A230093DB0A /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Template.h; path = Model/Template.h; sourceTree = "<group>"; };
+		F1C8EF0617CF3A230093DB0A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Template.m; path = Model/Template.m; sourceTree = "<group>"; };
+		F1C8EF0917CF3ADC0093DB0A /* Remake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remake.h; path = Model/Remake.h; sourceTree = "<group>"; };
+		F1C8EF0A17CF3ADC0093DB0A /* Remake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remake.m; path = Model/Remake.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,7 @@
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
 				F1C8EEE517CF38420093DB0A /* HomageViewController.h */,
 				F1C8EEE617CF38420093DB0A /* HomageViewController.m */,
+				F1C8EF0817CF3A310093DB0A /* Model */,
 				F1C8EED117CF38420093DB0A /* Supporting Files */,
 			);
 			path = HomagePrototype;
@@ -158,6 +165,17 @@
 				F1C8EEF717CF38420093DB0A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1C8EF0817CF3A310093DB0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F1C8EF0517CF3A230093DB0A /* Template.h */,
+				F1C8EF0617CF3A230093DB0A /* Template.m */,
+				F1C8EF0917CF3ADC0093DB0A /* Remake.h */,
+				F1C8EF0A17CF3ADC0093DB0A /* Remake.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +292,8 @@
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
+				F1C8EF0717CF3A230093DB0A /* Template.m in Sources */,
+				F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
