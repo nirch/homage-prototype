@@ -117,8 +117,6 @@
 		F1C8EED017CF38420093DB0A /* HomagePrototype */ = {
 			isa = PBXGroup;
 			children = (
-				F1C8EED917CF38420093DB0A /* HomageAppDelegate.h */,
-				F1C8EEDA17CF38420093DB0A /* HomageAppDelegate.m */,
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
 				F1C8EEE517CF38420093DB0A /* HomageViewController.h */,
 				F1C8EEE617CF38420093DB0A /* HomageViewController.m */,
@@ -130,6 +128,8 @@
 		F1C8EED117CF38420093DB0A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F1C8EED917CF38420093DB0A /* HomageAppDelegate.h */,
+				F1C8EEDA17CF38420093DB0A /* HomageAppDelegate.m */,
 				F1C8EED217CF38420093DB0A /* HomagePrototype-Info.plist */,
 				F1C8EED317CF38420093DB0A /* InfoPlist.strings */,
 				F1C8EED617CF38420093DB0A /* main.m */,
