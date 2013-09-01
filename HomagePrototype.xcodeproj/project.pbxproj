@@ -25,7 +25,7 @@
 		F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */; };
 		F1C8EF0717CF3A230093DB0A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
 		F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
-		F1C8EF0E17CF40280093DB0A /* TemplateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplateManager.m */; };
+		F1C8EF0E17CF40280093DB0A /* TemplatesIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +65,8 @@
 		F1C8EF0617CF3A230093DB0A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Template.m; path = Model/Template.m; sourceTree = "<group>"; };
 		F1C8EF0917CF3ADC0093DB0A /* Remake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remake.h; path = Model/Remake.h; sourceTree = "<group>"; };
 		F1C8EF0A17CF3ADC0093DB0A /* Remake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remake.m; path = Model/Remake.m; sourceTree = "<group>"; };
-		F1C8EF0C17CF40280093DB0A /* TemplateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplateManager.h; path = Model/TemplateManager.h; sourceTree = "<group>"; };
-		F1C8EF0D17CF40280093DB0A /* TemplateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplateManager.m; path = Model/TemplateManager.m; sourceTree = "<group>"; };
+		F1C8EF0C17CF40280093DB0A /* TemplatesIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplatesIterator.h; path = Model/TemplatesIterator.h; sourceTree = "<group>"; };
+		F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplatesIterator.m; path = Model/TemplatesIterator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +177,8 @@
 				F1C8EF0617CF3A230093DB0A /* Template.m */,
 				F1C8EF0917CF3ADC0093DB0A /* Remake.h */,
 				F1C8EF0A17CF3ADC0093DB0A /* Remake.m */,
-				F1C8EF0C17CF40280093DB0A /* TemplateManager.h */,
-				F1C8EF0D17CF40280093DB0A /* TemplateManager.m */,
+				F1C8EF0C17CF40280093DB0A /* TemplatesIterator.h */,
+				F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
 				F1C8EF0717CF3A230093DB0A /* Template.m in Sources */,
 				F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */,
-				F1C8EF0E17CF40280093DB0A /* TemplateManager.m in Sources */,
+				F1C8EF0E17CF40280093DB0A /* TemplatesIterator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +480,7 @@
 				F1C8EF0117CF38420093DB0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F1C8EF0217CF38420093DB0A /* Build configuration list for PBXNativeTarget "HomagePrototypeTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +489,7 @@
 				F1C8EF0417CF38420093DB0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
