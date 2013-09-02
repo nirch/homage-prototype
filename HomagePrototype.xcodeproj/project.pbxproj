@@ -26,10 +26,25 @@
 		F1C8EF0717CF3A230093DB0A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
 		F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
 		F1C8EF0E17CF40280093DB0A /* TemplatesIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */; };
+		F1D42E8A17D4915F00802D7C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EEEE17CF38420093DB0A /* SenTestingKit.framework */; };
+		F1D42E8B17D4915F00802D7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
+		F1D42E8C17D4915F00802D7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
+		F1D42E9217D4915F00802D7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D42E9017D4915F00802D7C /* InfoPlist.strings */; };
+		F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */; };
+		F1D42E9D17D4CE0800802D7C /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
+		F1D42E9E17D4CE0800802D7C /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
+		F1D42E9F17D4CE0800802D7C /* TemplatesIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		F1C8EEF217CF38420093DB0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1C8EEBF17CF38420093DB0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1C8EEC617CF38420093DB0A;
+			remoteInfo = HomagePrototype;
+		};
+		F1D42EA017D4CE1600802D7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1C8EEBF17CF38420093DB0A /* Project object */;
 			proxyType = 1;
@@ -67,6 +82,12 @@
 		F1C8EF0A17CF3ADC0093DB0A /* Remake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remake.m; path = Model/Remake.m; sourceTree = "<group>"; };
 		F1C8EF0C17CF40280093DB0A /* TemplatesIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplatesIterator.h; path = Model/TemplatesIterator.h; sourceTree = "<group>"; };
 		F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplatesIterator.m; path = Model/TemplatesIterator.m; sourceTree = "<group>"; };
+		F1D42E8917D4915F00802D7C /* HomagePrototypeLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomagePrototypeLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D42E8F17D4915F00802D7C /* HomagePrototypeLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomagePrototypeLogicTests-Info.plist"; sourceTree = "<group>"; };
+		F1D42E9117D4915F00802D7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F1D42E9617D4915F00802D7C /* HomagePrototypeLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomagePrototypeLogicTests-Prefix.pch"; sourceTree = "<group>"; };
+		F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesIteratorTests.h; sourceTree = "<group>"; };
+		F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesIteratorTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +111,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1D42E8517D4915F00802D7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D42E8A17D4915F00802D7C /* SenTestingKit.framework in Frameworks */,
+				F1D42E8B17D4915F00802D7C /* UIKit.framework in Frameworks */,
+				F1D42E8C17D4915F00802D7C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -97,7 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				F1C8EED017CF38420093DB0A /* HomagePrototype */,
-				F1C8EEF417CF38420093DB0A /* HomagePrototypeTests */,
+				F1C8EEF417CF38420093DB0A /* HomagePrototypeApplicationTests */,
+				F1D42E8D17D4915F00802D7C /* HomagePrototypeLogicTests */,
 				F1C8EEC917CF38420093DB0A /* Frameworks */,
 				F1C8EEC817CF38420093DB0A /* Products */,
 			);
@@ -108,6 +140,7 @@
 			children = (
 				F1C8EEC717CF38420093DB0A /* HomagePrototype.app */,
 				F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */,
+				F1D42E8917D4915F00802D7C /* HomagePrototypeLogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,13 +184,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F1C8EEF417CF38420093DB0A /* HomagePrototypeTests */ = {
+		F1C8EEF417CF38420093DB0A /* HomagePrototypeApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
 				F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */,
 				F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */,
 				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 			);
+			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
 			sourceTree = "<group>";
 		};
@@ -183,6 +217,26 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		F1D42E8D17D4915F00802D7C /* HomagePrototypeLogicTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */,
+				F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */,
+				F1D42E8E17D4915F00802D7C /* Supporting Files */,
+			);
+			path = HomagePrototypeLogicTests;
+			sourceTree = "<group>";
+		};
+		F1D42E8E17D4915F00802D7C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1D42E8F17D4915F00802D7C /* HomagePrototypeLogicTests-Info.plist */,
+				F1D42E9017D4915F00802D7C /* InfoPlist.strings */,
+				F1D42E9617D4915F00802D7C /* HomagePrototypeLogicTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,9 +257,9 @@
 			productReference = F1C8EEC717CF38420093DB0A /* HomagePrototype.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F1C8EEEC17CF38420093DB0A /* HomagePrototypeTests */ = {
+		F1C8EEEC17CF38420093DB0A /* HomagePrototypeApplicationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1C8EF0217CF38420093DB0A /* Build configuration list for PBXNativeTarget "HomagePrototypeTests" */;
+			buildConfigurationList = F1C8EF0217CF38420093DB0A /* Build configuration list for PBXNativeTarget "HomagePrototypeApplicationTests" */;
 			buildPhases = (
 				F1C8EEE817CF38420093DB0A /* Sources */,
 				F1C8EEE917CF38420093DB0A /* Frameworks */,
@@ -217,9 +271,28 @@
 			dependencies = (
 				F1C8EEF317CF38420093DB0A /* PBXTargetDependency */,
 			);
-			name = HomagePrototypeTests;
+			name = HomagePrototypeApplicationTests;
 			productName = HomagePrototypeTests;
 			productReference = F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		F1D42E8817D4915F00802D7C /* HomagePrototypeLogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1D42E9917D4915F00802D7C /* Build configuration list for PBXNativeTarget "HomagePrototypeLogicTests" */;
+			buildPhases = (
+				F1D42E8417D4915F00802D7C /* Sources */,
+				F1D42E8517D4915F00802D7C /* Frameworks */,
+				F1D42E8617D4915F00802D7C /* Resources */,
+				F1D42E8717D4915F00802D7C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1D42EA117D4CE1600802D7C /* PBXTargetDependency */,
+			);
+			name = HomagePrototypeLogicTests;
+			productName = HomagePrototypeLogicTests;
+			productReference = F1D42E8917D4915F00802D7C /* HomagePrototypeLogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -245,7 +318,8 @@
 			projectRoot = "";
 			targets = (
 				F1C8EEC617CF38420093DB0A /* HomagePrototype */,
-				F1C8EEEC17CF38420093DB0A /* HomagePrototypeTests */,
+				F1C8EEEC17CF38420093DB0A /* HomagePrototypeApplicationTests */,
+				F1D42E8817D4915F00802D7C /* HomagePrototypeLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -271,10 +345,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1D42E8617D4915F00802D7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D42E9217D4915F00802D7C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		F1C8EEEB17CF38420093DB0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		F1D42E8717D4915F00802D7C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -311,6 +406,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1D42E8417D4915F00802D7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1D42E9D17D4CE0800802D7C /* Template.m in Sources */,
+				F1D42E9E17D4CE0800802D7C /* Remake.m in Sources */,
+				F1D42E9F17D4CE0800802D7C /* TemplatesIterator.m in Sources */,
+				F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -318,6 +424,11 @@
 			isa = PBXTargetDependency;
 			target = F1C8EEC617CF38420093DB0A /* HomagePrototype */;
 			targetProxy = F1C8EEF217CF38420093DB0A /* PBXContainerItemProxy */;
+		};
+		F1D42EA117D4CE1600802D7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1C8EEC617CF38420093DB0A /* HomagePrototype */;
+			targetProxy = F1D42EA017D4CE1600802D7C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -342,6 +453,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				F1C8EEF817CF38420093DB0A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F1D42E9017D4915F00802D7C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1D42E9117D4915F00802D7C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -461,6 +580,36 @@
 			};
 			name = Release;
 		};
+		F1D42E9717D4915F00802D7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HomagePrototypeLogicTests/HomagePrototypeLogicTests-Prefix.pch";
+				INFOPLIST_FILE = "HomagePrototypeLogicTests/HomagePrototypeLogicTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F1D42E9817D4915F00802D7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HomagePrototypeLogicTests/HomagePrototypeLogicTests-Prefix.pch";
+				INFOPLIST_FILE = "HomagePrototypeLogicTests/HomagePrototypeLogicTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -482,7 +631,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1C8EF0217CF38420093DB0A /* Build configuration list for PBXNativeTarget "HomagePrototypeTests" */ = {
+		F1C8EF0217CF38420093DB0A /* Build configuration list for PBXNativeTarget "HomagePrototypeApplicationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1C8EF0317CF38420093DB0A /* Debug */,
@@ -490,6 +639,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F1D42E9917D4915F00802D7C /* Build configuration list for PBXNativeTarget "HomagePrototypeLogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D42E9717D4915F00802D7C /* Debug */,
+				F1D42E9817D4915F00802D7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
