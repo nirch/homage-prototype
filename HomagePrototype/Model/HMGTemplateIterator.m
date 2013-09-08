@@ -50,6 +50,8 @@
         
         HMGTemplate *template3 = [[HMGTemplate alloc] init];
         template3.name = @"Template 3";
+        
+        self.position = 1;
     
         return [[NSArray alloc] initWithObjects:template1, template2, template3, nil];
     }
