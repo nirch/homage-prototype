@@ -478,11 +478,11 @@
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
-				F1C8EF0717CF3A230093DB0A /* Template.m in Sources */,
-				F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */,
-				F1C8EF0E17CF40280093DB0A /* TemplateManager.m in Sources */,
 				2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */,
 				267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */,
+				F1C8EF0717CF3A230093DB0A /* HMGTemplate.m in Sources */,
+				F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */,
+				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +724,15 @@
 			buildConfigurations = (
 				F1C8EF0317CF38420093DB0A /* Debug */,
 				F1C8EF0417CF38420093DB0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1D42E9917D4915F00802D7C /* Build configuration list for PBXNativeTarget "HomagePrototypeLogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1D42E9717D4915F00802D7C /* Debug */,
+				F1D42E9817D4915F00802D7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
