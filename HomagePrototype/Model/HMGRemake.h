@@ -1,5 +1,5 @@
 //
-//  TemplateManager.h
+//  Remake.h
 //  HomagePrototype
 //
 //  Created by Tomer Harry on 8/29/13.
@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Template.h"
 
-@interface TemplateManager : NSObject
+@interface HMGRemake : NSObject
 
-+ (NSArray*)getTemplates;
+@property (strong, nonatomic) NSURL *video;
 
 @end
