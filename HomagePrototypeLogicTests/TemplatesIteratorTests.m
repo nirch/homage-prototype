@@ -7,15 +7,15 @@
 //
 
 #import "TemplatesIteratorTests.h"
-#import "TemplatesIterator.h"
+#import "HMGTemplateIterator.h"
 
 @interface TemplatesIteratorTests()
 
-@property (strong, nonatomic) TemplatesIterator *templatesIterator;
+@property (strong, nonatomic) HMGTemplateIterator *templateIterator;
 
 @end
 
-#define MAX_NUM_OF_TEMPLATES_DEFAULT 3
+//#define MAX_NUM_OF_TEMPLATES_DEFAULT 3
 
 @implementation TemplatesIteratorTests
 
@@ -23,7 +23,7 @@
 {
     [super setUp];
     
-    self.templatesIterator = [[TemplatesIterator alloc] init];
+    self.templateIterator = [[HMGTemplateIterator alloc] init];
 }
 
 - (void)tearDown
@@ -32,17 +32,55 @@
     [super tearDown];
 }
 
-- (void)testInitialization
+- (void)testDefaultInitialization
 {
     // Testing that the object is initialized
-    STAssertNotNil(self.templatesIterator, @"templatesIterator is nil");
+    STAssertNotNil(self.templateIterator, @"templatesIterator is nil");
+    
+    // Testing the default values of the object
+    STAssertTrue(self.templateIterator.numOfTemplatesPerIteration == DEFUALT_TEMPLATES_PER_ITERATION, @"The number of templates per iteration is %d whereas it is expected to be %d", self.templateIterator.numOfTemplatesPerIteration, DEFUALT_TEMPLATES_PER_ITERATION);
+
 }
 
-- (void)testDefaultValues
+- (void)testCustomInitialization
 {
-    // Testing the default values of the object
-    STAssertTrue(self.templatesIterator.maxNumOfTemplatesPerIteration == MAX_NUM_OF_TEMPLATES_DEFAULT, @"The max number of templates is %d whereas it is expected to be %d", self.templatesIterator.maxNumOfTemplatesPerIteration, MAX_NUM_OF_TEMPLATES_DEFAULT);
+    NSInteger customNumOfTemplatesPerIteration = 1;
+    self.templateIterator = [[HMGTemplateIterator alloc] initWithCustom:customNumOfTemplatesPerIteration];
+    
+    // Testing that the object is initialized
+    STAssertNotNil(self.templateIterator, @"templatesIterator is nil");
+
+    // Testing the value of the numOfTemplates property
+    STAssertTrue(self.templateIterator.numOfTemplatesPerIteration == customNumOfTemplatesPerIteration, @"The number of templates per iteration is %d whereas it is expected to be %d", self.templateIterator.numOfTemplatesPerIteration, customNumOfTemplatesPerIteration);
 }
+
+- (void)testZeroNumOfTemplatesSetter
+{
+    // When setting the numOfTemplatesPerIteration with a 0 value, an exception should be thorwn
+    STAssertThrows(self.templateIterator.numOfTemplatesPerIteration = 0, @"An exception should be thrown when setting the numOfTemplatesPerIteration with a zero value");
+}
+
+-(void)testNegativeNumOfTemplatesSetter
+{
+    // When setting the numOfTemplatesPerIteration with a negative value, an exception should be thorwn
+    STAssertThrows(self.templateIterator.numOfTemplatesPerIteration = -3, @"An exception should be thrown when setting the numOfTemplatesPerIteration with a negative value");
+}
+
+-(void)testDefaultNext
+{
+    NSArray *templates;
+    
+    
+//    while ((templates = self.templateIterator.next))
+//    {
+//
+//    }
+    
+    templates = self.templateIterator.next;
+    STAssertTrue([templates count] == DEFUALT_TEMPLATES_PER_ITERATION, @"next should return %d templates, whereas it returned %d templates", DEFUALT_TEMPLATES_PER_ITERATION, templates.count);
+}
+
+
 
 
 @end

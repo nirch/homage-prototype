@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Remake : NSObject
+@interface HMGRemake : NSObject
 
-@property (strong, nonatomic) NSString *video;
+@property (strong, nonatomic) NSURL *video;
 
 @end

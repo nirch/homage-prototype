@@ -23,17 +23,17 @@
 		F1C8EEF117CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C8EEF717CF38420093DB0A /* InfoPlist.strings */; };
 		F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */; };
-		F1C8EF0717CF3A230093DB0A /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
-		F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
-		F1C8EF0E17CF40280093DB0A /* TemplatesIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */; };
+		F1C8EF0717CF3A230093DB0A /* HMGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */; };
+		F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */; };
+		F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */; };
 		F1D42E8A17D4915F00802D7C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EEEE17CF38420093DB0A /* SenTestingKit.framework */; };
 		F1D42E8B17D4915F00802D7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1D42E8C17D4915F00802D7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1D42E9217D4915F00802D7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1D42E9017D4915F00802D7C /* InfoPlist.strings */; };
 		F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */; };
-		F1D42E9D17D4CE0800802D7C /* Template.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* Template.m */; };
-		F1D42E9E17D4CE0800802D7C /* Remake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* Remake.m */; };
-		F1D42E9F17D4CE0800802D7C /* TemplatesIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */; };
+		F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */; };
+		F1D42E9E17D4CE0800802D7C /* HMGRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */; };
+		F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,18 +70,18 @@
 		F1C8EEE317CF38420093DB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F1C8EEE517CF38420093DB0A /* HomageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomageViewController.h; sourceTree = "<group>"; };
 		F1C8EEE617CF38420093DB0A /* HomageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomageViewController.m; sourceTree = "<group>"; };
-		F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomagePrototypeTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HomagePrototypeTests.octest; path = HomagePrototypeApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EEEE17CF38420093DB0A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F1C8EEF617CF38420093DB0A /* HomagePrototypeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomagePrototypeTests-Info.plist"; sourceTree = "<group>"; };
 		F1C8EEF817CF38420093DB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomagePrototypeTests.h; sourceTree = "<group>"; };
 		F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomagePrototypeTests.m; sourceTree = "<group>"; };
-		F1C8EF0517CF3A230093DB0A /* Template.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Template.h; path = Model/Template.h; sourceTree = "<group>"; };
-		F1C8EF0617CF3A230093DB0A /* Template.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Template.m; path = Model/Template.m; sourceTree = "<group>"; };
-		F1C8EF0917CF3ADC0093DB0A /* Remake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Remake.h; path = Model/Remake.h; sourceTree = "<group>"; };
-		F1C8EF0A17CF3ADC0093DB0A /* Remake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Remake.m; path = Model/Remake.m; sourceTree = "<group>"; };
-		F1C8EF0C17CF40280093DB0A /* TemplatesIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TemplatesIterator.h; path = Model/TemplatesIterator.h; sourceTree = "<group>"; };
-		F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TemplatesIterator.m; path = Model/TemplatesIterator.m; sourceTree = "<group>"; };
+		F1C8EF0517CF3A230093DB0A /* HMGTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTemplate.h; path = Model/HMGTemplate.h; sourceTree = "<group>"; };
+		F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTemplate.m; path = Model/HMGTemplate.m; sourceTree = "<group>"; };
+		F1C8EF0917CF3ADC0093DB0A /* HMGRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGRemake.h; path = Model/HMGRemake.h; sourceTree = "<group>"; };
+		F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGRemake.m; path = Model/HMGRemake.m; sourceTree = "<group>"; };
+		F1C8EF0C17CF40280093DB0A /* HMGTemplateIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTemplateIterator.h; path = Model/HMGTemplateIterator.h; sourceTree = "<group>"; };
+		F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTemplateIterator.m; path = Model/HMGTemplateIterator.m; sourceTree = "<group>"; };
 		F1D42E8917D4915F00802D7C /* HomagePrototypeLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomagePrototypeLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D42E8F17D4915F00802D7C /* HomagePrototypeLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomagePrototypeLogicTests-Info.plist"; sourceTree = "<group>"; };
 		F1D42E9117D4915F00802D7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -207,12 +207,12 @@
 		F1C8EF0817CF3A310093DB0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F1C8EF0517CF3A230093DB0A /* Template.h */,
-				F1C8EF0617CF3A230093DB0A /* Template.m */,
-				F1C8EF0917CF3ADC0093DB0A /* Remake.h */,
-				F1C8EF0A17CF3ADC0093DB0A /* Remake.m */,
-				F1C8EF0C17CF40280093DB0A /* TemplatesIterator.h */,
-				F1C8EF0D17CF40280093DB0A /* TemplatesIterator.m */,
+				F1C8EF0517CF3A230093DB0A /* HMGTemplate.h */,
+				F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */,
+				F1C8EF0917CF3ADC0093DB0A /* HMGRemake.h */,
+				F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */,
+				F1C8EF0C17CF40280093DB0A /* HMGTemplateIterator.h */,
+				F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -392,9 +392,9 @@
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
-				F1C8EF0717CF3A230093DB0A /* Template.m in Sources */,
-				F1C8EF0B17CF3ADC0093DB0A /* Remake.m in Sources */,
-				F1C8EF0E17CF40280093DB0A /* TemplatesIterator.m in Sources */,
+				F1C8EF0717CF3A230093DB0A /* HMGTemplate.m in Sources */,
+				F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */,
+				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,9 +410,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D42E9D17D4CE0800802D7C /* Template.m in Sources */,
-				F1D42E9E17D4CE0800802D7C /* Remake.m in Sources */,
-				F1D42E9F17D4CE0800802D7C /* TemplatesIterator.m in Sources */,
+				F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */,
+				F1D42E9E17D4CE0800802D7C /* HMGRemake.m in Sources */,
+				F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */,
 				F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +647,7 @@
 				F1D42E9817D4915F00802D7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
