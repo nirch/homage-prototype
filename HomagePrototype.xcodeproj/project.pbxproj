@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
+		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
+		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -54,6 +57,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2672147217D2261500B89FB0 /* TemplateMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateMainViewController.h; sourceTree = "<group>"; };
+		2672147317D2261500B89FB0 /* TemplateMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateMainViewController.m; sourceTree = "<group>"; };
+		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
+		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
+		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */,
 				F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */,
 				F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */,
 				F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */,
@@ -148,6 +157,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				267607EB17DB51B200FEC5C3 /* AVFoundation.framework */,
 				F1C8EECA17CF38420093DB0A /* UIKit.framework */,
 				F1C8EECC17CF38420093DB0A /* Foundation.framework */,
 				F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */,
@@ -159,7 +169,11 @@
 		F1C8EED017CF38420093DB0A /* HomagePrototype */ = {
 			isa = PBXGroup;
 			children = (
+				267607E817D7542100FEC5C3 /* TemplateCVCell.h */,
+				267607E917D7542100FEC5C3 /* TemplateCVCell.m */,
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
+				2672147217D2261500B89FB0 /* TemplateMainViewController.h */,
+				2672147317D2261500B89FB0 /* TemplateMainViewController.m */,
 				F1C8EEE517CF38420093DB0A /* HomageViewController.h */,
 				F1C8EEE617CF38420093DB0A /* HomageViewController.m */,
 				F1C8EF0817CF3A310093DB0A /* Model */,
@@ -392,6 +406,8 @@
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
+				2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */,
+				267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */,
 				F1C8EF0717CF3A230093DB0A /* HMGTemplate.m in Sources */,
 				F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */,
 				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,

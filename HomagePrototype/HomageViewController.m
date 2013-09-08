@@ -7,17 +7,61 @@
 //
 
 #import "HomageViewController.h"
+#import "TemplateCVCell.h"
+#import "HMGTemplateIterator.h"
+#import "HMGTemplate.h"
 
-@interface HomageViewController ()
+@interface HomageViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+
+@property (weak,nonatomic) IBOutlet UICollectionView *templateCView;
+@property (strong,nonatomic) NSArray *templatesArray;
+@property (strong,nonatomic) HMGTemplateIterator *templateIterator;
 
 @end
 
 @implementation HomageViewController
 
+
+/*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}*/ //if not implemented, this value is set on default to 1
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
+{
+    return [self.templatesArray count];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [self.templateCView dequeueReusableCellWithReuseIdentifier:@"TemplateCell"
+                                  forIndexPath:indexPath];
+    HMGTemplate *template = self.templatesArray[indexPath.item];
+    [self updateCell:cell withTemplate:template];
+    return cell;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell withTemplate:(HMGTemplate *)template
+{
+    if ([cell isKindOfClass: [TemplateCVCell class]]) {
+        TemplateCVCell *templateCell = (TemplateCVCell *) cell;
+        
+        templateCell.templateName.text  = template.name; /// need to see how to assign each field correctly
+        //templateCell.templatePreviewImage = template.previewImage; 
+        //templateCell.uploaded             = template.uploadDate;
+        templateCell.numOfRemakes.text      = [NSString stringWithFormat:@"%d" , [template.remakes count]];
+        //cell.totalViews           = template.totalViews;
+    }
+        
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.templateIterator = [[HMGTemplateIterator alloc] init];
+    self.templatesArray = [self.templateIterator next];
 }
 
 - (void)didReceiveMemoryWarning
