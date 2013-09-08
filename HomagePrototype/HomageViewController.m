@@ -48,8 +48,8 @@
     if ([cell isKindOfClass: [TemplateCVCell class]]) {
         TemplateCVCell *templateCell = (TemplateCVCell *) cell;
         
-        templateCell.templateName.text  = template.name; /// need to see how to assign each field correctly
-        //templateCell.templatePreviewImage = template.previewImage; 
+        templateCell.templateName.text        = template.name; /// need to see how to assign each field correctly
+        templateCell.templatePreviewImageView.image = template.thumbnail;
         //templateCell.uploaded             = template.uploadDate;
         templateCell.numOfRemakes.text      = [NSString stringWithFormat:@"%d" , [template.remakes count]];
         //cell.totalViews           = template.totalViews;

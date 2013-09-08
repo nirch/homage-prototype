@@ -10,7 +10,7 @@
 
 @interface TemplateCVCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *templateName;
-@property (weak, nonatomic) IBOutlet UIImageView *templatePreviewImage;
+@property (weak, nonatomic) IBOutlet UIImageView *templatePreviewImageView;
 @property (weak, nonatomic) IBOutlet UILabel *lastUpdated;
 @property (weak, nonatomic) IBOutlet UILabel *numOfRemakes;
 @property (weak, nonatomic) IBOutlet UILabel *totalViews;
