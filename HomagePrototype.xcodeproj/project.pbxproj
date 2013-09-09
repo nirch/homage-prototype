@@ -18,6 +18,17 @@
 		F19123DC17DE140D00DE85DB /* Templates.csv in Resources */ = {isa = PBXBuildFile; fileRef = F19123D517DE140D00DE85DB /* Templates.csv */; };
 		F19123DD17DE140D00DE85DB /* Wrong_meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */; };
 		F19123DE17DE140D00DE85DB /* wrong_meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D717DE140D00DE85DB /* wrong_meeting.png */; };
+		F19123E117DE157100DE85DB /* HMGTemplateCSVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123E017DE157100DE85DB /* HMGTemplateCSVLoader.m */; };
+		F19123E417DE7EB800DE85DB /* TemplateCSVLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */; };
+		F19123E517DE812900DE85DB /* HMGTemplateCSVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123E017DE157100DE85DB /* HMGTemplateCSVLoader.m */; };
+		F19123E617DE813F00DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
+		F19123E717DE871A00DE85DB /* Templates.csv in Resources */ = {isa = PBXBuildFile; fileRef = F19123D517DE140D00DE85DB /* Templates.csv */; };
+		F19123E817DE8DA900DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
+		F19123E917DE8DA900DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
+		F19123EA17DE8DA900DE85DB /* I_am_yor_father-Ran.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D317DE140D00DE85DB /* I_am_yor_father-Ran.mp4 */; };
+		F19123EB17DE8DA900DE85DB /* I_am_yor_father-Ran.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D417DE140D00DE85DB /* I_am_yor_father-Ran.png */; };
+		F19123EC17DE8DA900DE85DB /* Wrong_meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */; };
+		F19123ED17DE8DA900DE85DB /* wrong_meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D717DE140D00DE85DB /* wrong_meeting.png */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -79,6 +90,10 @@
 		F19123D517DE140D00DE85DB /* Templates.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Templates.csv; path = Model/TemplateLoader/Resources/Templates.csv; sourceTree = "<group>"; };
 		F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Wrong_meeting.mp4; path = Model/TemplateLoader/Resources/Wrong_meeting.mp4; sourceTree = "<group>"; };
 		F19123D717DE140D00DE85DB /* wrong_meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wrong_meeting.png; path = Model/TemplateLoader/Resources/wrong_meeting.png; sourceTree = "<group>"; };
+		F19123DF17DE157100DE85DB /* HMGTemplateCSVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTemplateCSVLoader.h; path = Model/TemplateLoader/HMGTemplateCSVLoader.h; sourceTree = "<group>"; };
+		F19123E017DE157100DE85DB /* HMGTemplateCSVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTemplateCSVLoader.m; path = Model/TemplateLoader/HMGTemplateCSVLoader.m; sourceTree = "<group>"; };
+		F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCSVLoaderTests.h; sourceTree = "<group>"; };
+		F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCSVLoaderTests.m; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -155,6 +170,8 @@
 			children = (
 				F19123D017DE13EE00DE85DB /* Resources */,
 				F19123CF17DE0CA200DE85DB /* CSVParser */,
+				F19123DF17DE157100DE85DB /* HMGTemplateCSVLoader.h */,
+				F19123E017DE157100DE85DB /* HMGTemplateCSVLoader.m */,
 			);
 			name = TemplateLoader;
 			sourceTree = "<group>";
@@ -286,6 +303,8 @@
 			children = (
 				F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */,
 				F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */,
+				F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */,
+				F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */,
 				F1D42E8E17D4915F00802D7C /* Supporting Files */,
 			);
 			path = HomagePrototypeLogicTests;
@@ -420,6 +439,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19123E817DE8DA900DE85DB /* Homage_Tikim.mp4 in Resources */,
+				F19123E917DE8DA900DE85DB /* Homage_Tikim.png in Resources */,
+				F19123EA17DE8DA900DE85DB /* I_am_yor_father-Ran.mp4 in Resources */,
+				F19123EB17DE8DA900DE85DB /* I_am_yor_father-Ran.png in Resources */,
+				F19123EC17DE8DA900DE85DB /* Wrong_meeting.mp4 in Resources */,
+				F19123ED17DE8DA900DE85DB /* wrong_meeting.png in Resources */,
+				F19123E717DE871A00DE85DB /* Templates.csv in Resources */,
 				F1D42E9217D4915F00802D7C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +495,7 @@
 				F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */,
 				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,
 				F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */,
+				F19123E117DE157100DE85DB /* HMGTemplateCSVLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,10 +511,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19123E617DE813F00DE85DB /* CHCSVParser.m in Sources */,
+				F19123E517DE812900DE85DB /* HMGTemplateCSVLoader.m in Sources */,
 				F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */,
 				F1D42E9E17D4CE0800802D7C /* HMGRemake.m in Sources */,
 				F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */,
 				F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */,
+				F19123E417DE7EB800DE85DB /* TemplateCSVLoaderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

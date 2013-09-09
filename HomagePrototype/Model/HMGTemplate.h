@@ -10,10 +10,17 @@
 
 @interface HMGTemplate : NSObject
 
-@property (strong, nonatomic) NSUUID *templateID;
+typedef enum 
+{
+    Easy,
+    Medium,
+    Hard
+} HMGTemplateLevel;
+
+@property (strong, nonatomic) NSString *templateID;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) NSString *level;
+@property (nonatomic) HMGTemplateLevel level;
 @property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) NSArray *remakes;
 @property (strong, nonatomic) NSArray *segments;
