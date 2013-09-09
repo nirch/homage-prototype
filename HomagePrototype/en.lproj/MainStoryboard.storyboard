@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="HomageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RNU-l4-hGy">
@@ -67,6 +67,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="gcd-GX-exn" firstAttribute="trailing" secondItem="EGi-Nz-MOX" secondAttribute="trailing" type="default" id="2uM-yx-mM0"/>
                                             <constraint firstAttribute="bottom" secondItem="1di-AK-5Iq" secondAttribute="bottom" constant="20" type="default" id="59f-w8-m2M"/>
@@ -87,7 +88,7 @@
                                             <outlet property="lastUpdated" destination="gcd-GX-exn" id="cp1-k2-Bf3"/>
                                             <outlet property="numOfRemakes" destination="99H-Tr-jeG" id="Xtf-Gm-zpu"/>
                                             <outlet property="templateName" destination="EGi-Nz-MOX" id="e12-ie-9qc"/>
-                                            <outlet property="templatePreviewImage" destination="1di-AK-5Iq" id="7iQ-X8-MOl"/>
+                                            <outlet property="templatePreviewImageView" destination="1di-AK-5Iq" id="tKD-WU-Rzd"/>
                                             <outlet property="totalViews" destination="LTY-4k-kGS" id="3Zs-S1-xkR"/>
                                         </connections>
                                     </collectionViewCell>
@@ -119,7 +120,7 @@
             <objects>
                 <viewController id="I5b-4E-MQk" customClass="TemplateMainViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kI6-3u-DGh">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqK-y6-XrF">
@@ -195,7 +196,7 @@
                 <relationship kind="outlet" name="lastUpdated" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="numOfRemakes" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="templateName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="templatePreviewImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="templatePreviewImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="totalViews" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -218,6 +219,6 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
 </document>

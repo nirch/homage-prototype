@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		262A2C8E17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */; };
+		262A2C8F17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */; };
+		262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */; };
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.05.22 PM.png"; sourceTree = "<group>"; };
+		262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.09.25 PM.png"; sourceTree = "<group>"; };
+		262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.11.28 PM.png"; sourceTree = "<group>"; };
 		2672147217D2261500B89FB0 /* TemplateMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateMainViewController.h; sourceTree = "<group>"; };
 		2672147317D2261500B89FB0 /* TemplateMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateMainViewController.m; sourceTree = "<group>"; };
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
@@ -185,6 +191,9 @@
 		F1C8EED117CF38420093DB0A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */,
+				262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */,
+				262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */,
 				F1C8EED917CF38420093DB0A /* HomageAppDelegate.h */,
 				F1C8EEDA17CF38420093DB0A /* HomageAppDelegate.m */,
 				F1C8EED217CF38420093DB0A /* HomagePrototype-Info.plist */,
@@ -348,6 +357,9 @@
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
+				262A2C8E17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png in Resources */,
+				262A2C8F17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png in Resources */,
+				262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
