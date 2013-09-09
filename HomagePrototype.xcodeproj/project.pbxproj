@@ -10,6 +10,14 @@
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
+		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
+		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
+		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
+		F19123DA17DE140D00DE85DB /* I_am_yor_father-Ran.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D317DE140D00DE85DB /* I_am_yor_father-Ran.mp4 */; };
+		F19123DB17DE140D00DE85DB /* I_am_yor_father-Ran.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D417DE140D00DE85DB /* I_am_yor_father-Ran.png */; };
+		F19123DC17DE140D00DE85DB /* Templates.csv in Resources */ = {isa = PBXBuildFile; fileRef = F19123D517DE140D00DE85DB /* Templates.csv */; };
+		F19123DD17DE140D00DE85DB /* Wrong_meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */; };
+		F19123DE17DE140D00DE85DB /* wrong_meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D717DE140D00DE85DB /* wrong_meeting.png */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -62,6 +70,15 @@
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
 		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
 		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
+		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
+		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
+		F19123D217DE140D00DE85DB /* Homage_Tikim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Homage_Tikim.png; path = Model/TemplateLoader/Resources/Homage_Tikim.png; sourceTree = "<group>"; };
+		F19123D317DE140D00DE85DB /* I_am_yor_father-Ran.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "I_am_yor_father-Ran.mp4"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Ran.mp4"; sourceTree = "<group>"; };
+		F19123D417DE140D00DE85DB /* I_am_yor_father-Ran.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "I_am_yor_father-Ran.png"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Ran.png"; sourceTree = "<group>"; };
+		F19123D517DE140D00DE85DB /* Templates.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Templates.csv; path = Model/TemplateLoader/Resources/Templates.csv; sourceTree = "<group>"; };
+		F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Wrong_meeting.mp4; path = Model/TemplateLoader/Resources/Wrong_meeting.mp4; sourceTree = "<group>"; };
+		F19123D717DE140D00DE85DB /* wrong_meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wrong_meeting.png; path = Model/TemplateLoader/Resources/wrong_meeting.png; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -133,6 +150,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F19123CE17DE0C9300DE85DB /* TemplateLoader */ = {
+			isa = PBXGroup;
+			children = (
+				F19123D017DE13EE00DE85DB /* Resources */,
+				F19123CF17DE0CA200DE85DB /* CSVParser */,
+			);
+			name = TemplateLoader;
+			sourceTree = "<group>";
+		};
+		F19123CF17DE0CA200DE85DB /* CSVParser */ = {
+			isa = PBXGroup;
+			children = (
+				F19123CB17DE0C8900DE85DB /* CHCSVParser.h */,
+				F19123CC17DE0C8900DE85DB /* CHCSVParser.m */,
+			);
+			name = CSVParser;
+			sourceTree = "<group>";
+		};
+		F19123D017DE13EE00DE85DB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */,
+				F19123D217DE140D00DE85DB /* Homage_Tikim.png */,
+				F19123D317DE140D00DE85DB /* I_am_yor_father-Ran.mp4 */,
+				F19123D417DE140D00DE85DB /* I_am_yor_father-Ran.png */,
+				F19123D517DE140D00DE85DB /* Templates.csv */,
+				F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */,
+				F19123D717DE140D00DE85DB /* wrong_meeting.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		F1C8EEBE17CF38420093DB0A = {
 			isa = PBXGroup;
 			children = (
@@ -221,6 +270,7 @@
 		F1C8EF0817CF3A310093DB0A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F19123CE17DE0C9300DE85DB /* TemplateLoader */,
 				F1C8EF0517CF3A230093DB0A /* HMGTemplate.h */,
 				F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */,
 				F1C8EF0917CF3ADC0093DB0A /* HMGRemake.h */,
@@ -348,6 +398,13 @@
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
+				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
+				F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */,
+				F19123DA17DE140D00DE85DB /* I_am_yor_father-Ran.mp4 in Resources */,
+				F19123DB17DE140D00DE85DB /* I_am_yor_father-Ran.png in Resources */,
+				F19123DC17DE140D00DE85DB /* Templates.csv in Resources */,
+				F19123DD17DE140D00DE85DB /* Wrong_meeting.mp4 in Resources */,
+				F19123DE17DE140D00DE85DB /* wrong_meeting.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +468,7 @@
 				F1C8EF0717CF3A230093DB0A /* HMGTemplate.m in Sources */,
 				F1C8EF0B17CF3ADC0093DB0A /* HMGRemake.m in Sources */,
 				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,
+				F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
