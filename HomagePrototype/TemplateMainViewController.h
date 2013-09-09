@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TemplateMainViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *templateName;
+@property (weak, nonatomic) IBOutlet UIButton *templatePlayButton;
 
 @end
