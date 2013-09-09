@@ -7,6 +7,7 @@
 //
 
 #import "HomageViewController.h"
+#import "TemplateMainViewController.h"
 #import "TemplateCVCell.h"
 #import "HMGTemplateIterator.h"
 #import "HMGTemplate.h"
