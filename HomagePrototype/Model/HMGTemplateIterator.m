@@ -7,6 +7,7 @@
 //
 
 #import "HMGTemplateIterator.h"
+#import "HMGTemplateCSVLoader.h"
 
 @interface HMGTemplateIterator ()
 
@@ -25,6 +26,7 @@
     if (self)
     {
         self.numOfTemplatesPerIteration = numOfTemplatesPerIteration;
+        self.position = 0;
     }
     
     return self;
@@ -40,24 +42,27 @@
 // Returns the next list of templates (the maxNumOfTemplatesPerIteration property determines how many templates will be returned in each iteration. in the last iteration, less templates might return). nil will be returned when no templates are left
 - (NSArray*)next
 {
-    if (self.position == 0)
-    {
-        HMGTemplate *template1 = [[HMGTemplate alloc] init];
-        template1.name = @"Template 1";
-        
-        HMGTemplate *template2 = [[HMGTemplate alloc] init];
-        template2.name = @"Template 2";
-        
-        HMGTemplate *template3 = [[HMGTemplate alloc] init];
-        template3.name = @"Template 3";
-        
-        self.position = 1;
+    HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
+    NSMutableArray *templates = [[NSMutableArray alloc] init];
     
-        return [[NSArray alloc] initWithObjects:template1, template2, template3, nil];
+    for (int index = 0; index < self.numOfTemplatesPerIteration; ++index)
+    {
+        HMGTemplate *template = [templateLoader templateAtIndex:self.position];
+        ++self.position;
+        
+        if (template)
+        {
+            [templates addObject:template];
+        }
+    }
+    
+    if ([templates count] == 0)
+    {
+        return nil;
     }
     else
     {
-        return nil;
+        return [NSArray arrayWithArray:templates];
     }
 }
 
