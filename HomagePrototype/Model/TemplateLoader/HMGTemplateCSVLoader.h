@@ -12,7 +12,10 @@
 
 @interface HMGTemplateCSVLoader : NSObject
 
-//@property (strong, nonatomic, readonly) CHCSVParser
+typedef enum {
+    TemplatesParser,
+    RemakesParser
+} FileParsingEnum;
 
 // Loads a template at the given index
 - (HMGTemplate *)templateAtIndex:(NSUInteger) index;

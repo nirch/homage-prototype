@@ -29,6 +29,20 @@
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
+		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
+		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
+		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
+		F163102217DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101B17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png */; };
+		F163102317DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */; };
+		F163102417DFCD6700A2F361 /* I_am_yor_father-Tomer.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */; };
+		F163102517DFCD6700A2F361 /* Remakes.csv in Resources */ = {isa = PBXBuildFile; fileRef = F163101E17DFCD6700A2F361 /* Remakes.csv */; };
+		F163102617DFCF5A00A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
+		F163102717DFCF5A00A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
+		F163102817DFCF5A00A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
+		F163102917DFCF5A00A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101B17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png */; };
+		F163102A17DFCF5A00A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */; };
+		F163102B17DFCF5A00A2F361 /* I_am_yor_father-Tomer.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */; };
+		F163102C17DFCF5A00A2F361 /* Remakes.csv in Resources */ = {isa = PBXBuildFile; fileRef = F163101E17DFCD6700A2F361 /* Remakes.csv */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -119,6 +133,13 @@
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
 		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
 		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
+		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
+		F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Family_Guy_Wrong_Meeting.mp4; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.mp4; sourceTree = "<group>"; };
+		F163101B17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Family_Guy_Wrong_Meeting.png; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.png; sourceTree = "<group>"; };
+		F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "I_am_yor_father-Tomer.mp4"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Tomer.mp4"; sourceTree = "<group>"; };
+		F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "I_am_yor_father-Tomer.png"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Tomer.png"; sourceTree = "<group>"; };
+		F163101E17DFCD6700A2F361 /* Remakes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Remakes.csv; path = Model/TemplateLoader/Resources/Remakes.csv; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -226,6 +247,13 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */,
+				F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */,
+				F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */,
+				F163101B17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png */,
+				F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */,
+				F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */,
+				F163101E17DFCD6700A2F361 /* Remakes.csv */,
 				F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */,
 				F19123D217DE140D00DE85DB /* Homage_Tikim.png */,
 				F19123D317DE140D00DE85DB /* I_am_yor_father-Ran.mp4 */,
@@ -500,6 +528,13 @@
 				2655873717DE3F970086D936 /* tp_track_highlight_flex@2x.png in Resources */,
 				2655873817DE3F970086D936 /* tp_transport_base.png in Resources */,
 				2655873917DE3F970086D936 /* tp_transport_base@2x.png in Resources */,
+				F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */,
+				F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */,
+				F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */,
+				F163102217DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */,
+				F163102317DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */,
+				F163102417DFCD6700A2F361 /* I_am_yor_father-Tomer.png in Resources */,
+				F163102517DFCD6700A2F361 /* Remakes.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +550,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F163102617DFCF5A00A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */,
+				F163102717DFCF5A00A2F361 /* BT_meeting_gone_wrong.png in Resources */,
+				F163102817DFCF5A00A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */,
+				F163102917DFCF5A00A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */,
+				F163102A17DFCF5A00A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */,
+				F163102B17DFCF5A00A2F361 /* I_am_yor_father-Tomer.png in Resources */,
+				F163102C17DFCF5A00A2F361 /* Remakes.csv in Resources */,
 				F19123E817DE8DA900DE85DB /* Homage_Tikim.mp4 in Resources */,
 				F19123E917DE8DA900DE85DB /* Homage_Tikim.png in Resources */,
 				F19123EA17DE8DA900DE85DB /* I_am_yor_father-Ran.mp4 in Resources */,
