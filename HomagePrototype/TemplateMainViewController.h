@@ -7,9 +7,11 @@
 //   
 
 #import <UIKit/UIKit.h>
+#import "HMGTemplate.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface TemplateMainViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *templateName;
-@property (weak, nonatomic) IBOutlet UIButton *templatePlayButton;
+
+@property (strong,nonatomic) HMGTemplate *templateToDisplay;
 
 @end

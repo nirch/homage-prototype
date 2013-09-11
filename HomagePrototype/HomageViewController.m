@@ -48,15 +48,31 @@
 {
     if ([cell isKindOfClass: [TemplateCVCell class]]) {
         TemplateCVCell *templateCell = (TemplateCVCell *) cell;
+
+        templateCell.templateObj              = template;
         
-        templateCell.templateName.text        = template.name;
+        templateCell.templateName.text              = template.name;
         templateCell.templatePreviewImageView.image = template.thumbnail;
-        //templateCell.uploaded             = template.uploadDate;
-        templateCell.numOfRemakes.text      = [NSString stringWithFormat:@"#remakes: %d" , [template.remakes count]];
-        //cell.totalViews           = template.totalViews;
+        //templateCell.uploaded                     = template.uploadDate;
+        templateCell.numOfRemakes.text              = [NSString stringWithFormat:@"#remakes: %d" , [template.remakes count]];
+        //cell.totalViews                           = template.totalViews;
     }
         
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showTemplate"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[TemplateMainViewController class]] && [sender isKindOfClass:[TemplateCVCell class]])
+        {
+            TemplateCVCell *sendingCell = (TemplateCVCell *)sender;
+            TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
+            destController.templateToDisplay = sendingCell.templateObj;
+        }
+    }
+}
+
 
 - (void)viewDidLoad
 {
