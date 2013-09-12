@@ -226,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */,
+				2655874717E0D0910086D936 /* MediaPlayer.framework in Frameworks */,
 				267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */,
 				F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */,
 				F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */,
