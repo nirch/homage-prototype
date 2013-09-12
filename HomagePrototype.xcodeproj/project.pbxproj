@@ -301,7 +301,6 @@
 		F1C8EEBE17CF38420093DB0A = {
 			isa = PBXGroup;
 			children = (
-				2655874617E0D0910086D936 /* MediaPlayer.framework */,
 				F1C8EED017CF38420093DB0A /* HomagePrototype */,
 				F1C8EEF417CF38420093DB0A /* HomagePrototypeApplicationTests */,
 				F1D42E8D17D4915F00802D7C /* HomagePrototypeLogicTests */,
@@ -323,6 +322,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2655874617E0D0910086D936 /* MediaPlayer.framework */,
 				F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */,
 				267607EB17DB51B200FEC5C3 /* AVFoundation.framework */,
 				F1C8EECA17CF38420093DB0A /* UIKit.framework */,
