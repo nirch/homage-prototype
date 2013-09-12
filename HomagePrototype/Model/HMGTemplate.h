@@ -10,8 +10,7 @@
 
 @interface HMGTemplate : NSObject
 
-typedef enum 
-{
+typedef enum {
     Easy,
     Medium,
     Hard
@@ -25,7 +24,7 @@ typedef enum
 @property (strong, nonatomic) NSArray *remakes;
 @property (strong, nonatomic) NSArray *segments;
 @property (strong, nonatomic) NSURL *soundtrack;
-@property (strong, nonatomic) UIImage *thumbnail;
+@property (strong, nonatomic) UIImage *thumbnail; // TODO: Consider changing UIImage to NSURL
 
 
 @end

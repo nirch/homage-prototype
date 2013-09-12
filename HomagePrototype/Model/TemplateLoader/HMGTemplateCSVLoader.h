@@ -14,7 +14,7 @@
 
 typedef enum {
     TemplatesParser,
-    RemakesParser
+    RemakesParser,
 } FileParsingEnum;
 
 // Loads a template at the given index

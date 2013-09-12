@@ -89,6 +89,12 @@
 		F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */; };
 		F1D42E9E17D4CE0800802D7C /* HMGRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */; };
 		F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */; };
+		F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
+		F1F04AEB17E1AFF500720C5C /* HMGVideoSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AEA17E1AFF500720C5C /* HMGVideoSegment.m */; };
+		F1F04AEE17E1B02600720C5C /* HMGSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AED17E1B02600720C5C /* HMGSegment.m */; };
+		F1F04AF117E1B13800720C5C /* HMGImageSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AF017E1B13800720C5C /* HMGImageSegment.m */; };
+		F1F04AF417E1B36F00720C5C /* HMGTextSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AF317E1B36F00720C5C /* HMGTextSegment.m */; };
+		F1F04AF717E1B39700720C5C /* HMGFixedSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AF617E1B39700720C5C /* HMGFixedSegment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +193,17 @@
 		F1D42E9617D4915F00802D7C /* HomagePrototypeLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomagePrototypeLogicTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesIteratorTests.h; sourceTree = "<group>"; };
 		F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesIteratorTests.m; sourceTree = "<group>"; };
+		F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F1F04AE917E1AFF500720C5C /* HMGVideoSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGVideoSegment.h; path = Model/HMGVideoSegment.h; sourceTree = "<group>"; };
+		F1F04AEA17E1AFF500720C5C /* HMGVideoSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGVideoSegment.m; path = Model/HMGVideoSegment.m; sourceTree = "<group>"; };
+		F1F04AEC17E1B02600720C5C /* HMGSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGSegment.h; path = Model/HMGSegment.h; sourceTree = "<group>"; };
+		F1F04AED17E1B02600720C5C /* HMGSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGSegment.m; path = Model/HMGSegment.m; sourceTree = "<group>"; };
+		F1F04AEF17E1B13800720C5C /* HMGImageSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGImageSegment.h; path = Model/HMGImageSegment.h; sourceTree = "<group>"; };
+		F1F04AF017E1B13800720C5C /* HMGImageSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGImageSegment.m; path = Model/HMGImageSegment.m; sourceTree = "<group>"; };
+		F1F04AF217E1B36F00720C5C /* HMGTextSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTextSegment.h; path = Model/HMGTextSegment.h; sourceTree = "<group>"; };
+		F1F04AF317E1B36F00720C5C /* HMGTextSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTextSegment.m; path = Model/HMGTextSegment.m; sourceTree = "<group>"; };
+		F1F04AF517E1B39700720C5C /* HMGFixedSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGFixedSegment.h; path = Model/HMGFixedSegment.h; sourceTree = "<group>"; };
+		F1F04AF617E1B39700720C5C /* HMGFixedSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGFixedSegment.m; path = Model/HMGFixedSegment.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */,
 				267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */,
 				F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */,
 				F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */,
@@ -289,6 +307,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */,
 				267607EB17DB51B200FEC5C3 /* AVFoundation.framework */,
 				F1C8EECA17CF38420093DB0A /* UIKit.framework */,
 				F1C8EECC17CF38420093DB0A /* Foundation.framework */,
@@ -379,6 +398,16 @@
 				F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */,
 				F1C8EF0C17CF40280093DB0A /* HMGTemplateIterator.h */,
 				F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */,
+				F1F04AE917E1AFF500720C5C /* HMGVideoSegment.h */,
+				F1F04AEA17E1AFF500720C5C /* HMGVideoSegment.m */,
+				F1F04AEC17E1B02600720C5C /* HMGSegment.h */,
+				F1F04AED17E1B02600720C5C /* HMGSegment.m */,
+				F1F04AEF17E1B13800720C5C /* HMGImageSegment.h */,
+				F1F04AF017E1B13800720C5C /* HMGImageSegment.m */,
+				F1F04AF217E1B36F00720C5C /* HMGTextSegment.h */,
+				F1F04AF317E1B36F00720C5C /* HMGTextSegment.m */,
+				F1F04AF517E1B39700720C5C /* HMGFixedSegment.h */,
+				F1F04AF617E1B39700720C5C /* HMGFixedSegment.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -614,6 +643,11 @@
 				F1C8EF0E17CF40280093DB0A /* HMGTemplateIterator.m in Sources */,
 				F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */,
 				F19123E117DE157100DE85DB /* HMGTemplateCSVLoader.m in Sources */,
+				F1F04AEB17E1AFF500720C5C /* HMGVideoSegment.m in Sources */,
+				F1F04AEE17E1B02600720C5C /* HMGSegment.m in Sources */,
+				F1F04AF117E1B13800720C5C /* HMGImageSegment.m in Sources */,
+				F1F04AF417E1B36F00720C5C /* HMGTextSegment.m in Sources */,
+				F1F04AF717E1B39700720C5C /* HMGFixedSegment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
