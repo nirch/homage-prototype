@@ -26,6 +26,13 @@
 		2655873717DE3F970086D936 /* tp_track_highlight_flex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655872717DE3F970086D936 /* tp_track_highlight_flex@2x.png */; };
 		2655873817DE3F970086D936 /* tp_transport_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655872817DE3F970086D936 /* tp_transport_base.png */; };
 		2655873917DE3F970086D936 /* tp_transport_base@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655872917DE3F970086D936 /* tp_transport_base@2x.png */; };
+		2655874017E0D0170086D936 /* pb_ap_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873A17E0D0170086D936 /* pb_ap_button_background.png */; };
+		2655874117E0D0170086D936 /* pb_ap_button_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873B17E0D0170086D936 /* pb_ap_button_background@2x.png */; };
+		2655874217E0D0170086D936 /* pb_charlie_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873C17E0D0170086D936 /* pb_charlie_button_background.png */; };
+		2655874317E0D0170086D936 /* pb_charlie_button_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873D17E0D0170086D936 /* pb_charlie_button_background@2x.png */; };
+		2655874417E0D0170086D936 /* pb_play_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873E17E0D0170086D936 /* pb_play_icon.png */; };
+		2655874517E0D0170086D936 /* pb_play_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873F17E0D0170086D936 /* pb_play_icon@2x.png */; };
+		2655874717E0D0910086D936 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2655874617E0D0910086D936 /* MediaPlayer.framework */; };
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
@@ -134,6 +141,13 @@
 		2655872717DE3F970086D936 /* tp_track_highlight_flex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tp_track_highlight_flex@2x.png"; sourceTree = "<group>"; };
 		2655872817DE3F970086D936 /* tp_transport_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tp_transport_base.png; sourceTree = "<group>"; };
 		2655872917DE3F970086D936 /* tp_transport_base@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tp_transport_base@2x.png"; sourceTree = "<group>"; };
+		2655873A17E0D0170086D936 /* pb_ap_button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pb_ap_button_background.png; sourceTree = "<group>"; };
+		2655873B17E0D0170086D936 /* pb_ap_button_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pb_ap_button_background@2x.png"; sourceTree = "<group>"; };
+		2655873C17E0D0170086D936 /* pb_charlie_button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pb_charlie_button_background.png; sourceTree = "<group>"; };
+		2655873D17E0D0170086D936 /* pb_charlie_button_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pb_charlie_button_background@2x.png"; sourceTree = "<group>"; };
+		2655873E17E0D0170086D936 /* pb_play_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pb_play_icon.png; sourceTree = "<group>"; };
+		2655873F17E0D0170086D936 /* pb_play_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pb_play_icon@2x.png"; sourceTree = "<group>"; };
+		2655874617E0D0910086D936 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		2672147217D2261500B89FB0 /* TemplateMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateMainViewController.h; sourceTree = "<group>"; };
 		2672147317D2261500B89FB0 /* TemplateMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateMainViewController.m; sourceTree = "<group>"; };
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
@@ -286,6 +300,7 @@
 		F1C8EEBE17CF38420093DB0A = {
 			isa = PBXGroup;
 			children = (
+				2655874617E0D0910086D936 /* MediaPlayer.framework */,
 				F1C8EED017CF38420093DB0A /* HomagePrototype */,
 				F1C8EEF417CF38420093DB0A /* HomagePrototypeApplicationTests */,
 				F1D42E8D17D4915F00802D7C /* HomagePrototypeLogicTests */,
@@ -336,6 +351,12 @@
 		F1C8EED117CF38420093DB0A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2655873A17E0D0170086D936 /* pb_ap_button_background.png */,
+				2655873B17E0D0170086D936 /* pb_ap_button_background@2x.png */,
+				2655873C17E0D0170086D936 /* pb_charlie_button_background.png */,
+				2655873D17E0D0170086D936 /* pb_charlie_button_background@2x.png */,
+				2655873E17E0D0170086D936 /* pb_play_icon.png */,
+				2655873F17E0D0170086D936 /* pb_play_icon@2x.png */,
 				2655871A17DE3F970086D936 /* tp_info_popup.png */,
 				2655871B17DE3F970086D936 /* tp_info_popup@2x.png */,
 				2655871C17DE3F970086D936 /* tp_pause_button.png */,
@@ -564,6 +585,12 @@
 				F163102317DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */,
 				F163102417DFCD6700A2F361 /* I_am_yor_father-Tomer.png in Resources */,
 				F163102517DFCD6700A2F361 /* Remakes.csv in Resources */,
+				2655874017E0D0170086D936 /* pb_ap_button_background.png in Resources */,
+				2655874117E0D0170086D936 /* pb_ap_button_background@2x.png in Resources */,
+				2655874217E0D0170086D936 /* pb_charlie_button_background.png in Resources */,
+				2655874317E0D0170086D936 /* pb_charlie_button_background@2x.png in Resources */,
+				2655874417E0D0170086D936 /* pb_play_icon.png in Resources */,
+				2655874517E0D0170086D936 /* pb_play_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
