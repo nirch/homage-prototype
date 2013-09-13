@@ -12,11 +12,6 @@
 
 @interface HMGTemplateCSVLoader : NSObject
 
-typedef enum {
-    TemplatesParser,
-    RemakesParser,
-} FileParsingEnum;
-
 // Loads a template at the given index
 - (HMGTemplate *)templateAtIndex:(NSUInteger) index;
 
