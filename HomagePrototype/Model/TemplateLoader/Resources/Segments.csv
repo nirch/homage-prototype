@@ -1,0 +1,12 @@
+TemplateID,Type,Name,Description,Duration(ms),Video,Thumbnail
+2,VideoSegment,He Told Me Enough,,10000,he_told_me_enough.mov,he_told_me_enough.PNG
+2,VideoSegment,I'll Never Join You,,16000,letting_go.mov,letting_go.PNG
+2,VideoSegment,Letting Go,,7000,never_join_you.mov,never_join_you.PNG
+3,TextSegment,Opening text,Enter the opening text to the video (e.g. your family name),6200,Tikim_Text.mp4,Tikim_Text.png
+3,ImageSegment,Characters,Take still pictures of each chracter in the video,8000,Tikim_Images.mp4,Tikim_Images.png
+3,VideoSegment,Pre Race,Children preparing for the race (e.g. stretching),5600,Race_Start.mov,Race_Start.png
+3,VideoSegment,Feet,Shot the children feet in zoom,4500,legs.mov,legs.png
+3,VideoSegment,Race,Children in a race,9450,Race.mov,Race.png
+3,VideoSegment,Hero Lingers,The hero lingers in the race,6000,Neta_juice.mov,Neta_juice.png
+3,VideoSegment,Finish Line,The clihdren are passing the finish line,15300,finish.mov,finish.png
+3,VideoSegment,Sigh,The children are exhusted and falling after the race,3400,falling.mov,falling.png
