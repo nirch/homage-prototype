@@ -96,6 +96,7 @@
 		F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */; };
 		F1D42E9E17D4CE0800802D7C /* HMGRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */; };
 		F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C8EF0D17CF40280093DB0A /* HMGTemplateIterator.m */; };
+		F1E4AD5C17E4923900FDBC5A /* falling.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1E4AD5917E4923800FDBC5A /* falling.mov */; };
 		F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
 		F1F04AEB17E1AFF500720C5C /* HMGVideoSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AEA17E1AFF500720C5C /* HMGVideoSegment.m */; };
 		F1F04AEE17E1B02600720C5C /* HMGSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F04AED17E1B02600720C5C /* HMGSegment.m */; };
@@ -237,6 +238,7 @@
 		F1D42E9617D4915F00802D7C /* HomagePrototypeLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HomagePrototypeLogicTests-Prefix.pch"; sourceTree = "<group>"; };
 		F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplatesIteratorTests.h; sourceTree = "<group>"; };
 		F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesIteratorTests.m; sourceTree = "<group>"; };
+		F1E4AD5917E4923800FDBC5A /* falling.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = falling.mov; path = Model/TemplateLoader/Resources/falling.mov; sourceTree = "<group>"; };
 		F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F1F04AE917E1AFF500720C5C /* HMGVideoSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGVideoSegment.h; path = Model/HMGVideoSegment.h; sourceTree = "<group>"; };
 		F1F04AEA17E1AFF500720C5C /* HMGVideoSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGVideoSegment.m; path = Model/HMGVideoSegment.m; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1E4AD5917E4923800FDBC5A /* falling.mov */,
 				F1F04B1117E48EFB00720C5C /* falling.PNG */,
 				F1F04B1317E48EFB00720C5C /* finish.PNG */,
 				F1F04B1517E48EFB00720C5C /* he_told_me_enough.PNG */,
@@ -695,6 +698,7 @@
 				F1F04B3B17E48EFB00720C5C /* Tikim_Images.png in Resources */,
 				F1F04B3C17E48EFB00720C5C /* Tikim_Text.mp4 in Resources */,
 				F1F04B3D17E48EFB00720C5C /* Tikim_Text.png in Resources */,
+				F1E4AD5C17E4923900FDBC5A /* falling.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
