@@ -48,4 +48,18 @@
     STAssertTrue([tikimTemplate.remakes count] == 0, @"Tikim template should have 0 remakes, but it has %d", [tikimTemplate.remakes count]);
 }
 
+- (void)testTemplateSegments
+{
+    HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
+    
+    HMGTemplate *wrongMeetingtemplate = [templateLoader templateAtIndex:0];
+    STAssertTrue([wrongMeetingtemplate.segments count] == 0, @"Wrong Meeting template should have 0 segments, but it has %d", [wrongMeetingtemplate.segments count]);
+    
+    HMGTemplate *starWarsTemplate = [templateLoader templateAtIndex:1];
+    STAssertTrue([starWarsTemplate.segments count] == 3, @"Star Wars template should have 3 segments, but it has %d", [starWarsTemplate.segments count]);
+    
+    HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:2];
+    STAssertTrue([tikimTemplate.segments count] == 8, @"Tikim template should have 0 segments, but it has %d", [tikimTemplate.segments count]);
+}
+
 @end

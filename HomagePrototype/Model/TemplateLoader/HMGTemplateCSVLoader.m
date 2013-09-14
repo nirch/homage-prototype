@@ -128,7 +128,7 @@ enum TextSegmentFields {
         self.remakesCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:remakesCSVFilePath];
         self.remakesCSVParser.delegate = self;
         [self.remakesCSVParser parse];
-/*
+
         // Loading the template's segments
         NSString *segmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Segments.csv" ofType:@""];
         self.segmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:segmentsCSVFilePath];
@@ -148,11 +148,10 @@ enum TextSegmentFields {
         [self.imageSegmentsCSVParser parse];
         
         // Updating the template's text segments
-        NSString *textSegmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"VideoSegments.csv" ofType:@""];
+        NSString *textSegmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"TextSegments.csv" ofType:@""];
         self.textSegmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:textSegmentsCSVFilePath];
         self.textSegmentsCSVParser.delegate = self;
         [self.textSegmentsCSVParser parse];
-*/
     }
 
     
