@@ -10,6 +10,10 @@
 #import "HMGTemplateCSVLoader.h"
 #import "HMGTemplate.h"
 #import "HMGRemake.h"
+#import "HMGSegment.h"
+#import "HMGVideoSegment.h"
+#import "HMGTextSegment.h"
+#import "HMGImageSegment.h"
 
 @implementation TemplateCSVLoaderTests
 
@@ -60,6 +64,27 @@
     
     HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:2];
     STAssertTrue([tikimTemplate.segments count] == 8, @"Tikim template should have 0 segments, but it has %d", [tikimTemplate.segments count]);
+}
+
+- (void)testTikimSegments
+{
+    HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
+
+    HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:2];
+    STAssertTrue([tikimTemplate.segments count] == 8, @"Tikim template should have 0 segments, but it has %d", [tikimTemplate.segments count]);
+    
+    STAssertTrue([tikimTemplate.segments[0] isKindOfClass:[HMGTextSegment class]], @"Tikim template first segment should be a text segment, but it is %@", [[tikimTemplate.segments[0] class] description]);
+    HMGTextSegment *textSegment = tikimTemplate.segments[0];
+    STAssertTrue([textSegment.font isEqualToString:@"Helvetica"], @"Tikim template font should be Helvetica but it is %@", textSegment.font);
+    
+    STAssertTrue([tikimTemplate.segments[1] isKindOfClass:[HMGImageSegment class]], @"Tikim template second segment should be an image segment, but it is %@", [[tikimTemplate.segments[1] class] description]);
+    HMGImageSegment *imageSegment = tikimTemplate.segments[1];
+    STAssertTrue(imageSegment.minNumOfImages == 8, @"Tikim template min num of images in the image slide should be 8, but it is %d", imageSegment.minNumOfImages);
+    
+    STAssertTrue([tikimTemplate.segments[2] isKindOfClass:[HMGVideoSegment class]], @"Tikim template third segment should be a video segment, but it is %@", [[tikimTemplate.segments[2] class] description]);
+    HMGVideoSegment *videoSegment = tikimTemplate.segments[2];
+    STAssertTrue(videoSegment.recordDuration.value == 16000, @"Tikim template record duration for the first video segment should be 16000, but it is %d", videoSegment.recordDuration);
+    
 }
 
 @end
