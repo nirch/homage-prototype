@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "HMGTemplate.h"
+#import "HMGRemake.h"
+#import "HMGRemakeCVCell.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface TemplateMainViewController : UIViewController

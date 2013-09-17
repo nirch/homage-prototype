@@ -33,6 +33,7 @@
 		2655874417E0D0170086D936 /* pb_play_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873E17E0D0170086D936 /* pb_play_icon.png */; };
 		2655874517E0D0170086D936 /* pb_play_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655873F17E0D0170086D936 /* pb_play_icon@2x.png */; };
 		2655874717E0D0910086D936 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2655874617E0D0910086D936 /* MediaPlayer.framework */; };
+		2655874A17E618E40086D936 /* HMGRemakeCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2655874917E618E30086D936 /* HMGRemakeCVCell.m */; };
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
@@ -209,6 +210,8 @@
 		2655873E17E0D0170086D936 /* pb_play_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pb_play_icon.png; sourceTree = "<group>"; };
 		2655873F17E0D0170086D936 /* pb_play_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pb_play_icon@2x.png"; sourceTree = "<group>"; };
 		2655874617E0D0910086D936 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		2655874817E618E30086D936 /* HMGRemakeCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRemakeCVCell.h; sourceTree = "<group>"; };
+		2655874917E618E30086D936 /* HMGRemakeCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRemakeCVCell.m; sourceTree = "<group>"; };
 		2672147217D2261500B89FB0 /* TemplateMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateMainViewController.h; sourceTree = "<group>"; };
 		2672147317D2261500B89FB0 /* TemplateMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateMainViewController.m; sourceTree = "<group>"; };
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 			children = (
 				267607E817D7542100FEC5C3 /* TemplateCVCell.h */,
 				267607E917D7542100FEC5C3 /* TemplateCVCell.m */,
+				2655874817E618E30086D936 /* HMGRemakeCVCell.h */,
+				2655874917E618E30086D936 /* HMGRemakeCVCell.m */,
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
 				2672147217D2261500B89FB0 /* TemplateMainViewController.h */,
 				2672147317D2261500B89FB0 /* TemplateMainViewController.m */,
@@ -847,6 +852,7 @@
 				F1F04AF117E1B13800720C5C /* HMGImageSegment.m in Sources */,
 				F1F04AF417E1B36F00720C5C /* HMGTextSegment.m in Sources */,
 				F1F04AF717E1B39700720C5C /* HMGFixedSegment.m in Sources */,
+				2655874A17E618E40086D936 /* HMGRemakeCVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
