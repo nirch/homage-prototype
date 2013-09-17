@@ -22,6 +22,13 @@
 
 @implementation HomageViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.templateIterator = [[HMGTemplateIterator alloc] init];
+    self.templatesArray = [self.templateIterator next];
+}
+
 
 /*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -73,13 +80,6 @@
     }
 }
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.templateIterator = [[HMGTemplateIterator alloc] init];
-    self.templatesArray = [self.templateIterator next];
-}
 
 - (void)didReceiveMemoryWarning
 {
