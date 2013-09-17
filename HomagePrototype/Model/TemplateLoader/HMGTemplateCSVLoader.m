@@ -103,9 +103,9 @@ enum TextSegmentFields {
     NumOfTextSegmentFields
 };
 
-// Loads a template at the given index
-- (HMGTemplate *)templateAtIndex:(NSUInteger) index
+- (void)initSelf:(NSUInteger)index
 {
+    //TBD(Tomer) - The First row was not so clear for us... also why do we have 
     // Initializing the properties
     self.loadTemplateAtRecord = index + 2; //adding 2 to the index since the first record is 1 and not 0, and since the first record is a header
     self.template = nil;
@@ -113,6 +113,12 @@ enum TextSegmentFields {
     self.remakes = [[NSMutableArray alloc] init];
     self.segment = nil;
     self.segments = [[NSMutableArray alloc] init];
+}
+
+// Loads a template at the given index
+- (HMGTemplate *)templateAtIndex:(NSUInteger) index
+{
+    [self initSelf:index];
     
     // Parsing the templates CSV file
     NSString *templatesCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Templates.csv" ofType:@""];
