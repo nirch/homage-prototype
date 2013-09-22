@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *templatePlayButton;
 @property (weak, nonatomic) IBOutlet UICollectionView *remakesCView;
 @property (strong,nonatomic) NSArray *remakesArray;
+@property (weak, nonatomic) IBOutlet UIImageView *templatethumbnailImageView;
+@property (weak, nonatomic) IBOutlet UIButton *playTemplateButton;
+@property (weak, nonatomic) IBOutlet UIButton *recordTemplateButton;
 
 @end
 
@@ -26,6 +29,7 @@
     
     //template player
     [self.templatePlayButton setBackgroundImage:self.templateToDisplay.thumbnail forState:UIControlStateNormal];
+    self.templatethumbnailImageView.image = self.templateToDisplay.thumbnail;
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
     UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
     [self.templatePlayButton setImage:playButtonImage forState:UIControlStateNormal];
@@ -38,8 +42,8 @@
 
 //initiate the video player upon press on templatePlayButton
 - (IBAction)playTemplate:(id)sender {
-    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:self.templateToDisplay.video];
-    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+    NSURL *videoURL = self.templateToDisplay.video;
+    [self playMovieWithURL:videoURL];
 }
 
 
@@ -70,8 +74,29 @@
     if ([cell isKindOfClass: [HMGRemakeCVCell class]]) {
         HMGRemakeCVCell *remakeCell = (HMGRemakeCVCell *) cell;
         remakeCell.imageView.image = remake.thumbnail;
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
+        UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
+        remakeCell.pbImageView.image = playButtonImage;
     }
     
+}
+
+-(IBAction)playRemake:(UITapGestureRecognizer *)gesture
+{
+    CGPoint tapLocation = [gesture locationInView:self.remakesCView];
+    NSIndexPath *indexPath = [self.remakesCView indexPathForItemAtPoint:tapLocation];
+    if (indexPath)
+    {
+        HMGRemake *remake = self.remakesArray[indexPath.item];
+        NSURL *videoURL = remake.video;
+        [self playMovieWithURL:videoURL];
+    }
+}
+
+-(void)playMovieWithURL:(NSURL *)videoURL
+{
+    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
 }
 
 - (void)didReceiveMemoryWarning
