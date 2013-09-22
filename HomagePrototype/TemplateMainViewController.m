@@ -70,9 +70,14 @@
     if ([cell isKindOfClass: [HMGRemakeCVCell class]]) {
         HMGRemakeCVCell *remakeCell = (HMGRemakeCVCell *) cell;
         remakeCell.imageView.image = remake.thumbnail;
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
+        UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
+        remakeCell.pbImageView.image = playButtonImage;
     }
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
