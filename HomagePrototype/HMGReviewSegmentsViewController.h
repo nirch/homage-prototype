@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMGsegmentCVCell.h"
+#import "HMGTemplate.h"
+#import "HMGSegment.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface HMGReviewSegmentsViewController : UIViewController
+
+@property (strong,nonatomic) HMGTemplate *templateToDisplay;
 
 @end
