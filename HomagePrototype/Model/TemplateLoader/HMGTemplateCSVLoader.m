@@ -105,7 +105,6 @@ enum TextSegmentFields {
 
 - (void)initSelf:(NSUInteger)index
 {
-    //TBD(Tomer) - The First row was not so clear for us... also why do we have 
     // Initializing the properties
     self.loadTemplateAtRecord = index + 2; //adding 2 to the index since the first record is 1 and not 0, and since the first record is a header
     self.template = nil;
