@@ -4,6 +4,20 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
+        <!--Review Segments View Controller-->
+        <scene sceneID="RFC-95-ncQ">
+            <objects>
+                <viewController id="NfO-fo-KW8" customClass="HMGReviewSegmentsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a2y-tn-iJ1">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wtq-Vv-7zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="118"/>
+        </scene>
         <!--Homage View Controller - explore templates-->
         <scene sceneID="5">
             <objects>
@@ -252,6 +266,9 @@
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="pbImageView" candidateClass="UIImageView"/>
             </relationships>
+        </class>
+        <class className="HMGReviewSegmentsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HMGReviewSegmentsViewController.h"/>
         </class>
         <class className="HomageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomageViewController.h"/>
