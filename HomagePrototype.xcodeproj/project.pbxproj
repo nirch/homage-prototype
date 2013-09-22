@@ -56,6 +56,12 @@
 		F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */; };
 		F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */; };
 		F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */; };
+		F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */; };
+		F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */; };
+		F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */; };
+		F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */; };
+		F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */; };
+		F1687D9217EEEE43009214FA /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1687D9117EEEE43009214FA /* RemakeProjectTests.m */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -239,6 +245,8 @@
 		F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGImageSegmentRemake.m; path = Model/HMGImageSegmentRemake.m; sourceTree = "<group>"; };
 		F165B80117EED26B00647AF7 /* HMGTextSegmentRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTextSegmentRemake.h; path = Model/HMGTextSegmentRemake.h; sourceTree = "<group>"; };
 		F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTextSegmentRemake.m; path = Model/HMGTextSegmentRemake.m; sourceTree = "<group>"; };
+		F1687D9017EEEE43009214FA /* RemakeProjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemakeProjectTests.h; sourceTree = "<group>"; };
+		F1687D9117EEEE43009214FA /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -589,6 +597,8 @@
 				F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */,
 				F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */,
 				F1D42E8E17D4915F00802D7C /* Supporting Files */,
+				F1687D9017EEEE43009214FA /* RemakeProjectTests.h */,
+				F1687D9117EEEE43009214FA /* RemakeProjectTests.m */,
 			);
 			path = HomagePrototypeLogicTests;
 			sourceTree = "<group>";
@@ -898,6 +908,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */,
+				F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */,
+				F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */,
+				F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */,
+				F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */,
 				F1F04B0A17E488CF00720C5C /* HMGVideoSegment.m in Sources */,
 				F1F04B0B17E488CF00720C5C /* HMGSegment.m in Sources */,
 				F1F04B0C17E488CF00720C5C /* HMGImageSegment.m in Sources */,
@@ -910,6 +925,7 @@
 				F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */,
 				F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */,
 				F19123E417DE7EB800DE85DB /* TemplateCSVLoaderTests.m in Sources */,
+				F1687D9217EEEE43009214FA /* RemakeProjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
