@@ -93,6 +93,20 @@
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"remakeTemplate"])
+    {
+        if ([segue.destinationViewController isKindOfClass:[HMGReviewSegmentsViewController class]])
+        {
+            TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
+            destController.templateToDisplay = self.templateToDisplay;
+        }
+        
+    }
+}
+
+
 -(void)playMovieWithURL:(NSURL *)videoURL
 {
     MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
