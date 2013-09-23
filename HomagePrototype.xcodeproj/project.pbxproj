@@ -951,6 +951,8 @@
 				F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */,
 				F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */,
 				F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */,
+				26508A2817EF274100728528 /* HMGReviewSegmentsViewController.m in Sources */,
+				26508A4317EF620500728528 /* HMGsegmentCVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
