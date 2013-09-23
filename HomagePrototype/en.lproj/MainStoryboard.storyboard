@@ -118,6 +118,7 @@
                                             <constraint firstItem="iOz-T3-0Rq" firstAttribute="bottom" secondItem="hoM-y9-g64" secondAttribute="bottom" id="zi4-VQ-kmN"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="duration" destination="mP3-43-vCu" id="Ijm-ii-yOA"/>
                                             <outlet property="origSegmentImageView" destination="e0w-cI-Ura" id="K0G-O7-dfu"/>
                                             <outlet property="playOrigSegmentButton" destination="h4t-nL-3hn" id="MhA-sm-h5C"/>
                                             <outlet property="segmentDescription" destination="yjj-aJ-k5b" id="oIZ-Vg-Ftw"/>

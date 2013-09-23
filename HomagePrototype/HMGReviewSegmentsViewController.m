@@ -53,6 +53,7 @@
         segmentCell.origSegmentImageView.image = segment.thumbnail;
         segmentCell.origSegmentVideo = segment.video;
         segmentCell.segmentName.text = segment.name;
+        segmentCell.segmentDescription.text = segment.description;
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
     }
     
