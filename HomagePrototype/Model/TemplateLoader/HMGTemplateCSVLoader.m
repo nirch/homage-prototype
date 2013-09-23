@@ -120,7 +120,6 @@ enum TextSegmentFields {
 - (HMGTemplate *)templateAtIndex:(NSUInteger) index
 {
     HMGLogDebug(@"[%@ %@] index: %d", [[self class] description], @"templateAtIndex", index);
-    NSLog(@"NSLog: %d", index);
     
     [self initSelf:index];
     
@@ -128,8 +127,10 @@ enum TextSegmentFields {
     NSString *templatesCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Templates.csv" ofType:@""];
     self.templatesCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:templatesCSVFilePath];
     self.templatesCSVParser.delegate = self;
+    HMGLogDebug(@"Templates.csv parsing started");
     [self.templatesCSVParser parse];
-
+    HMGLogDebug(@"Templates.csv parsing ended");
+    
     // If a template was loaded we are procedding with loading the other parts of the template
     if (self.template)
     {
@@ -137,31 +138,41 @@ enum TextSegmentFields {
         NSString *remakesCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Remakes.csv" ofType:@""];
         self.remakesCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:remakesCSVFilePath];
         self.remakesCSVParser.delegate = self;
+        HMGLogDebug(@"Remakes.csv parsing started");
         [self.remakesCSVParser parse];
+        HMGLogDebug(@"Remakes.csv parsing ended");
 
         // Loading the template's segments
         NSString *segmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Segments.csv" ofType:@""];
         self.segmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:segmentsCSVFilePath];
         self.segmentsCSVParser.delegate = self;
+        HMGLogDebug(@"Segments.csv parsing started");
         [self.segmentsCSVParser parse];
+        HMGLogDebug(@"Segments.csv parsing ended");
         
         // Updating the template's video segments
         NSString *videoSegmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"VideoSegments.csv" ofType:@""];
         self.videoSegmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:videoSegmentsCSVFilePath];
         self.videoSegmentsCSVParser.delegate = self;
+        HMGLogDebug(@"VideoSegments.csv parsing started");
         [self.videoSegmentsCSVParser parse];
+        HMGLogDebug(@"VideoSegments.csv parsing ended");
         
         // Updating the template's image segments
         NSString *imageSegmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"ImageSegments.csv" ofType:@""];
         self.imageSegmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:imageSegmentsCSVFilePath];
         self.imageSegmentsCSVParser.delegate = self;
+        HMGLogDebug(@"ImageSegments.csv parsing started");
         [self.imageSegmentsCSVParser parse];
+        HMGLogDebug(@"ImageSegments.csv parsing ended");
         
         // Updating the template's text segments
         NSString *textSegmentsCSVFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"TextSegments.csv" ofType:@""];
         self.textSegmentsCSVParser = [[CHCSVParser alloc] initWithContentsOfCSVFile:textSegmentsCSVFilePath];
         self.textSegmentsCSVParser.delegate = self;
+        HMGLogDebug(@"TextSegments.csv parsing started");
         [self.textSegmentsCSVParser parse];
+        HMGLogDebug(@"TextSegments.csv parsing ended");
     }
 
     
@@ -173,6 +184,8 @@ enum TextSegmentFields {
 // This method is called in the beginning of each record parsed
 - (void)parser:(CHCSVParser *)parser didBeginLine:(NSUInteger)recordNumber
 {
+    HMGLogDebug(@"[%@ %@] record: %d", [[self class] description], @"parser didBeginLine", recordNumber);
+    
     // Checking which file we are now parsing
     if (parser == self.templatesCSVParser)
     {
@@ -191,6 +204,8 @@ enum TextSegmentFields {
 // This mehtod is called when for each field that is being parsed
 - (void)parser:(CHCSVParser *)parser didReadField:(NSString *)field atIndex:(NSInteger)fieldIndex
 {
+    HMGLogDebug(@"[%@ %@] field: %@ index: %d", [[self class] description], @"parser didReadField", field, fieldIndex);
+    
     NSString *fullFilePath;
     
     // Checking which file we are now parsing
@@ -467,6 +482,9 @@ enum TextSegmentFields {
 // This method is called when the parser finishes to parse a certain record
 - (void)parser:(CHCSVParser *)parser didEndLine:(NSUInteger)recordNumber
 {
+    HMGLogDebug(@"[%@ %@] record: %d", [[self class] description], @"parser didEndLine", recordNumber);
+
+    
     if (parser == self.remakesCSVParser)
     {
         if (self.templateIdMatched)
@@ -499,7 +517,7 @@ enum TextSegmentFields {
 
 - (void)parser:(CHCSVParser *)parser didFailWithError:(NSError *)error
 {
-    NSLog(@"Error prasing CSV file: %@", error.description);
+    HMGLogError(@"Error prasing CSV file: %@", error.description);
 }
 
 @end
