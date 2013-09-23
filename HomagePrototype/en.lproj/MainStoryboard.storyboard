@@ -83,6 +83,9 @@
                                                     <state key="normal" image="record_indicator_on.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="20l-hv-5fD" kind="push" id="KcR-1K-UP0"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -115,6 +118,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtq-Vv-7zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1341" y="118"/>
+        </scene>
+        <!--Record Segment View Conroller-->
+        <scene sceneID="rMq-St-2Sh">
+            <objects>
+                <viewController id="20l-hv-5fD" customClass="HMGRecordSegmentViewConroller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z40-Sf-Fmc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bys-G0-KAD"/>
+                    </layoutGuides>
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="FKW-yV-2iv">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOF-98-wWj">
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="camera_bezel.png" translatesAutoresizingMaskIntoConstraints="NO" id="KJU-be-J5r">
+                                <rect key="frame" x="390" y="0.0" width="90" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhI-9K-bMN" customClass="HMGRecordButton">
+                                <rect key="frame" x="393" y="137" width="84" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="record_indicator_on.png" backgroundImage="camera_button_background.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startRecording:" destination="20l-hv-5fD" eventType="touchUpInside" id="4nr-SD-fFq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qML-69-PCu"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="previewView" destination="cOF-98-wWj" id="Jid-4r-JG8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uCf-Bb-uEU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="672"/>
         </scene>
         <!--Homage View Controller - explore templates-->
         <scene sceneID="5">
@@ -365,9 +413,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera_bezel.png" width="92" height="320"/>
+        <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
