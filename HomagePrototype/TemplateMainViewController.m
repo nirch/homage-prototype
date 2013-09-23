@@ -99,7 +99,7 @@
     {
         if ([segue.destinationViewController isKindOfClass:[HMGReviewSegmentsViewController class]])
         {
-            TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
+            HMGReviewSegmentsViewController *destController = (HMGReviewSegmentsViewController *)segue.destinationViewController;
             destController.templateToDisplay = self.templateToDisplay;
         }
         
