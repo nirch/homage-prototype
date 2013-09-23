@@ -258,6 +258,7 @@
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
 		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
 		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
 		F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Family_Guy_Wrong_Meeting.mp4; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.mp4; sourceTree = "<group>"; };
@@ -403,6 +404,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F149B4C317F033DB0031E288 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F149B4C417F034CB0031E288 /* HMGLog.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F19123CE17DE0C9300DE85DB /* TemplateLoader */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +531,7 @@
 				2655874917E618E30086D936 /* HMGRemakeCVCell.m */,
 				F1C8EEE517CF38420093DB0A /* HomageViewController.h */,
 				F1C8EEE617CF38420093DB0A /* HomageViewController.m */,
+				F149B4C317F033DB0031E288 /* Utilities */,
 				F1C8EF0817CF3A310093DB0A /* Model */,
 				F1C8EED117CF38420093DB0A /* Supporting Files */,
 			);

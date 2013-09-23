@@ -13,6 +13,7 @@
 #import "HMGImageSegment.h"
 #import "HMGTextSegment.h"
 #import "HMGFixedSegment.h"
+#import "HMGLog.h"
 
 @interface HMGTemplateCSVLoader () <CHCSVParserDelegate>
 @property (nonatomic) NSUInteger loadTemplateAtRecord;
@@ -118,6 +119,9 @@ enum TextSegmentFields {
 // Loads a template at the given index
 - (HMGTemplate *)templateAtIndex:(NSUInteger) index
 {
+    HMGLogDebug(@"[%@ %@] index: %d", [[self class] description], @"templateAtIndex", index);
+    NSLog(@"NSLog: %d", index);
+    
     [self initSelf:index];
     
     // Parsing the templates CSV file
