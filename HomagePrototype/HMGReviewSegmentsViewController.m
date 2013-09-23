@@ -51,9 +51,31 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
+        segmentCell.origSegmentVideo = segment.video;
+        segmentCell.segmentName.text = segment.name;
+        [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
+
+- (IBAction)playSegmentVideo:(UIButton *)button
+{
+    
+    //Acccess the cell
+    UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
+    if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
+        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
+        NSURL *videoURL = segmentCell.origSegmentVideo;
+        [self playMovieWithURL:videoURL];
+    }
+}
+
+-(void)playMovieWithURL:(NSURL *)videoURL
+{
+    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+}
+
 
 
 - (void)didReceiveMemoryWarning
