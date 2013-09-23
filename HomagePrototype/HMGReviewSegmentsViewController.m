@@ -8,26 +8,53 @@
 
 #import "HMGReviewSegmentsViewController.h"
 
-@interface HMGReviewSegmentsViewController ()
+@interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
+@property (strong,nonatomic) NSArray *segmentsArray;
 
 @end
 
 @implementation HMGReviewSegmentsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	self.segmentsArray = self.templateToDisplay.segments;
+    
 }
+
+
+/*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+ {
+ return 1;
+ }*/ //if not implemented, this value is set on default to 1
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
+{
+    return [self.segmentsArray count];
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [self.segmentsCView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
+                                                                        forIndexPath:indexPath];
+    HMGSegment *segment = self.segmentsArray[indexPath.item];
+    [self updateCell:cell withSegment:segment];
+    return cell;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment
+{
+    if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
+        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
+        segmentCell.origSegmentImageView.image = segment.thumbnail;
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

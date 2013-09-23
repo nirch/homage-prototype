@@ -23,6 +23,7 @@
 		26508A3E17EF29BC00728528 /* record_indicator_on_glow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26508A3217EF29B900728528 /* record_indicator_on_glow@2x.png */; };
 		26508A3F17EF29BC00728528 /* record_indicator_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 26508A3317EF29B900728528 /* record_indicator_on.png */; };
 		26508A4017EF29BC00728528 /* record_indicator_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26508A3417EF29BB00728528 /* record_indicator_on@2x.png */; };
+		26508A4317EF620500728528 /* HMGsegmentCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26508A4217EF620400728528 /* HMGsegmentCVCell.m */; };
 		2655872A17DE3F970086D936 /* tp_info_popup.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655871A17DE3F970086D936 /* tp_info_popup.png */; };
 		2655872B17DE3F970086D936 /* tp_info_popup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655871B17DE3F970086D936 /* tp_info_popup@2x.png */; };
 		2655872C17DE3F970086D936 /* tp_pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2655871C17DE3F970086D936 /* tp_pause_button.png */; };
@@ -64,6 +65,17 @@
 		F163102A17DFCF5A00A2F361 /* I_am_yor_father-Tomer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */; };
 		F163102B17DFCF5A00A2F361 /* I_am_yor_father-Tomer.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */; };
 		F163102C17DFCF5A00A2F361 /* Remakes.csv in Resources */ = {isa = PBXBuildFile; fileRef = F163101E17DFCD6700A2F361 /* Remakes.csv */; };
+		F165B7F717EED1DE00647AF7 /* HMGRemakeProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */; };
+		F165B7FA17EED1FE00647AF7 /* HMGSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */; };
+		F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */; };
+		F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */; };
+		F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */; };
+		F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */; };
+		F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */; };
+		F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */; };
+		F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */; };
+		F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */; };
+		F1687D9217EEEE43009214FA /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1687D9117EEEE43009214FA /* RemakeProjectTests.m */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -214,6 +226,8 @@
 		26508A3217EF29B900728528 /* record_indicator_on_glow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_indicator_on_glow@2x.png"; sourceTree = "<group>"; };
 		26508A3317EF29B900728528 /* record_indicator_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_indicator_on.png; sourceTree = "<group>"; };
 		26508A3417EF29BB00728528 /* record_indicator_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "record_indicator_on@2x.png"; sourceTree = "<group>"; };
+		26508A4117EF620400728528 /* HMGsegmentCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGsegmentCVCell.h; sourceTree = "<group>"; };
+		26508A4217EF620400728528 /* HMGsegmentCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGsegmentCVCell.m; sourceTree = "<group>"; };
 		2655871A17DE3F970086D936 /* tp_info_popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tp_info_popup.png; sourceTree = "<group>"; };
 		2655871B17DE3F970086D936 /* tp_info_popup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tp_info_popup@2x.png"; sourceTree = "<group>"; };
 		2655871C17DE3F970086D936 /* tp_pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tp_pause_button.png; sourceTree = "<group>"; };
@@ -251,6 +265,18 @@
 		F163101C17DFCD6700A2F361 /* I_am_yor_father-Tomer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "I_am_yor_father-Tomer.mp4"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Tomer.mp4"; sourceTree = "<group>"; };
 		F163101D17DFCD6700A2F361 /* I_am_yor_father-Tomer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "I_am_yor_father-Tomer.png"; path = "Model/TemplateLoader/Resources/I_am_yor_father-Tomer.png"; sourceTree = "<group>"; };
 		F163101E17DFCD6700A2F361 /* Remakes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Remakes.csv; path = Model/TemplateLoader/Resources/Remakes.csv; sourceTree = "<group>"; };
+		F165B7F517EED1DE00647AF7 /* HMGRemakeProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGRemakeProject.h; path = Model/HMGRemakeProject.h; sourceTree = "<group>"; };
+		F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGRemakeProject.m; path = Model/HMGRemakeProject.m; sourceTree = "<group>"; };
+		F165B7F817EED1FE00647AF7 /* HMGSegmentRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGSegmentRemake.h; path = Model/HMGSegmentRemake.h; sourceTree = "<group>"; };
+		F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGSegmentRemake.m; path = Model/HMGSegmentRemake.m; sourceTree = "<group>"; };
+		F165B7FB17EED22C00647AF7 /* HMGVideoSegmentRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGVideoSegmentRemake.h; path = Model/HMGVideoSegmentRemake.h; sourceTree = "<group>"; };
+		F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGVideoSegmentRemake.m; path = Model/HMGVideoSegmentRemake.m; sourceTree = "<group>"; };
+		F165B7FE17EED24B00647AF7 /* HMGImageSegmentRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGImageSegmentRemake.h; path = Model/HMGImageSegmentRemake.h; sourceTree = "<group>"; };
+		F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGImageSegmentRemake.m; path = Model/HMGImageSegmentRemake.m; sourceTree = "<group>"; };
+		F165B80117EED26B00647AF7 /* HMGTextSegmentRemake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTextSegmentRemake.h; path = Model/HMGTextSegmentRemake.h; sourceTree = "<group>"; };
+		F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTextSegmentRemake.m; path = Model/HMGTextSegmentRemake.m; sourceTree = "<group>"; };
+		F1687D9017EEEE43009214FA /* RemakeProjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemakeProjectTests.h; sourceTree = "<group>"; };
+		F1687D9117EEEE43009214FA /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -487,6 +513,8 @@
 				267607E917D7542100FEC5C3 /* TemplateCVCell.m */,
 				2655874817E618E30086D936 /* HMGRemakeCVCell.h */,
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
+				26508A4117EF620400728528 /* HMGsegmentCVCell.h */,
+				26508A4217EF620400728528 /* HMGsegmentCVCell.m */,
 				26508A2617EF274100728528 /* HMGReviewSegmentsViewController.h */,
 				26508A2717EF274100728528 /* HMGReviewSegmentsViewController.m */,
 				2672147217D2261500B89FB0 /* TemplateMainViewController.h */,
@@ -593,6 +621,16 @@
 				F1F04AF317E1B36F00720C5C /* HMGTextSegment.m */,
 				F1F04AF517E1B39700720C5C /* HMGFixedSegment.h */,
 				F1F04AF617E1B39700720C5C /* HMGFixedSegment.m */,
+				F165B7F517EED1DE00647AF7 /* HMGRemakeProject.h */,
+				F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */,
+				F165B7F817EED1FE00647AF7 /* HMGSegmentRemake.h */,
+				F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */,
+				F165B7FB17EED22C00647AF7 /* HMGVideoSegmentRemake.h */,
+				F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */,
+				F165B7FE17EED24B00647AF7 /* HMGImageSegmentRemake.h */,
+				F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */,
+				F165B80117EED26B00647AF7 /* HMGTextSegmentRemake.h */,
+				F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -605,6 +643,8 @@
 				F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */,
 				F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */,
 				F1D42E8E17D4915F00802D7C /* Supporting Files */,
+				F1687D9017EEEE43009214FA /* RemakeProjectTests.h */,
+				F1687D9117EEEE43009214FA /* RemakeProjectTests.m */,
 			);
 			path = HomagePrototypeLogicTests;
 			sourceTree = "<group>";
@@ -906,7 +946,13 @@
 				F1F04AF417E1B36F00720C5C /* HMGTextSegment.m in Sources */,
 				F1F04AF717E1B39700720C5C /* HMGFixedSegment.m in Sources */,
 				2655874A17E618E40086D936 /* HMGRemakeCVCell.m in Sources */,
+				F165B7F717EED1DE00647AF7 /* HMGRemakeProject.m in Sources */,
+				F165B7FA17EED1FE00647AF7 /* HMGSegmentRemake.m in Sources */,
+				F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */,
+				F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */,
+				F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */,
 				26508A2817EF274100728528 /* HMGReviewSegmentsViewController.m in Sources */,
+				26508A4317EF620500728528 /* HMGsegmentCVCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +968,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */,
+				F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */,
+				F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */,
+				F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */,
+				F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */,
 				F1F04B0A17E488CF00720C5C /* HMGVideoSegment.m in Sources */,
 				F1F04B0B17E488CF00720C5C /* HMGSegment.m in Sources */,
 				F1F04B0C17E488CF00720C5C /* HMGImageSegment.m in Sources */,
@@ -934,6 +985,7 @@
 				F1D42E9F17D4CE0800802D7C /* HMGTemplateIterator.m in Sources */,
 				F1D42E9C17D4BDF700802D7C /* TemplatesIteratorTests.m in Sources */,
 				F19123E417DE7EB800DE85DB /* TemplateCSVLoaderTests.m in Sources */,
+				F1687D9217EEEE43009214FA /* RemakeProjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
