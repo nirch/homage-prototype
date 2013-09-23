@@ -34,6 +34,13 @@
     #define HMGLogWarning(...)
 #endif
 
+// Notice Log Level
+#if HMG_COMPILE_TIME_LOG_LEVEL >= ASL_LEVEL_NOTICE
+    void HMGLogNotice(NSString *format, ...);
+#else
+    #define HMGLogNotice(...)
+#endif
+
 // Info Log Level
 #if HMG_COMPILE_TIME_LOG_LEVEL >= ASL_LEVEL_INFO
     void HMGLogInfo(NSString *format, ...);
@@ -76,6 +83,10 @@ static void AddStderrOnce()
     __HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_WARNING, HMGLogWarning)
 #endif
 
+#if HMG_COMPILE_TIME_LOG_LEVEL >= ASL_LEVEL_NOTICE
+__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_NOTICE, HMGLogNotice)
+#endif
+
 #if HMG_COMPILE_TIME_LOG_LEVEL >= ASL_LEVEL_INFO
     __HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_INFO, HMGLogInfo)
 #endif
@@ -87,7 +98,5 @@ static void AddStderrOnce()
 //__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_ALERT, HMGLogAlert)
 //__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_EMERG, HMGLogEmergency)
 //__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_CRIT, HMGLogCritical)
-//__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_WARNING, HMGLogWarning)
-//__HMG_MAKE_LOG_FUNCTION(ASL_LEVEL_NOTICE, HMGLogNotice)
 
 #undef __HMG_MAKE_LOG_FUNCTION
