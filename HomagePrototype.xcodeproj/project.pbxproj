@@ -262,6 +262,11 @@
 		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
 		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
+		6554A18C17F0351100706D4D /* HMGRecordSegmentViewConroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordSegmentViewConroller.h; sourceTree = "<group>"; };
+		6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordSegmentViewConroller.m; sourceTree = "<group>"; };
+		6554A19417F052FD00706D4D /* HMGRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordButton.h; sourceTree = "<group>"; };
+		6554A19517F052FD00706D4D /* HMGRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordButton.m; sourceTree = "<group>"; };
+		6562967E17F08C2D00EE1325 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
 		F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Family_Guy_Wrong_Meeting.mp4; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.mp4; sourceTree = "<group>"; };
@@ -414,6 +419,45 @@
 				F149B4C417F034CB0031E288 /* HMGLog.h */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+        6554A18F17F03EF000706D4D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				26508A2B17EF29B300728528 /* camera_button_background.png */,
+				26508A2C17EF29B400728528 /* camera_button_background@2x.png */,
+				26508A2D17EF29B500728528 /* camera_switch_icon.png */,
+				26508A2E17EF29B600728528 /* camera_switch_icon@2x.png */,
+				26508A2F17EF29B700728528 /* record_indicator_off.png */,
+				26508A3017EF29B800728528 /* record_indicator_off@2x.png */,
+				26508A3117EF29B800728528 /* record_indicator_on_glow.png */,
+				26508A3217EF29B900728528 /* record_indicator_on_glow@2x.png */,
+				26508A3317EF29B900728528 /* record_indicator_on.png */,
+				26508A3417EF29BB00728528 /* record_indicator_on@2x.png */,
+				26508A2A17EF29B200728528 /* camera_bezel@2x.png */,
+				26508A2917EF29B100728528 /* camera_bezel.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6554A19017F0526500706D4D /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				6554A19117F0528500706D4D /* Views */,
+				6554A18F17F03EF000706D4D /* Resources */,
+				6554A18C17F0351100706D4D /* HMGRecordSegmentViewConroller.h */,
+				6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */,
+			);
+			name = Record;
+			sourceTree = "<group>";
+		};
+		6554A19117F0528500706D4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6554A19417F052FD00706D4D /* HMGRecordButton.h */,
+				6554A19517F052FD00706D4D /* HMGRecordButton.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F19123CE17DE0C9300DE85DB /* TemplateLoader */ = {
