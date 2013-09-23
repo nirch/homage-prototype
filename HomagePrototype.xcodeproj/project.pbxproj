@@ -53,6 +53,7 @@
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
 		6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A19517F052FD00706D4D /* HMGRecordButton.m */; };
+		6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6562967E17F08C2D00EE1325 /* QuartzCore.framework */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -264,6 +265,7 @@
 		6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordSegmentViewConroller.m; sourceTree = "<group>"; };
 		6554A19417F052FD00706D4D /* HMGRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordButton.h; sourceTree = "<group>"; };
 		6554A19517F052FD00706D4D /* HMGRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordButton.m; sourceTree = "<group>"; };
+		6562967E17F08C2D00EE1325 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
 		F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Family_Guy_Wrong_Meeting.mp4; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.mp4; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */,
 				F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */,
 				2655874717E0D0910086D936 /* MediaPlayer.framework in Frameworks */,
 				267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */,
@@ -540,6 +543,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6562967E17F08C2D00EE1325 /* QuartzCore.framework */,
 				2655874617E0D0910086D936 /* MediaPlayer.framework */,
 				F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */,
 				267607EB17DB51B200FEC5C3 /* AVFoundation.framework */,
