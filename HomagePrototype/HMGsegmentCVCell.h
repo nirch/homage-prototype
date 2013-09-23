@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userSegmentRecordButton;
 @property (weak, nonatomic) IBOutlet UIButton *userSegmentPlayButton;
 @property (strong, nonatomic) NSURL *origSegmentVideo;
+@property (weak, nonatomic) IBOutlet UITextView *segmentDescription;
+@property (weak, nonatomic) IBOutlet UILabel *segmentName;
 
 @end

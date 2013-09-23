@@ -52,6 +52,7 @@
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
         segmentCell.origSegmentVideo = segment.video;
+        segmentCell.segmentName.text = segment.name;
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
     }
     
