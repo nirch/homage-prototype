@@ -10,6 +10,7 @@
 #import "HMGTemplate.h"
 #import "HMGRemake.h"
 #import "HMGRemakeCVCell.h"
+#import "HMGReviewSegmentsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface TemplateMainViewController : UIViewController

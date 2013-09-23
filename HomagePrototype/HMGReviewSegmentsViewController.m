@@ -51,10 +51,41 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
+        segmentCell.origSegmentVideo = segment.video;
+        segmentCell.segmentName.text = segment.name;
+        segmentCell.segmentDescription.text = segment.description;
+        segmentCell.segmentDuration.text = [self formatToTimeString:segment.duration];
+        [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
 
+- (IBAction)playSegmentVideo:(UIButton *)button
+{
+    
+    //Acccess the cell
+    UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
+    if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
+        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
+        NSURL *videoURL = segmentCell.origSegmentVideo;
+        [self playMovieWithURL:videoURL];
+    }
+}
+
+-(void)playMovieWithURL:(NSURL *)videoURL
+{
+    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+}
+
+-(NSString *)formatToTimeString:(CMTime)duration
+{
+    NSUInteger dTotalSeconds = CMTimeGetSeconds(duration);
+    NSUInteger dMinutes = floor(dTotalSeconds % 3600 / 60);
+    NSUInteger dSeconds = floor(dTotalSeconds % 3600 % 60);
+    NSString *videoDurationText = [NSString stringWithFormat:@"%02i:%02i", dMinutes, dSeconds];
+    return videoDurationText;
+}
 
 - (void)didReceiveMemoryWarning
 {

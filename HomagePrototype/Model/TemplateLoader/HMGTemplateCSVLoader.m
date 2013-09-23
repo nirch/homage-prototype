@@ -106,7 +106,6 @@ enum TextSegmentFields {
 
 - (void)initSelf:(NSUInteger)index
 {
-    //TBD(Tomer) - The First row was not so clear for us... also why do we have 
     // Initializing the properties
     self.loadTemplateAtRecord = index + 2; //adding 2 to the index since the first record is 1 and not 0, and since the first record is a header
     self.template = nil;
@@ -234,7 +233,7 @@ enum TextSegmentFields {
                     break;
                 case TemplateSoundtrack:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.template.soundtrack = [NSURL fileURLWithPath:fullFilePath];
+                    if (fullFilePath) self.template.soundtrack = [NSURL fileURLWithPath:fullFilePath];
                     break;
                 case TemplateThumbnail:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
