@@ -128,6 +128,7 @@
                                             <constraint firstItem="h4t-nL-3hn" firstAttribute="bottom" secondItem="e0w-cI-Ura" secondAttribute="bottom" type="default" id="uyj-pu-r6w"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="duration" destination="mP3-43-vCu" id="Ijm-ii-yOA"/>
                                             <outlet property="origSegmentImageView" destination="e0w-cI-Ura" id="K0G-O7-dfu"/>
                                             <outlet property="playOrigSegmentButton" destination="h4t-nL-3hn" id="MhA-sm-h5C"/>
                                             <outlet property="segmentDescription" destination="yjj-aJ-k5b" id="oIZ-Vg-Ftw"/>
@@ -454,6 +455,7 @@
         <class className="HMGsegmentCVCell" superclassName="UICollectionViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HMGsegmentCVCell.h"/>
             <relationships>
+                <relationship kind="outlet" name="duration" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="origSegmentImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="playOrigSegmentButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="segmentDescription" candidateClass="UITextView"/>
