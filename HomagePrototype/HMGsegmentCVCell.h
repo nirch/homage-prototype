@@ -17,6 +17,6 @@
 @property (strong, nonatomic) NSURL *origSegmentVideo;
 @property (weak, nonatomic) IBOutlet UITextView *segmentDescription;
 @property (weak, nonatomic) IBOutlet UILabel *segmentName;
-@property (weak, nonatomic) IBOutlet UILabel *duration;
+@property (weak, nonatomic) IBOutlet UILabel *segmentDuration;
 
 @end
