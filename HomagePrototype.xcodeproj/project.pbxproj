@@ -307,7 +307,7 @@
 		F1C8EEE317CF38420093DB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		F1C8EEE517CF38420093DB0A /* HomageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomageViewController.h; sourceTree = "<group>"; };
 		F1C8EEE617CF38420093DB0A /* HomageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomageViewController.m; sourceTree = "<group>"; };
-		F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = HomagePrototypeTests.octest; path = HomagePrototypeApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1C8EEED17CF38420093DB0A /* HomagePrototypeApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomagePrototypeApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EEEE17CF38420093DB0A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F1C8EEF617CF38420093DB0A /* HomagePrototypeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HomagePrototypeTests-Info.plist"; sourceTree = "<group>"; };
 		F1C8EEF817CF38420093DB0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -495,7 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				F1C8EEC717CF38420093DB0A /* HomagePrototype.app */,
-				F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */,
+				F1C8EEED17CF38420093DB0A /* HomagePrototypeApplicationTests.octest */,
 				F1D42E8917D4915F00802D7C /* HomagePrototypeLogicTests.octest */,
 			);
 			name = Products;
@@ -705,7 +705,7 @@
 			);
 			name = HomagePrototypeApplicationTests;
 			productName = HomagePrototypeTests;
-			productReference = F1C8EEED17CF38420093DB0A /* HomagePrototypeTests.octest */;
+			productReference = F1C8EEED17CF38420093DB0A /* HomagePrototypeApplicationTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		F1D42E8817D4915F00802D7C /* HomagePrototypeLogicTests */ = {
