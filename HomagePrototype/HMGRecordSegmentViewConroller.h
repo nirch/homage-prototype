@@ -14,7 +14,6 @@
 @interface HMGRecordSegmentViewConroller : UIViewController<AVCaptureFileOutputRecordingDelegate>
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property(nonatomic) HMGVideoSegmentRemake *videoSegmentRemake;
-@property(nonatomic) HMGVideoSegment *videoSegment;
 - (IBAction)startRecording:(id)sender;
 
 @end

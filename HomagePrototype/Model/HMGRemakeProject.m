@@ -33,11 +33,9 @@
             HMGSegmentRemake *segmentRemake = [self createSegmentRemakeFrom:segment];
             [segmentRemakes addObject:segmentRemake];
         }
-        
         // Converting the NSMutable array into an NSArray
         self.segmentRemakes = [NSArray arrayWithArray:segmentRemakes];
     }
-
     return self;
 }
 

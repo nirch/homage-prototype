@@ -31,6 +31,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //TBD - Remove this line because Yoav will init the property from outside
+    self.videoSegmentRemake = [[HMGVideoSegmentRemake alloc]init];
 	[self setUpCaptureSession];
 }
 
@@ -110,15 +112,19 @@
     {
         [sender setSelected:NO];
         [self.captureOutput stopRecording];
+        //Logic of filling the SegmentRemake - the URL of the Video should be placed in a different location then the current outputURL function
+        [self.videoSegmentRemake assignVideo:[self outputURL]];
     }else
     {
 		[sender setSelected:YES];
-		if (!self.captureOutput) {
+		if (!self.captureOutput)
+        {
 			self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
 			[self.captureSession addOutput:self.captureOutput];
-    }
+        }
 		// Delete the old movie file if it exists
-		//[[NSFileManager defaultManager] removeItemAtURL:[self outputURL] error:nil];
+        //TBD - handle the name of the Output file to handle more then one name - maybe add a GUID name
+		[[NSFileManager defaultManager] removeItemAtURL:[self outputURL] error:nil];
         
 		[self.captureSession startRunning];
         
