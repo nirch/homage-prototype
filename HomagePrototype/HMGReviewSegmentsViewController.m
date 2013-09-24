@@ -12,6 +12,7 @@
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 @property (strong,nonatomic) NSArray *segmentsArray;
+@property (strong,nonatomic) HMGRemakeProject *remakeProject;
 
 @end
 
@@ -21,7 +22,7 @@
 {
     [super viewDidLoad];
 	self.segmentsArray = self.templateToDisplay.segments;
-    
+    self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
 }
 
 
@@ -43,11 +44,11 @@
     UICollectionViewCell *cell = [self.segmentsCView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
                                                                         forIndexPath:indexPath];
     HMGSegment *segment = self.segmentsArray[indexPath.item];
-    [self updateCell:cell withSegment:segment];
+    [self updateCell:cell withSegment:segment withIndex:indexPath.item];
     return cell;
 }
 
-- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment
+- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment withIndex:(NSInteger)index
 {
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
@@ -56,6 +57,8 @@
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
         segmentCell.segmentDuration.text = [self formatToTimeString:segment.duration];
+        segmentCell.segmentRemake = self.remakeProject.segmentRemakes[index];
+        
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -100,9 +103,10 @@
     if ([segue.identifier isEqualToString:@"recordSegment"])
     {
         
-        HMGRecordSegmentViewConroller *controller = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
-        //assign VideoSegment
-        //Assign VideoSegmentRemake
+        HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
+        UIButton *button = (UIButton *)sender;
+        HMGsegmentCVCell *cell = button.superview.superview;
+        destController.videoSegmentRemake = cell.segmentRemake;
     }
 }
 

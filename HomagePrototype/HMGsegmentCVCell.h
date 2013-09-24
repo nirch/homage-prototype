@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HMGSegmentRemake.h"
 
 @interface HMGsegmentCVCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIButton *playOrigSegmentButton;
@@ -14,9 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userSegmentImageView;
 @property (weak, nonatomic) IBOutlet UIButton *userSegmentRecordButton;
 @property (weak, nonatomic) IBOutlet UIButton *userSegmentPlayButton;
-@property (strong, nonatomic) NSURL *origSegmentVideo;
 @property (weak, nonatomic) IBOutlet UITextView *segmentDescription;
 @property (weak, nonatomic) IBOutlet UILabel *segmentName;
 @property (weak, nonatomic) IBOutlet UILabel *segmentDuration;
+
+@property (strong, nonatomic) NSURL *origSegmentVideo;
+@property (strong,nonatomic) HMGSegmentRemake *segmentRemake;
+
 
 @end

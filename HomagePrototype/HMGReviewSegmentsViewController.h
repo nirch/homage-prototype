@@ -10,7 +10,9 @@
 #import "HMGsegmentCVCell.h"
 #import "HMGTemplate.h"
 #import "HMGSegment.h"
+#import "HMGRemakeProject.h"
 #import <MediaPlayer/MediaPlayer.h>
+
 
 @interface HMGReviewSegmentsViewController : UIViewController
 
