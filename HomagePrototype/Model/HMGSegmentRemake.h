@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HMGSegment.h"
 
 @interface HMGSegmentRemake : NSObject
 
