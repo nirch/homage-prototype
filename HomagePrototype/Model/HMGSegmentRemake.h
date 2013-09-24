@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic,readonly) NSMutableArray *takes; // Array of NSURLs each item in the array holds a URL to a video represnting a processed take for this segment
 
+@property (strong, nonatomic) HMGSegment *segment;
+
 @property (nonatomic) NSUInteger selectedTakeIndex;
 - (NSURL *)createVideo;
 - (void) assignVideo:(NSURL *) videoURL;
