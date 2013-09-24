@@ -84,7 +84,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="20l-hv-5fD" kind="push" id="KcR-1K-UP0"/>
+                                                        <segue destination="20l-hv-5fD" kind="push" identifier="recordSegment" id="KcR-1K-UP0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -416,10 +416,6 @@
         <image name="camera_bezel.png" width="92" height="320"/>
         <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
