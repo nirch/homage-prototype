@@ -7,6 +7,7 @@
 //
 
 #import "HMGReviewSegmentsViewController.h"
+#import "HMGRecordSegmentViewConroller.h"
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
@@ -92,5 +93,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
+    if ([segue.identifier isEqualToString:@"recordSegment"])
+    {
+        
+        HMGRecordSegmentViewConroller *controller = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
+        //assign VideoSegment
+        //Assign VideoSegmentRemake
+    }
+}
+
 
 @end

@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "HMGVideoSegmentRemake.h"
+#import "HMGVideoSegment.h"
 
 @interface HMGRecordSegmentViewConroller : UIViewController<AVCaptureFileOutputRecordingDelegate>
 @property (weak, nonatomic) IBOutlet UIView *previewView;
+@property(nonatomic) HMGVideoSegmentRemake *videoSegmentRemake;
+@property(nonatomic) HMGVideoSegment *videoSegment;
 - (IBAction)startRecording:(id)sender;
+
 @end
