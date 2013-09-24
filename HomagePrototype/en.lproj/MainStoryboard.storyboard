@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y04-0a-HmV">
-                                <rect key="frame" x="20" y="15" width="280" height="445"/>
+                                <rect key="frame" x="20" y="15" width="280" height="407"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ort-4h-1Io">
@@ -107,6 +107,16 @@
                                     <outlet property="delegate" destination="NfO-fo-KW8" id="Fx1-K1-Va8"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cm-yA-dxd">
+                                <rect key="frame" x="122" y="430" width="77" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="render final">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="renderFinal:" destination="NfO-fo-KW8" eventType="touchUpInside" id="Iif-Lo-2up"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -416,6 +426,10 @@
         <image name="camera_bezel.png" width="92" height="320"/>
         <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="record_indicator_on.png" width="29" height="29"/>
+        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

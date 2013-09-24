@@ -110,5 +110,8 @@
     }
 }
 
+- (IBAction)renderFinal:(id)sender {
+    //place holder for nir to render final cut
+}
 
 @end
