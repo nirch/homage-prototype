@@ -31,8 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //TBD - Remove this line because Yoav will init the property from outside
-    self.videoSegmentRemake = [[HMGVideoSegmentRemake alloc]init];
 	[self setUpCaptureSession];
 }
 
