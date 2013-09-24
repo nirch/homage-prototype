@@ -15,8 +15,6 @@
 
 @end
 
-//#define MAX_NUM_OF_TEMPLATES_DEFAULT 3
-
 @implementation TemplatesIteratorTests
 
 - (void)setUp
@@ -78,6 +76,25 @@
     
     templates = self.templateIterator.next;
     STAssertTrue([templates count] == DEFUALT_TEMPLATES_PER_ITERATION, @"next should return %d templates, whereas it returned %d templates", DEFUALT_TEMPLATES_PER_ITERATION, templates.count);
+}
+
+-(void)testCustomNext
+{
+    NSArray *templates;
+    self.templateIterator.numOfTemplatesPerIteration = 1;
+    
+    templates = self.templateIterator.next;
+    STAssertTrue([templates count] == 1, @"next should return %d templates, whereas it returned %d templates", 1, templates.count);
+    
+    templates = self.templateIterator.next;
+    STAssertTrue([templates count] == 1, @"next should return %d templates, whereas it returned %d templates", 1, templates.count);
+
+    templates = self.templateIterator.next;
+    STAssertTrue([templates count] == 1, @"next should return %d templates, whereas it returned %d templates", 1, templates.count);
+
+    templates = self.templateIterator.next;
+    STAssertNil(templates, @"templates was supposed to be nil but it is not");
+
 }
 
 
