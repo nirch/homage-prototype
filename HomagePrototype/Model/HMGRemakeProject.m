@@ -7,7 +7,6 @@
 //
 
 #import "HMGRemakeProject.h"
-#import "HMGSegment.h"
 #import "HMGVideoSegment.h"
 #import "HMGImageSegment.h"
 #import "HMGTextSegment.h"
@@ -33,11 +32,9 @@
             HMGSegmentRemake *segmentRemake = [self createSegmentRemakeFrom:segment];
             [segmentRemakes addObject:segmentRemake];
         }
-        
         // Converting the NSMutable array into an NSArray
         self.segmentRemakes = [NSArray arrayWithArray:segmentRemakes];
     }
-
     return self;
 }
 
@@ -58,6 +55,8 @@
     {
         segmentRemake = [[HMGTextSegmentRemake alloc] init];
     }
+    
+    segmentRemake.segment = segment;
     
     return segmentRemake;
 }

@@ -64,6 +64,15 @@
 
 }
 
+- (void)testTypeOfSegmentsInSegmentRemake
+{
+    STAssertTrue([[self.tikimRemakeProject.segmentRemakes[0] segment] isKindOfClass:[HMGTextSegment class]], @"Tikim template first segment should be a text segment, but it is %@", [[[self.tikimRemakeProject.segmentRemakes[0] segment] class] description]);
+    
+    STAssertTrue([[self.tikimRemakeProject.segmentRemakes[1] segment] isKindOfClass:[HMGImageSegment class]], @"Tikim template second segment should be an image segment, but it is %@", [[[self.tikimRemakeProject.segmentRemakes[1] segment] class] description]);
+    
+    STAssertTrue([[self.tikimRemakeProject.segmentRemakes[2] segment] isKindOfClass:[HMGVideoSegment class]], @"Tikim template third segment should be a video segment, but it is %@", [[[self.tikimRemakeProject.segmentRemakes[2] segment] class] description]);
+}
+
 
 
 @end
