@@ -84,7 +84,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="20l-hv-5fD" kind="push" id="KcR-1K-UP0"/>
+                                                        <segue destination="20l-hv-5fD" kind="push" identifier="recordSegment" id="KcR-1K-UP0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
