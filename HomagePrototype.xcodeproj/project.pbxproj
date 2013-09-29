@@ -105,6 +105,10 @@
 		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
 		F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */; };
+		F1C57B8B17F8A51C00158EC3 /* Red.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8917F8A51C00158EC3 /* Red.mov */; };
+		F1C57B8C17F8A51C00158EC3 /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */; };
+		F1C57B8D17F8A6BD00158EC3 /* Red.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8917F8A51C00158EC3 /* Red.mov */; };
+		F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -310,6 +314,8 @@
 		F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGAVUtils.h; sourceTree = "<group>"; };
 		F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGAVUtils.m; sourceTree = "<group>"; };
 		F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVUtilsTests.m; sourceTree = "<group>"; };
+		F1C57B8917F8A51C00158EC3 /* Red.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Red.mov; sourceTree = "<group>"; };
+		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -544,6 +550,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		F1C57B8817F8A4D300158EC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1C57B8917F8A51C00158EC3 /* Red.mov */,
+				F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F1C8EEBE17CF38420093DB0A = {
 			isa = PBXGroup;
 			children = (
@@ -650,8 +665,9 @@
 			children = (
 				F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */,
 				F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */,
-				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 				F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */,
+				F1C57B8817F8A4D300158EC3 /* Resources */,
+				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -846,8 +862,10 @@
 				2655873617DE3F970086D936 /* tp_track_highlight_flex.png in Resources */,
 				2655873717DE3F970086D936 /* tp_track_highlight_flex@2x.png in Resources */,
 				2655873817DE3F970086D936 /* tp_transport_base.png in Resources */,
+				F1C57B8B17F8A51C00158EC3 /* Red.mov in Resources */,
 				2655873917DE3F970086D936 /* tp_transport_base@2x.png in Resources */,
 				F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */,
+				F1C57B8C17F8A51C00158EC3 /* Tikim_Text.mp4 in Resources */,
 				F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */,
 				F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */,
 				F163102217DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */,
@@ -906,6 +924,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B8D17F8A6BD00158EC3 /* Red.mov in Resources */,
+				F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */,
 				F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
