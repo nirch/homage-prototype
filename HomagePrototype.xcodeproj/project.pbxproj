@@ -104,6 +104,7 @@
 		F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
+		F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -308,6 +309,7 @@
 		F1A1EED917F85BEB008FDE54 /* HMGLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGLog.m; sourceTree = "<group>"; };
 		F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGAVUtils.h; sourceTree = "<group>"; };
 		F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGAVUtils.m; sourceTree = "<group>"; };
+		F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVUtilsTests.m; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -649,6 +651,7 @@
 				F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */,
 				F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */,
 				F1C8EEF517CF38420093DB0A /* Supporting Files */,
+				F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1027,6 +1030,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
+				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

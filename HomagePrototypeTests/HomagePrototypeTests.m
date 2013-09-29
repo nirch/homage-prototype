@@ -7,7 +7,6 @@
 //
 
 #import "HomagePrototypeTests.h"
-#import "HMGAVUtils.h"
 
 @implementation HomagePrototypeTests
 
@@ -27,11 +26,7 @@
 
 - (void)testExample
 {
-    [HMGAVUtils mergeVideos:nil withSoundtrack:nil completion:^(AVAssetExportSession *exporter) {
-        NSLog(@"Exporter Status :%d", exporter.status);
-        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
-    }];
-    //STFail(@"Unit tests are not implemented yet in HomagePrototypeTests");
+    STFail(@"Unit tests are not implemented yet in HomagePrototypeTests");
 }
 
 @end
