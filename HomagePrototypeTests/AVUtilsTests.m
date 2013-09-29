@@ -38,7 +38,11 @@ static NSString * const video2Name = @"Tikim_Text.mp4";
 
 - (void)tearDown
 {
-    // Put teardown code here; it will be run once, after the last test case.
+    for (NSURL *resourceURL in self.resourcesToDelete)
+    {
+        [[NSFileManager defaultManager] removeItemAtURL:resourceURL error:nil];
+    }
+    
     [super tearDown];
 }
 
@@ -61,10 +65,38 @@ static NSString * const video2Name = @"Tikim_Text.mp4";
 {
     NSArray *videosToMerge = @[self.video1, self.video2];
     
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+    dispatch_group_enter(dispatchGroup);
+    
     [HMGAVUtils mergeVideos:videosToMerge withSoundtrack:nil completion:^(AVAssetExportSession *exporter) {
-        NSLog(@"Exporter Status :%d", exporter.status);
+        
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *mergedVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *video1Asset = [AVAsset assetWithURL:self.video1];
+        AVAsset *video2Asset = [AVAsset assetWithURL:self.video2];
+        
+        STAssertNotNil(mergedVideo, @"mergedVideo should not be null");
+        
+        int mergedVideoDuration = lroundf(CMTimeGetSeconds(mergedVideo.duration));
+        Float64 video1Duration = CMTimeGetSeconds(video1Asset.duration);
+        Float64 video2Duration = CMTimeGetSeconds(video2Asset.duration);
+        int video1AndVideo2Duration = lroundf(video1Duration + video2Duration);
+        
+        // Testing that the duration of the merged video equals the sum of the 2 videos
+        STAssertTrue(mergedVideoDuration == video1AndVideo2Duration, @"merged video duration is %d while the sum of video 1 and video 2 duration is %d", mergedVideoDuration, video1AndVideo2Duration);
+        
         NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        dispatch_group_leave(dispatchGroup);
     }];
+    
+    dispatch_group_wait(dispatchGroup, DISPATCH_TIME_FOREVER);
 }
 
 @end

@@ -12,7 +12,7 @@
 @implementation HMGAVUtils
 
 // This method receives a list of videos (URLs to the videos) and a soundtrack (URL to the soundtrack). The method merges the videos and soundtrack into a new video. The completion method will be called asynchronously once the new video is ready
-+(void)mergeVideos:(NSArray*)videoUrls withSoundtrack:(NSURL*)soundtrackURL completion:(void (^)(AVAssetExportSession*))completion
++ (void)mergeVideos:(NSArray*)videoUrls withSoundtrack:(NSURL*)soundtrackURL completion:(void (^)(AVAssetExportSession*))completion
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
@@ -43,15 +43,18 @@
     }
     
     // *** Step 2: Adding the soundtrack ***
-    
-    // Creating an asset object from the soundtrack URL
-    AVAsset *soundtrackAsset = [AVAsset assetWithURL:soundtrackURL];
-    
-    // Creating a composition track for the soundtrack which is also added to the main composition oject
-    AVMutableCompositionTrack *soundtrackTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-    
-    // Inserting the soundtrack to the composition track in the correct time frame
-    [soundtrackTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, insertTime) ofTrack:[[soundtrackAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+
+    if (soundtrackURL)
+    {
+        // Creating an asset object from the soundtrack URL
+        AVAsset *soundtrackAsset = [AVAsset assetWithURL:soundtrackURL];
+        
+        // Creating a composition track for the soundtrack which is also added to the main composition oject
+        AVMutableCompositionTrack *soundtrackTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        
+        // Inserting the soundtrack to the composition track in the correct time frame
+        [soundtrackTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, insertTime) ofTrack:[[soundtrackAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+    }
     
     // *** Step 3: Exporting the video ***
     
@@ -76,9 +79,9 @@
     
     // Doing the actual export and setting the completion method that will be invoked asynchronously once the new video is ready
     [exporter exportAsynchronouslyWithCompletionHandler:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
             completion(exporter);
-        });
+//        });
     }];
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
