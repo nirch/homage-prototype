@@ -16,6 +16,12 @@
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
+    // If video url array doesn't have at least one video, throwing an exception
+    if (!(videoUrls.count > 0))
+    {
+        [NSException raise:@"Invalid videoUrls value" format:@"count of 0 is invalid (videoUrls count must be > 0)"];
+    }
+    
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     

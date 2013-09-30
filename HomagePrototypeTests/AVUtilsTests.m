@@ -161,4 +161,62 @@ static NSString * const soundtrackName = @"Homage_Tikim.mp3";
 }
 
 
+- (void)testMergeSingleVideoWithSoundtrack
+{
+    NSArray *videosToMerge = @[self.video1];
+    
+    // Creating a dispatch group so we can wait for the below async block to complete
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+    dispatch_group_enter(dispatchGroup);
+    
+    [HMGAVUtils mergeVideos:videosToMerge withSoundtrack:self.soundtrack completion:^(AVAssetExportSession *exporter) {
+        
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *mergedVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *video1Asset = [AVAsset assetWithURL:self.video1];
+        
+        STAssertNotNil(mergedVideo, @"mergedVideo should not be null");
+        
+        int mergedVideoDuration = lroundf(CMTimeGetSeconds(mergedVideo.duration));
+        int video1Duration = lroundf(CMTimeGetSeconds(video1Asset.duration));
+        
+        // Testing that the duration of the merged video equals the duration of the first video
+        STAssertTrue(mergedVideoDuration == video1Duration, @"merged video duration is %d while the duration of video 1 is %d", mergedVideoDuration, video1Duration);
+        
+        // Testing that the exported video (merged video) has an audio track
+        STAssertTrue([[mergedVideo tracksWithMediaType:AVMediaTypeAudio] count] == 1, @"The exported video doesn't have a single audio track, it has %d audio track", [[mergedVideo tracksWithMediaType:AVMediaTypeAudio] count]);
+        
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        // This will release the dispatch_group_wait
+        dispatch_group_leave(dispatchGroup);
+    }];
+    
+    int timeoutInSeconds = 3;
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, timeoutInSeconds * NSEC_PER_SEC);
+    long response = dispatch_group_wait(dispatchGroup, timeout);
+    STAssertTrue(response == 0, @"timeout for waiting for async block to complete");
+}
+
+
+- (void)testMergeZeroVideos
+{
+    NSArray *videosToMerge = [[NSArray alloc] init];
+    
+    STAssertThrows([HMGAVUtils mergeVideos:videosToMerge withSoundtrack:nil completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        STFail(@"Shouldn't reach this completion block");
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+    }], @"This expression should thrown an exception, check the file system for damaged video leftover");
+}
+
+
 @end
