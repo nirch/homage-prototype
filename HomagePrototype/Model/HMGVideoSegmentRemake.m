@@ -8,7 +8,10 @@
 
 #import "HMGVideoSegmentRemake.h"
 #import "HMGFileManager.h"
-#define PVIDEO_FILE @"processedVideo.mov"
+
+
+#define PVIDEO_FILE_PREFIX @"processedVideo"
+#define PVIDEO_FILE_TYPE @"mov"
 
 @implementation HMGVideoSegmentRemake
 
@@ -22,7 +25,7 @@
 }
 -(NSURL *)createVideo:(NSURL *)inputVideo
 {
-   return [HMGFileManager copyResourceToNewURL:inputVideo forFileName:PVIDEO_FILE];
+    return [HMGFileManager copyResourceToNewURL:inputVideo forFileName:PVIDEO_FILE_PREFIX ofType:PVIDEO_FILE_TYPE];
 }
 
 //TBD - extract this Method to Video Utils class

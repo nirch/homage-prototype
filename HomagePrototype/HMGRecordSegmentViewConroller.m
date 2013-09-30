@@ -9,7 +9,9 @@
 #import "HMGRecordSegmentViewConroller.h"
 #import "HMGFileManager.h"
 //TBD - Understand how exactly the output of the Video Works
-#define VIDEO_FILE @"test.mov"
+
+#define VIDEO_FILE_PREFIX @"test"
+#define VIDEO_FILE_TYPE @".mov"
 
 @interface HMGRecordSegmentViewConroller ()
 @property (nonatomic, strong) AVCaptureSession *captureSession;
@@ -137,7 +139,7 @@
 			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
 		}
         
-        self.tempUrl =[HMGFileManager uniqueURL:VIDEO_FILE];
+        self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
         //self.toggleCameraButton.enabled = ![sender isSelected];
 	}

@@ -11,7 +11,7 @@
 @implementation HMGFileManager
 
 // Creates a unique URL in the documents library with a given prefix (prefix is optional)
-+ (NSURL *)uniqueURL:(NSString *)fileNamePrefix
++ (NSURL *)uniqueUrlWithPrefix:(NSString *)fileNamePrefix ofType:(NSString *)fileType;
 {
     // Getting the path to the documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -29,16 +29,21 @@
         fileName = [uniqueID UUIDString];
     }
     
+    if (fileType)
+    {
+        fileName = [[fileName stringByAppendingString:@"."] stringByAppendingString:fileType];
+    }
+    
     NSString *fullFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];
     return [NSURL fileURLWithPath:fullFilePath];
 }
 
 
 // Copies a given resource to a new location
-+ (NSURL *)copyResourceToNewURL:(NSURL *) resourceURL forFileName:(NSString *)fileNamePrefix
++ (NSURL *)copyResourceToNewURL:(NSURL *)resourceURL forFileName:(NSString *)fileNamePrefix ofType:(NSString *)fileType;
 {
     NSFileManager *manager = [[NSFileManager alloc] init];
-    NSURL * newVideoURL =[self uniqueURL:fileNamePrefix];
+    NSURL * newVideoURL =[self uniqueUrlWithPrefix:fileNamePrefix ofType:fileType];
     [manager copyItemAtURL:resourceURL toURL:newVideoURL error:nil];
     return newVideoURL;
 }

@@ -8,6 +8,7 @@
 
 #import "HMGAVUtils.h"
 #import "HMGLog.h"
+#import "HMGFileManager.h"
 
 @implementation HMGAVUtils
 
@@ -64,14 +65,7 @@
     
     // *** Step 3: Exporting the video ***
     
-    // Getting the path to the documents directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    // Creating a full path and URL to the exported video
-    NSString *outputVideoPath =  [documentsDirectory stringByAppendingPathComponent:
-                                  [NSString stringWithFormat:@"mergeVideo-%d.mov",arc4random() % 1000]];
-    NSURL *outptVideoUrl = [NSURL fileURLWithPath:outputVideoPath];
+    NSURL *outptVideoUrl = [HMGFileManager uniqueUrlWithPrefix:@"mergeVideo-" ofType:@"mov"];
     
     // Creating an export session using the main composition
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mainComposition presetName:AVAssetExportPresetHighestQuality];
@@ -84,11 +78,7 @@
     HMGLogDebug(@"exporter output URL (before export): %@", exporter.outputURL.description);
     
     // Doing the actual export and setting the completion method that will be invoked asynchronously once the new video is ready
-    [exporter exportAsynchronouslyWithCompletionHandler:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(exporter);
-//        });
-    }];
+    [exporter exportAsynchronouslyWithCompletionHandler:^{ completion(exporter); }];
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
@@ -97,6 +87,8 @@
 // This methods scales the given video into a different duration (makes the video faster or slower). The completion method will be called asynchronously once the new video is ready
 +(void)scaleVideo:(NSURL*)videoURL toDuration:(CMTime)duration completion:(void (^)(AVAssetExportSession*))completion
 {
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     
@@ -116,14 +108,7 @@
     
     // Exporting the new scaled video
     
-    // Getting the path to the documents directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    // Creating a full path and URL to the exported video
-    NSString *outputVideoPath =  [documentsDirectory stringByAppendingPathComponent:
-                                  [NSString stringWithFormat:@"scaleVideo-%d.mov",arc4random() % 1000]];
-    NSURL *outptVideoUrl = [NSURL fileURLWithPath:outputVideoPath];
+    NSURL *outptVideoUrl = [HMGFileManager uniqueUrlWithPrefix:@"scaleVideo-" ofType:@"mov"];
     
     // Creating an export session using the main composition
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mainComposition presetName:AVAssetExportPresetHighestQuality];
@@ -134,12 +119,9 @@
     exporter.shouldOptimizeForNetworkUse = YES;
     
     // Doing the actual export and setting the completion method that will be invoked asynchronously once the new video is ready
-    [exporter exportAsynchronouslyWithCompletionHandler:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            completion(exporter);
-//        });
-    }];
+    [exporter exportAsynchronouslyWithCompletionHandler:^{ completion(exporter); }];
     
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
 
