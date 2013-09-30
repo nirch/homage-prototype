@@ -1,0 +1,91 @@
+//
+//  HMGAVUtils.m
+//  HomagePrototype
+//
+//  Created by Tomer Harry on 9/29/13.
+//  Copyright (c) 2013 Homage. All rights reserved.
+//
+
+#import "HMGAVUtils.h"
+#import "HMGLog.h"
+
+@implementation HMGAVUtils
+
+// This method receives a list of videos (URLs to the videos) and a soundtrack (URL to the soundtrack). The method merges the videos and soundtrack into a new video. The completion method will be called asynchronously once the new video is ready
++ (void)mergeVideos:(NSArray*)videoUrls withSoundtrack:(NSURL*)soundtrackURL completion:(void (^)(AVAssetExportSession*))completion
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
+    // Creating the composition object. This object will hold the composition track instances
+    AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
+    
+    // Creating a composition track for the video which is also added to the main composition oject
+    AVMutableCompositionTrack *compositionVideoTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    // *** Step 1: Merging the videos ***
+    
+    // The time to insert a current video in the below loop (the first video will be inserted in zime zero, then the variable will be increased)
+    CMTime insertTime = kCMTimeZero;
+    
+    // Looping over the videos and adding them (merging) to the main composition
+    for(NSURL *videoURL in videoUrls)
+    {
+        // TODO: Check if the URL is really a video
+        
+        // Creating a video asset for the current video URL
+        AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
+        
+        // Inserting the video to the composition track in the correct time range
+        [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:insertTime error:nil];
+        
+        // Updating the insertTime for the next insert
+        insertTime = CMTimeAdd(insertTime, videoAsset.duration);
+    }
+    
+    // *** Step 2: Adding the soundtrack ***
+
+    if (soundtrackURL)
+    {
+        // Creating an asset object from the soundtrack URL
+        AVAsset *soundtrackAsset = [AVAsset assetWithURL:soundtrackURL];
+        
+        // Creating a composition track for the soundtrack which is also added to the main composition oject
+        AVMutableCompositionTrack *soundtrackTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        
+        // Inserting the soundtrack to the composition track in the correct time frame
+        [soundtrackTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, insertTime) ofTrack:[[soundtrackAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+    }
+    
+    // *** Step 3: Exporting the video ***
+    
+    // Getting the path to the documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    // Creating a full path and URL to the exported video
+    NSString *outputVideoPath =  [documentsDirectory stringByAppendingPathComponent:
+                                  [NSString stringWithFormat:@"mergeVideo-%d.mov",arc4random() % 1000]];
+    NSURL *outptVideoUrl = [NSURL fileURLWithPath:outputVideoPath];
+    
+    // Creating an export session using the main composition
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mainComposition presetName:AVAssetExportPresetHighestQuality];
+    
+    // Setting attributes of the exporter
+    exporter.outputURL=outptVideoUrl;
+    exporter.outputFileType = AVFileTypeQuickTimeMovie;
+    exporter.shouldOptimizeForNetworkUse = YES;
+
+    HMGLogDebug(@"exporter output URL (before export): %@", exporter.outputURL.description);
+    
+    // Doing the actual export and setting the completion method that will be invoked asynchronously once the new video is ready
+    [exporter exportAsynchronouslyWithCompletionHandler:^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(exporter);
+//        });
+    }];
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
+
+@end

@@ -99,6 +99,17 @@
 		F19123EB17DE8DA900DE85DB /* I_am_yor_father-Ran.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D417DE140D00DE85DB /* I_am_yor_father-Ran.png */; };
 		F19123EC17DE8DA900DE85DB /* Wrong_meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D617DE140D00DE85DB /* Wrong_meeting.mp4 */; };
 		F19123ED17DE8DA900DE85DB /* wrong_meeting.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D717DE140D00DE85DB /* wrong_meeting.png */; };
+		F1A1EEDA17F85BEB008FDE54 /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
+		F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
+		F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
+		F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
+		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
+		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
+		F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */; };
+		F1C57B8B17F8A51C00158EC3 /* Red.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8917F8A51C00158EC3 /* Red.mov */; };
+		F1C57B8C17F8A51C00158EC3 /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */; };
+		F1C57B8D17F8A6BD00158EC3 /* Red.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8917F8A51C00158EC3 /* Red.mov */; };
+		F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -302,6 +313,12 @@
 		F19123E017DE157100DE85DB /* HMGTemplateCSVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTemplateCSVLoader.m; path = Model/TemplateLoader/HMGTemplateCSVLoader.m; sourceTree = "<group>"; };
 		F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCSVLoaderTests.h; sourceTree = "<group>"; };
 		F19123E317DE7EB800DE85DB /* TemplateCSVLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCSVLoaderTests.m; sourceTree = "<group>"; };
+		F1A1EED917F85BEB008FDE54 /* HMGLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGLog.m; sourceTree = "<group>"; };
+		F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGAVUtils.h; sourceTree = "<group>"; };
+		F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGAVUtils.m; sourceTree = "<group>"; };
+		F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVUtilsTests.m; sourceTree = "<group>"; };
+		F1C57B8917F8A51C00158EC3 /* Red.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Red.mov; sourceTree = "<group>"; };
+		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -395,6 +412,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */,
+				F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */,
 				F1C8EEEF17CF38420093DB0A /* SenTestingKit.framework in Frameworks */,
 				F1C8EEF017CF38420093DB0A /* UIKit.framework in Frameworks */,
 				F1C8EEF117CF38420093DB0A /* Foundation.framework in Frameworks */,
@@ -533,6 +552,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		F1C57B8817F8A4D300158EC3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1C57B8917F8A51C00158EC3 /* Red.mov */,
+				F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F1C8EEBE17CF38420093DB0A = {
 			isa = PBXGroup;
 			children = (
@@ -639,6 +667,8 @@
 			children = (
 				F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */,
 				F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */,
+				F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */,
+				F1C57B8817F8A4D300158EC3 /* Resources */,
 				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 			);
 			name = HomagePrototypeApplicationTests;
@@ -834,8 +864,10 @@
 				2655873617DE3F970086D936 /* tp_track_highlight_flex.png in Resources */,
 				2655873717DE3F970086D936 /* tp_track_highlight_flex@2x.png in Resources */,
 				2655873817DE3F970086D936 /* tp_transport_base.png in Resources */,
+				F1C57B8B17F8A51C00158EC3 /* Red.mov in Resources */,
 				2655873917DE3F970086D936 /* tp_transport_base@2x.png in Resources */,
 				F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */,
+				F1C57B8C17F8A51C00158EC3 /* Tikim_Text.mp4 in Resources */,
 				F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */,
 				F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */,
 				F163102217DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.png in Resources */,
@@ -894,6 +926,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B8D17F8A6BD00158EC3 /* Red.mov in Resources */,
+				F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */,
 				F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -994,6 +1028,7 @@
 				F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */,
 				F19123E117DE157100DE85DB /* HMGTemplateCSVLoader.m in Sources */,
 				F1F04AEB17E1AFF500720C5C /* HMGVideoSegment.m in Sources */,
+				F1A1EEDA17F85BEB008FDE54 /* HMGLog.m in Sources */,
 				6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */,
 				65215F8517F8685C00AB95F0 /* HMGFileManager.m in Sources */,
 				F1F04AEE17E1B02600720C5C /* HMGSegment.m in Sources */,
@@ -1005,6 +1040,7 @@
 				6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */,
 				F165B7FA17EED1FE00647AF7 /* HMGSegmentRemake.m in Sources */,
 				F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */,
+				F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */,
 				F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */,
 				F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */,
 				26508A2817EF274100728528 /* HMGReviewSegmentsViewController.m in Sources */,
@@ -1016,6 +1052,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
+				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1024,6 +1062,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */,
 				F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */,
 				F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */,
 				F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */,
