@@ -7,6 +7,7 @@
 //
 
 #import "HMGRecordSegmentViewConroller.h"
+#import "HMGFileManager.h"
 //TBD - Understand how exactly the output of the Video Works
 #define VIDEO_FILE @"test.mov"
 
@@ -15,6 +16,9 @@
 @property (nonatomic, strong) AVCaptureMovieFileOutput *captureOutput;
 @property (nonatomic, weak) AVCaptureDeviceInput *activeVideoInput;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
+//TBD - Check with Nir if this is the Right way to do this
+@property (nonatomic,strong) NSURL *tempUrl;
+
 @end
 
 @implementation HMGRecordSegmentViewConroller
@@ -111,7 +115,8 @@
         [sender setSelected:NO];
         [self.captureOutput stopRecording];
         //Logic of filling the SegmentRemake - the URL of the Video should be placed in a different location then the current outputURL function
-        [self.videoSegmentRemake assignVideo:[self outputURL]];
+        [self.videoSegmentRemake assignVideo:self.tempUrl];
+        [self.navigationController popViewControllerAnimated:YES];
     }else
     {
 		[sender setSelected:YES];
@@ -120,10 +125,6 @@
 			self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
 			[self.captureSession addOutput:self.captureOutput];
         }
-		// Delete the old movie file if it exists
-        //TBD - handle the name of the Output file to handle more then one name - maybe add a GUID name
-		[[NSFileManager defaultManager] removeItemAtURL:[self outputURL] error:nil];
-        
 		[self.captureSession startRunning];
         
 		AVCaptureConnection *videoConnection = [self connectionWithMediaType:AVMediaTypeVideo fromConnections:self.captureOutput.connections];
@@ -135,12 +136,14 @@
 		if ([videoConnection isVideoStabilizationSupported]) {
 			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
 		}
+        //TBD - this is not the most elegant way to do this - change it to static or inject it
         
-		[self.captureOutput startRecordingToOutputFileURL:[self outputURL] recordingDelegate:self];
+        HMGFileManager *fileManager = [[HMGFileManager alloc]init];
+        self.tempUrl =[fileManager outputURL:VIDEO_FILE];
+		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
+        //self.toggleCameraButton.enabled = ![sender isSelected];
 	}
-    
-	// TBD - Add a Toggle button
-	//self.toggleCameraButton.enabled = ![sender isSelected];
+
 }
 - (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections {
 	for (AVCaptureConnection *connection in connections) {
@@ -152,9 +155,13 @@
 	}
 	return nil;
 }
-- (NSURL *)outputURL {
-	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-	NSString *filePath = [documentsDirectory stringByAppendingPathComponent:VIDEO_FILE];
-	return [NSURL fileURLWithPath:filePath];
-}
+//- (NSURL *)outputURL {
+//	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//   
+//	NSUUID  *UUID = [NSUUID UUID];
+//    NSString *fileName = [[UUID UUIDString] stringByAppendingString:VIDEO_FILE];
+//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+//    self.tempUrl = [NSURL fileURLWithPath:filePath];
+//	return self.tempUrl;
+//}
 @end
