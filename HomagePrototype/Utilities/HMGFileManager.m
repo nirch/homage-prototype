@@ -10,20 +10,44 @@
 
 @implementation HMGFileManager
 
-- (NSURL *)outputURL:(NSString *)fileName
+// Creates a unique URL in the documents library with a given prefix (prefix is optional)
++ (NSURL *)uniqueURL:(NSString *)fileNamePrefix
 {
-	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    // Getting the path to the documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     
-	NSUUID  *UUID = [NSUUID UUID];
-    NSString *NewFileName = [[UUID UUIDString] stringByAppendingString:fileName];
-    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:NewFileName];
-	return [NSURL fileURLWithPath:filePath];
+    NSUUID *uniqueID = [NSUUID UUID];
+    
+    NSString *fileName;
+    if (fileNamePrefix)
+    {
+        fileName = [fileNamePrefix stringByAppendingString:[uniqueID UUIDString]];
+    }
+    else
+    {
+        fileName = [uniqueID UUIDString];
+    }
+    
+    NSString *fullFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];
+    return [NSURL fileURLWithPath:fullFilePath];
 }
--(NSURL *)copyVideoToNewURL:(NSURL *) videoURL forFileName:(NSString *)fileName
+
+
+// Copies a given resource to a new location
++ (NSURL *)copyResourceToNewURL:(NSURL *) resourceURL forFileName:(NSString *)fileNamePrefix
 {
     NSFileManager *manager = [[NSFileManager alloc] init];
-    NSURL * newVideoURL =[self outputURL:fileName];
-    [manager copyItemAtURL:videoURL toURL:newVideoURL error:nil];
+    NSURL * newVideoURL =[self uniqueURL:fileNamePrefix];
+    [manager copyItemAtURL:resourceURL toURL:newVideoURL error:nil];
     return newVideoURL;
 }
+
+// Removes (deletes) a resource from a given URL
++ (BOOL)removeResourceAtURL:(NSURL *)resourceURL error:(NSError **)error;
+{
+    return [[NSFileManager defaultManager] removeItemAtURL:resourceURL error:error];
+}
+
+
 @end

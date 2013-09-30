@@ -22,8 +22,7 @@
 }
 -(NSURL *)createVideo:(NSURL *)inputVideo
 {
-    HMGFileManager *fileManager = [[HMGFileManager alloc]init];
-   return [fileManager copyVideoToNewURL:inputVideo forFileName:PVIDEO_FILE];
+   return [HMGFileManager copyResourceToNewURL:inputVideo forFileName:PVIDEO_FILE];
 }
 
 //TBD - extract this Method to Video Utils class

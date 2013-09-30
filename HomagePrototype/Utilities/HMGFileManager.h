@@ -9,8 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface HMGFileManager : NSObject
-//TBD - Should i make this a Static Class?
-- (NSURL *)outputURL:(NSString *)fileName;
--(NSURL *)copyVideoToNewURL:(NSURL *) videoURL forFileName:(NSString *)fileName;
+
+// Creates a unique URL in the documents librarys based on a given name (the given name is appended to the full path)
++ (NSURL *)uniqueURL:(NSString *)fileName;
+
+// Copies a given resource to a new location
++ (NSURL *)copyResourceToNewURL:(NSURL *) resourceURL forFileName:(NSString *)fileName;
+
+// Removes (deletes) a resource from a given URL
++ (BOOL)removeResourceAtURL:(NSURL *)resourceURL error:(NSError **)error;
 
 @end

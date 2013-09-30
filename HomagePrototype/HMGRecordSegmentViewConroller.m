@@ -136,10 +136,8 @@
 		if ([videoConnection isVideoStabilizationSupported]) {
 			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
 		}
-        //TBD - this is not the most elegant way to do this - change it to static or inject it
         
-        HMGFileManager *fileManager = [[HMGFileManager alloc]init];
-        self.tempUrl =[fileManager outputURL:VIDEO_FILE];
+        self.tempUrl =[HMGFileManager uniqueURL:VIDEO_FILE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
         //self.toggleCameraButton.enabled = ![sender isSelected];
 	}
