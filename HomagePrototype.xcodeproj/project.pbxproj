@@ -55,6 +55,8 @@
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
 		6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A19517F052FD00706D4D /* HMGRecordButton.m */; };
 		6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6562967E17F08C2D00EE1325 /* QuartzCore.framework */; };
+		65E467E717F966B20009E641 /* HMGFileManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8317F8685C00AB95F0 /* HMGFileManager.h */; };
+		65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -477,9 +479,12 @@
 		F149B4C317F033DB0031E288 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F1A1EED917F85BEB008FDE54 /* HMGLog.m */,
 				F149B4C417F034CB0031E288 /* HMGLog.h */,
 				65215F8317F8685C00AB95F0 /* HMGFileManager.h */,
 				65215F8417F8685C00AB95F0 /* HMGFileManager.m */,
+				F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */,
+				F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1017,6 +1022,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E467E717F966B20009E641 /* HMGFileManager.h in Sources */,
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
@@ -1062,6 +1068,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */,
 				F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */,
 				F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */,
 				F165B80517EEE6C100647AF7 /* HMGSegmentRemake.m in Sources */,
