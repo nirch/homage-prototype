@@ -218,5 +218,72 @@ static NSString * const soundtrackName = @"Homage_Tikim.mp3";
     }], @"This expression should thrown an exception, check the file system for damaged video leftover");
 }
 
+- (void)testScaleSlower
+{
+    CMTime tenSeconds = CMTimeMake(10000, 1000);
+    
+    // Creating a dispatch group so we can wait for the below async block to complete
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+    dispatch_group_enter(dispatchGroup);
+    
+    [HMGAVUtils scaleVideo:self.video2 toDuration:tenSeconds completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+
+        // Testing that the status is completed
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d (completed)", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *scaledVideo = [AVAsset assetWithURL:exporter.outputURL];
+        int expectedDuration = lroundf(CMTimeGetSeconds(tenSeconds));
+        int scaledVideoDuration = lroundf(CMTimeGetSeconds(scaledVideo.duration));
+        
+        STAssertTrue(scaledVideoDuration == expectedDuration, @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, scaledVideoDuration);
+        
+        // This will release the dispatch_group_wait
+        dispatch_group_leave(dispatchGroup);
+    }];
+    
+    int timeoutInSeconds = 3;
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, timeoutInSeconds * NSEC_PER_SEC);
+    long response = dispatch_group_wait(dispatchGroup, timeout);
+    STAssertTrue(response == 0, @"timeout for waiting for async block to complete");
+}
+
+- (void)testScaleFaster
+{
+    CMTime oneSecond = CMTimeMake(1000, 1000);
+    
+    // Creating a dispatch group so we can wait for the below async block to complete
+    dispatch_group_t dispatchGroup = dispatch_group_create();
+    dispatch_group_enter(dispatchGroup);
+    
+    [HMGAVUtils scaleVideo:self.video2 toDuration:oneSecond completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        
+        // Testing that the status is completed
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d (completed)", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *scaledVideo = [AVAsset assetWithURL:exporter.outputURL];
+        int expectedDuration = lroundf(CMTimeGetSeconds(oneSecond));
+        int scaledVideoDuration = lroundf(CMTimeGetSeconds(scaledVideo.duration));
+        
+        STAssertTrue(scaledVideoDuration == expectedDuration, @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, scaledVideoDuration);
+        
+        // This will release the dispatch_group_wait
+        dispatch_group_leave(dispatchGroup);
+    }];
+    
+    int timeoutInSeconds = 3;
+    dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, timeoutInSeconds * NSEC_PER_SEC);
+    long response = dispatch_group_wait(dispatchGroup, timeout);
+    STAssertTrue(response == 0, @"timeout for waiting for async block to complete");
+}
+
+
 
 @end
