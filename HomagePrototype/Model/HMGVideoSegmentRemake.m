@@ -7,14 +7,54 @@
 //
 
 #import "HMGVideoSegmentRemake.h"
+#import "HMGSegmentRemakeProtectedMethods.h"
+#import "HMGVideoSegment.h"
 #import "HMGFileManager.h"
+#import "HMGAVUtils.h"
 
 
-#define PVIDEO_FILE_PREFIX @"processedVideo"
+#define PVIDEO_FILE_PREFIX @"videoSegmentProcessedVideo"
 #define PVIDEO_FILE_TYPE @"mov"
 
 @implementation HMGVideoSegmentRemake
 
+
+// This method will create a video based on the data in the current instance. The operation is asynchronous. After the video is successfully created, it will be saved as a new take and the completion handler will be called. If the there was a faliure in the video creation, videoURL in the completion handler will be nil, and an error will apear in the error object.
+- (void)processVideoAsynchronouslyWithCompletionHandler:(void (^)(NSURL *videoURL, NSError *error))completion
+{
+    // If there is no video assiged in this instance we cannot proceed
+    if (!self.video)
+    {
+        [NSException raise:@"InvalidArgumentException" format:@"self.video must not be null"];
+    }
+    
+    // TODO: check that self.video is a URL to a video
+    
+    HMGVideoSegment *videoSegment = (HMGVideoSegment *)self.segment;
+    CMTime playDuration = videoSegment.duration;
+    CMTime recordDuration = videoSegment.recordDuration;
+    
+    // If the play duration and the record duration are not equal we need to scale the video. Otherwise we will just create a copy of the input video
+    if (CMTIME_COMPARE_INLINE(playDuration, !=, recordDuration))
+    {
+        [HMGAVUtils scaleVideo:self.video toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
+            [self processVideoDidFinish:exporter withCompletion:completion];
+        }];
+    }
+    else
+    {
+        // Dispatching an async block that will copy the video to a new location, adds the copied video to the takes and finally calles the completion handler
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSURL *copiedVideoURL = [HMGFileManager copyResourceToNewURL:self.video forFileName:PVIDEO_FILE_PREFIX ofType:PVIDEO_FILE_TYPE];
+            [self addVideoTake:copiedVideoURL];
+            completion(copiedVideoURL, nil);
+        });
+    }
+
+}
+
+
+/*
 - (void) assignVideo:(NSURL *) recordedVideoURL
 {
     [self.takes addObject:([self createVideo:recordedVideoURL])];
@@ -25,6 +65,19 @@
 }
 -(NSURL *)createVideo:(NSURL *)inputVideo
 {
+    HMGVideoSegment *videoSegment = (HMGVideoSegment *)self.segment;
+    CMTime playDuration = videoSegment.duration;
+    CMTime recordDuration = videoSegment.recordDuration;
+    
+    // If the play duration and the record duration are not equal we need to scale the video. Otherwise we will just create a copy of the input video
+    if (CMTIME_COMPARE_INLINE(playDuration, ==, recordDuration))
+    {
+        [HMGAVUtils scaleVideo:inputVideo toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
+            ///
+        }];
+    }
+    
+    
     return [HMGFileManager copyResourceToNewURL:inputVideo forFileName:PVIDEO_FILE_PREFIX ofType:PVIDEO_FILE_TYPE];
 }
 
@@ -33,4 +86,5 @@
 {
     [[NSFileManager defaultManager] removeItemAtURL:videoURL error:nil];
 }
+ */
 @end

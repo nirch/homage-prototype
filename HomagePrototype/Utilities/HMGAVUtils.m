@@ -20,8 +20,10 @@
     // If video url array doesn't have at least one video, throwing an exception
     if (!(videoUrls.count > 0))
     {
-        [NSException raise:@"Invalid videoUrls value" format:@"count of 0 is invalid (videoUrls count must be > 0)"];
+        [NSException raise:@"InvalidArgumentException" format:@"videoUrls count of 0 is invalid (videoUrls count must be > 0)"];
     }
+    
+    // TODO: Check if the URLs are really a video?
     
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
@@ -37,8 +39,6 @@
     // Looping over the videos and adding them (merging) to the main composition
     for(NSURL *videoURL in videoUrls)
     {
-        // TODO: Check if the URL is really a video
-        
         // Creating a video asset for the current video URL
         AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
         
@@ -89,13 +89,19 @@
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
+    // If there is no video URL assiged we cannot proceed
+    if (!videoURL)
+    {
+        [NSException raise:@"InvalidArgumentException" format:@"videoURL must not be null"];
+    }
+    
+    // TODO: Check if the URL is really a video?
+    
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     
     // Creating a composition track for the video which is also added to the main composition oject
     AVMutableCompositionTrack *compositionVideoTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-    
-    // TODO: Check if the URL is really a video
     
     // Creating a video asset for the current video URL
     AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];

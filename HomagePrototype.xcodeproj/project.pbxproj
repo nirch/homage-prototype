@@ -114,6 +114,8 @@
 		F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */; };
 		F1C57B9017F95DEB00158EC3 /* Homage_Tikim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */; };
 		F1C57B9117F95E0100158EC3 /* Homage_Tikim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */; };
+		F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
+		F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -324,6 +326,7 @@
 		F1C57B8917F8A51C00158EC3 /* Red.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Red.mov; sourceTree = "<group>"; };
 		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homage_Tikim.mp3; sourceTree = "<group>"; };
+		F1C57B9217FAC17900158EC3 /* HMGSegmentRemakeProtectedMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMGSegmentRemakeProtectedMethods.h; path = Model/HMGSegmentRemakeProtectedMethods.h; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -429,6 +432,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */,
 				F1CBC49417E496FB00167772 /* CoreGraphics.framework in Frameworks */,
 				F1F04B0F17E4890D00720C5C /* CoreMedia.framework in Frameworks */,
 				F1D42E8A17D4915F00802D7C /* SenTestingKit.framework in Frameworks */,
@@ -717,6 +721,7 @@
 				F165B7F617EED1DE00647AF7 /* HMGRemakeProject.m */,
 				F165B7F817EED1FE00647AF7 /* HMGSegmentRemake.h */,
 				F165B7F917EED1FE00647AF7 /* HMGSegmentRemake.m */,
+				F1C57B9217FAC17900158EC3 /* HMGSegmentRemakeProtectedMethods.h */,
 				F165B7FB17EED22C00647AF7 /* HMGVideoSegmentRemake.h */,
 				F165B7FC17EED22C00647AF7 /* HMGVideoSegmentRemake.m */,
 				F165B7FE17EED24B00647AF7 /* HMGImageSegmentRemake.h */,
@@ -1074,6 +1079,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */,
 				65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */,
 				F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */,
 				F165B80417EEE6C100647AF7 /* HMGRemakeProject.m in Sources */,

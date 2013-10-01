@@ -117,7 +117,7 @@
         [sender setSelected:NO];
         [self.captureOutput stopRecording];
         //Logic of filling the SegmentRemake - the URL of the Video should be placed in a different location then the current outputURL function
-        [self.videoSegmentRemake assignVideo:self.tempUrl];
+// NIR***** change this code        [self.videoSegmentRemake assignVideo:self.tempUrl];
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
