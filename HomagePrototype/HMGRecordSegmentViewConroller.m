@@ -11,17 +11,16 @@
 //TBD - Understand how exactly the output of the Video Works
 
 #define VIDEO_FILE_PREFIX @"test"
-#define VIDEO_FILE_TYPE @".mov"
+#define VIDEO_FILE_TYPE @"mov"
 
 @interface HMGRecordSegmentViewConroller ()
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureMovieFileOutput *captureOutput;
 @property (nonatomic, weak) AVCaptureDeviceInput *activeVideoInput;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
-//TBD - Check with Nir if this is the Right way to do this
 @property (nonatomic,strong) NSURL *tempUrl;
-
 @end
+
 
 @implementation HMGRecordSegmentViewConroller
 
@@ -155,13 +154,5 @@
 	}
 	return nil;
 }
-//- (NSURL *)outputURL {
-//	NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//   
-//	NSUUID  *UUID = [NSUUID UUID];
-//    NSString *fileName = [[UUID UUIDString] stringByAppendingString:VIDEO_FILE];
-//    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-//    self.tempUrl = [NSURL fileURLWithPath:filePath];
-//	return self.tempUrl;
-//}
+
 @end
