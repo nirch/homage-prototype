@@ -44,7 +44,8 @@
     else
     {
         // Dispatching an async block that will copy the video to a new location, adds the copied video to the takes and finally calles the completion handler
-        dispatch_async(dispatch_get_main_queue(), ^{
+        //dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSURL *copiedVideoURL = [HMGFileManager copyResourceToNewURL:self.video forFileName:PVIDEO_FILE_PREFIX ofType:PVIDEO_FILE_TYPE];
             [self addVideoTake:copiedVideoURL];
             completion(copiedVideoURL, nil);

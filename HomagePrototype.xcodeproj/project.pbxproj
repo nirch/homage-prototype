@@ -116,6 +116,7 @@
 		F1C57B9117F95E0100158EC3 /* Homage_Tikim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */; };
 		F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
+		F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C57B9717FACB4400158EC3 /* VideoSegmentRemakeTests.m */; };
 		F1C8EECB17CF38420093DB0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECA17CF38420093DB0A /* UIKit.framework */; };
 		F1C8EECD17CF38420093DB0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECC17CF38420093DB0A /* Foundation.framework */; };
 		F1C8EECF17CF38420093DB0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
@@ -327,6 +328,8 @@
 		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Homage_Tikim.mp3; sourceTree = "<group>"; };
 		F1C57B9217FAC17900158EC3 /* HMGSegmentRemakeProtectedMethods.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HMGSegmentRemakeProtectedMethods.h; path = Model/HMGSegmentRemakeProtectedMethods.h; sourceTree = "<group>"; };
+		F1C57B9717FACB4400158EC3 /* VideoSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSegmentRemakeTests.m; sourceTree = "<group>"; };
+		F1C57B9917FB105800158EC3 /* AGWaitForAsyncTestHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGWaitForAsyncTestHelper.h; sourceTree = "<group>"; };
 		F1C8EEC717CF38420093DB0A /* HomagePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomagePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C8EECA17CF38420093DB0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F1C8EECC17CF38420093DB0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -683,6 +686,8 @@
 				F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */,
 				F1C57B8817F8A4D300158EC3 /* Resources */,
 				F1C8EEF517CF38420093DB0A /* Supporting Files */,
+				F1C57B9717FACB4400158EC3 /* VideoSegmentRemakeTests.m */,
+				F1C57B9917FB105800158EC3 /* AGWaitForAsyncTestHelper.h */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1071,6 +1076,7 @@
 			files = (
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
 				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,
+				F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
