@@ -32,17 +32,17 @@
     
     HMGVideoSegment *videoSegment = (HMGVideoSegment *)self.segment;
     CMTime playDuration = videoSegment.duration;
-    CMTime recordDuration = videoSegment.recordDuration;
     
-    // If the play duration and the record duration are not equal we need to scale the video. Otherwise we will just create a copy of the input video
-    if (CMTIME_COMPARE_INLINE(playDuration, !=, recordDuration))
-    {
-        [HMGAVUtils scaleVideo:self.video toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
-            [self processVideoDidFinish:exporter withCompletion:completion];
-        }];
-    }
-    else
-    {
+    // TODO: (1) Do we need to check that the actual duration equals the recordDuration? What if it is not? (2) What about soundtrack?
+
+    // Scaling the raw video to the "play" duration
+    [HMGAVUtils scaleVideo:self.video toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
+        [self processVideoDidFinish:exporter withCompletion:completion];
+    }];
+    
+    
+    // The following code creates a copy of the raw video, it will be needed once we will need the soundtrack (maybe a different SegmentRemake object?)
+    /*
         // Dispatching an async block that will copy the video to a new location, adds the copied video to the takes and finally calles the completion handler
         //dispatch_async(dispatch_get_main_queue(), ^{
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -50,42 +50,7 @@
             [self addVideoTake:copiedVideoURL];
             completion(copiedVideoURL, nil);
         });
-    }
-
+     */
 }
 
-
-/*
-- (void) assignVideo:(NSURL *) recordedVideoURL
-{
-    [self.takes addObject:([self createVideo:recordedVideoURL])];
-    //Currently the Raw video is deleted but it should be later saved and stored somehow for analysis
-    [self deleteVideoAtURL:recordedVideoURL];
-    //if this is the first take then assign the selectedIndex to be the first item
-    if(self.takes.count ==1)self.selectedTakeIndex =0;
-}
--(NSURL *)createVideo:(NSURL *)inputVideo
-{
-    HMGVideoSegment *videoSegment = (HMGVideoSegment *)self.segment;
-    CMTime playDuration = videoSegment.duration;
-    CMTime recordDuration = videoSegment.recordDuration;
-    
-    // If the play duration and the record duration are not equal we need to scale the video. Otherwise we will just create a copy of the input video
-    if (CMTIME_COMPARE_INLINE(playDuration, ==, recordDuration))
-    {
-        [HMGAVUtils scaleVideo:inputVideo toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
-            ///
-        }];
-    }
-    
-    
-    return [HMGFileManager copyResourceToNewURL:inputVideo forFileName:PVIDEO_FILE_PREFIX ofType:PVIDEO_FILE_TYPE];
-}
-
-//TBD - extract this Method to Video Utils class
--(void)deleteVideoAtURL:(NSURL *) videoURL
-{
-    [[NSFileManager defaultManager] removeItemAtURL:videoURL error:nil];
-}
- */
 @end

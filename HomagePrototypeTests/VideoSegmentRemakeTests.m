@@ -163,8 +163,10 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         [self.resourcesToDelete addObject:videoURL];
         
         AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
-        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
-        
+        int outputVideoDuration = lroundf(CMTimeGetSeconds(outputVideoAsset.duration));
+        int segmentDuration = lroundf(CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        STAssertTrue(outputVideoDuration == segmentDuration, @"Output video duration and video segment duration should be equal but they are %d and %d", outputVideoDuration, segmentDuration);
+
         STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
         
         STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
@@ -195,8 +197,10 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         [self.resourcesToDelete addObject:videoURL];
         
         AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
-        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
-        
+        int outputVideoDuration = lroundf(CMTimeGetSeconds(outputVideoAsset.duration));
+        int segmentDuration = lroundf(CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        STAssertTrue(outputVideoDuration == segmentDuration, @"Output video duration and video segment duration should be equal but they are %d and %d", outputVideoDuration, segmentDuration);
+
         STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
         
         STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
@@ -223,8 +227,10 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         [self.resourcesToDelete addObject:videoURL];
         
         AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
-        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
-        
+        int outputVideoDuration = lroundf(CMTimeGetSeconds(outputVideoAsset.duration));
+        int segmentDuration = lroundf(CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        STAssertTrue(outputVideoDuration == segmentDuration, @"Output video duration and video segment duration should be equal but they are %d and %d", outputVideoDuration, segmentDuration);
+
         STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
         
         STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 2, but it is %d", self.videoSegmentRemake.takes.count);
