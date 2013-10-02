@@ -180,12 +180,124 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
 
 - (void)testProcessMultipleVideosDurationEquals
 {
-    //STFail(@"No implementation for \"%s\"", x__PRETTY_FUNCTION__);
+    self.videoSegmentRemake.segment = self.tikimTextVideoSegmentEqualDuration;
+    self.videoSegmentRemake.video = self.timikTextVideo;
+    
+    __block BOOL jobDone = NO;
+    
+    [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        NSLog(@"inside the completion hamdler");
+        
+        STAssertNotNil(videoURL, @"video URL should not be nil");
+        NSLog(@"video URL = %@", videoURL.description);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:videoURL];
+        
+        AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
+        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        
+        STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
+        
+        STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        
+        STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        jobDone = YES;
+    }];
+    
+    // Waiting 3 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 3);
+    
+    // Adding the 2nd video
+    self.videoSegmentRemake.video = self.timikTextVideo;
+    jobDone = NO;
+    
+    [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        NSLog(@"inside the completion hamdler");
+        
+        STAssertNotNil(videoURL, @"video URL should not be nil");
+        NSLog(@"video URL = %@", videoURL.description);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:videoURL];
+        
+        AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
+        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        
+        STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
+        
+        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        
+        STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        jobDone = YES;
+    }];
+    
+    // Waiting 3 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 3);
 }
 
 - (void)testProcessMultipleVideosDurationFaster
 {
-    //STFail(@"No implementation for \"%s\"", x__PRETTY_FUNCTION__);
+    self.videoSegmentRemake.segment = self.tikimTextVideoSegmentFastDuration;
+    self.videoSegmentRemake.video = self.timikTextVideo;
+    
+    __block BOOL jobDone = NO;
+    
+    [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        NSLog(@"inside the completion hamdler");
+        
+        STAssertNotNil(videoURL, @"video URL should not be nil");
+        NSLog(@"video URL = %@", videoURL.description);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:videoURL];
+        
+        AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
+        STAssertTrue(CMTIME_COMPARE_INLINE(outputVideoAsset.duration, ==, self.videoSegmentRemake.segment.duration), @"Output video duration and video segment duration should be equal but they are %.5f and %.5f", CMTimeGetSeconds(outputVideoAsset.duration), CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        
+        STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
+        
+        STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        
+        STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        jobDone = YES;
+    }];
+
+    // Waiting 3 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 3);
+
+    // Adding the 2nd video
+    self.videoSegmentRemake.video = self.redVideo;
+    jobDone = NO;
+    
+    [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        NSLog(@"inside the completion hamdler");
+        
+        STAssertNotNil(videoURL, @"video URL should not be nil");
+        NSLog(@"video URL = %@", videoURL.description);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:videoURL];
+        
+        AVAsset *outputVideoAsset = [AVAsset assetWithURL:videoURL];
+        int outputVideoDuration = lroundf(CMTimeGetSeconds(outputVideoAsset.duration));
+        int segmentDuration = lroundf(CMTimeGetSeconds(self.videoSegmentRemake.segment.duration));
+        STAssertTrue(outputVideoDuration == segmentDuration, @"Output video duration and video segment duration should be equal but they are %d and %d", outputVideoDuration, segmentDuration);
+        
+        STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
+        
+        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        
+        STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        jobDone = YES;
+    }];
+    
+    // Waiting 3 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 3);
 }
 
 
