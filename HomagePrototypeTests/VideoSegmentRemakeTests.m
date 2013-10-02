@@ -227,7 +227,7 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
         
-        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 2, but it is %d", self.videoSegmentRemake.takes.count);
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
@@ -289,7 +289,7 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertNil(error, @"error should be nil, but is isn't. Error description = %@", error.description);
         
-        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
+        STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 2, but it is %d", self.videoSegmentRemake.takes.count);
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
@@ -298,6 +298,35 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
     
     // Waiting 3 seconds for the above block to complete
     WAIT_WHILE(!jobDone, 3);
+}
+
+- (void)testProcessVideoExpectingException
+{
+    self.videoSegmentRemake.segment = self.tikimTextVideoSegmentFastDuration;
+    self.videoSegmentRemake.video = nil;
+    
+    STAssertThrows([self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        STFail(@"shouldn't reach this block");    }], @"should throw an InvalidArgumentException when passing a nil value for the video");
+
+    STAssertTrue(self.videoSegmentRemake.takes.count == 0, @"The count of takes should be 0, but it is %d", self.videoSegmentRemake.takes.count);
+    
+    STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == -1, @"The selected takes index should be -1, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+}
+
+// Sending an mp3 URL instead of a video URL
+- (void)testProcessVideoExpectingError
+{
+    self.videoSegmentRemake.segment = self.tikimTextVideoSegmentFastDuration;
+    NSString *soundtrackPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"Homage_Tikim.mp3" ofType:nil];
+    self.videoSegmentRemake.video = [NSURL fileURLWithPath:soundtrackPath];
+
+    
+    STAssertThrows([self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        STFail(@"shouldn't reach this block");    }], @"should throw an Exception when passing a non video value for the videoURL param");
+
+    STAssertTrue(self.videoSegmentRemake.takes.count == 0, @"The count of takes should be 0, but it is %d", self.videoSegmentRemake.takes.count);
+    
+    STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == -1, @"The selected takes index should be -1, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
 }
 
 

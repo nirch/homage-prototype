@@ -24,7 +24,7 @@
 {
     self = [super init];
     
-    if(!self)
+    if (self)
     {
         self.selectedTakeIndex = -1;
     }
