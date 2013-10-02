@@ -17,6 +17,9 @@
 
 - (id)initWithTemplate:(HMGTemplate *) templateObj;
 
-- (NSURL *)createVideo;
+
+// This method will create/render the final video based on the selected take of each of its SegmentRemake objects. After the video is successfully created the completion handler will be called with the URL to the new video. If the there was a faliure in the video creation, videoURL in the completion handler will be nil, and an error will apear in the error object
+- (void)renderVideoAsynchronouslyWithCompletionHandler:(void (^)(NSURL *videoURL, NSError *error))completion;
+
 
 @end

@@ -14,6 +14,8 @@
 #import "HMGVideoSegmentRemake.h"
 #import "HMGImageSegmentRemake.h"
 #import "HMGTextSegmentRemake.h"
+#import "HMGAVUtils.h"
+#import "HMGLog.h"
 
 @implementation HMGRemakeProject
 
@@ -61,6 +63,38 @@
     return segmentRemake;
 }
 
+// This method will create/render the final video based on the selected take of each of its SegmentRemake objects. After the video is successfully created the completion handler will be called with the URL to the new video. If the there was a faliure in the video creation, videoURL in the completion handler will be nil, and an error will apear in the error object
+- (void)renderVideoAsynchronouslyWithCompletionHandler:(void (^)(NSURL *videoURL, NSError *error))completion
+{
+    HMGLogInfo(@"%s started");
+    
+    NSMutableArray *videosToMerge = [[NSMutableArray alloc] init];
+    
+    // Looping over the project's segments to add thier videos to the videos to merge array
+    for (HMGSegmentRemake *segmentRemake in self.segmentRemakes)
+    {
+        // Checking that there are takes in this segment
+        if (segmentRemake.takes.count > 0)
+        {
+            // Assigning the segment's selected take
+            NSURL *segmentSelectedVideo = segmentRemake.takes[segmentRemake.selectedTakeIndex];
+            [videosToMerge addObject:segmentSelectedVideo];
+        }
+        else
+        {
+            // throwing an exception that there is no video take in one of the segments
+            [NSException raise:@"InvalidArgumentException" format:@"Segment <%@> has no video/takes. Cannot proceed with rendering the video", segmentRemake.segment.name];
+        }
+    }
+    
+    NSURL *soundtrack = self.templateObj.soundtrack;
+    
+    [HMGAVUtils mergeVideos:videosToMerge withSoundtrack:soundtrack completion:^(AVAssetExportSession *exporter) {
+        completion(exporter.outputURL, exporter.error);
+    }];
+    
+    HMGLogInfo(@"%s ended");
+}
 
 
 @end
