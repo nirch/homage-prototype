@@ -8,9 +8,10 @@
 
 #import "HMGRecordSegmentViewConroller.h"
 #import "HMGFileManager.h"
+#import "HMGLog.h"
 //TBD - Understand how exactly the output of the Video Works
 
-#define VIDEO_FILE_PREFIX @"test"
+#define VIDEO_FILE_PREFIX @"raw"
 #define VIDEO_FILE_TYPE @"mov"
 
 @interface HMGRecordSegmentViewConroller ()
@@ -99,24 +100,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - AVCaptureFileOutputRecordingDelegate
-
-- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error {
-	if (!error) {
-    //TBD - What to do in after the Video Is captured
-    } else {
-		NSLog(@"Error: %@", [error localizedDescription]);
-	}
-}
-
 - (IBAction)startRecording:(id)sender
 {
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
     if ([sender isSelected])
     {
         [sender setSelected:NO];
         [self.captureOutput stopRecording];
-        //Logic of filling the SegmentRemake - the URL of the Video should be placed in a different location then the current outputURL function
-// NIR***** change this code        [self.videoSegmentRemake assignVideo:self.tempUrl];
+
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
@@ -142,7 +134,8 @@
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
         //self.toggleCameraButton.enabled = ![sender isSelected];
 	}
-
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 - (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections {
 	for (AVCaptureConnection *connection in connections) {
@@ -154,5 +147,49 @@
 	}
 	return nil;
 }
+
+
+- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
+    // TODO: Should we do here something if the video processing finished successfully? Update the UI?
+    
+    if (error)
+    {
+        HMGLogError([error localizedDescription]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
+#pragma mark - AVCaptureFileOutputRecordingDelegate
+
+// This method is being invoked once the video record finished
+- (void)captureOutput:(AVCaptureFileOutput *)captureOutput didFinishRecordingToOutputFileAtURL:(NSURL *)outputFileURL fromConnections:(NSArray *)connections error:(NSError *)error
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+
+	if (!error)
+    {
+        self.videoSegmentRemake.video = outputFileURL;
+        [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+            [self videoProcessDidFinish:videoURL withError:error];
+        }];
+    }
+    else
+    {
+        HMGLogError([error localizedDescription]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+	}
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
 
 @end
