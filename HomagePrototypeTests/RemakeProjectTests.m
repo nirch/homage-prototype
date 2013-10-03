@@ -44,7 +44,7 @@ static NSString * const tikim8VideoName = @"Tikim_Sigh_Export.mp4";
     
     HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
     HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:TIKIM_INDEX];
-    
+
     self.tikimRemakeProject = [[HMGRemakeProject alloc] initWithTemplate:tikimTemplate];
     
     // Defining all the video takes for tikim's segments
@@ -56,6 +56,9 @@ static NSString * const tikim8VideoName = @"Tikim_Sigh_Export.mp4";
         [segmentRemake addVideoTake:[NSURL fileURLWithPath:videoFilePath]];
         ++index;
     }
+
+    self.resourcesToDelete = [[NSMutableArray alloc] init];
+    
 }
 
 - (void)tearDown
