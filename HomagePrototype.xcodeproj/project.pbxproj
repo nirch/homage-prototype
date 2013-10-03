@@ -57,6 +57,9 @@
 		6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6562967E17F08C2D00EE1325 /* QuartzCore.framework */; };
 		65E467E717F966B20009E641 /* HMGFileManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8317F8685C00AB95F0 /* HMGFileManager.h */; };
 		65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
+		F10DBE4617FC5375000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
+		F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
+		F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -104,6 +107,12 @@
 		F1A1EEDA17F85BEB008FDE54 /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
 		F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
 		F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
+		F1A2EC5617FD40EE0067DD0A /* Tikim_Legs_Export.mov in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5517FD40EE0067DD0A /* Tikim_Legs_Export.mov */; };
+		F1A2EC5817FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5717FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 */; };
+		F1A2EC5D17FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5917FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 */; };
+		F1A2EC5E17FD42E00067DD0A /* Tikim_Hero_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5A17FD42E00067DD0A /* Tikim_Hero_Export.mp4 */; };
+		F1A2EC5F17FD42E00067DD0A /* Tikim_Race_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */; };
+		F1A2EC6017FD42E00067DD0A /* Tikim_Sigh_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5C17FD42E00067DD0A /* Tikim_Sigh_Export.mp4 */; };
 		F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
@@ -287,6 +296,8 @@
 		6554A19417F052FD00706D4D /* HMGRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordButton.h; sourceTree = "<group>"; };
 		6554A19517F052FD00706D4D /* HMGRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordButton.m; sourceTree = "<group>"; };
 		6562967E17F08C2D00EE1325 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Images.mp4; sourceTree = "<group>"; };
+		F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
@@ -323,6 +334,12 @@
 		F1A1EED917F85BEB008FDE54 /* HMGLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGLog.m; sourceTree = "<group>"; };
 		F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGAVUtils.h; sourceTree = "<group>"; };
 		F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGAVUtils.m; sourceTree = "<group>"; };
+		F1A2EC5517FD40EE0067DD0A /* Tikim_Legs_Export.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Tikim_Legs_Export.mov; sourceTree = "<group>"; };
+		F1A2EC5717FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Pre_Race_Export.mp4; sourceTree = "<group>"; };
+		F1A2EC5917FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_FinishLine_Export.mp4; sourceTree = "<group>"; };
+		F1A2EC5A17FD42E00067DD0A /* Tikim_Hero_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Hero_Export.mp4; sourceTree = "<group>"; };
+		F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Race_Export.mp4; sourceTree = "<group>"; };
+		F1A2EC5C17FD42E00067DD0A /* Tikim_Sigh_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Sigh_Export.mp4; sourceTree = "<group>"; };
 		F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVUtilsTests.m; sourceTree = "<group>"; };
 		F1C57B8917F8A51C00158EC3 /* Red.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Red.mov; sourceTree = "<group>"; };
 		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
@@ -570,6 +587,13 @@
 		F1C57B8817F8A4D300158EC3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2EC5917FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 */,
+				F1A2EC5A17FD42E00067DD0A /* Tikim_Hero_Export.mp4 */,
+				F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */,
+				F1A2EC5C17FD42E00067DD0A /* Tikim_Sigh_Export.mp4 */,
+				F1A2EC5717FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 */,
+				F1A2EC5517FD40EE0067DD0A /* Tikim_Legs_Export.mov */,
+				F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */,
 				F1C57B8F17F95DEB00158EC3 /* Homage_Tikim.mp3 */,
 				F1C57B8917F8A51C00158EC3 /* Red.mov */,
 				F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */,
@@ -688,6 +712,7 @@
 				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 				F1C57B9717FACB4400158EC3 /* VideoSegmentRemakeTests.m */,
 				F1C57B9917FB105800158EC3 /* AGWaitForAsyncTestHelper.h */,
+				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -860,6 +885,7 @@
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
 				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
 				F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */,
+				F10DBE4617FC5375000B69DB /* Tikim_Images.mp4 in Resources */,
 				F19123DA17DE140D00DE85DB /* I_am_yor_father-Ran.mp4 in Resources */,
 				F19123DB17DE140D00DE85DB /* I_am_yor_father-Ran.png in Resources */,
 				F19123DC17DE140D00DE85DB /* Templates.csv in Resources */,
@@ -946,10 +972,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */,
+				F1A2EC5D17FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 in Resources */,
+				F1A2EC5E17FD42E00067DD0A /* Tikim_Hero_Export.mp4 in Resources */,
 				F1C57B9117F95E0100158EC3 /* Homage_Tikim.mp3 in Resources */,
+				F1A2EC6017FD42E00067DD0A /* Tikim_Sigh_Export.mp4 in Resources */,
 				F1C57B8D17F8A6BD00158EC3 /* Red.mov in Resources */,
+				F1A2EC5617FD40EE0067DD0A /* Tikim_Legs_Export.mov in Resources */,
+				F1A2EC5817FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 in Resources */,
 				F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */,
 				F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */,
+				F1A2EC5F17FD42E00067DD0A /* Tikim_Race_Export.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1110,7 @@
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
 				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,
 				F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */,
+				F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
