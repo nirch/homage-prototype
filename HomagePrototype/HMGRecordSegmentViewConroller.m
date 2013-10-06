@@ -61,7 +61,6 @@
 			[self.captureSession addInput:audioInput];
 		}
 	}
-    //TBD - Understand what is the puepose of this code
 	// Setup the still image file output
 	AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
 	[stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
@@ -189,6 +188,9 @@
 	}
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
 }
 
 
