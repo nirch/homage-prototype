@@ -9,10 +9,6 @@
 #import "HMGRecordSegmentViewConroller.h"
 #import "HMGFileManager.h"
 #import "HMGLog.h"
-//TBD - Understand how exactly the output of the Video Works
-
-#define VIDEO_FILE_PREFIX @"raw"
-#define VIDEO_FILE_TYPE @"mov"
 
 @interface HMGRecordSegmentViewConroller ()
 @property (nonatomic, strong) AVCaptureSession *captureSession;
@@ -22,17 +18,10 @@
 @property (nonatomic,strong) NSURL *tempUrl;
 @end
 
+static NSString * const VIDEO_FILE_PREFIX = @"raw";
+static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 @implementation HMGRecordSegmentViewConroller
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -92,6 +81,10 @@
 		return AVCaptureVideoOrientationLandscapeLeft;
 	}
 }
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+	[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
+}
+
 - (void)didReceiveMemoryWarning
 {
     //TBD - Do i need this Method?
@@ -165,6 +158,7 @@
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
+
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 
 // This method is being invoked once the video record finished
@@ -186,12 +180,9 @@
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
 	}
-    
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-	[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
-}
+
 
 
 @end

@@ -14,6 +14,7 @@
 // Creates a unique URL in the documents library with a given prefix (prefix is optional)
 + (NSURL *)uniqueUrlWithPrefix:(NSString *)fileNamePrefix ofType:(NSString *)fileType;
 {
+    if(fileType==nil)HMGLogWarning(@"%s fileType is nill - a file without extention will be created", __PRETTY_FUNCTION__);
     // Getting the path to the documents directory
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
