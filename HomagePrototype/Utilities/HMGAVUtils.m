@@ -23,8 +23,6 @@
         [NSException raise:@"InvalidArgumentException" format:@"videoUrls count of 0 is invalid (videoUrls count must be > 0)"];
     }
     
-    // TODO: Check if the URLs are really a video?
-    
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     
@@ -42,8 +40,15 @@
         // Creating a video asset for the current video URL
         AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
         
+        // Checking if this URL is really a video
+        NSArray *videoAssetVideoTracks = [videoAsset tracksWithMediaType:AVMediaTypeVideo];
+        if (videoAssetVideoTracks.count == 0)
+        {
+            [NSException raise:@"InvalidArgumentException" format:@"videoURL <%@> doesn't have a video track", videoURL.description];
+        }
+        
         // Inserting the video to the composition track in the correct time range
-        [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:insertTime error:nil];
+        [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:[videoAssetVideoTracks objectAtIndex:0] atTime:insertTime error:nil];
         
         // Updating the insertTime for the next insert
         insertTime = CMTimeAdd(insertTime, videoAsset.duration);
@@ -56,11 +61,18 @@
         // Creating an asset object from the soundtrack URL
         AVAsset *soundtrackAsset = [AVAsset assetWithURL:soundtrackURL];
         
+        // Checking if this URL is really a video
+        NSArray *soundtrackAssetAudioTracks = [soundtrackAsset tracksWithMediaType:AVMediaTypeAudio];
+        if (soundtrackAssetAudioTracks.count == 0)
+        {
+            [NSException raise:@"InvalidArgumentException" format:@"soundtrackURL <%@> doesn't have an audio track", soundtrackURL.description];
+        }
+        
         // Creating a composition track for the soundtrack which is also added to the main composition oject
         AVMutableCompositionTrack *soundtrackTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
         
         // Inserting the soundtrack to the composition track in the correct time frame
-        [soundtrackTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, insertTime) ofTrack:[[soundtrackAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:kCMTimeZero error:nil];
+        [soundtrackTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, insertTime) ofTrack:[soundtrackAssetAudioTracks objectAtIndex:0] atTime:kCMTimeZero error:nil];
     }
     
     // *** Step 3: Exporting the video ***
@@ -94,9 +106,7 @@
     {
         [NSException raise:@"InvalidArgumentException" format:@"videoURL must not be null"];
     }
-    
-    // TODO: Check if the URL is really a video?
-    
+        
     // Creating the composition object. This object will hold the composition track instances
     AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     
@@ -105,6 +115,13 @@
     
     // Creating a video asset for the current video URL
     AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
+    
+    // Checking if this URL is really a video
+    NSArray *videoAssetVideoTracks = [videoAsset tracksWithMediaType:AVMediaTypeVideo];
+    if (videoAssetVideoTracks.count == 0)
+    {
+        [NSException raise:@"InvalidArgumentException" format:@"videoURL <%@> doesn't have a video track", videoURL.description];
+    }
     
     // Inserting the video to the composition track in the correct time range
     [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];

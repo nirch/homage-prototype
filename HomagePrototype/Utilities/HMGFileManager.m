@@ -7,6 +7,7 @@
 //
 
 #import "HMGFileManager.h"
+#import "HMGLog.h"
 
 @implementation HMGFileManager
 
@@ -51,6 +52,8 @@
 // Removes (deletes) a resource from a given URL
 + (BOOL)removeResourceAtURL:(NSURL *)resourceURL error:(NSError **)error;
 {
+    HMGLogDebug(@"%s resourceURL = %@", __PRETTY_FUNCTION__, resourceURL.description);
+    
     return [[NSFileManager defaultManager] removeItemAtURL:resourceURL error:error];
 }
 

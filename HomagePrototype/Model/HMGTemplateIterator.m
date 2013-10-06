@@ -8,6 +8,7 @@
 
 #import "HMGTemplateIterator.h"
 #import "HMGTemplateCSVLoader.h"
+#import "HMGLog.h"
 
 @interface HMGTemplateIterator ()
 
@@ -42,6 +43,8 @@
 // Returns the next list of templates (the maxNumOfTemplatesPerIteration property determines how many templates will be returned in each iteration. in the last iteration, less templates might return). nil will be returned when no templates are left
 - (NSArray*)next
 {
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
     HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
     NSMutableArray *templates = [[NSMutableArray alloc] init];
     
@@ -64,6 +67,8 @@
     {
         return [NSArray arrayWithArray:templates];
     }
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
 // Overriding the setter so it will only accept values bigger than 0. Throwing an exception if the value is less than 1 since this is a programmatic error
