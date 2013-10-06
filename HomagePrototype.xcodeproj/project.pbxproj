@@ -55,7 +55,7 @@
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
 		6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A19517F052FD00706D4D /* HMGRecordButton.m */; };
 		6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6562967E17F08C2D00EE1325 /* QuartzCore.framework */; };
-		65E467E717F966B20009E641 /* HMGFileManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8317F8685C00AB95F0 /* HMGFileManager.h */; };
+		65B7CB73180198800038CF25 /* HMGFileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B7CB72180198800038CF25 /* HMGFileManagerTest.m */; };
 		65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
 		F10DBE4617FC5375000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
 		F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
@@ -297,6 +297,8 @@
 		6554A19417F052FD00706D4D /* HMGRecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordButton.h; sourceTree = "<group>"; };
 		6554A19517F052FD00706D4D /* HMGRecordButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGRecordButton.m; sourceTree = "<group>"; };
 		6562967E17F08C2D00EE1325 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		65B7CB71180198800038CF25 /* HMGFileManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGFileManagerTest.h; sourceTree = "<group>"; };
+		65B7CB72180198800038CF25 /* HMGFileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGFileManagerTest.m; sourceTree = "<group>"; };
 		F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Images.mp4; sourceTree = "<group>"; };
 		F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
@@ -769,6 +771,8 @@
 		F1D42E8D17D4915F00802D7C /* HomagePrototypeLogicTests */ = {
 			isa = PBXGroup;
 			children = (
+				65B7CB71180198800038CF25 /* HMGFileManagerTest.h */,
+				65B7CB72180198800038CF25 /* HMGFileManagerTest.m */,
 				F1D42E9A17D4BDF700802D7C /* TemplatesIteratorTests.h */,
 				F1D42E9B17D4BDF700802D7C /* TemplatesIteratorTests.m */,
 				F19123E217DE7EB800DE85DB /* TemplateCSVLoaderTests.h */,
@@ -1075,7 +1079,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E467E717F966B20009E641 /* HMGFileManager.h in Sources */,
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HomageViewController.m in Sources */,
@@ -1131,6 +1134,7 @@
 				F165B80617EEE6C100647AF7 /* HMGVideoSegmentRemake.m in Sources */,
 				F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */,
 				F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */,
+				65B7CB73180198800038CF25 /* HMGFileManagerTest.m in Sources */,
 				F1F04B0A17E488CF00720C5C /* HMGVideoSegment.m in Sources */,
 				F1F04B0B17E488CF00720C5C /* HMGSegment.m in Sources */,
 				F1F04B0C17E488CF00720C5C /* HMGImageSegment.m in Sources */,
