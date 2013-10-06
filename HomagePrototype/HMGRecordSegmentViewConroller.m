@@ -79,7 +79,7 @@
 		self.previewLayer.frame = self.previewView.bounds;
 		self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         
-		//[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
+		[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
 		[self.previewView.layer addSublayer:self.previewLayer];
 	});
 

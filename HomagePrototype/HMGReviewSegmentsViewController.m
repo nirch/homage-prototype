@@ -8,6 +8,8 @@
 
 #import "HMGReviewSegmentsViewController.h"
 #import "HMGRecordSegmentViewConroller.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "HMGLog.h"
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
@@ -112,6 +114,52 @@
 
 - (IBAction)renderFinal:(id)sender {
     //place holder for nir to render final cut
+    
+    [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        [self videoProcessDidFinish:videoURL withError:error];
+    }];
+}
+
+- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
+    if (!error)
+    {
+        // Getting the exported video URL and validating if we can save it
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:videoURL])
+        {
+            // Saving the video. This is an asynchronous process. The completion block (which is implemented here inline) will be invoked once the saving process finished
+            [library writeVideoAtPathToSavedPhotosAlbum:videoURL completionBlock:^(NSURL *assetURL, NSError *error){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (error)
+                    {
+                        HMGLogError([error localizedDescription]);
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Video Saving Failed"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                    else
+                    {
+                        HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        [alert show];
+                    }
+                });
+            }];
+        }
+    }
+    else
+    {
+        HMGLogError([error localizedDescription]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+
 }
 
 @end
