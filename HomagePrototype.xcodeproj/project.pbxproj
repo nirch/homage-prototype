@@ -118,6 +118,9 @@
 		F1A2EC65180553120067DD0A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC63180551740067DD0A /* CoreVideo.framework */; };
 		F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
 		F1A2EC671805533F0067DD0A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC63180551740067DD0A /* CoreVideo.framework */; };
+		F1A2EC68180558BA0067DD0A /* falling.PNG in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B1117E48EFB00720C5C /* falling.PNG */; };
+		F1A2EC69180558BA0067DD0A /* legs.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B1717E48EFB00720C5C /* legs.png */; };
+		F1A2EC6A180558BA0067DD0A /* Neta_juice.PNG in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B1B17E48EFB00720C5C /* Neta_juice.PNG */; };
 		F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
@@ -990,6 +993,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A2EC68180558BA0067DD0A /* falling.PNG in Resources */,
+				F1A2EC69180558BA0067DD0A /* legs.png in Resources */,
+				F1A2EC6A180558BA0067DD0A /* Neta_juice.PNG in Resources */,
 				F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */,
 				F1A2EC5D17FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 in Resources */,
 				F1A2EC5E17FD42E00067DD0A /* Tikim_Hero_Export.mp4 in Resources */,

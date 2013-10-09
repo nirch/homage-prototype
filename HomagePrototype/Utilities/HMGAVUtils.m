@@ -153,12 +153,9 @@
 {
     NSError *error = nil;
     
-    // Create the URL to which the video will be stored/saved
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
-                             [NSString stringWithFormat:@"imageVideo-%d.mov",arc4random() % 1000]];
-    NSURL *outptUrl = [NSURL fileURLWithPath:myPathDocs];
+    // Create the URL to which the video will be stored/saved    
+    NSURL *outptUrl = [HMGFileManager uniqueUrlWithPrefix:@"imagesVideo-" ofType:@"mov"];
+
     
     // Creating the container to which the video will be written to
     AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:outptUrl fileType:AVFileTypeQuickTimeMovie

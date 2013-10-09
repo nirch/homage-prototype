@@ -8,6 +8,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "HMGAVUtils.h"
+#import "AGWaitForAsyncTestHelper.h"
 
 @interface AVUtilsTests : SenTestCase
 
@@ -16,12 +17,21 @@
 @property (strong, nonatomic) NSURL *video1;
 @property (strong, nonatomic) NSURL *video2;
 @property (strong, nonatomic) NSURL *soundtrack;
+@property (strong, nonatomic) UIImage *image1;
+@property (strong, nonatomic) UIImage *image2;
+@property (strong, nonatomic) UIImage *image3;
+
 
 @end
 
 static NSString * const video1Name = @"Red.mov";
 static NSString * const video2Name = @"Tikim_Text.mp4";
 static NSString * const soundtrackName = @"Homage_Tikim.mp3";
+
+static NSString * const image1Name = @"Neta_juice.PNG";
+static NSString * const image2Name = @"legs.png";
+static NSString * const image3Name = @"falling.PNG";
+
 
 
 @implementation AVUtilsTests
@@ -38,6 +48,16 @@ static NSString * const soundtrackName = @"Homage_Tikim.mp3";
 
     NSString *soundtrackPath = [[NSBundle bundleForClass:[self class]] pathForResource:soundtrackName ofType:nil];
     self.soundtrack = [NSURL fileURLWithPath:soundtrackPath];
+
+    NSString *image1Path = [[NSBundle bundleForClass:[self class]] pathForResource:image1Name ofType:nil];
+    self.image1 = [UIImage imageWithContentsOfFile:image1Path];
+    
+    NSString *image2Path = [[NSBundle bundleForClass:[self class]] pathForResource:image2Name ofType:nil];
+    self.image2 = [UIImage imageWithContentsOfFile:image2Path];
+
+    NSString *image3Path = [[NSBundle bundleForClass:[self class]] pathForResource:image3Name ofType:nil];
+    self.image3 = [UIImage imageWithContentsOfFile:image3Path];
+
 
     self.resourcesToDelete = [[NSMutableArray alloc] init];
 }
@@ -282,6 +302,87 @@ static NSString * const soundtrackName = @"Homage_Tikim.mp3";
     dispatch_time_t timeout = dispatch_time(DISPATCH_TIME_NOW, timeoutInSeconds * NSEC_PER_SEC);
     long response = dispatch_group_wait(dispatchGroup, timeout);
     STAssertTrue(response == 0, @"timeout for waiting for async block to complete");
+}
+
+- (void)testImagesToVideoMutipleImagesFastDuration
+{
+    NSArray *images = @[self.image1, self.image2, self.image3];
+    CMTime imageDuration = CMTimeMake(500, 1000);
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils imagesToVideo:images withFrameTime:imageDuration completion:^(AVAssetWriter *assetWriter) {
+        NSLog(@"in the writer completion block");
+        
+        // Testing that the status is completed
+        STAssertTrue(assetWriter.status == AVAssetWriterStatusCompleted, @"The status is %d, but should have been %d (completed)", assetWriter.status, AVAssetWriterStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:assetWriter.outputURL];
+        
+        AVAsset *imagesVideo = [AVAsset assetWithURL:assetWriter.outputURL];
+        CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
+        CMTime imagesVideoDuration = imagesVideo.duration;
+        
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+}
+
+- (void)testImagesToVideoMutipleImagesSlowDuration
+{
+    NSArray *images = @[self.image1, self.image2, self.image3];
+    CMTime imageDuration = CMTimeMake(5000, 1000);
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils imagesToVideo:images withFrameTime:imageDuration completion:^(AVAssetWriter *assetWriter) {
+        NSLog(@"in the writer completion block");
+        
+        // Testing that the status is completed
+        STAssertTrue(assetWriter.status == AVAssetWriterStatusCompleted, @"The status is %d, but should have been %d (completed)", assetWriter.status, AVAssetWriterStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:assetWriter.outputURL];
+        
+        AVAsset *imagesVideo = [AVAsset assetWithURL:assetWriter.outputURL];
+        CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
+        CMTime imagesVideoDuration = imagesVideo.duration;
+        
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+}
+
+- (void)testImagesToVideoSingleImage
+{
+    NSArray *images = @[self.image1];
+    CMTime imageDuration = CMTimeMake(3000, 1000);
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils imagesToVideo:images withFrameTime:imageDuration completion:^(AVAssetWriter *assetWriter) {
+        NSLog(@"in the writer completion block");
+        
+        // Testing that the status is completed
+        STAssertTrue(assetWriter.status == AVAssetWriterStatusCompleted, @"The status is %d, but should have been %d (completed)", assetWriter.status, AVAssetWriterStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:assetWriter.outputURL];
+        
+        AVAsset *imagesVideo = [AVAsset assetWithURL:assetWriter.outputURL];
+        CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
+        CMTime imagesVideoDuration = imagesVideo.duration;
+        
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
 }
 
 
