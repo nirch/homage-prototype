@@ -114,6 +114,10 @@
 		F1A2EC5F17FD42E00067DD0A /* Tikim_Race_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */; };
 		F1A2EC6017FD42E00067DD0A /* Tikim_Sigh_Export.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1A2EC5C17FD42E00067DD0A /* Tikim_Sigh_Export.mp4 */; };
 		F1A2EC6218017C240067DD0A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */; };
+		F1A2EC64180551740067DD0A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC63180551740067DD0A /* CoreVideo.framework */; };
+		F1A2EC65180553120067DD0A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC63180551740067DD0A /* CoreVideo.framework */; };
+		F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C8EECE17CF38420093DB0A /* CoreGraphics.framework */; };
+		F1A2EC671805533F0067DD0A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC63180551740067DD0A /* CoreVideo.framework */; };
 		F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */; };
 		F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F04AE717E1AEBD00720C5C /* CoreMedia.framework */; };
@@ -344,6 +348,7 @@
 		F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Race_Export.mp4; sourceTree = "<group>"; };
 		F1A2EC5C17FD42E00067DD0A /* Tikim_Sigh_Export.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Sigh_Export.mp4; sourceTree = "<group>"; };
 		F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F1A2EC63180551740067DD0A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVUtilsTests.m; sourceTree = "<group>"; };
 		F1C57B8917F8A51C00158EC3 /* Red.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Red.mov; sourceTree = "<group>"; };
 		F1C57B8A17F8A51C00158EC3 /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Text.mp4; sourceTree = "<group>"; };
@@ -430,6 +435,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A2EC64180551740067DD0A /* CoreVideo.framework in Frameworks */,
 				F1A2EC6218017C240067DD0A /* AssetsLibrary.framework in Frameworks */,
 				6562967F17F08C2D00EE1325 /* QuartzCore.framework in Frameworks */,
 				F1F04AE817E1AEBD00720C5C /* CoreMedia.framework in Frameworks */,
@@ -445,6 +451,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */,
+				F1A2EC65180553120067DD0A /* CoreVideo.framework in Frameworks */,
 				F1C57B8117F8811D00158EC3 /* CoreMedia.framework in Frameworks */,
 				F1C57B7E17F8805D00158EC3 /* AVFoundation.framework in Frameworks */,
 				F1C8EEEF17CF38420093DB0A /* SenTestingKit.framework in Frameworks */,
@@ -457,6 +465,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A2EC671805533F0067DD0A /* CoreVideo.framework in Frameworks */,
 				F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */,
 				F1CBC49417E496FB00167772 /* CoreGraphics.framework in Frameworks */,
 				F1F04B0F17E4890D00720C5C /* CoreMedia.framework in Frameworks */,
@@ -630,6 +639,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1A2EC63180551740067DD0A /* CoreVideo.framework */,
 				F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */,
 				6562967E17F08C2D00EE1325 /* QuartzCore.framework */,
 				2655874617E0D0910086D936 /* MediaPlayer.framework */,
