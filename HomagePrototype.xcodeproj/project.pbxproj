@@ -85,6 +85,7 @@
 		F165B80717EEE6C100647AF7 /* HMGImageSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B7FF17EED24B00647AF7 /* HMGImageSegmentRemake.m */; };
 		F165B80817EEE6C100647AF7 /* HMGTextSegmentRemake.m in Sources */ = {isa = PBXBuildFile; fileRef = F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */; };
 		F1687D9217EEEE43009214FA /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1687D9117EEEE43009214FA /* RemakeProjectTests.m */; };
+		F17B3C4118058F45007FA7A4 /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F17B3C4018058F45007FA7A4 /* wood.jpg */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -330,6 +331,7 @@
 		F165B80217EED26B00647AF7 /* HMGTextSegmentRemake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTextSegmentRemake.m; path = Model/HMGTextSegmentRemake.m; sourceTree = "<group>"; };
 		F1687D9017EEEE43009214FA /* RemakeProjectTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemakeProjectTests.h; sourceTree = "<group>"; };
 		F1687D9117EEEE43009214FA /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
+		F17B3C4018058F45007FA7A4 /* wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood.jpg; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 		F1C57B8817F8A4D300158EC3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F17B3C4018058F45007FA7A4 /* wood.jpg */,
 				F1A2EC5917FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 */,
 				F1A2EC5A17FD42E00067DD0A /* Tikim_Hero_Export.mp4 */,
 				F1A2EC5B17FD42E00067DD0A /* Tikim_Race_Export.mp4 */,
@@ -728,11 +731,11 @@
 		F1C8EEF417CF38420093DB0A /* HomagePrototypeApplicationTests */ = {
 			isa = PBXGroup;
 			children = (
+				F1C57B8817F8A4D300158EC3 /* Resources */,
+				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 				F1C8EEFA17CF38420093DB0A /* HomagePrototypeTests.h */,
 				F1C8EEFB17CF38420093DB0A /* HomagePrototypeTests.m */,
 				F1C57B8217F882CA00158EC3 /* AVUtilsTests.m */,
-				F1C57B8817F8A4D300158EC3 /* Resources */,
-				F1C8EEF517CF38420093DB0A /* Supporting Files */,
 				F1C57B9717FACB4400158EC3 /* VideoSegmentRemakeTests.m */,
 				F1C57B9917FB105800158EC3 /* AGWaitForAsyncTestHelper.h */,
 				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
@@ -998,6 +1001,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A2EC68180558BA0067DD0A /* falling.PNG in Resources */,
+				F17B3C4118058F45007FA7A4 /* wood.jpg in Resources */,
 				F1A2EC69180558BA0067DD0A /* legs.png in Resources */,
 				F1A2EC6A180558BA0067DD0A /* Neta_juice.PNG in Resources */,
 				F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */,

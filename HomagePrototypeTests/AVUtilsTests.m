@@ -21,6 +21,8 @@
 @property (strong, nonatomic) UIImage *image2;
 @property (strong, nonatomic) UIImage *image3;
 @property (strong, nonatomic) NSURL *videoForText;
+@property (strong, nonatomic) UIImage *backgroundImage;
+
 
 
 @end
@@ -34,6 +36,9 @@ static NSString * const image2Name = @"legs.png";
 static NSString * const image3Name = @"falling.PNG";
 
 static NSString * const videoForTextName = @"Red.mov";
+
+static NSString * const backgroundImageName = @"wood.jpg";
+
 
 
 
@@ -65,6 +70,8 @@ static NSString * const videoForTextName = @"Red.mov";
     NSString *videoForTextPath = [[NSBundle bundleForClass:[self class]] pathForResource:videoForTextName ofType:nil];
     self.videoForText = [NSURL fileURLWithPath:videoForTextPath];
 
+    NSString *backgroundImagePath = [[NSBundle bundleForClass:[self class]] pathForResource:backgroundImageName ofType:nil];
+    self.backgroundImage = [UIImage imageWithContentsOfFile:backgroundImagePath];
 
     self.resourcesToDelete = [[NSMutableArray alloc] init];
 }
@@ -425,6 +432,98 @@ static NSString * const videoForTextName = @"Red.mov";
     
     WAIT_WHILE(!jobDone, 3);
 }
+
+- (void)testTextOnVideoOtherFontAndSize
+{
+    NSString *text = @"Testing Text";
+    NSString* fontName = @"Times";
+    CGFloat fontSize = 48;
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils textOnVideo:self.videoForText withText:text withFontName:fontName withFontSize:fontSize completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *textVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *originalVideo = [AVAsset assetWithURL:self.video1];
+        
+        STAssertNotNil(textVideo, @"textVideo should not be null");
+        
+        int textVideoDuration = lroundf(CMTimeGetSeconds(textVideo.duration));
+        int originalVideoDuration = lroundf(CMTimeGetSeconds(originalVideo.duration));
+        
+        // Testing that the duration of the merged video equals the duration of the first video
+        STAssertTrue(textVideoDuration == originalVideoDuration, @"text video duration is %d while the duration of original video is %d, they should be the same", textVideoDuration, originalVideoDuration);
+        
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+}
+
+// This test will take an image, transform it to a video, and then put a text on the video
+- (void)testTextOnImage
+{
+    NSArray *backgroundImageArray = @[self.backgroundImage];
+    CMTime frameTime = CMTimeMake(3000, 1000);
+    __block NSURL *videoBackgroundURL;
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils imagesToVideo:backgroundImageArray withFrameTime:frameTime completion:^(AVAssetWriter *assetWriter) {
+
+        // Testing that the status is completed
+        STAssertTrue(assetWriter.status == AVAssetWriterStatusCompleted, @"The status is %d, but should have been %d (completed)", assetWriter.status, AVAssetWriterStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:assetWriter.outputURL];
+        
+        videoBackgroundURL = assetWriter.outputURL;
+        
+        jobDone = YES;
+
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+    
+    NSString *text = @"Testing Text";
+    NSString* fontName = @"Helvetica";
+    CGFloat fontSize = 72;
+    jobDone = NO;
+    
+    [HMGAVUtils textOnVideo:videoBackgroundURL withText:text withFontName:fontName withFontSize:fontSize completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *textVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *originalVideo = [AVAsset assetWithURL:self.video1];
+        
+        STAssertNotNil(textVideo, @"textVideo should not be null");
+        
+        int textVideoDuration = lroundf(CMTimeGetSeconds(textVideo.duration));
+        int originalVideoDuration = lroundf(CMTimeGetSeconds(originalVideo.duration));
+        
+        // Testing that the duration of the merged video equals the duration of the first video
+        STAssertTrue(textVideoDuration == originalVideoDuration, @"text video duration is %d while the duration of original video is %d, they should be the same", textVideoDuration, originalVideoDuration);
+        
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+
+}
+
 
 
 @end
