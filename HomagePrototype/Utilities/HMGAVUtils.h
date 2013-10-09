@@ -21,7 +21,7 @@
 +(void)imagesToVideo:(NSArray*)images withFrameTime:(CMTime)frameTime completion:(void (^)(AVAssetWriter*))completion;
 
 // This method addes text to video. It recevies a video (as a URL) and the text that will be displyed on the video. The completion method will be called asynchronously once the new video is ready
-+(void)textOnVideo:(NSURL*)videoURL withText:(NSString*)text completion:(void (^)(AVAssetExportSession*))completion;
++ (void)textOnVideo:(NSURL*)videoURL withText:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize completion:(void (^)(AVAssetExportSession*))completion;
 
 
 @end

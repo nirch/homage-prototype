@@ -98,7 +98,7 @@
 
 
 // This methods scales the given video into a different duration (makes the video faster or slower). The completion method will be called asynchronously once the new video is ready
-+(void)scaleVideo:(NSURL*)videoURL toDuration:(CMTime)duration completion:(void (^)(AVAssetExportSession*))completion
++ (void)scaleVideo:(NSURL*)videoURL toDuration:(CMTime)duration completion:(void (^)(AVAssetExportSession*))completion
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
@@ -149,7 +149,7 @@
 }
 
 // This method transformes a list of images into a video. It receives an array of images (UIImage) and frame time in milliseconds for the time that each image will be displayed in the video. The completion method will be called asynchronously once the new video is ready
-+(void)imagesToVideo:(NSArray*)images withFrameTime:(CMTime)frameTime completion:(void (^)(AVAssetWriter*))completion
++ (void)imagesToVideo:(NSArray*)images withFrameTime:(CMTime)frameTime completion:(void (^)(AVAssetWriter*))completion
 {
     NSError *error = nil;
     
@@ -226,9 +226,88 @@
 }
 
 // This method addes text to video. It recevies a video (as a URL) and the text that will be displyed on the video. The completion method will be called asynchronously once the new video is ready
-+(void)textOnVideo:(NSURL*)videoURL withText:(NSString*)text completion:(void (^)(AVAssetExportSession*))completion
++ (void)textOnVideo:(NSURL*)videoURL withText:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize completion:(void (^)(AVAssetExportSession*))completion
 {
+    // Creating the composition object. This object will hold the composition track instances
+    AVMutableComposition *mainComposition = [[AVMutableComposition alloc] init];
     
+    // Creating a composition track for the video which is also added to the main composition oject
+    AVMutableCompositionTrack *compositionVideoTrack = [mainComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
+    
+    // Initialaing the video asset using the video URL given as input
+    //AVURLAsset *videoAsset = [[AVURLAsset alloc]initWithURL:videoURL  options:nil];
+    AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
+    
+    // Getting the video asset track from the video asset
+    AVAssetTrack *videoAssetTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    
+    // Inserting the video to the composition track in the correct time range
+    [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:videoAssetTrack atTime:kCMTimeZero error:nil];
+    
+    // Setting the preferred transform of the composition track to be the same as for the video asset track
+    [compositionVideoTrack setPreferredTransform:[videoAssetTrack preferredTransform]];
+    
+    // Getting the size of this video
+    CGSize videoSize = [videoAssetTrack naturalSize];
+    
+    CALayer *parentLayer = [CALayer layer];
+    CALayer *videoLayer = [CALayer layer];
+    parentLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    videoLayer.frame = CGRectMake(0, 0, videoSize.width, videoSize.height);
+    [parentLayer addSublayer:videoLayer];
+    
+    // Creating the text layer and setting some attributes
+    CATextLayer *textLayer = [CATextLayer layer];
+    textLayer.string = text;
+    textLayer.font = (__bridge CFTypeRef)fontName;
+    textLayer.fontSize = fontSize;//videoSize.height / 6;
+    //?? textLayer.shadowOpacity = 0.5;
+    textLayer.alignmentMode = kCAAlignmentCenter;
+    
+    // Setting the rectangle in which the text will be showed in
+    textLayer.bounds = CGRectMake(0, 0, videoSize.width, videoSize.height / 5);
+    
+    // Positioning the text box (in the middle of the video)
+    textLayer.position = CGPointMake(videoSize.width/2, videoSize.height/2);
+    
+    [parentLayer addSublayer:textLayer];
+    
+    // Creating a video composition to hold the instruction below. Then this video composition will be applied to the main composition
+    AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
+    videoComposition.renderSize = videoSize;
+    videoComposition.frameDuration = CMTimeMake(1, 30);
+    videoComposition.animationTool = [AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    
+    // Creating a video composition instruction and adding it to the video composition
+    AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, [mainComposition duration]);
+    AVAssetTrack *videoTrackFromMainComposition = [[mainComposition tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVMutableVideoCompositionLayerInstruction* layerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrackFromMainComposition];
+    instruction.layerInstructions = [NSArray arrayWithObject:layerInstruction];
+    videoComposition.instructions = [NSArray arrayWithObject: instruction];
+    
+    // Getting the documents directory
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    // Creating a full path to the video and getting it's URL
+    NSString *outputVideoPath =  [documentsDirectory stringByAppendingPathComponent:
+                                  [NSString stringWithFormat:@"textVideo-%d.mov",arc4random() % 1000]];
+    NSURL *outptVideoUrl = [NSURL fileURLWithPath:outputVideoPath];
+    
+    // Creating an export session using the main composition and setting some attributes
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mainComposition presetName:AVAssetExportPresetHighestQuality];
+    exporter.outputURL=outptVideoUrl;
+    exporter.outputFileType = AVFileTypeQuickTimeMovie;
+    exporter.shouldOptimizeForNetworkUse = YES;
+    exporter.videoComposition = videoComposition;
+    
+    // Doing the actual export and setting the completion method that will be invoked asynchronously once the new video is ready
+    [exporter exportAsynchronouslyWithCompletionHandler:^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(exporter);
+        });
+    }];
 }
 
 
