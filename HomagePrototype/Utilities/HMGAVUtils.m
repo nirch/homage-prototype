@@ -259,13 +259,13 @@
     // Creating the text layer and setting some attributes
     CATextLayer *textLayer = [CATextLayer layer];
     textLayer.string = text;
-    textLayer.font = (__bridge CFTypeRef)fontName;
-    textLayer.fontSize = fontSize;//videoSize.height / 6;
-    //?? textLayer.shadowOpacity = 0.5;
+    textLayer.font = (__bridge CFTypeRef)fontName;//(__bridge CFTypeRef)(@"Helvetica");
+    textLayer.fontSize = fontSize;
+    //??textLayer.shadowOpacity = 0.5;
     textLayer.alignmentMode = kCAAlignmentCenter;
     
-    // Setting the rectangle in which the text will be showed in
-    textLayer.bounds = CGRectMake(0, 0, videoSize.width, videoSize.height / 5);
+    // Setting the rectangle in which the text will be showed in. The rectangle's width is the video width, and the rectangle's hieght is the hieght of the text (20% more than the font size
+    textLayer.bounds = CGRectMake(0, 0, videoSize.width, textLayer.fontSize * 1.2);
     
     // Positioning the text box (in the middle of the video)
     textLayer.position = CGPointMake(videoSize.width/2, videoSize.height/2);
@@ -286,14 +286,8 @@
     instruction.layerInstructions = [NSArray arrayWithObject:layerInstruction];
     videoComposition.instructions = [NSArray arrayWithObject: instruction];
     
-    // Getting the documents directory
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    // Creating a full path to the video and getting it's URL
-    NSString *outputVideoPath =  [documentsDirectory stringByAppendingPathComponent:
-                                  [NSString stringWithFormat:@"textVideo-%d.mov",arc4random() % 1000]];
-    NSURL *outptVideoUrl = [NSURL fileURLWithPath:outputVideoPath];
+    // Generating the output URL video
+    NSURL *outptVideoUrl = [HMGFileManager uniqueUrlWithPrefix:@"textVideo-" ofType:@"mov"];
     
     // Creating an export session using the main composition and setting some attributes
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mainComposition presetName:AVAssetExportPresetHighestQuality];

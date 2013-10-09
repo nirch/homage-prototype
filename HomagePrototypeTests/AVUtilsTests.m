@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UIImage *image1;
 @property (strong, nonatomic) UIImage *image2;
 @property (strong, nonatomic) UIImage *image3;
+@property (strong, nonatomic) NSURL *videoForText;
 
 
 @end
@@ -31,6 +32,9 @@ static NSString * const soundtrackName = @"Homage_Tikim.mp3";
 static NSString * const image1Name = @"Neta_juice.PNG";
 static NSString * const image2Name = @"legs.png";
 static NSString * const image3Name = @"falling.PNG";
+
+static NSString * const videoForTextName = @"Red.mov";
+
 
 
 
@@ -57,6 +61,9 @@ static NSString * const image3Name = @"falling.PNG";
 
     NSString *image3Path = [[NSBundle bundleForClass:[self class]] pathForResource:image3Name ofType:nil];
     self.image3 = [UIImage imageWithContentsOfFile:image3Path];
+
+    NSString *videoForTextPath = [[NSBundle bundleForClass:[self class]] pathForResource:videoForTextName ofType:nil];
+    self.videoForText = [NSURL fileURLWithPath:videoForTextPath];
 
 
     self.resourcesToDelete = [[NSMutableArray alloc] init];
@@ -323,7 +330,7 @@ static NSString * const image3Name = @"falling.PNG";
         CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
         CMTime imagesVideoDuration = imagesVideo.duration;
         
-        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The images video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
         
         jobDone = YES;
     }];
@@ -350,7 +357,7 @@ static NSString * const image3Name = @"falling.PNG";
         CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
         CMTime imagesVideoDuration = imagesVideo.duration;
         
-        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The images video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
         
         jobDone = YES;
     }];
@@ -377,7 +384,7 @@ static NSString * const image3Name = @"falling.PNG";
         CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
         CMTime imagesVideoDuration = imagesVideo.duration;
         
-        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The scaled video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The images video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
         
         jobDone = YES;
     }];
@@ -385,6 +392,39 @@ static NSString * const image3Name = @"falling.PNG";
     WAIT_WHILE(!jobDone, 3);
 }
 
+- (void)testTextOnVideoDefaultFont
+{
+    NSString *text = @"Testing Text";
+    NSString* fontName = @"Helvetica";
+    CGFloat fontSize = 72;
+    __block BOOL jobDone = NO;
+    
+    [HMGAVUtils textOnVideo:self.videoForText withText:text withFontName:fontName withFontSize:fontSize completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *textVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *originalVideo = [AVAsset assetWithURL:self.video1];
+        
+        STAssertNotNil(textVideo, @"textVideo should not be null");
+        
+        int textVideoDuration = lroundf(CMTimeGetSeconds(textVideo.duration));
+        int originalVideoDuration = lroundf(CMTimeGetSeconds(originalVideo.duration));
+        
+        // Testing that the duration of the merged video equals the duration of the first video
+        STAssertTrue(textVideoDuration == originalVideoDuration, @"text video duration is %d while the duration of original video is %d, they should be the same", textVideoDuration, originalVideoDuration);
+        
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        jobDone = YES;
+    }];
+    
+    WAIT_WHILE(!jobDone, 3);
+}
 
 
 @end
