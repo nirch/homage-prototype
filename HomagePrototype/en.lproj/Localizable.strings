@@ -1,0 +1,3 @@
+
+/* This string is used only for testing the localizable file*/
+"TEST_LOCAL" = "Testing localization"
