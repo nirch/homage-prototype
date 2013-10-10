@@ -1,3 +1,4 @@
-
-/* This string is used only for testing the localizable file*/
-"TEST_LOCAL" = "Testing localization"
+/* This string is used only for testing the localizable file */
+"TEST_LOCAL" = "Testing localization";
+/* Label showing the number of remakes in the templates screen */
+"NUM_OF_REMAKES" = "#remakes: %d";
