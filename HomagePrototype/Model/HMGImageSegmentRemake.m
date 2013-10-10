@@ -42,7 +42,7 @@
 
 - (NSArray *)images
 {
-    if(!_images) _images = [[NSMutableArray alloc] init];
+    if(!_images) _images = [[NSArray alloc] init];
     return _images;
 }
 

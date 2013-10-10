@@ -79,7 +79,7 @@
     NSError *error = nil;
     
     // Checking if the export session completed successfully, if so adding the processed video to the takes aray
-    if (assetWriter.status == AVAssetExportSessionStatusCompleted)
+    if (assetWriter.status == AVAssetWriterStatusCompleted)
     {
         outputVideoURL = assetWriter.outputURL;
         [self addVideoTake:outputVideoURL];
