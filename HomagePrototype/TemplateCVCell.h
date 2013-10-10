@@ -15,6 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel     *lastUpdated;
 @property (weak, nonatomic) IBOutlet UILabel     *numOfRemakes;
 @property (weak, nonatomic) IBOutlet UILabel     *totalViews;
-@property (strong,nonatomic) HMGTemplate         *templateObj;
 
 @end

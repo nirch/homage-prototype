@@ -12,6 +12,7 @@
 #import "HMGSegment.h"
 #import "HMGRemakeProject.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "HMGSegmentRemake.h"
 
 
 @interface HMGReviewSegmentsViewController : UIViewController
