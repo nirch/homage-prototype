@@ -13,6 +13,9 @@
 // This method should be called once the video export is finished
 - (void)processVideoDidFinish:(AVAssetExportSession*)exporter withCompletion:(void (^)(NSURL *videoURL, NSError *error))completion;
 
+// This method should be called once the video export is finished
+- (void)processVideoDidFinishWithWriter:(AVAssetWriter *)assetWriter withCompletion:(void (^)(NSURL *videoURL, NSError *error))completion;
+
 // Addes a video to the takes
 - (void)addVideoTake:(NSURL *)videoURL;
 

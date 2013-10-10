@@ -70,6 +70,31 @@
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
+// This method should be called once the video export is finished
+- (void)processVideoDidFinishWithWriter:(AVAssetWriter *)assetWriter withCompletion:(void (^)(NSURL *videoURL, NSError *error))completion
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
+    NSURL *outputVideoURL = nil;
+    NSError *error = nil;
+    
+    // Checking if the export session completed successfully, if so adding the processed video to the takes aray
+    if (assetWriter.status == AVAssetExportSessionStatusCompleted)
+    {
+        outputVideoURL = assetWriter.outputURL;
+        [self addVideoTake:outputVideoURL];
+    }
+    else
+    {
+        error = assetWriter.error;
+        HMGLogError(@"process video finished with error: %@", error.description);
+    }
+    
+    completion(outputVideoURL, error);
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
 // Addes a video to the takes
 - (void)addVideoTake:(NSURL *)videoURL
 {

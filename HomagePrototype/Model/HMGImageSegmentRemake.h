@@ -10,6 +10,6 @@
 
 @interface HMGImageSegmentRemake : HMGSegmentRemake
 
-@property (strong, nonatomic) NSArray *images;
+@property (strong, nonatomic) NSMutableArray *images;
 
 @end
