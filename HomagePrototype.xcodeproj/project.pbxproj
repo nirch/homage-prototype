@@ -88,6 +88,7 @@
 		F17B3C4118058F45007FA7A4 /* wood.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F17B3C4018058F45007FA7A4 /* wood.jpg */; };
 		F17B3C471806A673007FA7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F17B3C491806A673007FA7A4 /* Localizable.strings */; };
 		F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */; };
+		F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -336,6 +337,7 @@
 		F17B3C4018058F45007FA7A4 /* wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood.jpg; sourceTree = "<group>"; };
 		F17B3C481806A673007FA7A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSegmentRemakeTests.m; sourceTree = "<group>"; };
+		F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextSegmentRemakeTests.m; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -745,6 +747,7 @@
 				F1C57B9917FB105800158EC3 /* AGWaitForAsyncTestHelper.h */,
 				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
 				F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */,
+				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1145,6 +1148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
 				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,

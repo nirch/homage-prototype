@@ -21,7 +21,6 @@ typedef enum {
 @property (nonatomic) CGFloat fontSize;
 @property (nonatomic) NSUInteger numOfLines;
 @property (nonatomic) HMGTextLocation location;
-@property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) UIImage *image;
 
 @end
