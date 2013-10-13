@@ -60,7 +60,6 @@
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
         segmentCell.segmentDuration.text = [self formatToTimeString:segment.duration];
-        segmentCell.index = index;
         
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -122,7 +121,9 @@
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
         //UIButton *button = (UIButton *)sender;
         HMGsegmentCVCell *cell = (HMGsegmentCVCell *)sender;
-        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[cell.index];
+        NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:cell];
+        NSInteger index = indexPath.item;
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[index];
         destController.videoSegmentRemake = segmentRemake;
     }
 }

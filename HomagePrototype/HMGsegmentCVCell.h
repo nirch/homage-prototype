@@ -19,7 +19,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *segmentDuration;
 
 @property (strong, nonatomic) NSURL *origSegmentVideo;
-@property (nonatomic) NSInteger index;
-
 
 @end

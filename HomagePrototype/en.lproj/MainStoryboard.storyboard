@@ -424,10 +424,6 @@
         <image name="camera_bezel.png" width="92" height="320"/>
         <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
