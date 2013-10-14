@@ -238,8 +238,15 @@
     //AVURLAsset *videoAsset = [[AVURLAsset alloc]initWithURL:videoURL  options:nil];
     AVAsset *videoAsset = [AVAsset assetWithURL:videoURL];
     
+    // Checking if this URL is really a video
+    NSArray *videoAssetVideoTracks = [videoAsset tracksWithMediaType:AVMediaTypeVideo];
+    if (videoAssetVideoTracks.count == 0)
+    {
+        [NSException raise:@"InvalidArgumentException" format:@"videoURL <%@> doesn't have a video track", videoURL.description];
+    }
+    
     // Getting the video asset track from the video asset
-    AVAssetTrack *videoAssetTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    AVAssetTrack *videoAssetTrack = [videoAssetVideoTracks objectAtIndex:0];
     
     // Inserting the video to the composition track in the correct time range
     [compositionVideoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration) ofTrack:videoAssetTrack atTime:kCMTimeZero error:nil];
