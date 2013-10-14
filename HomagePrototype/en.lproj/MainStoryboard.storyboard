@@ -83,9 +83,6 @@
                                                     <state key="normal" image="record_indicator_on.png">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <connections>
-                                                        <segue destination="20l-hv-5fD" kind="push" identifier="recordSegment" id="KcR-1K-UP0"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -123,6 +120,7 @@
                     <navigationItem key="navigationItem" title="review segments" id="aBU-5B-uRb"/>
                     <connections>
                         <outlet property="segmentsCView" destination="y04-0a-HmV" id="iSQ-0b-uqK"/>
+                        <segue destination="20l-hv-5fD" kind="push" identifier="recordSegment" id="e3d-RQ-buX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtq-Vv-7zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -270,7 +268,6 @@
                                             <outlet property="templateName" destination="EGi-Nz-MOX" id="e12-ie-9qc"/>
                                             <outlet property="templatePreviewImageView" destination="1di-AK-5Iq" id="tKD-WU-Rzd"/>
                                             <outlet property="totalViews" destination="LTY-4k-kGS" id="3Zs-S1-xkR"/>
-                                            <segue destination="I5b-4E-MQk" kind="push" identifier="showTemplate" id="8ki-Vs-QXX"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -290,6 +287,7 @@
                     <navigationItem key="navigationItem" title="explore templates" id="IwI-Ct-2gr"/>
                     <connections>
                         <outlet property="templateCView" destination="RNU-l4-hGy" id="lOG-Di-u4h"/>
+                        <segue destination="I5b-4E-MQk" kind="push" identifier="showTemplate" id="4s3-dO-3zZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -426,10 +424,6 @@
         <image name="camera_bezel.png" width="92" height="320"/>
         <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="pb_play_icon.png" width="72" height="72"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
-        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

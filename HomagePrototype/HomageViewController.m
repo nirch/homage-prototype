@@ -17,6 +17,7 @@
 @property (weak,nonatomic) IBOutlet UICollectionView *templateCView;
 @property (strong,nonatomic) NSArray *templatesArray;
 @property (strong,nonatomic) HMGTemplateIterator *templateIterator;
+@property (nonatomic) NSInteger selectedTemplateIndex;
 
 @end
 
@@ -55,9 +56,6 @@
 {
     if ([cell isKindOfClass: [TemplateCVCell class]]) {
         TemplateCVCell *templateCell = (TemplateCVCell *) cell;
-
-        templateCell.templateObj              = template;
-        
         templateCell.templateName.text              = template.name;
         templateCell.templatePreviewImageView.image = template.thumbnail;
         //templateCell.uploaded                     = template.uploadDate;
@@ -67,15 +65,22 @@
         
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedTemplateIndex = indexPath.item;
+    UICollectionViewCell *cell = [self.templateCView cellForItemAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"showTemplate" sender:cell];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"showTemplate"])
     {
         if ([segue.destinationViewController isKindOfClass:[TemplateMainViewController class]] && [sender isKindOfClass:[TemplateCVCell class]])
         {
-            TemplateCVCell *sendingCell = (TemplateCVCell *)sender;
             TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
-            destController.templateToDisplay = sendingCell.templateObj;
+            HMGTemplate *templateToDisplay = self.templatesArray[self.selectedTemplateIndex];
+            destController.templateToDisplay = templateToDisplay;
         }
     }
 }

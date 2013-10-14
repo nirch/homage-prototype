@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 @property (strong,nonatomic) NSArray *segmentsArray;
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
+@property (nonatomic) NSInteger selectedSegmentIndex;
 
 @end
 
@@ -59,9 +60,10 @@
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
         segmentCell.segmentDuration.text = [self formatToTimeString:segment.duration];
-        segmentCell.segmentRemake = self.remakeProject.segmentRemakes[index];
         
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [segmentCell.userSegmentRecordButton addTarget:self action:@selector(recordSegment:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -77,6 +79,17 @@
         [self playMovieWithURL:videoURL];
     }
 }
+
+-(IBAction)recordSegment:(UIButton *)button
+{
+    UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
+    if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
+        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
+        [self performSegueWithIdentifier:@"recordSegment" sender:segmentCell];
+    }
+    
+}
+
 
 -(void)playMovieWithURL:(NSURL *)videoURL
 {
@@ -106,9 +119,12 @@
     {
         
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
-        UIButton *button = (UIButton *)sender;
-        HMGsegmentCVCell *cell = button.superview.superview;
-        destController.videoSegmentRemake = cell.segmentRemake;
+        //UIButton *button = (UIButton *)sender;
+        HMGsegmentCVCell *cell = (HMGsegmentCVCell *)sender;
+        NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:cell];
+        NSInteger index = indexPath.item;
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[index];
+        destController.videoSegmentRemake = segmentRemake;
     }
 }
 
