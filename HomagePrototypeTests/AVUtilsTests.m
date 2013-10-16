@@ -467,6 +467,17 @@ static NSString * const backgroundImageName = @"wood.jpg";
     WAIT_WHILE(!jobDone, 3);
 }
 
+- (void)testTextOnVideoNilVideo
+{
+    NSString *text = @"Testing Text";
+    NSString* fontName = @"Helvetica";
+    CGFloat fontSize = 72;
+    
+    STAssertThrows([HMGAVUtils textOnVideo:nil withText:text withFontName:fontName withFontSize:fontSize completion:^(AVAssetExportSession *exporter) {
+        STFail(@"Should not reach this block");
+    }], @"An exception should have been thrown when sending nil as a video");
+}
+
 // This test will take an image, transform it to a video, and then put a text on the video
 - (void)testTextOnImage
 {
@@ -522,6 +533,64 @@ static NSString * const backgroundImageName = @"wood.jpg";
     
     WAIT_WHILE(!jobDone, 3);
 
+}
+
+- (void)testImagesToVideoAndTextOnVideoInParallel
+{
+    NSArray *images = @[self.image1, self.image2, self.image3];
+    CMTime imageDuration = CMTimeMake(500, 1000);
+    __block BOOL imagesJobDone = NO;
+    
+    [HMGAVUtils imagesToVideo:images withFrameTime:imageDuration completion:^(AVAssetWriter *assetWriter) {
+        NSLog(@"in the writer completion block");
+        
+        // Testing that the status is completed
+        STAssertTrue(assetWriter.status == AVAssetWriterStatusCompleted, @"The status is %d, but should have been %d (completed)", assetWriter.status, AVAssetWriterStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:assetWriter.outputURL];
+        
+        AVAsset *imagesVideo = [AVAsset assetWithURL:assetWriter.outputURL];
+        CMTime expectedDuration = CMTimeMultiply(imageDuration, images.count);
+        CMTime imagesVideoDuration = imagesVideo.duration;
+        
+        STAssertTrue(CMTIME_COMPARE_INLINE(expectedDuration, ==, imagesVideoDuration), @"The images video duration should be %d seconds, while it is %d seconds", expectedDuration, imagesVideoDuration);
+        
+        imagesJobDone = YES;
+    }];
+    
+    
+    NSString *text = @"Testing Text";
+    NSString* fontName = @"Helvetica";
+    CGFloat fontSize = 72;
+    __block BOOL textJobDone = NO;
+    
+    [HMGAVUtils textOnVideo:self.videoForText withText:text withFontName:fontName withFontSize:fontSize completion:^(AVAssetExportSession *exporter) {
+        NSLog(@"in the exporter completion block");
+        
+        STAssertTrue(exporter.status == AVAssetExportSessionStatusCompleted, @"The status is %d, but should have been %d", exporter.status, AVAssetExportSessionStatusCompleted);
+        
+        // Adding the URL to the array of resources that should be deleted in the tear-down method
+        [self.resourcesToDelete addObject:exporter.outputURL];
+        
+        AVAsset *textVideo = [AVAsset assetWithURL:exporter.outputURL];
+        AVAsset *originalVideo = [AVAsset assetWithURL:self.video1];
+        
+        STAssertNotNil(textVideo, @"textVideo should not be null");
+        
+        int textVideoDuration = lroundf(CMTimeGetSeconds(textVideo.duration));
+        int originalVideoDuration = lroundf(CMTimeGetSeconds(originalVideo.duration));
+        
+        // Testing that the duration of the merged video equals the duration of the first video
+        STAssertTrue(textVideoDuration == originalVideoDuration, @"text video duration is %d while the duration of original video is %d, they should be the same", textVideoDuration, originalVideoDuration);
+        
+        NSLog(@"Exporter URL: %@", exporter.outputURL.description);
+        
+        textJobDone = YES;
+    }];
+
+    
+    WAIT_WHILE(!(imagesJobDone && textJobDone), 3);
 }
 
 
