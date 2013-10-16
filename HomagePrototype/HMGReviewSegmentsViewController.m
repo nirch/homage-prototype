@@ -9,6 +9,7 @@
 #import "HMGReviewSegmentsViewController.h"
 #import "HMGRecordSegmentViewConroller.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "HMGLog.h"
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -16,6 +17,12 @@
 @property (strong,nonatomic) NSArray *segmentsArray;
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 @property (nonatomic) NSInteger selectedSegmentIndex;
+
+@property (nonatomic) BOOL imageSelection;
+@property (nonatomic) UIImagePickerController *imagesPicker;
+@property (nonatomic) UIBarButtonItem *doneButton;
+@property (nonatomic) NSMutableArray *images;
+@property (nonatomic) NSURL *imageVideoUrl;
 
 @end
 
@@ -26,6 +33,7 @@
     [super viewDidLoad];
 	self.segmentsArray = self.templateToDisplay.segments;
     self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
+    self.imageSelection = NO;
 }
 
 
@@ -56,7 +64,7 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
-        //segmentCell.segmentType = [cell getSegmentType];
+        segmentCell.segmentType = [segment getSegmentType];
         segmentCell.origSegmentVideo = segment.video;
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
@@ -64,7 +72,7 @@
         
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
-        [segmentCell.userSegmentRecordButton addTarget:self action:@selector(recordSegment:) forControlEvents:UIControlEventTouchUpInside];
+        [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -81,16 +89,26 @@
     }
 }
 
--(IBAction)recordSegment:(UIButton *)button
+-(IBAction)remakeButtonPushed:(UIButton *)button
 {
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        [self performSegueWithIdentifier:@"recordSegment" sender:segmentCell];
+        NSString *type = segmentCell.segmentType;
+        
+        if ([type isEqualToString:@"video"]) {
+            [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
+        } else if ([type isEqualToString:@"image"]) {
+            //TODO - code for image picking
+        } else if ([type isEqualToString:@"text"]) {
+            //TODO - code from text editing
+        } else {
+            //TODO - add error logging of undefined segment type
+        }
+        
     }
     
 }
-
 
 -(void)playMovieWithURL:(NSURL *)videoURL
 {
@@ -116,7 +134,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
-    if ([segue.identifier isEqualToString:@"recordSegment"])
+    if ([segue.identifier isEqualToString:@"recordVideoSegment"])
     {
         
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
@@ -177,6 +195,102 @@
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 
+}
+
+//code for image picker
+//====================================================
+
+- (IBAction)selectImages:(id)sender {
+    
+    self.imageSelection = YES;
+    
+    // Opening the media picker to select the images
+    self.imagesPicker = [self startMediaBrowserFromViewController:self withMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil] usingDelegate:self ];
+}
+
+// Opening the media picker.
+- (UIImagePickerController*)startMediaBrowserFromViewController:(UIViewController*)controller withMediaTypes:(NSArray*)mediaTypes usingDelegate:(id)delegate
+{
+    // Doing some valiadtions: checking whether the image picker is available or not and checking that there are no null values
+    if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+    {
+        return nil;
+    }
+    
+    // OK, reaching here means that the image picker is available and we can proceed
+    
+    
+    // Create an image picker
+    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+    mediaUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    mediaUI.mediaTypes = mediaTypes;
+    mediaUI.editing = NO;
+    mediaUI.delegate = delegate;
+    
+    // Display the image picker
+    [controller presentViewController:mediaUI animated:YES completion:nil];
+    
+    return mediaUI;
+}
+
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    // Adding the "done" button only if we are selecting images
+    if (self.imageSelection)
+    {
+        NSLog(@"Inside navigationController ...");
+        
+        if (!self.doneButton)
+        {
+            self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveImagesDone:)];
+        }
+        
+        viewController.navigationItem.rightBarButtonItem = self.doneButton;
+    }
+}
+
+// This method is called when the user clicked on the "done" button. Closing the image picker
+- (IBAction)saveImagesDone:(id)sender
+{
+    NSLog(@"select images done ...");
+    
+    // Dismissing the image picker
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.imageSelection = NO;
+    
+    // Creating a video from a list of images. The completion handler will be invoked once the new video is ready (or there are errors...)
+    [VideoUtils imagesToVideo:self.images withFrameTime:1000 completion:^(AVAssetWriter *videoWriter) {
+        [self videoWriterDidFinish:videoWriter];
+    }];
+    
+}
+
+// This method is triggered once the video writer is done and the video is ready (or there are errors...)
+-(void)videoWriterDidFinish:(AVAssetWriter*)videoWriter
+{
+    // Checking the status of the video wirter
+    if (videoWriter.status == AVAssetWriterStatusCompleted)
+    {
+        // Getting the output URL
+        self.imageVideoUrl = videoWriter.outputURL;
+        NSLog(@"Image video is ready");
+        
+    }
+    else
+    {
+        // Printing the error to the log
+        NSError *error = videoWriter.error;
+        NSLog(@"Image video error: %@",error.description);
+    }
+    
+    // Initializing the images array
+    self.images = [[NSMutableArray alloc] init];
 }
 
 @end

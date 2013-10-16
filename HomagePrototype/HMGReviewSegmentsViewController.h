@@ -16,6 +16,7 @@
 #import "HMGVideoSegment.h"
 #import "HMGTextSegment.h"
 #import "HMGImageSegment.h"
+#import "VideoUtils.h"
 
 
 @interface HMGReviewSegmentsViewController : UIViewController

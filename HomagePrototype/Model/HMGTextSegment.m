@@ -10,4 +10,9 @@
 
 @implementation HMGTextSegment
 
+-(NSString *)getSegmentType;
+{
+    return @"text";
+}
+
 @end

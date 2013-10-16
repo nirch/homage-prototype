@@ -10,5 +10,9 @@
 
 @implementation HMGImageSegment
 
+-(NSString *)getSegmentType;
+{
+    return @"image";
+}
 
 @end
