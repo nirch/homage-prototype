@@ -127,7 +127,7 @@
             </objects>
             <point key="canvasLocation" x="1341" y="118"/>
         </scene>
-        <!--Record Segment View Conroller-->
+        <!--Record Segment View Conroller - record view controller-->
         <scene sceneID="rMq-St-2Sh">
             <objects>
                 <viewController id="20l-hv-5fD" customClass="HMGRecordSegmentViewConroller" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qML-69-PCu"/>
+                    <navigationItem key="navigationItem" title="record view controller" id="qML-69-PCu"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="previewView" destination="cOF-98-wWj" id="Jid-4r-JG8"/>
@@ -424,6 +424,10 @@
         <image name="camera_bezel.png" width="92" height="320"/>
         <image name="camera_button_background.png" width="82" height="42"/>
         <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="pb_play_icon.png" width="72" height="72"/>
+        <image name="record_indicator_on.png" width="29" height="29"/>
+        <image name="record_indicator_on.png" width="29" height="29"/>
         <image name="record_indicator_on.png" width="29" height="29"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

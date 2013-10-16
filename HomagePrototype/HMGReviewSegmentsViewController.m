@@ -56,6 +56,7 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
+        //segmentCell.segmentType = [cell getSegmentType];
         segmentCell.origSegmentVideo = segment.video;
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
