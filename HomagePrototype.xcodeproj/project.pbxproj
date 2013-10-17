@@ -51,7 +51,6 @@
 		2672147417D2261500B89FB0 /* TemplateMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2672147317D2261500B89FB0 /* TemplateMainViewController.m */; };
 		267607EA17D7542200FEC5C3 /* TemplateCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 267607E917D7542100FEC5C3 /* TemplateCVCell.m */; };
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
-		2687FF54180EBF8000727DD7 /* VideoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2687FF53180EBF8000727DD7 /* VideoUtils.m */; };
 		2687FF56180EC4A100727DD7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 		65215F8517F8685C00AB95F0 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
@@ -305,8 +304,6 @@
 		267607E817D7542100FEC5C3 /* TemplateCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TemplateCVCell.h; sourceTree = "<group>"; };
 		267607E917D7542100FEC5C3 /* TemplateCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateCVCell.m; sourceTree = "<group>"; };
 		267607EB17DB51B200FEC5C3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		2687FF52180EBF8000727DD7 /* VideoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoUtils.h; sourceTree = "<group>"; };
-		2687FF53180EBF8000727DD7 /* VideoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoUtils.m; sourceTree = "<group>"; };
 		2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		65215F8317F8685C00AB95F0 /* HMGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGFileManager.h; sourceTree = "<group>"; };
 		65215F8417F8685C00AB95F0 /* HMGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGFileManager.m; sourceTree = "<group>"; };
@@ -543,8 +540,6 @@
 			children = (
 				F1A1EED917F85BEB008FDE54 /* HMGLog.m */,
 				F149B4C417F034CB0031E288 /* HMGLog.h */,
-				2687FF52180EBF8000727DD7 /* VideoUtils.h */,
-				2687FF53180EBF8000727DD7 /* VideoUtils.m */,
 				65215F8317F8685C00AB95F0 /* HMGFileManager.h */,
 				65215F8417F8685C00AB95F0 /* HMGFileManager.m */,
 				F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */,
@@ -899,6 +894,11 @@
 				CLASSPREFIX = Homage;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Homage;
+				TargetAttributes = {
+					F1C8EEC617CF38420093DB0A = {
+						DevelopmentTeam = 56F7YSPHC5;
+					};
+				};
 			};
 			buildConfigurationList = F1C8EEC217CF38420093DB0A /* Build configuration list for PBXProject "HomagePrototype" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1138,7 +1138,6 @@
 				65215F8517F8685C00AB95F0 /* HMGFileManager.m in Sources */,
 				F1F04AEE17E1B02600720C5C /* HMGSegment.m in Sources */,
 				F1F04AF117E1B13800720C5C /* HMGImageSegment.m in Sources */,
-				2687FF54180EBF8000727DD7 /* VideoUtils.m in Sources */,
 				F1F04AF417E1B36F00720C5C /* HMGTextSegment.m in Sources */,
 				F1F04AF717E1B39700720C5C /* HMGFixedSegment.m in Sources */,
 				2655874A17E618E40086D936 /* HMGRemakeCVCell.m in Sources */,
@@ -1315,6 +1314,7 @@
 		F1C8EF0017CF38420093DB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomagePrototype/HomagePrototype-Prefix.pch";
 				INFOPLIST_FILE = "HomagePrototype/HomagePrototype-Info.plist";
@@ -1326,6 +1326,7 @@
 		F1C8EF0117CF38420093DB0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomagePrototype/HomagePrototype-Prefix.pch";
 				INFOPLIST_FILE = "HomagePrototype/HomagePrototype-Info.plist";

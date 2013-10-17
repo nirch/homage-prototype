@@ -23,6 +23,9 @@
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (nonatomic) NSMutableArray *images;
 @property (nonatomic) NSURL *imageVideoUrl;
+@property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
+@property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
+
 
 @end
 
@@ -99,9 +102,14 @@
         if ([type isEqualToString:@"video"]) {
             [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
         } else if ([type isEqualToString:@"image"]) {
+            self.images = [[NSMutableArray alloc] init];
+            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
+            self.currentImageSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self selectImages];
         } else if ([type isEqualToString:@"text"]) {
-            //TODO - code from text editing
+            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
+            self.currentTextSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
+            [self editTextSegment];
         } else {
             //TODO - add error logging of undefined segment type
         }
@@ -264,34 +272,45 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
     self.imageSelection = NO;
-    
-    // Creating a video from a list of images. The completion handler will be invoked once the new video is ready (or there are errors...)
-    [VideoUtils imagesToVideo:self.images withFrameTime:1000 completion:^(AVAssetWriter *videoWriter) {
-        [self videoWriterDidFinish:videoWriter];
+    self.currentImageSegmentRemake.images = [NSArray arrayWithArray:self.images];
+    [self.currentImageSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        if (!videoURL) {
+            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+        }
     }];
-    
 }
 
-// This method is triggered once the video writer is done and the video is ready (or there are errors...)
--(void)videoWriterDidFinish:(AVAssetWriter*)videoWriter
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    // Checking the status of the video wirter
-    if (videoWriter.status == AVAssetWriterStatusCompleted)
-    {
-        // Getting the output URL
-        self.imageVideoUrl = videoWriter.outputURL;
-        NSLog(@"Image video is ready");
-        
-    }
-    else
-    {
-        // Printing the error to the log
-        NSError *error = videoWriter.error;
-        NSLog(@"Image video error: %@",error.description);
-    }
+    //We will save that image, but will not close the picker since we want the user to select multiple images. The picker will be closed only after the user clicks on the "done" button (see below)
     
-    // Initializing the images array
-    self.images = [[NSMutableArray alloc] init];
+    // Getting the image that the user selected
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"image selected: %@",[image description]);
+    
+    // Adding the selected image to the images array
+    [self.images addObject:image];
 }
+
+//code for text "picker"
+-(void)editTextSegment
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"תכניס טקסט יא מניאק:" delegate:self cancelButtonTitle:@"done" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+    alertTextField.placeholder = @"Enter segment text";
+    [alert show];
+}
+
+//delegation from uialertview
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *segmentText = [[alertView textFieldAtIndex:0] text];
+    NSLog(@"Entered: %@",segmentText);
+    self.currentTextSegmentRemake.text = segmentText;
+}
+
+
 
 @end
