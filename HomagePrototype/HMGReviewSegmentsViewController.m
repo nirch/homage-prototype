@@ -309,8 +309,12 @@
     NSString *segmentText = [[alertView textFieldAtIndex:0] text];
     NSLog(@"Entered: %@",segmentText);
     self.currentTextSegmentRemake.text = segmentText;
+    [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        if (!videoURL) {
+            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+        }
+    }];
+
 }
-
-
 
 @end
