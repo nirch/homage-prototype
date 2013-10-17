@@ -99,7 +99,7 @@
         if ([type isEqualToString:@"video"]) {
             [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
         } else if ([type isEqualToString:@"image"]) {
-            //TODO - code for image picking
+            [self selectImages];
         } else if ([type isEqualToString:@"text"]) {
             //TODO - code from text editing
         } else {
@@ -200,7 +200,8 @@
 //code for image picker
 //====================================================
 
-- (IBAction)selectImages:(id)sender {
+- (void)selectImages
+{
     
     self.imageSelection = YES;
     
