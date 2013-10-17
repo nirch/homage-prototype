@@ -101,7 +101,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
         [sender setSelected:NO];
         [self.captureOutput stopRecording];
 
-        [self.navigationController popViewControllerAnimated:YES];
+        
     }else
     {
 		[sender setSelected:YES];
@@ -180,6 +180,9 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
                                                        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
 	}
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
