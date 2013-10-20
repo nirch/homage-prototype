@@ -890,6 +890,11 @@
 				CLASSPREFIX = Homage;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Homage;
+				TargetAttributes = {
+					F1C8EEC617CF38420093DB0A = {
+						DevelopmentTeam = 56F7YSPHC5;
+					};
+				};
 			};
 			buildConfigurationList = F1C8EEC217CF38420093DB0A /* Build configuration list for PBXProject "HomagePrototype" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1305,6 +1310,7 @@
 		F1C8EF0017CF38420093DB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomagePrototype/HomagePrototype-Prefix.pch";
 				INFOPLIST_FILE = "HomagePrototype/HomagePrototype-Info.plist";
@@ -1316,6 +1322,7 @@
 		F1C8EF0117CF38420093DB0A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HomagePrototype/HomagePrototype-Prefix.pch";
 				INFOPLIST_FILE = "HomagePrototype/HomagePrototype-Info.plist";
