@@ -10,4 +10,9 @@
 
 @implementation HMGVideoSegment
 
+-(NSString *)getSegmentType;
+{
+    return @"video";
+}
+
 @end

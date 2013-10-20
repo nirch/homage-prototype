@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) UIImage *thumbnail;
 
+-(NSString *)getSegmentType;
+
 @end

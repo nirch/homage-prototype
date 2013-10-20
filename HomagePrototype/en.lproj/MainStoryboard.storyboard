@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s17-GV-Dnk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="s17-GV-Dnk">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -120,14 +120,14 @@
                     <navigationItem key="navigationItem" title="review segments" id="aBU-5B-uRb"/>
                     <connections>
                         <outlet property="segmentsCView" destination="y04-0a-HmV" id="iSQ-0b-uqK"/>
-                        <segue destination="20l-hv-5fD" kind="push" identifier="recordSegment" id="e3d-RQ-buX"/>
+                        <segue destination="20l-hv-5fD" kind="push" identifier="recordVideoSegment" id="e3d-RQ-buX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtq-Vv-7zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1341" y="118"/>
         </scene>
-        <!--Record Segment View Conroller-->
+        <!--Record Segment View Conroller - record view controller-->
         <scene sceneID="rMq-St-2Sh">
             <objects>
                 <viewController id="20l-hv-5fD" customClass="HMGRecordSegmentViewConroller" sceneMemberID="viewController">
@@ -162,7 +162,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" id="qML-69-PCu"/>
+                    <navigationItem key="navigationItem" title="record view controller" id="qML-69-PCu"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="previewView" destination="cOF-98-wWj" id="Jid-4r-JG8"/>

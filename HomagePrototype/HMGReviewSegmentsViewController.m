@@ -9,6 +9,7 @@
 #import "HMGReviewSegmentsViewController.h"
 #import "HMGRecordSegmentViewConroller.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "HMGLog.h"
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -16,6 +17,15 @@
 @property (strong,nonatomic) NSArray *segmentsArray;
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 @property (nonatomic) NSInteger selectedSegmentIndex;
+
+@property (nonatomic) BOOL imageSelection;
+@property (nonatomic) UIImagePickerController *imagesPicker;
+@property (nonatomic) UIBarButtonItem *doneButton;
+@property (nonatomic) NSMutableArray *images;
+@property (nonatomic) NSURL *imageVideoUrl;
+@property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
+@property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
+
 
 @end
 
@@ -26,6 +36,7 @@
     [super viewDidLoad];
 	self.segmentsArray = self.templateToDisplay.segments;
     self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
+    self.imageSelection = NO;
 }
 
 
@@ -56,6 +67,7 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
+        segmentCell.segmentType = [segment getSegmentType];
         segmentCell.origSegmentVideo = segment.video;
         segmentCell.segmentName.text = segment.name;
         segmentCell.segmentDescription.text = segment.description;
@@ -63,7 +75,7 @@
         
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
-        [segmentCell.userSegmentRecordButton addTarget:self action:@selector(recordSegment:) forControlEvents:UIControlEventTouchUpInside];
+        [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -80,16 +92,31 @@
     }
 }
 
--(IBAction)recordSegment:(UIButton *)button
+-(IBAction)remakeButtonPushed:(UIButton *)button
 {
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        [self performSegueWithIdentifier:@"recordSegment" sender:segmentCell];
+        NSString *type = segmentCell.segmentType;
+        
+        if ([type isEqualToString:@"video"]) {
+            [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
+        } else if ([type isEqualToString:@"image"]) {
+            self.images = [[NSMutableArray alloc] init];
+            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
+            self.currentImageSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
+            [self selectImages];
+        } else if ([type isEqualToString:@"text"]) {
+            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
+            self.currentTextSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
+            [self editTextSegment];
+        } else {
+            //TODO - add error logging of undefined segment type
+        }
+        
     }
     
 }
-
 
 -(void)playMovieWithURL:(NSURL *)videoURL
 {
@@ -115,7 +142,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 
-    if ([segue.identifier isEqualToString:@"recordSegment"])
+    if ([segue.identifier isEqualToString:@"recordVideoSegment"])
     {
         
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
@@ -175,6 +202,118 @@
     }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+
+}
+
+//code for image picker
+//====================================================
+
+- (void)selectImages
+{
+    
+    self.imageSelection = YES;
+    
+    // Opening the media picker to select the images
+    self.imagesPicker = [self startMediaBrowserFromViewController:self withMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil] usingDelegate:self ];
+}
+
+// Opening the media picker.
+- (UIImagePickerController*)startMediaBrowserFromViewController:(UIViewController*)controller withMediaTypes:(NSArray*)mediaTypes usingDelegate:(id)delegate
+{
+    // Doing some valiadtions: checking whether the image picker is available or not and checking that there are no null values
+    if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == NO)
+        || (delegate == nil)
+        || (controller == nil))
+    {
+        return nil;
+    }
+    
+    // OK, reaching here means that the image picker is available and we can proceed
+    
+    
+    // Create an image picker
+    UIImagePickerController *mediaUI = [[UIImagePickerController alloc] init];
+    mediaUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    mediaUI.mediaTypes = mediaTypes;
+    mediaUI.editing = NO;
+    mediaUI.delegate = delegate;
+    
+    // Display the image picker
+    [controller presentViewController:mediaUI animated:YES completion:nil];
+    
+    return mediaUI;
+}
+
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    // Adding the "done" button only if we are selecting images
+    if (self.imageSelection)
+    {
+        NSLog(@"Inside navigationController ...");
+        
+        if (!self.doneButton)
+        {
+            self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveImagesDone:)];
+        }
+        
+        viewController.navigationItem.rightBarButtonItem = self.doneButton;
+    }
+}
+
+// This method is called when the user clicked on the "done" button. Closing the image picker
+- (IBAction)saveImagesDone:(id)sender
+{
+    NSLog(@"select images done ...");
+    
+    // Dismissing the image picker
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.imageSelection = NO;
+    self.currentImageSegmentRemake.images = [NSArray arrayWithArray:self.images];
+    [self.currentImageSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        if (!videoURL) {
+            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+        }
+    }];
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    //We will save that image, but will not close the picker since we want the user to select multiple images. The picker will be closed only after the user clicks on the "done" button (see below)
+    
+    // Getting the image that the user selected
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"image selected: %@",[image description]);
+    
+    // Adding the selected image to the images array
+    [self.images addObject:image];
+}
+
+//code for text "picker"
+-(void)editTextSegment
+{
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"תכניס טקסט יא מניאק:" delegate:self cancelButtonTitle:@"done" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+    alertTextField.placeholder = @"Enter segment text";
+    [alert show];
+}
+
+//delegation from uialertview
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSString *segmentText = [[alertView textFieldAtIndex:0] text];
+    NSLog(@"Entered: %@",segmentText);
+    self.currentTextSegmentRemake.text = segmentText;
+    [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        if (!videoURL) {
+            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+        }
+    }];
 
 }
 
