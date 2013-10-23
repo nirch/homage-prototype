@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="segmentCell" id="iFP-Zu-8yi" customClass="HMGsegmentCVCell">
-                                        <rect key="frame" x="18" y="64" width="244" height="161"/>
+                                        <rect key="frame" x="18" y="0.0" width="244" height="161"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="244" height="161"/>
@@ -172,10 +172,10 @@
             </objects>
             <point key="canvasLocation" x="1345" y="672"/>
         </scene>
-        <!--Homage View Controller - explore templates-->
+        <!--Explore Templates View Controller - explore templates-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="HomageViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="HMGExploreTemplatesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I1E-3n-DaQ"/>
                         <viewControllerLayoutGuide type="bottom" id="lrO-4f-zQz"/>
@@ -196,8 +196,8 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TemplateCell" id="B75-cN-Rjx" customClass="TemplateCVCell">
-                                        <rect key="frame" x="8" y="64" width="255" height="172"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TemplateCell" id="B75-cN-Rjx" customClass="HMGTemplateCVCell">
+                                        <rect key="frame" x="8" y="0.0" width="255" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="172"/>
@@ -294,10 +294,10 @@
             </objects>
             <point key="canvasLocation" x="481" y="118"/>
         </scene>
-        <!--Template Main View Controller-->
+        <!--Template Detailed View Controller-->
         <scene sceneID="oeV-8i-ute">
             <objects>
-                <viewController id="I5b-4E-MQk" customClass="TemplateMainViewController" sceneMemberID="viewController">
+                <viewController id="I5b-4E-MQk" customClass="HMGTemplateDetailedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F4u-as-Uax"/>
                         <viewControllerLayoutGuide type="bottom" id="XrC-MK-Ouc"/>

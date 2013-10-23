@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Homage. All rights reserved.
 //
 
-#import "HomageViewController.h"
-#import "TemplateMainViewController.h"
-#import "TemplateCVCell.h"
+#import "HMGExploreTemplatesViewController.h"
+#import "HMGTemplateDetailedViewController.h"
+#import "HMGTemplateCVCell.h"
 #import "HMGTemplateIterator.h"
 #import "HMGTemplate.h"
 
-@interface HomageViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface HMGExploreTemplatesViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak,nonatomic) IBOutlet UICollectionView *templateCView;
 @property (strong,nonatomic) NSArray *templatesArray;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation HomageViewController
+@implementation HMGExploreTemplatesViewController
 
 - (void)viewDidLoad
 {
@@ -54,8 +54,8 @@
 
 - (void)updateCell:(UICollectionViewCell *)cell withTemplate:(HMGTemplate *)template
 {
-    if ([cell isKindOfClass: [TemplateCVCell class]]) {
-        TemplateCVCell *templateCell = (TemplateCVCell *) cell;
+    if ([cell isKindOfClass: [HMGTemplateCVCell class]]) {
+        HMGTemplateCVCell *templateCell = (HMGTemplateCVCell *) cell;
         templateCell.templateName.text              = template.name;
         templateCell.templatePreviewImageView.image = template.thumbnail;
         //templateCell.uploaded                     = template.uploadDate;
@@ -76,9 +76,9 @@
 {
     if ([segue.identifier isEqualToString:@"showTemplate"])
     {
-        if ([segue.destinationViewController isKindOfClass:[TemplateMainViewController class]] && [sender isKindOfClass:[TemplateCVCell class]])
+        if ([segue.destinationViewController isKindOfClass:[HMGTemplateDetailedViewController class]] && [sender isKindOfClass:[HMGTemplateCVCell class]])
         {
-            TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
+            HMGTemplateDetailedViewController *destController = (HMGTemplateDetailedViewController *)segue.destinationViewController;
             HMGTemplate *templateToDisplay = self.templatesArray[self.selectedTemplateIndex];
             destController.templateToDisplay = templateToDisplay;
         }

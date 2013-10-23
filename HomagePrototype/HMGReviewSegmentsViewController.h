@@ -18,6 +18,7 @@
 #import "HMGImageSegment.h"
 #import "HMGImageSegmentRemake.h"
 #import "HMGTextSegmentRemake.h"
+#import "HMGLog.h"
 
 
 @interface HMGReviewSegmentsViewController : UIViewController

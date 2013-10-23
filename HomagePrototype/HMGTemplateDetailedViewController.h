@@ -12,8 +12,9 @@
 #import "HMGRemakeCVCell.h"
 #import "HMGReviewSegmentsViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "HMGLog.h"
 
-@interface TemplateMainViewController : UIViewController
+@interface HMGTemplateDetailedViewController : UIViewController
 
 @property (strong,nonatomic) HMGTemplate *templateToDisplay;
 

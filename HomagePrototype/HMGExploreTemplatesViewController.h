@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomageViewController : UIViewController
+@interface HMGExploreTemplatesViewController : UIViewController
 
 @end

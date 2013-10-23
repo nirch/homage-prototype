@@ -26,7 +26,6 @@
 @property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
 @property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
 
-
 @end
 
 @implementation HMGReviewSegmentsViewController
@@ -34,9 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
 	self.segmentsArray = self.templateToDisplay.segments;
     self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
     self.imageSelection = NO;
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 
@@ -45,25 +46,32 @@
  return 1;
  }*/ //if not implemented, this value is set on default to 1
 
+// ===================== definition of segemnts collection view===========================
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
+    HMGLogDebug(@"%s started, will return number of items in section" , __PRETTY_FUNCTION__);
     return [self.segmentsArray count];
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     UICollectionViewCell *cell = [self.segmentsCView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
                                                                         forIndexPath:indexPath];
     HMGSegment *segment = self.segmentsArray[indexPath.item];
     [self updateCell:cell withSegment:segment withIndex:indexPath.item];
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     return cell;
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment withIndex:(NSInteger)index
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segment.thumbnail;
@@ -78,26 +86,44 @@
         [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+    
 }
+// ========================= definition of segments collection view - end ===============================
 
+
+//this action is called if the user hit the original segments play button
 - (IBAction)playSegmentVideo:(UIButton *)button
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
-    //Acccess the cell
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         NSURL *videoURL = segmentCell.origSegmentVideo;
+        HMGLogInfo(@"user chose to play video segment: %@" , segmentCell.segmentName.text);
         [self playMovieWithURL:videoURL];
     }
 }
 
+-(void)playMovieWithURL:(NSURL *)videoURL
+{
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+}
+
+//this action is called when the user decided to make a remake of a specific segment
 -(IBAction)remakeButtonPushed:(UIButton *)button
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         NSString *type = segmentCell.segmentType;
+        
+        HMGLogNotice(@"user selected to remake segment:%@" , segmentCell.segmentName.text);
         
         if ([type isEqualToString:@"video"]) {
             [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
@@ -111,58 +137,69 @@
             self.currentTextSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self editTextSegment];
         } else {
-            //TODO - add error logging of undefined segment type
+            HMGLogError(@"segment is of unknown type: %@ !!" , segmentCell.segmentType);
         }
-        
     }
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     
 }
 
--(void)playMovieWithURL:(NSURL *)videoURL
-{
-    MPMoviePlayerViewController *moviePlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-    [self presentMoviePlayerViewControllerAnimated:moviePlayerViewController];
-}
 
+//convert from cmtime structure to MIN:SEC format
 -(NSString *)formatToTimeString:(CMTime)duration
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     NSUInteger dTotalSeconds = CMTimeGetSeconds(duration);
     NSUInteger dMinutes = floor(dTotalSeconds % 3600 / 60);
     NSUInteger dSeconds = floor(dTotalSeconds % 3600 % 60);
     NSString *videoDurationText = [NSString stringWithFormat:@"%02i:%02i", dMinutes, dSeconds];
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     return videoDurationText;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    HMGLogWarning(@"received a memory warning!");
     // Dispose of any resources that can be recreated.
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
+//this method will be called if the user chose to remake a video segment
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     if ([segue.identifier isEqualToString:@"recordVideoSegment"])
     {
-        
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
         //UIButton *button = (UIButton *)sender;
         HMGsegmentCVCell *cell = (HMGsegmentCVCell *)sender;
         NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:cell];
         NSInteger index = indexPath.item;
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[index];
-        destController.videoSegmentRemake = segmentRemake;
+        HMGLogInfo(@"user selected to segue to view controller: %@ and to remake segment: %@. index of segment in remake project is: %d" , destController.class , segmentRemake.segment.name , index );
+        destController.videoSegmentRemake = (HMGVideoSegmentRemake *)segmentRemake;
     }
+    
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+
 }
 
+//this action will be called when the user wants to render the final product from the remakes
 - (IBAction)renderFinal:(id)sender {
-    //place holder for nir to render final cut
     
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
         [self videoProcessDidFinish:videoURL withError:error];
     }];
+    HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
+
 }
 
+
+//closure block for "renderVideoAsynchronouslyWithCompletionHandler"
 - (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
@@ -185,7 +222,6 @@
                     else
                     {
                         HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
-                        
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         [alert show];
                     }
@@ -205,21 +241,23 @@
 
 }
 
-//code for image picker
-//====================================================
+//========================================code for image picker ============================
 
 - (void)selectImages
 {
     
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     self.imageSelection = YES;
     
     // Opening the media picker to select the images
-    self.imagesPicker = [self startMediaBrowserFromViewController:self withMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil] usingDelegate:self ];
+    self.imagesPicker = [self startMediaBrowserFromViewController:self withMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil] usingDelegate:self];
 }
 
 // Opening the media picker.
 - (UIImagePickerController*)startMediaBrowserFromViewController:(UIViewController*)controller withMediaTypes:(NSArray*)mediaTypes usingDelegate:(id)delegate
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     // Doing some valiadtions: checking whether the image picker is available or not and checking that there are no null values
     if (([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] == NO)
         || (delegate == nil)
@@ -241,6 +279,7 @@
     // Display the image picker
     [controller presentViewController:mediaUI animated:YES completion:nil];
     
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     return mediaUI;
 }
 
@@ -249,10 +288,12 @@
       willShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     // Adding the "done" button only if we are selecting images
     if (self.imageSelection)
     {
-        NSLog(@"Inside navigationController ...");
+        HMGLogDebug(@"Inside navigationController ...");
         
         if (!self.doneButton)
         {
@@ -266,7 +307,7 @@
 // This method is called when the user clicked on the "done" button. Closing the image picker
 - (IBAction)saveImagesDone:(id)sender
 {
-    NSLog(@"select images done ...");
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     // Dismissing the image picker
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -281,11 +322,14 @@
             }
         }];
     }
+    
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     //We will save that image, but will not close the picker since we want the user to select multiple images. The picker will be closed only after the user clicks on the "done" button (see below)
     
     // Getting the image that the user selected
@@ -294,21 +338,31 @@
     
     // Adding the selected image to the images array
     [self.images addObject:image];
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
-//code for text "picker"
+// ================================ end of code for image picker =======================================
+
+//================================= code for text input ================================================
+
+//this function is called when the user wants to remake a text segment
 -(void)editTextSegment
 {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"תכניס טקסט יא מניאק:" delegate:self cancelButtonTitle:@"done" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [alert textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeNumberPad;
     alertTextField.placeholder = @"Enter segment text";
     [alert show];
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 //delegation from uialertview
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     NSString *segmentText = [[alertView textFieldAtIndex:0] text];
     NSLog(@"Entered: %@",segmentText);
     self.currentTextSegmentRemake.text = segmentText;
@@ -317,7 +371,8 @@
             HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
         }
     }];
-
+    
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 @end
