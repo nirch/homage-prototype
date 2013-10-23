@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260683A51810350500D390DA /* HMGReviewSegmentsViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683A41810350500D390DA /* HMGReviewSegmentsViewControllerTest.m */; };
 		262A2C8E17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */; };
 		262A2C8F17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */; };
 		262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */; };
@@ -255,6 +256,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260683A31810350500D390DA /* HMGReviewSegmentsViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGReviewSegmentsViewControllerTest.h; sourceTree = "<group>"; };
+		260683A41810350500D390DA /* HMGReviewSegmentsViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGReviewSegmentsViewControllerTest.m; sourceTree = "<group>"; };
 		262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.05.22 PM.png"; sourceTree = "<group>"; };
 		262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.09.25 PM.png"; sourceTree = "<group>"; };
 		262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.11.28 PM.png"; sourceTree = "<group>"; };
@@ -813,6 +816,8 @@
 				F1D42E8E17D4915F00802D7C /* Supporting Files */,
 				F1687D9017EEEE43009214FA /* RemakeProjectTests.h */,
 				F1687D9117EEEE43009214FA /* RemakeProjectTests.m */,
+				260683A31810350500D390DA /* HMGReviewSegmentsViewControllerTest.h */,
+				260683A41810350500D390DA /* HMGReviewSegmentsViewControllerTest.m */,
 			);
 			path = HomagePrototypeLogicTests;
 			sourceTree = "<group>";
@@ -1185,6 +1190,7 @@
 				F1F04B0C17E488CF00720C5C /* HMGImageSegment.m in Sources */,
 				F1F04B0D17E488CF00720C5C /* HMGTextSegment.m in Sources */,
 				F1F04B0E17E488CF00720C5C /* HMGFixedSegment.m in Sources */,
+				260683A51810350500D390DA /* HMGReviewSegmentsViewControllerTest.m in Sources */,
 				F19123E617DE813F00DE85DB /* CHCSVParser.m in Sources */,
 				F19123E517DE812900DE85DB /* HMGTemplateCSVLoader.m in Sources */,
 				F1D42E9D17D4CE0800802D7C /* HMGTemplate.m in Sources */,
