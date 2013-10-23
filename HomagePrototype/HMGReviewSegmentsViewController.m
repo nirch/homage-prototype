@@ -273,11 +273,14 @@
     
     self.imageSelection = NO;
     self.currentImageSegmentRemake.images = [NSArray arrayWithArray:self.images];
-    [self.currentImageSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-        if (!videoURL) {
-            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
-        }
-    }];
+    
+    if (self.currentImageSegmentRemake.images.count > 0) {
+        [self.currentImageSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+            if (!videoURL) {
+                HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+            }
+        }];
+    }
 }
 
 
