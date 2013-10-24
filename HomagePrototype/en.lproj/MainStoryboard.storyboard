@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="segmentCell" id="iFP-Zu-8yi" customClass="HMGsegmentCVCell">
-                                        <rect key="frame" x="18" y="0.0" width="244" height="161"/>
+                                        <rect key="frame" x="18" y="64" width="244" height="161"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="244" height="161"/>
@@ -197,7 +197,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TemplateCell" id="B75-cN-Rjx" customClass="HMGTemplateCVCell">
-                                        <rect key="frame" x="8" y="0.0" width="255" height="172"/>
+                                        <rect key="frame" x="8" y="64" width="255" height="172"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="172"/>
@@ -263,7 +263,7 @@
                                             <constraint firstItem="LTY-4k-kGS" firstAttribute="bottom" secondItem="B75-cN-Rjx" secondAttribute="bottom" id="yz9-Ec-LlM"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="lastUpdated" destination="gcd-GX-exn" id="cp1-k2-Bf3"/>
+                                            <outlet property="difficulty" destination="gcd-GX-exn" id="HnO-n8-Fby"/>
                                             <outlet property="numOfRemakes" destination="99H-Tr-jeG" id="Xtf-Gm-zpu"/>
                                             <outlet property="templateName" destination="EGi-Nz-MOX" id="e12-ie-9qc"/>
                                             <outlet property="templatePreviewImageView" destination="1di-AK-5Iq" id="tKD-WU-Rzd"/>

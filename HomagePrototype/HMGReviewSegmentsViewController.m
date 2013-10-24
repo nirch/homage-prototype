@@ -118,6 +118,7 @@
 -(IBAction)remakeButtonPushed:(UIButton *)button
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
@@ -140,10 +141,10 @@
             HMGLogError(@"segment is of unknown type: %@ !!" , segmentCell.segmentType);
         }
     }
+    
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     
 }
-
 
 //convert from cmtime structure to MIN:SEC format
 -(NSString *)formatToTimeString:(CMTime)duration
@@ -216,13 +217,13 @@
                     if (error)
                     {
                         HMGLogError([error localizedDescription]);
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Video Saving Failed"delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:NSLocalizedString(@"VIDEO_SAVING_FAILED", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                         [alert show];
                     }
                     else
                     {
                         HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Video Saved" message:@"Saved To Photo Album" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                         [alert show];
                     }
                 });
@@ -232,8 +233,8 @@
     else
     {
         HMGLogError([error localizedDescription]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
     }
     
@@ -297,7 +298,7 @@
         
         if (!self.doneButton)
         {
-            self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(saveImagesDone:)];
+            self.doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DONE", nil) style:UIBarButtonItemStyleDone target:self action:@selector(saveImagesDone:)];
         }
         
         viewController.navigationItem.rightBarButtonItem = self.doneButton;
@@ -334,7 +335,7 @@
     
     // Getting the image that the user selected
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    NSLog(@"image selected: %@",[image description]);
+    HMGLogInfo(@"image selected: %@",[image description]);
     
     // Adding the selected image to the images array
     [self.images addObject:image];
@@ -349,11 +350,11 @@
 -(void)editTextSegment
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"תכניס טקסט יא מניאק:" delegate:self cancelButtonTitle:@"done" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HELLO", nil) message:NSLocalizedString(@"ENTER_TEXT", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"DONE", nil) otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [alert textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeNumberPad;
-    alertTextField.placeholder = @"Enter segment text";
+    alertTextField.placeholder = NSLocalizedString(@"ENTER_SEGMENT_TEXT", nil);
     [alert show];
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
@@ -364,7 +365,7 @@
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     NSString *segmentText = [[alertView textFieldAtIndex:0] text];
-    NSLog(@"Entered: %@",segmentText);
+    HMGLogInfo(@"user entered text: %@" , segmentText);
     self.currentTextSegmentRemake.text = segmentText;
     [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
         if (!videoURL) {

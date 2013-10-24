@@ -58,8 +58,9 @@
         HMGTemplateCVCell *templateCell = (HMGTemplateCVCell *) cell;
         templateCell.templateName.text              = template.name;
         templateCell.templatePreviewImageView.image = template.thumbnail;
+        templateCell.difficulty.text = template.levelDescription;
         //templateCell.uploaded                     = template.uploadDate;
-        templateCell.numOfRemakes.text              = [NSString stringWithFormat:@"#remakes: %d" , [template.remakes count]];
+        templateCell.numOfRemakes.text              = [NSString stringWithFormat:NSLocalizedString(@"NUM_OF_REMAKES", nil), [template.remakes count]];
         //cell.totalViews                           = template.totalViews;
     }
         

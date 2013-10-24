@@ -20,6 +20,7 @@ typedef enum {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;
 @property (nonatomic) HMGTemplateLevel level;
+@property (strong,nonatomic, readonly) NSString *levelDescription;
 @property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) NSArray *remakes;
 @property (strong, nonatomic) NSArray *segments;

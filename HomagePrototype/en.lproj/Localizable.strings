@@ -1,4 +1,34 @@
 /* This string is used only for testing the localizable file */
 "TEST_LOCAL" = "Testing localization";
+
 /* Label showing the number of remakes in the templates screen */
 "NUM_OF_REMAKES" = "#remakes: %d";
+
+"ERROR" = "Error";
+
+//indicating that the video saving process had failed */
+"VIDEO_SAVING_FAILED" = "Video saving failed";
+
+"OK" = "OK";
+
+"VIDEO_SAVED" = "Video Saved;";
+
+/* tell the user that the pictures was saved to the photo album */
+"SAVED_TO_PHOTO_ALBUM" = "Saved To Photo Album";
+
+"DONE" = "done";
+
+"HELLO" = "Hello";
+
+/*this message will appear on the top of a pop up view */
+"ENTER_TEXT" = "Please enter text";
+
+/*this message will appear inside the text field itself as a place holder */
+"ENTER_SEGMENT_TEXT" = "Enter segment text";
+
+/*levels of difficulty */
+"TEMPLATE_EASY"   = "Easy";
+"TENPLATE_MEDIUM" = "Medium";
+"TEMPLATE_HARD"   = "Hard";
+
+
