@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260683AA1819144500D390DA /* TemplateModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683A91819144500D390DA /* TemplateModelTests.m */; };
+		260683AB181916E000D390DA /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
 		262A2C8E17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */; };
 		262A2C8F17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */; };
 		262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */; };
@@ -255,6 +257,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260683A91819144500D390DA /* TemplateModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateModelTests.m; sourceTree = "<group>"; };
 		262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.05.22 PM.png"; sourceTree = "<group>"; };
 		262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.09.25 PM.png"; sourceTree = "<group>"; };
 		262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.11.28 PM.png"; sourceTree = "<group>"; };
@@ -752,6 +755,7 @@
 				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
 				F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */,
 				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
+				260683A91819144500D390DA /* TemplateModelTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1157,6 +1161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260683AB181916E000D390DA /* HMGLog.m in Sources */,
 				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
@@ -1164,6 +1169,7 @@
 				F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */,
 				F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
+				260683AA1819144500D390DA /* TemplateModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
