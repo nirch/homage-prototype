@@ -61,6 +61,7 @@
 		F10DBE4617FC5375000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
 		F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
 		F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */; };
+		F1151F24181E6E1600918A8B /* TemplatesViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -316,6 +317,7 @@
 		65B7CB72180198800038CF25 /* HMGFileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGFileManagerTest.m; sourceTree = "<group>"; };
 		F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Images.mp4; sourceTree = "<group>"; };
 		F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
+		F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewControllerTests.m; sourceTree = "<group>"; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
@@ -752,6 +754,7 @@
 				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
 				F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */,
 				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
+				F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1159,6 +1162,7 @@
 			files = (
 				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
+				F1151F24181E6E1600918A8B /* TemplatesViewControllerTests.m in Sources */,
 				F1C57B8017F8807100158EC3 /* HMGAVUtils.m in Sources */,
 				F1C57B8317F882CA00158EC3 /* AVUtilsTests.m in Sources */,
 				F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */,
