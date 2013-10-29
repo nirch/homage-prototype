@@ -14,6 +14,8 @@
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
+
+
 @property (strong,nonatomic) NSArray *segmentsArray;
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 @property (nonatomic) NSInteger selectedSegmentIndex;
@@ -25,6 +27,7 @@
 @property (nonatomic) NSURL *imageVideoUrl;
 @property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
 @property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
+@property (nonatomic) UIAlertView *textFieldAlertView;
 
 @end
 
@@ -52,7 +55,23 @@
      numberOfItemsInSection:(NSInteger)section
 {
     HMGLogDebug(@"%s started, will return number of items in section" , __PRETTY_FUNCTION__);
-    return [self.segmentsArray count];
+    //case for main collection
+    if (collectionView.tag == 10) {
+        HMGLogDebug(@"main collection view. tag is %d" , collectionView.tag);
+        HMGLogDebug(@"number of items in section is: %d" , self.remakeProject.segmentRemakes.count);
+        return [self.remakeProject.segmentRemakes count];
+    } else if (collectionView.tag == 20) {
+        HMGLogDebug(@"main collection view. tag is %d" , collectionView.tag);
+        UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
+        NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
+        //return [segmentRemake.takes count];
+        return 5;
+    } else {
+        HMGLogError(@"collectionView tag undefined: %d" , collectionView.tag);
+        return 0;
+    }
+    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -60,12 +79,41 @@
 {
     
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-    UICollectionViewCell *cell = [self.segmentsCView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
-                                                                        forIndexPath:indexPath];
-    HMGSegment *segment = self.segmentsArray[indexPath.item];
-    [self updateCell:cell withSegment:segment withIndex:indexPath.item];
-    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
-    return cell;
+    
+    //case for the main collection view. tag set hardcoded to 10
+    if (collectionView.tag == 10) {
+        HMGLogDebug(@"main collection view. tag is 10");
+        HMGsegmentCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
+                                                                                   forIndexPath:indexPath];
+        HMGSegment *segment = [self.remakeProject.segmentRemakes[indexPath.item] segment];
+        
+        //setting data source and delegate for secondary collection view
+        cell.singleSegmentTakesCView.delegate = self;
+        cell.singleSegmentTakesCView.dataSource = self;
+        cell.singleSegmentTakesCView.tag = 20;
+        
+        [self updateCell:cell withSegment:segment withIndex:indexPath.item];
+        HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+        return cell;
+  
+    //case for specific cell film strip of takes. tag set hardcoded to 20;
+    } else if (collectionView.tag == 20) {
+        HMGLogDebug(@"secondary takes collection view. tag is 20");
+        HMGtakeCVCell *takeCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"takeCell" forIndexPath:indexPath];
+        UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
+        NSIndexPath *segmentRemakeIndexPath = [collectionView indexPathForCell:parentSegmentCVCell];
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[segmentRemakeIndexPath.item];
+        
+        //HMGTake *take = segmentRemake.takes[indexPath.item];
+        HMGTake *take = [[HMGTake alloc] init];
+        [self updateCell:takeCell withTake:take];
+        HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+        return takeCell;
+    } else {
+        HMGLogError(@"collection view tag is unknown: %d" , collectionView.tag);
+        return nil;
+    }
+    
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment withIndex:(NSInteger)index
@@ -89,6 +137,25 @@
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     
 }
+
+- (void)updateCell:(UICollectionViewCell *)cell withTake:(HMGTake *)take
+{
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    
+    if ([cell isKindOfClass: [HMGtakeCVCell class]])
+    {
+        HMGtakeCVCell *takeCell = (HMGtakeCVCell *) cell;
+        //TODO - remove follwing two lines - testing;
+        NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
+        //takeCell.thumbnail.image = take.thumbnail;
+        takeCell.thumbnail.image = [UIImage imageWithContentsOfFile:imageFilePath];
+        
+    }
+    
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+    
+}
+
 // ========================= definition of segments collection view - end ===============================
 
 
@@ -350,12 +417,13 @@
 -(void)editTextSegment
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HELLO", nil) message:NSLocalizedString(@"ENTER_TEXT", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"DONE", nil) otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    UITextField * alertTextField = [alert textFieldAtIndex:0];
-    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+    self.textFieldAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HELLO", nil) message:NSLocalizedString(@"ENTER_TEXT", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"DONE", nil) otherButtonTitles:nil];
+    
+    self.textFieldAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [self.textFieldAlertView textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeDefault;
     alertTextField.placeholder = NSLocalizedString(@"ENTER_SEGMENT_TEXT", nil);
-    [alert show];
+    [self.textFieldAlertView show];
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
@@ -364,14 +432,17 @@
     
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
-    NSString *segmentText = [[alertView textFieldAtIndex:0] text];
-    HMGLogInfo(@"user entered text: %@" , segmentText);
-    self.currentTextSegmentRemake.text = segmentText;
-    [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-        if (!videoURL) {
-            HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
-        }
-    }];
+    if ( self.textFieldAlertView == alertView )
+    {
+        NSString *segmentText = [[alertView textFieldAtIndex:0] text];
+        HMGLogInfo(@"user entered text: %@" , segmentText);
+        self.currentTextSegmentRemake.text = segmentText;
+        [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+            if (!videoURL) {
+                HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
+            }
+        }];
+    }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
