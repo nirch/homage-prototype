@@ -206,7 +206,7 @@
         <!--Explore Templates View Controller - explore templates-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="HMGExploreTemplatesViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TemplatesViewController" id="2" customClass="HMGExploreTemplatesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I1E-3n-DaQ"/>
                         <viewControllerLayoutGuide type="bottom" id="lrO-4f-zQz"/>

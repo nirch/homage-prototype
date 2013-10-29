@@ -10,4 +10,6 @@
 
 @interface HMGExploreTemplatesViewController : UIViewController
 
+@property (strong,nonatomic) NSArray *templatesArray;
+
 @end
