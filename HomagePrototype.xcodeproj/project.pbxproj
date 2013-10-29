@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260683AA1819144500D390DA /* TemplateModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683A91819144500D390DA /* TemplateModelTests.m */; };
+		260683AB181916E000D390DA /* HMGLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A1EED917F85BEB008FDE54 /* HMGLog.m */; };
+		260683AE181D5E2600D390DA /* HMGTake.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683AD181D5E2600D390DA /* HMGTake.m */; };
+		260683B1181D67F300D390DA /* HMGtakeCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683B0181D67F300D390DA /* HMGtakeCVCell.m */; };
+		260683B2181FE05600D390DA /* HMGTake.m in Sources */ = {isa = PBXBuildFile; fileRef = 260683AD181D5E2600D390DA /* HMGTake.m */; };
 		262A2C8E17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */; };
 		262A2C8F17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */; };
 		262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = 262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */; };
@@ -256,6 +261,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260683A91819144500D390DA /* TemplateModelTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplateModelTests.m; sourceTree = "<group>"; };
+		260683AC181D5E2600D390DA /* HMGTake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMGTake.h; path = Model/HMGTake.h; sourceTree = "<group>"; };
+		260683AD181D5E2600D390DA /* HMGTake.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMGTake.m; path = Model/HMGTake.m; sourceTree = "<group>"; };
+		260683AF181D67F300D390DA /* HMGtakeCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGtakeCVCell.h; sourceTree = "<group>"; };
+		260683B0181D67F300D390DA /* HMGtakeCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGtakeCVCell.m; sourceTree = "<group>"; };
 		262A2C8B17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.05.22 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.05.22 PM.png"; sourceTree = "<group>"; };
 		262A2C8C17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.09.25 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.09.25 PM.png"; sourceTree = "<group>"; };
 		262A2C8D17DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2013-08-26 at 9.11.28 PM.png"; sourceTree = "<group>"; };
@@ -688,6 +698,8 @@
 				26508A4217EF620400728528 /* HMGsegmentCVCell.m */,
 				26508A2617EF274100728528 /* HMGReviewSegmentsViewController.h */,
 				26508A2717EF274100728528 /* HMGReviewSegmentsViewController.m */,
+				260683AF181D67F300D390DA /* HMGtakeCVCell.h */,
+				260683B0181D67F300D390DA /* HMGtakeCVCell.m */,
 				2672147217D2261500B89FB0 /* HMGTemplateDetailedViewController.h */,
 				2672147317D2261500B89FB0 /* HMGTemplateDetailedViewController.m */,
 				F1C8EEE517CF38420093DB0A /* HMGExploreTemplatesViewController.h */,
@@ -774,6 +786,8 @@
 			children = (
 				F19123CE17DE0C9300DE85DB /* TemplateLoader */,
 				F1C8EF0517CF3A230093DB0A /* HMGTemplate.h */,
+				260683AC181D5E2600D390DA /* HMGTake.h */,
+				260683AD181D5E2600D390DA /* HMGTake.m */,
 				F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */,
 				F1C8EF0917CF3ADC0093DB0A /* HMGRemake.h */,
 				F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */,
@@ -1127,6 +1141,7 @@
 			files = (
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
+				260683B1181D67F300D390DA /* HMGtakeCVCell.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HMGExploreTemplatesViewController.m in Sources */,
 				2672147417D2261500B89FB0 /* HMGTemplateDetailedViewController.m in Sources */,
 				267607EA17D7542200FEC5C3 /* HMGTemplateCVCell.m in Sources */,
@@ -1147,6 +1162,7 @@
 				F165B7F717EED1DE00647AF7 /* HMGRemakeProject.m in Sources */,
 				6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */,
 				F165B7FA17EED1FE00647AF7 /* HMGSegmentRemake.m in Sources */,
+				260683AE181D5E2600D390DA /* HMGTake.m in Sources */,
 				F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */,
 				F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */,
 				F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */,
@@ -1160,6 +1176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260683AB181916E000D390DA /* HMGLog.m in Sources */,
 				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
 				F1151F24181E6E1600918A8B /* TemplatesViewControllerTests.m in Sources */,
@@ -1168,6 +1185,7 @@
 				F1C57B9817FACB4400158EC3 /* VideoSegmentRemakeTests.m in Sources */,
 				F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */,
 				F1C8EEFC17CF38420093DB0A /* HomagePrototypeTests.m in Sources */,
+				260683AA1819144500D390DA /* TemplateModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1175,6 +1193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260683B2181FE05600D390DA /* HMGTake.m in Sources */,
 				F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */,
 				65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */,
 				F1A1EEDB17F85C59008FDE54 /* HMGLog.m in Sources */,

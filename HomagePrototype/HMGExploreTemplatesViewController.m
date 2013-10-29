@@ -15,7 +15,6 @@
 @interface HMGExploreTemplatesViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak,nonatomic) IBOutlet UICollectionView *templateCView;
-@property (strong,nonatomic) NSArray *templatesArray;
 @property (strong,nonatomic) HMGTemplateIterator *templateIterator;
 @property (nonatomic) NSInteger selectedTemplateIndex;
 

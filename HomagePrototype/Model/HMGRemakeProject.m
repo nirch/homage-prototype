@@ -16,6 +16,7 @@
 #import "HMGTextSegmentRemake.h"
 #import "HMGAVUtils.h"
 #import "HMGLog.h"
+#import "HMGTake.h"
 
 @implementation HMGRemakeProject
 
@@ -77,7 +78,8 @@
         if (segmentRemake.takes.count > 0)
         {
             // Assigning the segment's selected take
-            NSURL *segmentSelectedVideo = segmentRemake.takes[segmentRemake.selectedTakeIndex];
+            HMGTake *segmentSelectedTake = segmentRemake.takes[segmentRemake.selectedTakeIndex];
+            NSURL *segmentSelectedVideo = segmentSelectedTake.videoURL;
             [videosToMerge addObject:segmentSelectedVideo];
         }
         else

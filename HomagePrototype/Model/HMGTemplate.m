@@ -25,7 +25,7 @@
             return NSLocalizedString(@"TEMPLATE_HARD",nil);
             break;
         default:
-            HMGLogWarning(@"this template has a non defined level: %@" , self.level);
+            HMGLogWarning(@"this template has a non defined level: %d" , self.level);
             return nil;
             break;
     }

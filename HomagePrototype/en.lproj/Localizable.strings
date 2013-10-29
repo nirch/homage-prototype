@@ -28,7 +28,7 @@
 
 /*levels of difficulty */
 "TEMPLATE_EASY"   = "Easy";
-"TENPLATE_MEDIUM" = "Medium";
+"TEMPLATE_MEDIUM" = "Medium";
 "TEMPLATE_HARD"   = "Hard";
 
 
