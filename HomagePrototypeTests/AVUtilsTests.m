@@ -9,6 +9,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "HMGAVUtils.h"
 #import "AGWaitForAsyncTestHelper.h"
+#import "HMGFileManager.h"
 
 @interface AVUtilsTests : SenTestCase
 
@@ -589,10 +590,30 @@ static NSString * const backgroundImageName = @"wood.jpg";
         textJobDone = YES;
     }];
 
-    
     WAIT_WHILE(!(imagesJobDone && textJobDone), 3);
 }
 
+- (void)testImageFromVideoNoNil
+{
+    UIImage *image = [HMGAVUtils imageForVideo:self.video1 onTime:CMTimeMake(25, 1000)];
+    NSLog(@"Image height = %.2f; Image width = %.2f", image.size.height, image.size.width);
+    STAssertNotNil(image, @"image should not be nil");
+}
+
+- (void)testImageFromVideoSaveToFileSystem
+{
+    UIImage *image = [HMGAVUtils imageForVideo:self.video1 onTime:CMTimeMake(25, 1000)];
+
+    // Saving the image to the path
+    NSURL *jpgFilePath = [HMGFileManager uniqueUrlWithPrefix:@"Test" ofType:@"jpg"];
+    [UIImageJPEGRepresentation(image, 1.0) writeToFile:jpgFilePath.path atomically:YES];
+    
+    // Loading the image
+    UIImage *loadedImage = [UIImage imageWithContentsOfFile:jpgFilePath.path];
+    STAssertNotNil(loadedImage, @"loaded image should not be nil");
+    
+    [self.resourcesToDelete addObject:jpgFilePath];
+}
 
 
 @end
