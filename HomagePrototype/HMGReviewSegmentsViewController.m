@@ -25,6 +25,7 @@
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (nonatomic) NSMutableArray *images;
 @property (nonatomic) NSURL *imageVideoUrl;
+
 @property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
 @property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
 @property (nonatomic) UIAlertView *textFieldAlertView;
@@ -65,8 +66,7 @@
         UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
         NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
-        //return [segmentRemake.takes count];
-        return 5;
+        return [segmentRemake.takes count];
     } else {
         HMGLogError(@"collectionView tag undefined: %d" , collectionView.tag);
         return 0;
@@ -101,11 +101,11 @@
         HMGLogDebug(@"secondary takes collection view. tag is 20");
         HMGtakeCVCell *takeCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"takeCell" forIndexPath:indexPath];
         UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
-        NSIndexPath *segmentRemakeIndexPath = [collectionView indexPathForCell:parentSegmentCVCell];
+        NSIndexPath *segmentRemakeIndexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[segmentRemakeIndexPath.item];
         
-        //HMGTake *take = segmentRemake.takes[indexPath.item];
-        HMGTake *take = [[HMGTake alloc] init];
+        HMGTake *take = segmentRemake.takes[indexPath.item];
+        //HMGTake *take = [[HMGTake alloc] init];
         [self updateCell:takeCell withTake:take];
         HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
         return takeCell;
@@ -146,10 +146,7 @@
     {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *) cell;
         //TODO - remove follwing two lines - testing;
-        NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
-        //takeCell.thumbnail.image = take.thumbnail;
-        takeCell.thumbnail.image = [UIImage imageWithContentsOfFile:imageFilePath];
-        
+        takeCell.thumbnail.image = take.thumbnail;
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
@@ -388,6 +385,25 @@
             if (!videoURL) {
                 HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
             }
+            
+            //[self.view setNeedsDisplay];
+            NSLog(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
+            for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
+                HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
+                NSLog(@"iterating through single cells");
+                [segmentCell.singleSegmentTakesCView reloadData];
+            }
+            
+            /*[self.segmentsCView reloadData];
+            
+            for(int j=0;j<[self.segmentsCView numberOfItemsInSection:0];j++) {
+                //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:0];
+                UICollectionViewCell *cell = [self.segmentsCView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:0]];
+                NSLog(@"iterating through single cells");
+                //[cell.singleSegmentTakesCView reloadData];
+            }*/
+            
+            
         }];
     }
     
