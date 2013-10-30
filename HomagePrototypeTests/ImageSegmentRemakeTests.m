@@ -10,6 +10,7 @@
 #import "HMGImageSegmentRemake.h"
 #import "AGWaitForAsyncTestHelper.h"
 #import "HMGImageSegment.h"
+#import "HMGTake.h"
 
 @interface ImageSegmentRemakeTests : SenTestCase
 
@@ -86,6 +87,11 @@ static NSString * const image3Name = @"falling.PNG";
         
         STAssertTrue(self.imageSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.imageSegmentRemake.selectedTakeIndex);
         
+        // Testing that the takes object is expected
+        HMGTake *take = self.imageSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
+        
         jobDone = YES;
     }];
     
@@ -114,6 +120,11 @@ static NSString * const image3Name = @"falling.PNG";
         STAssertTrue(self.imageSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.imageSegmentRemake.takes.count);
         
         STAssertTrue(self.imageSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.imageSegmentRemake.selectedTakeIndex);
+        
+        // Testing that the takes object is expected
+        HMGTake *take = self.imageSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
         
         jobDone = YES;
     }];

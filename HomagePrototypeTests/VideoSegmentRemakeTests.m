@@ -11,6 +11,7 @@
 #import "HMGVideoSegment.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AGWaitForAsyncTestHelper.h"
+#import "HMGTake.h"
 
 @interface VideoSegmentRemakeTests : SenTestCase
 
@@ -97,6 +98,11 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
+        // Testing that the takes object is expected
+        HMGTake *take = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
+        
         // This will release the dispatch_group_wait
         dispatch_group_leave(dispatchGroup);
     }];
@@ -134,6 +140,11 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        // Testing that the takes object is expected
+        HMGTake *take = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
         
         // This will release the dispatch_group_wait
         dispatch_group_leave(dispatchGroup);
@@ -173,6 +184,11 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
+        // Testing that the takes object is expected
+        HMGTake *take = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
+
         jobDone = YES;
     }];
     
@@ -207,6 +223,11 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
+        // Testing that the takes object is expected
+        HMGTake *take = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
+
         jobDone = YES;
     }];
     
@@ -237,6 +258,14 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
         
+        // Testing that both takes object is as expected
+        HMGTake *take1 = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take1.videoURL, nil);
+        STAssertNotNil(take1.thumbnail, nil);
+        HMGTake *take2 = self.videoSegmentRemake.takes[1];
+        STAssertNotNil(take2.videoURL, nil);
+        STAssertNotNil(take2.thumbnail, nil);
+
         jobDone = YES;
     }];
     
@@ -268,6 +297,11 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         STAssertTrue(self.videoSegmentRemake.takes.count == 1, @"The count of takes should be 1, but it is %d", self.videoSegmentRemake.takes.count);
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+       
+        // Testing that the takes object is expected
+        HMGTake *take = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take.videoURL, nil);
+        STAssertNotNil(take.thumbnail, nil);
         
         jobDone = YES;
     }];
@@ -298,6 +332,14 @@ static NSString * const tikimTextVideoName = @"Tikim_Text.mp4";
         STAssertTrue(self.videoSegmentRemake.takes.count == 2, @"The count of takes should be 2, but it is %d", self.videoSegmentRemake.takes.count);
         
         STAssertTrue(self.videoSegmentRemake.selectedTakeIndex == 0, @"The selected takes index should be 0, but it is %d", self.videoSegmentRemake.selectedTakeIndex);
+        
+        // Testing that both takes object is as expected
+        HMGTake *take1 = self.videoSegmentRemake.takes[0];
+        STAssertNotNil(take1.videoURL, nil);
+        STAssertNotNil(take1.thumbnail, nil);
+        HMGTake *take2 = self.videoSegmentRemake.takes[1];
+        STAssertNotNil(take2.videoURL, nil);
+        STAssertNotNil(take2.thumbnail, nil);
         
         jobDone = YES;
     }];

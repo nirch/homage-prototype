@@ -10,6 +10,7 @@
 #import "HMGSegmentRemakeProtectedMethods.h"
 #import "HMGLog.h"
 #import "HMGTake.h"
+#import "HMGAVUtils.h"
 
 @interface HMGSegmentRemake()
 
@@ -100,11 +101,11 @@
 - (void)addVideoTake:(NSURL *)videoURL
 {
     HMGTake *take = [[HMGTake alloc] init];
-    take.videoURL = videoURL;
-    //TODO - pic is now hardcoded. need to generate the thumbnail from the url
     
-    NSString *imageFilePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
-    take.thumbnail = [UIImage imageWithContentsOfFile:imageFilePath];
+    take.videoURL = videoURL;
+    
+    // Extracting an image from the given video after 10 miliseconds
+    take.thumbnail = [HMGAVUtils imageForVideo:videoURL onTime:CMTimeMake(10, 1000)];
     [self.takes addObject:take];
 
     //if this is the first take then assign the selectedIndex to be the first item
