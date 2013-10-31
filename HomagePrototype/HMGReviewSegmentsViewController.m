@@ -7,7 +7,6 @@
 //
 
 #import "HMGReviewSegmentsViewController.h"
-#import "HMGRecordSegmentViewConroller.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "HMGLog.h"
@@ -26,8 +25,9 @@
 @property (nonatomic) NSMutableArray *images;
 @property (nonatomic) NSURL *imageVideoUrl;
 
-@property (nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
-@property (nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
+@property (strong,nonatomic) HMGVideoSegmentRemake *currentVideoSegmentRemake;
+@property (strong,nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
+@property (strong,nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
 @property (nonatomic) UIAlertView *textFieldAlertView;
 
 @end
@@ -191,6 +191,8 @@
         HMGLogNotice(@"user selected to remake segment:%@" , segmentCell.segmentName.text);
         
         if ([type isEqualToString:@"video"]) {
+            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
+            self.currentVideoSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
         } else if ([type isEqualToString:@"image"]) {
             self.images = [[NSMutableArray alloc] init];
@@ -239,6 +241,7 @@
     if ([segue.identifier isEqualToString:@"recordVideoSegment"])
     {
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
+        destController.delegate = self;
         //UIButton *button = (UIButton *)sender;
         HMGsegmentCVCell *cell = (HMGsegmentCVCell *)sender;
         NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:cell];
@@ -250,6 +253,18 @@
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 
+}
+
+- (void)addItemViewController:(HMGRecordSegmentViewConroller *)controller didFinishGeneratingVideo:(NSURL *)video {
+    
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    HMGLogDebug(@"video that was passed is: %s" , video);
+    self.currentVideoSegmentRemake.video = video;
+    [self.currentVideoSegmentRemake  processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        [self videoProcessDidFinish:videoURL withError:error];
+    }];
+    
+    HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
 }
 
 //this action will be called when the user wants to render the final product from the remakes

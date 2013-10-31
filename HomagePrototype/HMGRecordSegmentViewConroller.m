@@ -167,10 +167,16 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 	if (!error)
     {
-        self.videoSegmentRemake.video = outputFileURL;
-        [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        
+        //calling delegate function to pass data back to reviewSegmentsViewController
+        NSURL *videoToPassBack = outputFileURL;
+        [self.delegate addItemViewController:self didFinishGeneratingVideo:videoToPassBack];
+        
+        //old code
+        /*self.videoSegmentRemake.video = outputFileURL;
+         self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
             [self videoProcessDidFinish:videoURL withError:error];
-        }];
+        }];*/
     }
     else
     {

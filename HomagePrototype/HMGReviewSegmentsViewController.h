@@ -21,8 +21,9 @@
 #import "HMGLog.h"
 #import "HMGTake.h"
 #import "HMGtakeCVCell.h"
+#import "HMGRecordSegmentViewConroller.h"
 
-@interface HMGReviewSegmentsViewController : UIViewController
+@interface HMGReviewSegmentsViewController : UIViewController <videoPassingDelegate>;
 
 @property (strong,nonatomic) HMGTemplate *templateToDisplay;
 
