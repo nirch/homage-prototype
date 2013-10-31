@@ -258,7 +258,7 @@
 - (void)addItemViewController:(HMGRecordSegmentViewConroller *)controller didFinishGeneratingVideo:(NSURL *)video {
     
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
-    HMGLogDebug(@"video that was passed is: %s" , video);
+    HMGLogDebug(@"video that was passed is: %s" , video.path);
     self.currentVideoSegmentRemake.video = video;
     [self.currentVideoSegmentRemake  processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
         [self videoProcessDidFinish:videoURL withError:error];
@@ -272,7 +272,7 @@
     
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-        [self videoProcessDidFinish:videoURL withError:error];
+        [self videoRenderDidFinish:videoURL withError:error];
     }];
     HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
 
@@ -280,7 +280,7 @@
 
 
 //closure block for "renderVideoAsynchronouslyWithCompletionHandler"
-- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
+- (void)videoRenderDidFinish:(NSURL *)videoURL withError:(NSError *)error
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
@@ -397,28 +397,7 @@
     
     if (self.currentImageSegmentRemake.images.count > 0) {
         [self.currentImageSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-            if (!videoURL) {
-                HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
-            }
-            
-            //[self.view setNeedsDisplay];
-            NSLog(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
-            for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
-                HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
-                NSLog(@"iterating through single cells");
-                [segmentCell.singleSegmentTakesCView reloadData];
-            }
-            
-            /*[self.segmentsCView reloadData];
-            
-            for(int j=0;j<[self.segmentsCView numberOfItemsInSection:0];j++) {
-                //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:0];
-                UICollectionViewCell *cell = [self.segmentsCView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:j inSection:0]];
-                NSLog(@"iterating through single cells");
-                //[cell.singleSegmentTakesCView reloadData];
-            }*/
-            
-            
+            [self videoProcessDidFinish:videoURL withError:error];
         }];
     }
     
@@ -458,6 +437,7 @@
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
+
 //delegation from uialertview
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
@@ -469,13 +449,45 @@
         HMGLogInfo(@"user entered text: %@" , segmentText);
         self.currentTextSegmentRemake.text = segmentText;
         [self.currentTextSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-            if (!videoURL) {
-                HMGLogError(@"video url is null for image segment. error is:%@" , error.description);
-            }
+            
+            [self videoProcessDidFinish:videoURL withError:error];
+            
         }];
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
+
+- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
+{
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    
+    // TODO: Should we do here something if the video processing finished successfully? Update the UI?
+    
+    if (!videoURL) {
+        HMGLogError(@"video url is null for segment. error is:%@" , error.description);
+    
+    } else if (error) {
+        HMGLogError([error localizedDescription]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alert show];
+    } else {
+    
+        //TODO - see if main collection view needs to be updated
+        //[self.view setNeedsDisplay];
+        //[self.segmentsCView reloadData];
+        
+        HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
+        for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
+            HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
+            HMGLogDebug(@"iterating through segment: %s to reload takes file strip" , segmentCell.segmentName.text);
+            [segmentCell.singleSegmentTakesCView reloadData];
+        }
+    }
+    
+    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
 
 @end

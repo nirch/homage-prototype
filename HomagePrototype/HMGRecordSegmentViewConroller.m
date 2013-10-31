@@ -139,25 +139,6 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 	return nil;
 }
 
-
-- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
-{
-    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
-    
-    // TODO: Should we do here something if the video processing finished successfully? Update the UI?
-    
-    if (error)
-    {
-        HMGLogError([error localizedDescription]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:[error localizedDescription]
-                                                       delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-        [alert show];
-    }
-    
-    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
-}
-
-
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 
 // This method is being invoked once the video record finished
