@@ -766,6 +766,7 @@
 				F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */,
 				F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */,
 				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
+				260683A91819144500D390DA /* TemplateModelTests.m */,
 				F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
