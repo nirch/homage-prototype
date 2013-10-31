@@ -116,6 +116,29 @@
     
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView.tag == 20) {
+        HMGtakeCVCell *takeCell = (HMGtakeCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        takeCell.contentView.backgroundColor = [UIColor blueColor];
+        
+        HMGsegmentCVCell *parentSegmentCVCell = (HMGsegmentCVCell *) (UICollectionViewCell *)collectionView.superview.superview;
+        NSIndexPath *segmentRemakeIndexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[segmentRemakeIndexPath.item];
+        segmentRemake.selectedTakeIndex = indexPath.item;
+        parentSegmentCVCell.userSegmentImageView.image = takeCell.thumbnail.image;
+    }
+    
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView.tag == 20) {
+        HMGtakeCVCell *takeCell = (HMGtakeCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        takeCell.contentView.backgroundColor = [UIColor clearColor];
+    }
+}
+
 - (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment withIndex:(NSInteger)index
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);

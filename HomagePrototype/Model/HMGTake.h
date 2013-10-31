@@ -12,5 +12,6 @@
 
 @property (strong,nonatomic) NSURL   *videoURL;
 @property (strong,nonatomic) UIImage *thumbnail;
+@property (nonatomic) BOOL selected;
 
 @end

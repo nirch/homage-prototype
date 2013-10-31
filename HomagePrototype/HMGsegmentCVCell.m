@@ -16,6 +16,7 @@
     if (self) {
         // Initialization code
     }
+    self.singleSegmentTakesCView.allowsMultipleSelection = NO;
     return self;
 }
 
