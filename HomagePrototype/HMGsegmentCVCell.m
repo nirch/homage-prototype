@@ -7,6 +7,7 @@
 //
 
 #import "HMGsegmentCVCell.h"
+#import "HMGLog.h"
 
 @implementation HMGsegmentCVCell
 

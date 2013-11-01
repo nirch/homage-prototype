@@ -61,6 +61,7 @@
         HMGLogDebug(@"main collection view. tag is %d" , collectionView.tag);
         HMGLogDebug(@"number of items in section is: %d" , self.remakeProject.segmentRemakes.count);
         return [self.remakeProject.segmentRemakes count];
+    
     } else if (collectionView.tag == 20) {
         HMGLogDebug(@"main collection view. tag is %d" , collectionView.tag);
         UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
@@ -90,9 +91,9 @@
         //setting data source and delegate for secondary collection view
         cell.singleSegmentTakesCView.delegate = self;
         cell.singleSegmentTakesCView.dataSource = self;
-        cell.singleSegmentTakesCView.tag = 20;
+        //cell.singleSegmentTakesCView.tag = 20;
         
-        [self updateCell:cell withSegment:segment withIndex:indexPath.item];
+        [self updateCell:cell withSegment:segment];
         HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
         return cell;
   
@@ -113,11 +114,12 @@
         HMGLogError(@"collection view tag is unknown: %d" , collectionView.tag);
         return nil;
     }
-    
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+    
     if (collectionView.tag == 20) {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
         takeCell.contentView.backgroundColor = [UIColor blueColor];
@@ -129,17 +131,21 @@
         parentSegmentCVCell.userSegmentImageView.image = takeCell.thumbnail.image;
     }
     
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+    
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     if (collectionView.tag == 20) {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
         takeCell.contentView.backgroundColor = [UIColor clearColor];
     }
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
-- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment withIndex:(NSInteger)index
+- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
@@ -168,7 +174,6 @@
     if ([cell isKindOfClass: [HMGtakeCVCell class]])
     {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *) cell;
-        //TODO - remove follwing two lines - testing;
         takeCell.thumbnail.image = take.thumbnail;
     }
     
