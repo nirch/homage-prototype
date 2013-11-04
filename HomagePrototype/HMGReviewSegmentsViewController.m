@@ -44,7 +44,6 @@
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
-
 /*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
  {
  return 1;
@@ -85,7 +84,7 @@
     if (collectionView.tag == 10) {
         HMGLogDebug(@"main collection view. tag is 10");
         HMGsegmentCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
-                                                                                   forIndexPath:indexPath];
+                                                            forIndexPath:indexPath];
         HMGSegment *segment = [self.remakeProject.segmentRemakes[indexPath.item] segment];
         
         //setting data source and delegate for secondary collection view
@@ -129,6 +128,7 @@
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[segmentRemakeIndexPath.item];
         segmentRemake.selectedTakeIndex = indexPath.item;
         parentSegmentCVCell.userSegmentImageView.image = takeCell.thumbnail.image;
+        parentSegmentCVCell.selectedTakeVideo = takeCell.takeVideo;
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
@@ -161,6 +161,10 @@
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
         [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [segmentCell.userSegmentPlayButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [segmentCell.singleSegmentTakesCView reloadData];
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
@@ -175,6 +179,7 @@
     {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *) cell;
         takeCell.thumbnail.image = take.thumbnail;
+        takeCell.takeVideo = take.videoURL;
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
@@ -192,7 +197,13 @@
     UICollectionViewCell *cell = (UICollectionViewCell *)button.superview.superview;
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        NSURL *videoURL = segmentCell.origSegmentVideo;
+        
+        NSURL *videoURL = [[NSURL alloc] init];
+        if (button == segmentCell.playOrigSegmentButton) {
+            videoURL = segmentCell.origSegmentVideo;
+        } else if (button == segmentCell.userSegmentPlayButton) {
+            videoURL = segmentCell.selectedTakeVideo;
+        }
         HMGLogInfo(@"user chose to play video segment: %@" , segmentCell.segmentName.text);
         [self playMovieWithURL:videoURL];
     }
@@ -506,15 +517,21 @@
         //[self.view setNeedsDisplay];
         //[self.segmentsCView reloadData];
         
-        HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
-        for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
-            HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
-            HMGLogDebug(@"iterating through segment: %s to reload takes file strip" , segmentCell.segmentName.text);
-            [segmentCell.singleSegmentTakesCView reloadData];
-        }
+        [self updateTakesCollectionViews];
     }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
+}
+
+-(void)updateTakesCollectionViews {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
+    HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
+    for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
+        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
+        HMGLogDebug(@"iterating through segment: %s to reload takes file strip" , segmentCell.segmentName.text);
+        [segmentCell.singleSegmentTakesCView reloadData];
+    }
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 
