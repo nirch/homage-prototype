@@ -11,5 +11,6 @@
 @interface HMGtakeCVCell : UICollectionViewCell
 
 @property (strong,nonatomic) IBOutlet UIImageView *thumbnail;
+@property (strong,nonatomic) NSURL *takeVideo;
 
 @end
