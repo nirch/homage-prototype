@@ -311,6 +311,24 @@
     }];
 }
 
+// This method extracts an image (frame) from a given video on the given time
++ (UIImage *)imageForVideo:(NSURL *)videoURL onTime:(CMTime)time
+{
+    // Initializing the image generator
+    AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    AVAssetImageGenerator *imageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:videoAsset];
+    imageGenerator.appliesPreferredTrackTransform = YES;
+
+    // TODO: Test that the requested time is in the range of this video
+    
+    // Extracting the image
+    NSError *error = nil;
+    CGImageRef imageRef = [imageGenerator copyCGImageAtTime:time actualTime:nil error:&error];
+    UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
+
+    return image;
+}
+
 
 #pragma mark Private methods
 

@@ -140,25 +140,6 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 	return nil;
 }
 
-
-- (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
-{
-    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
-    
-    // TODO: Should we do here something if the video processing finished successfully? Update the UI?
-    
-    if (error)
-    {
-        HMGLogError([error localizedDescription]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }
-    
-    HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
-}
-
-
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 
 // This method is being invoked once the video record finished
@@ -168,16 +149,22 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 	if (!error)
     {
-        self.videoSegmentRemake.video = outputFileURL;
-        [self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+        
+        //calling delegate function to pass data back to reviewSegmentsViewController
+        NSURL *videoToPassBack = outputFileURL;
+        [self.delegate addItemViewController:self didFinishGeneratingVideo:videoToPassBack];
+        
+        //old code
+        /*self.videoSegmentRemake.video = outputFileURL;
+         self.videoSegmentRemake processVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
             [self videoProcessDidFinish:videoURL withError:error];
-        }];
+        }];*/
     }
     else
     {
         HMGLogError([error localizedDescription]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription]
-                                                       delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:[error localizedDescription]
+                                                       delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
 	}
     

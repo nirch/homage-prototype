@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "HMGTemplate.h"
 
-@interface TemplateCVCell : UICollectionViewCell
+@interface HMGTemplateCVCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel     *templateName;
 @property (weak, nonatomic) IBOutlet UIImageView *templatePreviewImageView;
-@property (weak, nonatomic) IBOutlet UILabel     *lastUpdated;
+@property (weak, nonatomic) IBOutlet UILabel     *difficulty;
 @property (weak, nonatomic) IBOutlet UILabel     *numOfRemakes;
 @property (weak, nonatomic) IBOutlet UILabel     *totalViews;
 

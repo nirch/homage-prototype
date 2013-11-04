@@ -24,5 +24,7 @@
 //Currenlty one text per Video in the center of the Video and it appears the entire Video
 + (void)textOnVideo:(NSURL*)videoURL withText:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize completion:(void (^)(AVAssetExportSession*))completion;
 
+// This method extracts an image (frame) from a given video on the given time
++ (UIImage *)imageForVideo:(NSURL *)videoURL onTime:(CMTime)time;
 
 @end

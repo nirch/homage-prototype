@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomageViewController : UIViewController
+@interface HMGExploreTemplatesViewController : UIViewController
+
+@property (strong,nonatomic) NSArray *templatesArray;
 
 @end

@@ -8,7 +8,28 @@
 // another Try
 
 #import "HMGTemplate.h"
+#import "HMGLog.h"
 
 @implementation HMGTemplate
+
+-(NSString *) levelDescription
+{
+    switch (self.level) {
+        case Easy:
+            return NSLocalizedString(@"TEMPLATE_EASY",nil);
+            break;
+        case Medium:
+            return NSLocalizedString(@"TEMPLATE_MEDIUM",nil);
+            break;
+        case Hard:
+            return NSLocalizedString(@"TEMPLATE_HARD",nil);
+            break;
+        default:
+            HMGLogWarning(@"this template has a non defined level: %d" , self.level);
+            return nil;
+            break;
+    }
+
+}
 
 @end

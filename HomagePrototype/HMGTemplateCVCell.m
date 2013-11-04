@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Homage. All rights reserved.
 //
 
-#import "TemplateCVCell.h"
+#import "HMGTemplateCVCell.h"
 
-@implementation TemplateCVCell
+@implementation HMGTemplateCVCell
 
 - (id)initWithFrame:(CGRect)frame
 {

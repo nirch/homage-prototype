@@ -9,6 +9,8 @@
 #import "HMGSegmentRemake.h"
 #import "HMGSegmentRemakeProtectedMethods.h"
 #import "HMGLog.h"
+#import "HMGTake.h"
+#import "HMGAVUtils.h"
 
 @interface HMGSegmentRemake()
 
@@ -98,7 +100,13 @@
 // Addes a video to the takes
 - (void)addVideoTake:(NSURL *)videoURL
 {
-    [self.takes addObject:videoURL];
+    HMGTake *take = [[HMGTake alloc] init];
+    
+    take.videoURL = videoURL;
+    
+    // Extracting an image from the given video after 10 miliseconds
+    take.thumbnail = [HMGAVUtils imageForVideo:videoURL onTime:CMTimeMake(10, 1000)];
+    [self.takes addObject:take];
 
     //if this is the first take then assign the selectedIndex to be the first item
     if (self.takes.count == 1)

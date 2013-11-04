@@ -6,22 +6,21 @@
 //  Copyright (c) 2013 Homage. All rights reserved.
 //
 
-#import "HomageViewController.h"
-#import "TemplateMainViewController.h"
-#import "TemplateCVCell.h"
+#import "HMGExploreTemplatesViewController.h"
+#import "HMGTemplateDetailedViewController.h"
+#import "HMGTemplateCVCell.h"
 #import "HMGTemplateIterator.h"
 #import "HMGTemplate.h"
 
-@interface HomageViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+@interface HMGExploreTemplatesViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak,nonatomic) IBOutlet UICollectionView *templateCView;
-@property (strong,nonatomic) NSArray *templatesArray;
 @property (strong,nonatomic) HMGTemplateIterator *templateIterator;
 @property (nonatomic) NSInteger selectedTemplateIndex;
 
 @end
 
-@implementation HomageViewController
+@implementation HMGExploreTemplatesViewController
 
 - (void)viewDidLoad
 {
@@ -54,12 +53,13 @@
 
 - (void)updateCell:(UICollectionViewCell *)cell withTemplate:(HMGTemplate *)template
 {
-    if ([cell isKindOfClass: [TemplateCVCell class]]) {
-        TemplateCVCell *templateCell = (TemplateCVCell *) cell;
+    if ([cell isKindOfClass: [HMGTemplateCVCell class]]) {
+        HMGTemplateCVCell *templateCell = (HMGTemplateCVCell *) cell;
         templateCell.templateName.text              = template.name;
         templateCell.templatePreviewImageView.image = template.thumbnail;
+        templateCell.difficulty.text = template.levelDescription;
         //templateCell.uploaded                     = template.uploadDate;
-        templateCell.numOfRemakes.text              = [NSString stringWithFormat:@"#remakes: %d" , [template.remakes count]];
+        templateCell.numOfRemakes.text              = [NSString stringWithFormat:NSLocalizedString(@"NUM_OF_REMAKES", nil), [template.remakes count]];
         //cell.totalViews                           = template.totalViews;
     }
         
@@ -76,9 +76,9 @@
 {
     if ([segue.identifier isEqualToString:@"showTemplate"])
     {
-        if ([segue.destinationViewController isKindOfClass:[TemplateMainViewController class]] && [sender isKindOfClass:[TemplateCVCell class]])
+        if ([segue.destinationViewController isKindOfClass:[HMGTemplateDetailedViewController class]] && [sender isKindOfClass:[HMGTemplateCVCell class]])
         {
-            TemplateMainViewController *destController = (TemplateMainViewController *)segue.destinationViewController;
+            HMGTemplateDetailedViewController *destController = (HMGTemplateDetailedViewController *)segue.destinationViewController;
             HMGTemplate *templateToDisplay = self.templatesArray[self.selectedTemplateIndex];
             destController.templateToDisplay = templateToDisplay;
         }

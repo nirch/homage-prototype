@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *segmentName;
 @property (weak, nonatomic) IBOutlet UILabel *segmentDuration;
 
+@property (weak,nonatomic) IBOutlet UICollectionView *singleSegmentTakesCView;
+
 @property (weak, nonatomic) NSString *segmentType;
 @property (strong, nonatomic) NSURL *origSegmentVideo;
 

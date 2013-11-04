@@ -1,15 +1,14 @@
 //
-//  HMGsegmentCVCell.m
+//  HMGtakeCVCell.m
 //  HomagePrototype
 //
-//  Created by Yoav Caspin on 9/22/13.
+//  Created by Yoav Caspin on 10/27/13.
 //  Copyright (c) 2013 Homage. All rights reserved.
 //
 
-#import "HMGsegmentCVCell.h"
-#import "HMGLog.h"
+#import "HMGtakeCVCell.h"
 
-@implementation HMGsegmentCVCell
+@implementation HMGtakeCVCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -17,7 +16,6 @@
     if (self) {
         // Initialization code
     }
-    self.singleSegmentTakesCView.allowsMultipleSelection = NO;
     return self;
 }
 
