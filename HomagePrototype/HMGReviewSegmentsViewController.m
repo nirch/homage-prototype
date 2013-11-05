@@ -85,14 +85,14 @@
         HMGLogDebug(@"main collection view. tag is 10");
         HMGsegmentCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
                                                             forIndexPath:indexPath];
-        HMGSegment *segment = [self.remakeProject.segmentRemakes[indexPath.item] segment];
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
         
         //setting data source and delegate for secondary collection view
         cell.singleSegmentTakesCView.delegate = self;
         cell.singleSegmentTakesCView.dataSource = self;
         //cell.singleSegmentTakesCView.tag = 20;
         
-        [self updateCell:cell withSegment:segment];
+        [self updateCell:cell withSegmentRemake:segmentRemake];
         HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
         return cell;
   
@@ -145,18 +145,28 @@
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
-- (void)updateCell:(UICollectionViewCell *)cell withSegment:(HMGSegment *)segment
+- (void)updateCell:(UICollectionViewCell *)cell withSegmentRemake:(HMGSegmentRemake *)segmentRemake
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        segmentCell.origSegmentImageView.image = segment.thumbnail;
-        segmentCell.segmentType = [segment getSegmentType];
-        segmentCell.origSegmentVideo = segment.video;
-        segmentCell.segmentName.text = segment.name;
-        segmentCell.segmentDescription.text = segment.description;
-        segmentCell.segmentDuration.text = [self formatToTimeString:segment.duration];
+        segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
+        segmentCell.segmentType = [segmentRemake.segment getSegmentType];
+        segmentCell.origSegmentVideo = segmentRemake.segment.video;
+        segmentCell.segmentName.text = segmentRemake.segment.name;
+        segmentCell.segmentDescription.text = segmentRemake.segment.description;
+        segmentCell.segmentDuration.text = [self formatToTimeString:segmentRemake.segment.duration];
+        
+        if (segmentRemake.takes.count > 0)
+        {
+            segmentCell.userSegmentImageView.image = [segmentRemake.takes[segmentRemake.selectedTakeIndex] thumbnail];
+        }
+        else
+        {
+            segmentCell.userSegmentImageView.image = nil;
+        }
+            
         
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -252,6 +262,7 @@
 }
 
 //convert from cmtime structure to MIN:SEC format
+//TBD - this Function shoule not be here
 -(NSString *)formatToTimeString:(CMTime)duration
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
@@ -524,6 +535,8 @@
 }
 
 -(void)updateTakesCollectionViews {
+    [self.segmentsCView reloadData];
+/*
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
     for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
@@ -532,6 +545,7 @@
         [segmentCell.singleSegmentTakesCView reloadData];
     }
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
+ */
 }
 
 
