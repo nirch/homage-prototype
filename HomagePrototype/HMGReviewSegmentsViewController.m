@@ -150,30 +150,42 @@
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
+        HMGLogDebug(@"line 1");
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
+        HMGLogDebug(@"line 2");
         segmentCell.segmentType = [segmentRemake.segment getSegmentType];
+        HMGLogDebug(@"line 3");
         segmentCell.origSegmentVideo = segmentRemake.segment.video;
+        HMGLogDebug(@"line 4");
         segmentCell.segmentName.text = segmentRemake.segment.name;
+        HMGLogDebug(@"line 5");
         segmentCell.segmentDescription.text = segmentRemake.segment.description;
+        HMGLogDebug(@"line 6");
         segmentCell.segmentDuration.text = [self formatToTimeString:segmentRemake.segment.duration];
         
         if (segmentRemake.takes.count > 0)
         {
+            HMGLogDebug(@"line 7");
             segmentCell.userSegmentImageView.image = [segmentRemake.takes[segmentRemake.selectedTakeIndex] thumbnail];
         }
         else
         {
+            HMGLogDebug(@"line 8");
             segmentCell.userSegmentImageView.image = nil;
         }
             
         
+        HMGLogDebug(@"line 9");
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
+        HMGLogDebug(@"line 10");
         [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
         
+        HMGLogDebug(@"line 11");
         [segmentCell.userSegmentPlayButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
+        HMGLogDebug(@"line 12");
         [segmentCell.singleSegmentTakesCView reloadData];
     }
     
