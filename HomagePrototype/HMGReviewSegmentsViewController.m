@@ -532,15 +532,18 @@
         //[self.view setNeedsDisplay];
         //[self.segmentsCView reloadData];
         
-        [self updateTakesCollectionViews];
+        //[self updateTakesCollectionViews];
+        
+        [self.segmentsCView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
--(void)updateTakesCollectionViews {
-    [self.segmentsCView reloadData];
 /*
+-(void)updateTakesCollectionViews {
+    //[self.segmentsCView reloadData];
+
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
     for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
@@ -549,8 +552,8 @@
         [segmentCell.singleSegmentTakesCView reloadData];
     }
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
- */
-}
 
+}
+*/
 
 @end
