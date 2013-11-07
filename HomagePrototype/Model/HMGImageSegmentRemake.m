@@ -36,7 +36,7 @@
     [HMGAVUtils imagesToVideo:self.images withFrameTime:frameTime completion:^(AVAssetWriter *assetWriter) {
         [self processVideoDidFinishWithWriter:assetWriter withCompletion:completion];
     }];
-    
+        
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 

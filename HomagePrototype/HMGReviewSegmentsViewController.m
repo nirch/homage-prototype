@@ -451,6 +451,10 @@
         }];
     }
     
+    // Releasing the images
+    self.images = nil;
+    self.currentImageSegmentRemake.images = nil;
+    
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
