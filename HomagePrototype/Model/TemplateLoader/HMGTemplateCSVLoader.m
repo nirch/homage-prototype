@@ -468,7 +468,7 @@ enum TextSegmentFields {
                     HMGTextSegment *textSegment = (HMGTextSegment*) self.segment;
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
                     
-                    textSegment.image = [UIImage imageWithContentsOfFile:fullFilePath];
+                    textSegment.imagePath = fullFilePath;
                 }
                 break;
             default:
