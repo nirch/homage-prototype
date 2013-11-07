@@ -56,7 +56,7 @@
     if ([cell isKindOfClass: [HMGTemplateCVCell class]]) {
         HMGTemplateCVCell *templateCell = (HMGTemplateCVCell *) cell;
         templateCell.templateName.text              = template.name;
-        templateCell.templatePreviewImageView.image = template.thumbnail;
+        templateCell.templatePreviewImageView.image = [UIImage imageWithContentsOfFile:template.thumbnailPath];
         templateCell.difficulty.text = template.levelDescription;
         //templateCell.uploaded                     = template.uploadDate;
         templateCell.numOfRemakes.text              = [NSString stringWithFormat:NSLocalizedString(@"NUM_OF_REMAKES", nil), [template.remakes count]];
