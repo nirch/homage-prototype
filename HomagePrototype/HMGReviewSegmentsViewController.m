@@ -151,7 +151,7 @@
     
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
+        segmentCell.origSegmentImageView.image = [UIImage imageWithContentsOfFile:segmentRemake.segment.thumbnailPath];
         segmentCell.segmentType = [segmentRemake.segment getSegmentType];
         segmentCell.origSegmentVideo = segmentRemake.segment.video;
         segmentCell.segmentName.text = segmentRemake.segment.name;

@@ -25,7 +25,7 @@ typedef enum {
 @property (strong, nonatomic) NSArray *remakes;
 @property (strong, nonatomic) NSArray *segments;
 @property (strong, nonatomic) NSURL *soundtrack;
-@property (strong, nonatomic) UIImage *thumbnail; // TODO: Consider changing UIImage to NSURL
+@property (strong, nonatomic) NSString *thumbnailPath;
 
 
 @end

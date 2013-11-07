@@ -237,7 +237,7 @@ enum TextSegmentFields {
                     break;
                 case TemplateThumbnail:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.template.thumbnail = [UIImage imageWithContentsOfFile:fullFilePath];
+                    self.template.thumbnailPath = fullFilePath;
                     break;
             }
         }
@@ -265,7 +265,7 @@ enum TextSegmentFields {
                 if (self.templateIdMatched)
                 {
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.remake.thumbnail = [UIImage imageWithContentsOfFile:fullFilePath];
+                    self.remake.thumbnailPath = fullFilePath;
                 }
                 break;
         }
@@ -332,7 +332,7 @@ enum TextSegmentFields {
                 if (self.templateIdMatched)
                 {
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.segment.thumbnail = [UIImage imageWithContentsOfFile:fullFilePath];
+                    self.segment.thumbnailPath = fullFilePath;
                 }
                 break;
             default:

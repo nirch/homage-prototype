@@ -15,7 +15,7 @@
 @property (strong, nonatomic) NSString *description;
 @property (nonatomic) CMTime duration;
 @property (strong, nonatomic) NSURL *video;
-@property (strong, nonatomic) UIImage *thumbnail;
+@property (strong, nonatomic) NSString *thumbnailPath;
 
 -(NSString *)getSegmentType;
 
