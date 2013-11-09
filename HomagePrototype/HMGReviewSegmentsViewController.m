@@ -152,7 +152,8 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGLogDebug(@"line 1");
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
+        //segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
+        segmentCell.origSegmentImageView.image = [UIImage imageWithContentsOfFile:segmentRemake.segment.thumbnailPath];
         HMGLogDebug(@"line 2");
         segmentCell.segmentType = [segmentRemake.segment getSegmentType];
         HMGLogDebug(@"line 3");
