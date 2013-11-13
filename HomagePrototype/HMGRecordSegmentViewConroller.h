@@ -23,6 +23,6 @@
 @property (nonatomic, weak) id <videoPassingDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property(nonatomic) HMGVideoSegmentRemake *videoSegmentRemake;
-- (IBAction)startStopRecording:(id)sender;
+- (IBAction)startRecording:(id)sender;
 
 @end

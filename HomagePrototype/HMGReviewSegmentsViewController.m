@@ -12,15 +12,12 @@
 #import "HMGLog.h"
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
 
-@property (strong,nonatomic) NSArray *segmentsArray;
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
-@property (nonatomic) NSInteger selectedSegmentIndex;
 
-@property (nonatomic) BOOL imageSelection;
-@property (nonatomic) UIImagePickerController *imagesPicker;
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (nonatomic) NSMutableArray *images;
 @property (nonatomic) NSURL *imageVideoUrl;
@@ -28,7 +25,10 @@
 @property (strong,nonatomic) HMGVideoSegmentRemake *currentVideoSegmentRemake;
 @property (strong,nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
 @property (strong,nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;
+
 @property (nonatomic) UIAlertView *textFieldAlertView;
+@property (nonatomic) UIImagePickerController *imagesPicker;
+@property (nonatomic) BOOL imageSelection;
 
 @end
 
@@ -38,18 +38,21 @@
 {
     [super viewDidLoad];
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-	self.segmentsArray = self.templateToDisplay.segments;
     self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
     self.imageSelection = NO;
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
+// collectionview datasource optional function. if not implemented, this value is set on default to 1
 /*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
  {
  return 1;
- }*/ //if not implemented, this value is set on default to 1
+ }*/
 
 // ===================== definition of segemnts collection view===========================
+// note: we are implementing 2 collection views. to tell them apart, we use UIview tags
+// 1. main segments collection view - tagged "10" in attributes inspector
+// 2. takes collection view (inside each segment collection view cell) - tagged "20"
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
@@ -83,18 +86,17 @@
     //case for the main collection view. tag set hardcoded to 10
     if (collectionView.tag == 10) {
         HMGLogDebug(@"main collection view. tag is 10");
-        HMGsegmentCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
+        HMGsegmentCVCell *segmentCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"segmentCell"
                                                             forIndexPath:indexPath];
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
         
         //setting data source and delegate for secondary collection view
-        cell.singleSegmentTakesCView.delegate = self;
-        cell.singleSegmentTakesCView.dataSource = self;
-        //cell.singleSegmentTakesCView.tag = 20;
+        segmentCell.singleSegmentTakesCView.delegate = self;
+        segmentCell.singleSegmentTakesCView.dataSource = self;
         
-        [self updateCell:cell withSegmentRemake:segmentRemake];
+        [self updateCell:segmentCell withSegmentRemake:segmentRemake];
         HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
-        return cell;
+        return segmentCell;
   
     //case for specific cell film strip of takes. tag set hardcoded to 20;
     } else if (collectionView.tag == 20) {
@@ -103,9 +105,7 @@
         UICollectionViewCell *parentSegmentCVCell = (UICollectionViewCell *)collectionView.superview.superview;
         NSIndexPath *segmentRemakeIndexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[segmentRemakeIndexPath.item];
-        
         HMGTake *take = segmentRemake.takes[indexPath.item];
-        //HMGTake *take = [[HMGTake alloc] init];
         [self updateCell:takeCell withTake:take];
         HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
         return takeCell;
@@ -121,7 +121,9 @@
     
     if (collectionView.tag == 20) {
         HMGtakeCVCell *takeCell = (HMGtakeCVCell *)[collectionView cellForItemAtIndexPath:indexPath];
-        takeCell.contentView.backgroundColor = [UIColor blueColor];
+        
+        //highlight frame of selected take
+        takeCell.contentView.backgroundColor = [UIColor greenColor];
         
         HMGsegmentCVCell *parentSegmentCVCell = (HMGsegmentCVCell *) (UICollectionViewCell *)collectionView.superview.superview;
         NSIndexPath *segmentRemakeIndexPath = [self.segmentsCView indexPathForCell:parentSegmentCVCell];
@@ -150,43 +152,34 @@
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
-        HMGLogDebug(@"line 1");
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
-        //segmentCell.origSegmentImageView.image = segmentRemake.segment.thumbnail;
         segmentCell.origSegmentImageView.image = [UIImage imageWithContentsOfFile:segmentRemake.segment.thumbnailPath];
-        HMGLogDebug(@"line 2");
         segmentCell.segmentType = [segmentRemake.segment getSegmentType];
-        HMGLogDebug(@"line 3");
         segmentCell.origSegmentVideo = segmentRemake.segment.video;
-        HMGLogDebug(@"line 4");
         segmentCell.segmentName.text = segmentRemake.segment.name;
-        HMGLogDebug(@"line 5");
         segmentCell.segmentDescription.text = segmentRemake.segment.description;
-        HMGLogDebug(@"line 6");
         segmentCell.segmentDuration.text = [self formatToTimeString:segmentRemake.segment.duration];
         
         if (segmentRemake.takes.count > 0)
         {
-            HMGLogDebug(@"line 7");
-            segmentCell.userSegmentImageView.image = [segmentRemake.takes[segmentRemake.selectedTakeIndex] thumbnail];
+            HMGTake *selectedTake = segmentRemake.takes[segmentRemake.selectedTakeIndex];
+            segmentCell.userSegmentImageView.image = selectedTake.thumbnail;
+            segmentCell.selectedTakeVideo = selectedTake.videoURL;
+            //NSIndexPath *takeIndexPath = [NSIndexPath indexPathForItem:segmentRemake.selectedTakeIndex inSection:0];
+            //[segmentCell.singleSegmentTakesCView selectItemAtIndexPath:takeIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
         }
         else
         {
-            HMGLogDebug(@"line 8");
             segmentCell.userSegmentImageView.image = nil;
         }
             
         
-        HMGLogDebug(@"line 9");
         [segmentCell.playOrigSegmentButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
-        HMGLogDebug(@"line 10");
         [segmentCell.userSegmentRecordButton addTarget:self action:@selector(remakeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
         
-        HMGLogDebug(@"line 11");
         [segmentCell.userSegmentPlayButton addTarget:self action:@selector(playSegmentVideo:) forControlEvents:UIControlEventTouchUpInside];
         
-        HMGLogDebug(@"line 12");
         [segmentCell.singleSegmentTakesCView reloadData];
     }
     
@@ -230,6 +223,8 @@
         HMGLogInfo(@"user chose to play video segment: %@" , segmentCell.segmentName.text);
         [self playMovieWithURL:videoURL];
     }
+    
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 
 -(void)playMovieWithURL:(NSURL *)videoURL
@@ -305,7 +300,6 @@
     {
         HMGRecordSegmentViewConroller *destController = (HMGRecordSegmentViewConroller *)segue.destinationViewController;
         destController.delegate = self;
-        //UIButton *button = (UIButton *)sender;
         HMGsegmentCVCell *cell = (HMGsegmentCVCell *)sender;
         NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:cell];
         NSInteger index = indexPath.item;
@@ -540,33 +534,10 @@
                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
     } else {
-    
-        //TODO - see if main collection view needs to be updated
-        //[self.view setNeedsDisplay];
-        //[self.segmentsCView reloadData];
-        
-        //[self updateTakesCollectionViews];
-        
         [self.segmentsCView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
-
-/*
--(void)updateTakesCollectionViews {
-    //[self.segmentsCView reloadData];
-
-    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-    HMGLogDebug(@"count of visible cells: %d" , [self.segmentsCView.visibleCells count]);
-    for (UICollectionViewCell* cell in self.segmentsCView.visibleCells) {
-        HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell*) cell;
-        HMGLogDebug(@"iterating through segment: %s to reload takes file strip" , segmentCell.segmentName.text);
-        [segmentCell.singleSegmentTakesCView reloadData];
-    }
-    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
-
-}
-*/
 
 @end
