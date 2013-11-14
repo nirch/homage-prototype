@@ -7,20 +7,16 @@
 //
 
 #import "HMGReviewSegmentsViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <MobileCoreServices/UTCoreTypes.h>
-#import "HMGLog.h"
+
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
-
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (nonatomic) NSMutableArray *images;
-@property (nonatomic) NSURL *imageVideoUrl;
 
 @property (strong,nonatomic) HMGVideoSegmentRemake *currentVideoSegmentRemake;
 @property (strong,nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
@@ -32,6 +28,7 @@
 
 @end
 
+
 @implementation HMGReviewSegmentsViewController
 
 - (void)viewDidLoad
@@ -42,12 +39,6 @@
     self.imageSelection = NO;
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
-
-// collectionview datasource optional function. if not implemented, this value is set on default to 1
-/*- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
- {
- return 1;
- }*/
 
 // ===================== definition of segemnts collection view===========================
 // note: we are implementing 2 collection views. to tell them apart, we use UIview tags
@@ -244,20 +235,18 @@
     if ([cell isKindOfClass: [HMGsegmentCVCell class]]) {
         HMGsegmentCVCell *segmentCell = (HMGsegmentCVCell *) cell;
         NSString *type = segmentCell.segmentType;
+        NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
         
         HMGLogNotice(@"user selected to remake segment:%@" , segmentCell.segmentName.text);
         
         if ([type isEqualToString:@"video"]) {
-            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
             self.currentVideoSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self performSegueWithIdentifier:@"recordVideoSegment" sender:segmentCell];
         } else if ([type isEqualToString:@"image"]) {
             self.images = [[NSMutableArray alloc] init];
-            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
             self.currentImageSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self selectImages];
         } else if ([type isEqualToString:@"text"]) {
-            NSIndexPath *indexPath = [self.segmentsCView indexPathForCell:segmentCell];
             self.currentTextSegmentRemake = self.remakeProject.segmentRemakes[indexPath.item];
             [self editTextSegment];
         } else {
