@@ -9,9 +9,9 @@
 #import "HMGReviewSegmentsViewController.h"
 
 
+
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 
@@ -24,6 +24,8 @@
 @property (nonatomic) UIAlertView *textFieldAlertView;
 @property (nonatomic) UIImagePickerController *imagesPicker;
 @property (nonatomic) BOOL imageSelection;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
 @end
 

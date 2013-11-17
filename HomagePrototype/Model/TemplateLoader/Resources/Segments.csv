@@ -4,9 +4,9 @@ TemplateID,Type,Name,Description,Duration(ms),Video,Thumbnail
 2,VideoSegment,Letting Go,,7000,never_join_you.mov,never_join_you.PNG
 3,TextSegment,Opening text,Enter the opening text to the video (e.g. your family name),6200,Tikim_Text.mp4,Tikim_Text.png
 3,ImageSegment,Characters,Take still pictures of each chracter in the video,8000,Tikim_Images.mp4,Tikim_Images.png
-3,VideoSegment,Pre Race,Children preparing for the race (e.g. stretching),5600,Race_Start.mov,Race_Start.PNG
-3,VideoSegment,Feet,Shot the children feet in zoom,4500,legs.mov,legs.png
-3,VideoSegment,Race,Children in a race,9450,Race.mov,Race.PNG
-3,VideoSegment,Hero Lingers,The hero lingers in the race,6000,Neta_juice.mov,Neta_juice.PNG
-3,VideoSegment,Finish Line,The clihdren are passing the finish line,15300,finish.mov,finish.PNG
-3,VideoSegment,Sigh,The children are exhusted and falling after the race,3400,falling.mov,falling.PNG
+3,VideoSegment,Pre Race,kids are standing on the starting line stretching and preparing for the race,5600,Race_Start.mov,Race_Start.PNG
+3,VideoSegment,Feet,take low shot of the children feet in zoom,4500,legs.mov,legs.png
+3,VideoSegment,Race,begin the race! the kids are running from the starting line towards the camera,9450,Race.mov,Race.PNG
+3,VideoSegment,Hero Lingers,one of kids is lingering on the startline having a drink,6000,Neta_juice.mov,Neta_juice.PNG
+3,VideoSegment,Finish Line,shoot the kids crossing the finish line while running,15300,finish.mov,finish.PNG
+3,VideoSegment,Sigh,kids are exhusted and falling after the race,3400,falling.mov,falling.PNG

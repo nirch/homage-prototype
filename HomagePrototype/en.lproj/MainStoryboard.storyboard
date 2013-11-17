@@ -157,7 +157,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="review segments" id="aBU-5B-uRb"/>
                     <connections>
-                        <outlet property="segmentsCView" destination="y04-0a-HmV" id="iSQ-0b-uqK"/>
+                        <outlet property="segmentsCView" destination="y04-0a-HmV" id="kyR-hj-er0"/>
                         <segue destination="20l-hv-5fD" kind="modal" identifier="recordVideoSegment" id="4Ve-Mp-LR0"/>
                     </connections>
                 </viewController>
