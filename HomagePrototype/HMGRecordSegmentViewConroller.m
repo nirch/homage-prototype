@@ -190,7 +190,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     {
         //calling delegate function to pass data back to reviewSegmentsViewController
         NSURL *videoToPassBack = outputFileURL;
-        [self.delegate addItemViewController:self didFinishGeneratingVideo:videoToPassBack];
+        [self.delegate didFinishGeneratingVideo:videoToPassBack forVideoSegmentRemake:self.videoSegmentRemake];
         //only when the recoder has succesfuly finished passing the output to reviewSegmentsViewController, we can dissmiss the recorder modal window and go back
         [self dismissViewControllerAnimated:YES completion:nil];
         

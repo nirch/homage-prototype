@@ -16,7 +16,7 @@
 @class HMGRecordSegmentViewConroller;
 
 @protocol videoPassingDelegate <NSObject>
-- (void)addItemViewController:(HMGRecordSegmentViewConroller *)controller didFinishGeneratingVideo:(NSURL *)video;
+- (void)didFinishGeneratingVideo:(NSURL *)video forVideoSegmentRemake:(HMGVideoSegmentRemake *)videoSegmentRemake;
 @end
 
 @interface HMGRecordSegmentViewConroller : UIViewController<AVCaptureFileOutputRecordingDelegate>
