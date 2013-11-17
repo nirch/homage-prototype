@@ -7,20 +7,16 @@
 //
 
 #import "HMGReviewSegmentsViewController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <MobileCoreServices/UTCoreTypes.h>
-#import "HMGLog.h"
+
 
 @interface HMGReviewSegmentsViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
-
 @property (strong,nonatomic) HMGRemakeProject *remakeProject;
 
 @property (nonatomic) UIBarButtonItem *doneButton;
 @property (nonatomic) NSMutableArray *images;
-@property (nonatomic) NSURL *imageVideoUrl;
 
 @property (strong,nonatomic) HMGImageSegmentRemake *currentImageSegmentRemake;
 @property (strong,nonatomic) HMGTextSegmentRemake *currentTextSegmentRemake;

@@ -22,6 +22,8 @@
 #import "HMGTake.h"
 #import "HMGtakeCVCell.h"
 #import "HMGRecordSegmentViewConroller.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 
 @interface HMGReviewSegmentsViewController : UIViewController <videoPassingDelegate>;
 
