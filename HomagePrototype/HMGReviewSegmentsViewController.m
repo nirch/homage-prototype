@@ -322,6 +322,9 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 //this action will be called when the user wants to render the final product from the remakes
 - (IBAction)renderFinal:(id)sender {
     
+    //if (![self allSegmentsTaken])
+    
+    
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
         [self videoRenderDidFinish:videoURL withError:error];
@@ -329,6 +332,29 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
 
 }
+
+/*-(BOOL)segmentHasATake:(HMGSegmentRemake *)segmentRemake
+{
+    if ( segmentRemake.selectedTakeIndex == -1 )
+    {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+-(NSArray *)segmentsWithNoRemakes
+{
+    NSArray *segmentsWithNoRemakes = [[NSArray alloc] init];
+    for (int i=0 ; i<[self.remakeProject.segmentRemakes count] ; i++)
+    {
+        HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[i];
+        if (![self segmentHasATake:segmentRemake])
+        {
+            [segmentsWithNoRemakes addO]
+        }
+    }
+}*/
 
 - (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
 {

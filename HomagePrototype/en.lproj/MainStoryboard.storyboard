@@ -363,9 +363,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhD-xz-ery">
-                                <rect key="frame" x="240" y="83" width="40" height="38"/>
+                                <rect key="frame" x="117" y="213" width="86" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="record_indicator_on.png">
+                                <color key="backgroundColor" red="0.2067185846" green="0.19211035360000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="яemake it!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -383,7 +384,7 @@
                                 </connections>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ud1-E4-eQC">
-                                <rect key="frame" x="40" y="227" width="240" height="240"/>
+                                <rect key="frame" x="40" y="254" width="240" height="213"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5xp-rh-qMr">
                                     <size key="itemSize" width="207" height="112"/>
