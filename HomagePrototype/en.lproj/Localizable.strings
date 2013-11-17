@@ -31,4 +31,7 @@
 "TEMPLATE_MEDIUM" = "Medium";
 "TEMPLATE_HARD"   = "Hard";
 
+/*this message will show the users what the missing takes that he needs to shoot in order to render the final movie*/
+"MISSING_SEGMENTS_ERROR" = "why you no film segments: %@";
+
 

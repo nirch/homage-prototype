@@ -322,39 +322,50 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 //this action will be called when the user wants to render the final product from the remakes
 - (IBAction)renderFinal:(id)sender {
     
-    //if (![self allSegmentsTaken])
-    
-    
-    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
-    [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
-        [self videoRenderDidFinish:videoURL withError:error];
-    }];
-    HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
+    NSArray *noRemakeSegments = [self segmentsWithNoRemakes];
+    if ([noRemakeSegments count] > 0)
+    {
+        NSString *errormessage = [NSString stringWithFormat:NSLocalizedString(@"MISSING_SEGMENTS_ERROR",nil) , noRemakeSegments];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:errormessage
+                                                       delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alert show];
+    } else {
+        HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+        [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
+            [self videoRenderDidFinish:videoURL withError:error];
+        }];
+        HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
+    }
 
 }
 
-/*-(BOOL)segmentHasATake:(HMGSegmentRemake *)segmentRemake
+-(BOOL)segmentHasATake:(HMGSegmentRemake *)segmentRemake
 {
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     if ( segmentRemake.selectedTakeIndex == -1 )
     {
         return NO;
     } else {
         return YES;
     }
+    HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
 }
 
 -(NSArray *)segmentsWithNoRemakes
 {
-    NSArray *segmentsWithNoRemakes = [[NSArray alloc] init];
+    HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+    NSMutableArray *segmentsWithNoRemakes = [[NSMutableArray alloc] init];
     for (int i=0 ; i<[self.remakeProject.segmentRemakes count] ; i++)
     {
         HMGSegmentRemake *segmentRemake = self.remakeProject.segmentRemakes[i];
         if (![self segmentHasATake:segmentRemake])
         {
-            [segmentsWithNoRemakes addO]
+            [segmentsWithNoRemakes addObject:segmentRemake.segment.name];
         }
     }
-}*/
+    HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
+    return segmentsWithNoRemakes;
+}
 
 - (void)videoProcessDidFinish:(NSURL *)videoURL withError:(NSError *)error
 {
