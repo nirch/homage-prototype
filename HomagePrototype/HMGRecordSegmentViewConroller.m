@@ -107,12 +107,15 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 
 - (AVCaptureVideoOrientation)currentVideoOrientation {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
 	UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-	if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+	
+    if ((deviceOrientation == UIDeviceOrientationLandscapeLeft) || (deviceOrientation == UIDeviceOrientationFaceUp) || (deviceOrientation == UIDeviceOrientationPortrait)|| (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) ) {
 		return AVCaptureVideoOrientationLandscapeRight;
 	} else {
 		return AVCaptureVideoOrientationLandscapeLeft;
 	}
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 	[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
