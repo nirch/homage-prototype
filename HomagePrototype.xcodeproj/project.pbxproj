@@ -97,6 +97,8 @@
 		F17B3C471806A673007FA7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F17B3C491806A673007FA7A4 /* Localizable.strings */; };
 		F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */; };
 		F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */; };
+		F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */; };
+		F18DEF55183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
 		F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */; };
 		F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */ = {isa = PBXBuildFile; fileRef = F19123D217DE140D00DE85DB /* Homage_Tikim.png */; };
@@ -355,6 +357,8 @@
 		F17B3C481806A673007FA7A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSegmentRemakeTests.m; sourceTree = "<group>"; };
 		F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextSegmentRemakeTests.m; sourceTree = "<group>"; };
+		F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Gal_Tikim.mov; path = Model/TemplateLoader/Resources/Gal_Tikim.mov; sourceTree = "<group>"; };
+		F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gal_Tikim_Thumbnail.png; path = Model/TemplateLoader/Resources/Gal_Tikim_Thumbnail.png; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
 		F19123CC17DE0C8900DE85DB /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHCSVParser.m; path = Model/TemplateLoader/CSVParser/CHCSVParser.m; sourceTree = "<group>"; };
 		F19123D117DE140D00DE85DB /* Homage_Tikim.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Homage_Tikim.mp4; path = Model/TemplateLoader/Resources/Homage_Tikim.mp4; sourceTree = "<group>"; };
@@ -586,6 +590,8 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */,
+				F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */,
 				F1CBC47717E495DE00167772 /* he_told_me_enough.mov */,
 				F1CBC47517E4958700167772 /* finish.mov */,
 				F1E4AD5917E4923800FDBC5A /* falling.mov */,
@@ -950,6 +956,7 @@
 				F1C8EED517CF38420093DB0A /* InfoPlist.strings in Resources */,
 				F1C8EEDD17CF38420093DB0A /* Default.png in Resources */,
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
+				F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
 				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
@@ -966,6 +973,7 @@
 				262A2C9017DE2CAD006D2EAA /* Screen Shot 2013-08-26 at 9.11.28 PM.png in Resources */,
 				2655872A17DE3F970086D936 /* tp_info_popup.png in Resources */,
 				2655872B17DE3F970086D936 /* tp_info_popup@2x.png in Resources */,
+				F18DEF55183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png in Resources */,
 				2655872C17DE3F970086D936 /* tp_pause_button.png in Resources */,
 				2655872D17DE3F970086D936 /* tp_pause_button@2x.png in Resources */,
 				2655872E17DE3F970086D936 /* tp_play_button.png in Resources */,
