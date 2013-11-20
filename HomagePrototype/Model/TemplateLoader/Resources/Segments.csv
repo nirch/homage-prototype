@@ -2,11 +2,11 @@ TemplateID,Type,Name,Description,Duration(ms),Video,Thumbnail
 2,VideoSegment,He Told Me Enough,,10000,he_told_me_enough.mov,he_told_me_enough.PNG
 2,VideoSegment,I'll Never Join You,,16000,letting_go.mov,letting_go.PNG
 2,VideoSegment,Letting Go,,7000,never_join_you.mov,never_join_you.PNG
-3,TextSegment,Opening text,Enter the opening text to the video (e.g. your family name),6200,Tikim_Text.mp4,Tikim_Text.png
-3,ImageSegment,Characters,Take still pictures of each chracter in the video,8000,Tikim_Images.mp4,Tikim_Images.png
-3,VideoSegment,Pre Race,Children preparing for the race (e.g. stretching),5600,Race_Start.mov,Race_Start.PNG
-3,VideoSegment,Feet,Shot the children feet in zoom,4500,legs.mov,legs.png
-3,VideoSegment,Race,Children in a race,9450,Race.mov,Race.PNG
-3,VideoSegment,Hero Lingers,The hero lingers in the race,6000,Neta_juice.mov,Neta_juice.PNG
-3,VideoSegment,Finish Line,The clihdren are passing the finish line,15300,finish.mov,finish.PNG
-3,VideoSegment,Sigh,The children are exhusted and falling after the race,3400,falling.mov,falling.PNG
+3,TextSegment,headline,choose your headline (e.g. your family name),6200,Tikim_Text.mp4,Tikim_Text.png
+3,ImageSegment,Actors,Photos of actors getting ready,8000,Tikim_Images.mp4,Tikim_Images.png
+3,VideoSegment,Stretching,Preparing for the race,5600,Race_Start.mov,Race_Start.PNG
+3,VideoSegment,Feet,Shot of the actors legs from behind starting to run,4500,legs.mov,legs.png
+3,VideoSegment,Race starts,Pushing & interrupting eachother except the main actor that is not in a rush,9450,Race.mov,Race.PNG
+3,VideoSegment,Main actor still waiting,Main actor still on the startline,6000,Neta_juice.mov,Neta_juice.PNG
+3,VideoSegment,Finish Line,Main actor passes all the others to win the race,15300,finish.mov,finish.PNG
+3,VideoSegment,Sigh,Actors exhusted and falling after the race,3400,falling.mov,falling.PNG
