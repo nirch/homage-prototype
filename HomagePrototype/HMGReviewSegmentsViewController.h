@@ -24,6 +24,7 @@
 #import "HMGRecordSegmentViewConroller.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "Toast+UIView.h"
 
 @interface HMGReviewSegmentsViewController : UIViewController <videoPassingDelegate>;
 

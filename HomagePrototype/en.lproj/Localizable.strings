@@ -21,7 +21,7 @@
 "HELLO" = "Hello";
 
 /*this message will appear on the top of a pop up view */
-"ENTER_TEXT" = "Please enter text";
+"ENTER_TEXT" = "Header for your video";
 
 /*this message will appear inside the text field itself as a place holder */
 "ENTER_SEGMENT_TEXT" = "Enter segment text";

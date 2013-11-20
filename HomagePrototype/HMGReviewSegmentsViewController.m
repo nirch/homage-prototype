@@ -25,6 +25,8 @@
 @property (nonatomic) UIImagePickerController *imagesPicker;
 @property (nonatomic) BOOL imageSelection;
 
+@property (nonatomic) UIButton *makeVideoButton;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 
 @end
@@ -331,6 +333,12 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
         [alert show];
     } else {
         HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
+        self.makeVideoButton = (UIButton *)sender;
+        [self.makeVideoButton setEnabled:NO];
+        [self.view makeToast:@"movie sent to rendering. a few more seconds body"
+                    duration:2.0
+                    position:@"center"
+                       title:@""];
         [self.remakeProject renderVideoAsynchronouslyWithCompletionHandler:^(NSURL *videoURL, NSError *error) {
             [self videoRenderDidFinish:videoURL withError:error];
         }];
@@ -413,6 +421,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
                         HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                         [alert show];
+                        [self.makeVideoButton setEnabled:YES];
                     }
                 });
             }];
@@ -538,7 +547,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 -(void)editTextSegment
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
-    self.textFieldAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"HELLO", nil) message:NSLocalizedString(@"ENTER_TEXT", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"DONE", nil) otherButtonTitles:nil];
+    self.textFieldAlertView = [[UIAlertView alloc] initWithTitle:@"" message:NSLocalizedString(@"ENTER_TEXT", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"DONE", nil) otherButtonTitles:nil];
     
     self.textFieldAlertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [self.textFieldAlertView textFieldAtIndex:0];
@@ -592,6 +601,20 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     NSString *videoDurationText = [NSString stringWithFormat:@"%02i:%02i", dMinutes, dSeconds];
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
     return videoDurationText;
+}
+
+-(BOOL) navigationShouldPopOnBackButton
+{
+	[[[UIAlertView alloc] initWithTitle:@"Why like this?" message:@"going back will delete the project. isn't it a shame dude?"
+							   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] show];
+	return NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+	if(buttonIndex==1) {
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 @end

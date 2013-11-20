@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--Review Segments View Controller - review segments-->
+        <!--Review Segments View Controller - Remaking the video-->
         <scene sceneID="RFC-95-ncQ">
             <objects>
                 <viewController id="NfO-fo-KW8" customClass="HMGReviewSegmentsViewController" sceneMemberID="viewController">
@@ -143,9 +143,9 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cm-yA-dxd">
-                                <rect key="frame" x="122" y="430" width="77" height="30"/>
+                                <rect key="frame" x="116" y="430" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="render final">
+                                <state key="normal" title="Make video!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -155,7 +155,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="review segments" id="aBU-5B-uRb"/>
+                    <navigationItem key="navigationItem" title="Remaking the video" id="aBU-5B-uRb"/>
                     <connections>
                         <outlet property="segmentsCView" destination="y04-0a-HmV" id="kyR-hj-er0"/>
                         <segue destination="20l-hv-5fD" kind="modal" identifier="recordVideoSegment" id="4Ve-Mp-LR0"/>
@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="1345" y="672"/>
         </scene>
-        <!--Explore Templates View Controller - explore templates-->
+        <!--Explore Templates View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController storyboardIdentifier="TemplatesViewController" id="2" customClass="HMGExploreTemplatesViewController" sceneMemberID="viewController">
@@ -249,41 +249,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="172"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1di-AK-5Iq">
-                                                    <rect key="frame" x="0.0" y="31" width="255" height="121"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="121" id="cLL-UW-EFR"/>
-                                                    </constraints>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1di-AK-5Iq">
+                                                    <rect key="frame" x="0.0" y="24" width="255" height="123"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99H-Tr-jeG">
-                                                    <rect key="frame" x="0.0" y="151" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="IlG-t3-p58"/>
-                                                    </constraints>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99H-Tr-jeG">
+                                                    <rect key="frame" x="6" y="147" width="110" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTY-4k-kGS">
-                                                    <rect key="frame" x="213" y="151" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="42" id="iJ2-RL-aym"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGi-Nz-MOX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGi-Nz-MOX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="245" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-GX-exn">
-                                                    <rect key="frame" x="0.0" y="13" width="42" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="vH4-8J-FC8"/>
-                                                    </constraints>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcd-GX-exn">
+                                                    <rect key="frame" x="217" y="147" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -292,28 +274,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="trailing" secondItem="EGi-Nz-MOX" secondAttribute="trailing" id="2uM-yx-mM0"/>
-                                            <constraint firstAttribute="bottom" secondItem="1di-AK-5Iq" secondAttribute="bottom" constant="20" id="59f-w8-m2M"/>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="leading" secondItem="B75-cN-Rjx" secondAttribute="leading" id="6EO-Tx-BXr"/>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="trailing" secondItem="99H-Tr-jeG" secondAttribute="trailing" id="Ky7-eP-uTh"/>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="top" secondItem="B75-cN-Rjx" secondAttribute="top" constant="13" id="MI4-gB-gZb"/>
-                                            <constraint firstItem="EGi-Nz-MOX" firstAttribute="leading" secondItem="B75-cN-Rjx" secondAttribute="leading" id="Syd-N8-25L"/>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="leading" secondItem="99H-Tr-jeG" secondAttribute="leading" id="Trh-Nv-chF"/>
-                                            <constraint firstItem="LTY-4k-kGS" firstAttribute="top" secondItem="99H-Tr-jeG" secondAttribute="top" id="YxS-72-YGk"/>
-                                            <constraint firstItem="1di-AK-5Iq" firstAttribute="trailing" secondItem="B75-cN-Rjx" secondAttribute="trailing" id="foS-8u-PQX"/>
-                                            <constraint firstItem="gcd-GX-exn" firstAttribute="leading" secondItem="1di-AK-5Iq" secondAttribute="leading" id="hGx-dS-i6c"/>
-                                            <constraint firstItem="99H-Tr-jeG" firstAttribute="bottom" secondItem="B75-cN-Rjx" secondAttribute="bottom" id="n5l-du-om5"/>
-                                            <constraint firstItem="EGi-Nz-MOX" firstAttribute="top" secondItem="B75-cN-Rjx" secondAttribute="top" id="nTA-rn-W8K"/>
-                                            <constraint firstItem="LTY-4k-kGS" firstAttribute="trailing" secondItem="B75-cN-Rjx" secondAttribute="trailing" id="o0U-x8-wRJ"/>
-                                            <constraint firstItem="LTY-4k-kGS" firstAttribute="bottom" secondItem="B75-cN-Rjx" secondAttribute="bottom" id="yz9-Ec-LlM"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="difficulty" destination="gcd-GX-exn" id="HnO-n8-Fby"/>
                                             <outlet property="numOfRemakes" destination="99H-Tr-jeG" id="Xtf-Gm-zpu"/>
                                             <outlet property="templateName" destination="EGi-Nz-MOX" id="e12-ie-9qc"/>
                                             <outlet property="templatePreviewImageView" destination="1di-AK-5Iq" id="tKD-WU-Rzd"/>
-                                            <outlet property="totalViews" destination="LTY-4k-kGS" id="3Zs-S1-xkR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -330,7 +295,7 @@
                             <constraint firstItem="RNU-l4-hGy" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" id="FIZ-8O-0Gk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="explore templates" id="IwI-Ct-2gr"/>
+                    <navigationItem key="navigationItem" id="IwI-Ct-2gr"/>
                     <connections>
                         <outlet property="templateCView" destination="RNU-l4-hGy" id="lOG-Di-u4h"/>
                         <segue destination="I5b-4E-MQk" kind="push" identifier="showTemplate" id="4s3-dO-3zZ"/>
@@ -359,22 +324,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oi5-1H-yy7">
-                                <rect key="frame" x="40" y="83" width="240" height="128"/>
+                                <rect key="frame" x="40" y="115" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhD-xz-ery">
-                                <rect key="frame" x="117" y="213" width="86" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2067185846" green="0.19211035360000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="яemake it!">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="NfO-fo-KW8" kind="push" identifier="remakeTemplate" id="r8f-XK-jjq"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHn-gc-YfY">
-                                <rect key="frame" x="40" y="174" width="36" height="35"/>
+                                <rect key="frame" x="40" y="206" width="36" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="pb_play_icon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -423,6 +377,18 @@
                                     <outletCollection property="gestureRecognizers" destination="cbH-3h-fH9" appends="YES" id="llP-ia-p6D"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhD-xz-ery">
+                                <rect key="frame" x="123" y="76" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2067185846" green="0.19211035360000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                <state key="normal" title="яemake it!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NfO-fo-KW8" kind="push" identifier="remakeTemplate" id="r8f-XK-jjq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -430,7 +396,9 @@
                             <constraint firstItem="uRC-FC-7J3" firstAttribute="top" secondItem="kI6-3u-DGh" secondAttribute="top" constant="11" id="d9r-Yp-nTY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="5b8-m3-s6K"/>
+                    <navigationItem key="navigationItem" id="5b8-m3-s6K">
+                        <nil key="title"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="playTemplateButton" destination="HHn-gc-YfY" id="Aqw-5n-ZQ6"/>
                         <outlet property="recordTemplateButton" destination="MhD-xz-ery" id="Sda-aM-fRO"/>

@@ -58,6 +58,7 @@
 		267607EC17DB51B200FEC5C3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267607EB17DB51B200FEC5C3 /* AVFoundation.framework */; };
 		2687FF56180EC4A100727DD7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 		268C9D1F183689DE00A169F8 /* HMGMyNavControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268C9D1E183689DE00A169F8 /* HMGMyNavControllerViewController.m */; };
+		26A0088E183D111B00E6AC34 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0088D183D111B00E6AC34 /* Toast+UIView.m */; };
 		65215F8517F8685C00AB95F0 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
 		6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A19517F052FD00706D4D /* HMGRecordButton.m */; };
@@ -319,6 +320,8 @@
 		2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		268C9D1D183689DE00A169F8 /* HMGMyNavControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGMyNavControllerViewController.h; sourceTree = "<group>"; };
 		268C9D1E183689DE00A169F8 /* HMGMyNavControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGMyNavControllerViewController.m; sourceTree = "<group>"; };
+		26A0088C183D111B00E6AC34 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
+		26A0088D183D111B00E6AC34 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		65215F8317F8685C00AB95F0 /* HMGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGFileManager.h; sourceTree = "<group>"; };
 		65215F8417F8685C00AB95F0 /* HMGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGFileManager.m; sourceTree = "<group>"; };
 		6554A18C17F0351100706D4D /* HMGRecordSegmentViewConroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGRecordSegmentViewConroller.h; sourceTree = "<group>"; };
@@ -691,6 +694,8 @@
 		F1C8EED017CF38420093DB0A /* HomagePrototype */ = {
 			isa = PBXGroup;
 			children = (
+				26A0088C183D111B00E6AC34 /* Toast+UIView.h */,
+				26A0088D183D111B00E6AC34 /* Toast+UIView.m */,
 				268C9D1D183689DE00A169F8 /* HMGMyNavControllerViewController.h */,
 				268C9D1E183689DE00A169F8 /* HMGMyNavControllerViewController.m */,
 				6554A19017F0526500706D4D /* Record */,
@@ -1169,6 +1174,7 @@
 				6554A19617F052FD00706D4D /* HMGRecordButton.m in Sources */,
 				F165B7FA17EED1FE00647AF7 /* HMGSegmentRemake.m in Sources */,
 				268C9D1F183689DE00A169F8 /* HMGMyNavControllerViewController.m in Sources */,
+				26A0088E183D111B00E6AC34 /* Toast+UIView.m in Sources */,
 				260683AE181D5E2600D390DA /* HMGTake.m in Sources */,
 				F165B7FD17EED22C00647AF7 /* HMGVideoSegmentRemake.m in Sources */,
 				F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */,

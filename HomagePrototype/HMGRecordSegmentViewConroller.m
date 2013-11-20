@@ -104,8 +104,6 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 }
 
-
-
 - (AVCaptureVideoOrientation)currentVideoOrientation {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
 	UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
@@ -143,6 +141,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     }else
     {
 		[sender setSelected:YES];
+        [sender setEnabled:NO];
 		if (!self.captureOutput)
         {
 			self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
