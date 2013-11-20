@@ -11,6 +11,6 @@
 @interface HMGRemake : NSObject
 
 @property (strong, nonatomic) NSURL *video;
-@property (strong, nonatomic) UIImage *thumbnail;
+@property (strong, nonatomic) NSString *thumbnailPath;
 
 @end

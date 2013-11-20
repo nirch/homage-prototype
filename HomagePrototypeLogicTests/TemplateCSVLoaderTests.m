@@ -49,7 +49,7 @@
     
     HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:2];
     STAssertTrue([tikimTemplate.name isEqualToString:@"Tikim"], @"Template name should be Tikim, but it is %@", tikimTemplate.name);
-    STAssertTrue([tikimTemplate.remakes count] == 0, @"Tikim template should have 0 remakes, but it has %d", [tikimTemplate.remakes count]);
+    STAssertTrue([tikimTemplate.remakes count] == 1, @"Tikim template should have 0 remakes, but it has %d", [tikimTemplate.remakes count]);
 }
 
 - (void)testTemplateSegments

@@ -10,4 +10,10 @@
 
 @implementation HMGSegment
 
+-(NSString *)getSegmentType
+{
+    [NSException raise:@"InvalidArgumentException" format:@"videoUrls count of 0 is invalid (videoUrls count must be > 0)"];
+    return nil;
+}
+
 @end

@@ -14,11 +14,15 @@
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureMovieFileOutput *captureOutput;
 @property (nonatomic, weak) AVCaptureDeviceInput *activeVideoInput;
-@property (strong,nonatomic) IBOutlet UILabel *segmentDuration;
-@property (strong,nonatomic) IBOutlet UILabel *currentRecordTime;
-@property (strong,nonatomic) NSTimer *recordDurationTracker;
+
 @property (nonatomic, strong)  AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic,strong) NSURL *tempUrl;
+
+@property (nonatomic) NSUInteger segmentDurationInSeconds;
+@property (nonatomic) NSUInteger remainingTicks;
+@property (strong,nonatomic) IBOutlet UILabel *RemainingRecordTime;
+@property (strong,nonatomic) NSTimer *remainingSecondsTimer;
+
 @end
 
 static NSString * const VIDEO_FILE_PREFIX = @"raw";
@@ -31,8 +35,14 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     [super viewDidLoad];
 	[self setUpCaptureSession];
-    self.segmentDuration.text = [self formatToTimeString:self.videoSegmentRemake.segment.duration];
+    self.segmentDurationInSeconds = CMTimeGetSeconds(self.videoSegmentRemake.segment.duration);
+    self.RemainingRecordTime.text = [self formatToTimeString:self.videoSegmentRemake.segment.duration];
     HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 //convert from cmtime structure to MIN:SEC format. this is code dupliation from reviewsegmentsVC and we should have a general file for methods like this
@@ -97,12 +107,15 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 
 - (AVCaptureVideoOrientation)currentVideoOrientation {
+    HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
 	UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-	if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+	
+    if ((deviceOrientation == UIDeviceOrientationLandscapeLeft) || (deviceOrientation == UIDeviceOrientationFaceUp) || (deviceOrientation == UIDeviceOrientationPortrait)|| (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) ) {
 		return AVCaptureVideoOrientationLandscapeRight;
 	} else {
 		return AVCaptureVideoOrientationLandscapeLeft;
 	}
+    HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 	[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
@@ -115,16 +128,16 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startStopRecording:(id)sender
+- (IBAction)startRecording:(id)sender
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
     
     if ([sender isSelected])
     {
         [sender setSelected:NO];
-        [self.captureOutput stopRecording];
-        HMGLogDebug(@"invalidating timer");
-        [self.recordDurationTracker invalidate];
+        //[self.captureOutput stopRecording];
+        //HMGLogDebug(@"invalidating timer");
+        //[self.recordDurationTracker invalidate];
 
         
     }else
@@ -151,12 +164,13 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
         self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
         HMGLogDebug(@"initiating timer for keeping track of record duration");
-        self.recordDurationTracker = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateRecordDuration) userInfo:nil repeats:YES];
+        [self doCountdown:self.segmentDurationInSeconds];
         //self.toggleCameraButton.enabled = ![sender isSelected];
 	}
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
+
 - (AVCaptureConnection *)connectionWithMediaType:(NSString *)mediaType fromConnections:(NSArray *)connections {
 	for (AVCaptureConnection *connection in connections) {
 		for (AVCaptureInputPort *port in [connection inputPorts]) {
@@ -167,8 +181,6 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 	}
 	return nil;
 }
-                                 
-                                 
 
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 
@@ -179,10 +191,11 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 
 	if (!error)
     {
-        
         //calling delegate function to pass data back to reviewSegmentsViewController
         NSURL *videoToPassBack = outputFileURL;
-        [self.delegate addItemViewController:self didFinishGeneratingVideo:videoToPassBack];
+        [self.delegate didFinishGeneratingVideo:videoToPassBack forVideoSegmentRemake:self.videoSegmentRemake];
+        //only when the recoder has succesfuly finished passing the output to reviewSegmentsViewController, we can dissmiss the recorder modal window and go back
+        [self dismissViewControllerAnimated:YES completion:nil];
         
         //old code
         /*self.videoSegmentRemake.video = outputFileURL;
@@ -203,16 +216,43 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
--(void)updateRecordDuration
+//code for countdown of segment duration
+
+-(void)doCountdown:(NSUInteger)duration
+{
+    if (self.remainingSecondsTimer)
+        return;
+    
+    self.remainingTicks = duration;
+    [self updateRemainingTimeLabel];
+    
+    self.remainingSecondsTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector: @selector(handleTimerTick) userInfo: nil repeats: YES];
+}
+
+-(void)updateRemainingTimeLabel
 {
     HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
-    //case for recorded duration is still within time duration of segment
-    if (CMTimeCompare(self.captureOutput.recordedDuration,self.videoSegmentRemake.segment.duration) == 1) {
-        self.currentRecordTime.textColor = [UIColor redColor];
-    }
     
-    self.currentRecordTime.text = [self formatToTimeString:self.captureOutput.recordedDuration];
+    NSUInteger dMinutes = floor(self.remainingTicks % 3600 / 60);
+    NSUInteger dSeconds = floor(self.remainingTicks % 3600 % 60);
+    NSString *remainingDurationText = [NSString stringWithFormat:@"%02i:%02i", dMinutes, dSeconds];
+    //self.currentRecordTime.text = [self formatToTimeString:self.captureOutput.recordedDuration];
+    self.RemainingRecordTime.text = remainingDurationText;
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }
 
+-(void)handleTimerTick
+{
+    self.remainingTicks--;
+    [self updateRemainingTimeLabel];
+    
+    if (self.remainingTicks <= 0) {
+        HMGLogDebug(@"stop recording and invalidating timer");
+        [self.captureOutput stopRecording];
+        [self.remainingSecondsTimer invalidate];
+        self.remainingSecondsTimer = nil;
+    }
+}
+
 @end
+

@@ -20,9 +20,4 @@
 
 @property (strong,nonatomic) IBOutlet UICollectionView *singleSegmentTakesCView;
 
-@property (weak, nonatomic) NSString *segmentType;
-@property (strong, nonatomic) NSURL *origSegmentVideo;
-@property (strong,nonatomic) NSURL *selectedTakeVideo;
-
-
 @end

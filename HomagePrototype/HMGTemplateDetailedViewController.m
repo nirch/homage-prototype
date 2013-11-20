@@ -30,8 +30,8 @@
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
     //template player
-    [self.templatePlayButton setBackgroundImage:self.templateToDisplay.thumbnail forState:UIControlStateNormal];
-    self.templatethumbnailImageView.image = self.templateToDisplay.thumbnail;
+    [self.templatePlayButton setBackgroundImage:[UIImage imageWithContentsOfFile:self.templateToDisplay.thumbnailPath] forState:UIControlStateNormal];
+    self.templatethumbnailImageView.image = [UIImage imageWithContentsOfFile:self.templateToDisplay.thumbnailPath];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
     UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
     [self.templatePlayButton setImage:playButtonImage forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
 
     if ([cell isKindOfClass: [HMGRemakeCVCell class]]) {
         HMGRemakeCVCell *remakeCell = (HMGRemakeCVCell *) cell;
-        remakeCell.imageView.image = remake.thumbnail;
+        remakeCell.imageView.image = [UIImage imageWithContentsOfFile:remake.thumbnailPath];
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
         UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
         remakeCell.pbImageView.image = playButtonImage;

@@ -16,13 +16,13 @@
 @class HMGRecordSegmentViewConroller;
 
 @protocol videoPassingDelegate <NSObject>
-- (void)addItemViewController:(HMGRecordSegmentViewConroller *)controller didFinishGeneratingVideo:(NSURL *)video;
+- (void)didFinishGeneratingVideo:(NSURL *)video forVideoSegmentRemake:(HMGVideoSegmentRemake *)videoSegmentRemake;
 @end
 
 @interface HMGRecordSegmentViewConroller : UIViewController<AVCaptureFileOutputRecordingDelegate>
 @property (nonatomic, weak) id <videoPassingDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *previewView;
 @property(nonatomic) HMGVideoSegmentRemake *videoSegmentRemake;
-- (IBAction)startStopRecording:(id)sender;
+- (IBAction)startRecording:(id)sender;
 
 @end
