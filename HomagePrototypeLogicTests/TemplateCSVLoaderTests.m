@@ -44,7 +44,7 @@
     STAssertTrue([wrongMeetingtemplate.remakes count] == 2, @"Wrong Meeting template should have 2 remakes, but it has %d", [wrongMeetingtemplate.remakes count]);
   
     HMGTemplate *starWarsTemplate = [templateLoader templateAtIndex:1];
-    STAssertTrue([starWarsTemplate.name isEqualToString:@"Star Wars (I am your father)"], @"Template name should be Star Wars, but it is %@", starWarsTemplate.name);
+    STAssertTrue([starWarsTemplate.name isEqualToString:@"I am your father"], @"Template name should be Star Wars, but it is %@", starWarsTemplate.name);
     STAssertTrue([starWarsTemplate.remakes count] == 1, @"Star Wars template should have 1 remakes, but it has %d", [starWarsTemplate.remakes count]);
     
     HMGTemplate *tikimTemplate = [templateLoader templateAtIndex:2];
