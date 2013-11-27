@@ -245,6 +245,10 @@
 		F1F04B3B17E48EFB00720C5C /* Tikim_Images.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2417E48EFB00720C5C /* Tikim_Images.png */; };
 		F1F04B3C17E48EFB00720C5C /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2517E48EFB00720C5C /* Tikim_Text.mp4 */; };
 		F1F04B3D17E48EFB00720C5C /* Tikim_Text.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2617E48EFB00720C5C /* Tikim_Text.png */; };
+		F1F930A11845E83100F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930A31845EE0000F6FBA7 /* NetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */; };
+		F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -465,6 +469,9 @@
 		F1F04B2417E48EFB00720C5C /* Tikim_Images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tikim_Images.png; path = Model/TemplateLoader/Resources/Tikim_Images.png; sourceTree = "<group>"; };
 		F1F04B2517E48EFB00720C5C /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tikim_Text.mp4; path = Model/TemplateLoader/Resources/Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1F04B2617E48EFB00720C5C /* Tikim_Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tikim_Text.png; path = Model/TemplateLoader/Resources/Tikim_Text.png; sourceTree = "<group>"; };
+		F1F9309F1845E83100F6FBA7 /* HMGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGNetworkManager.h; sourceTree = "<group>"; };
+		F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGNetworkManager.m; sourceTree = "<group>"; };
+		F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +496,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC6B18055DD10067DD0A /* QuartzCore.framework in Frameworks */,
 				F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */,
 				F1A2EC65180553120067DD0A /* CoreVideo.framework in Frameworks */,
@@ -566,6 +574,8 @@
 				65215F8417F8685C00AB95F0 /* HMGFileManager.m */,
 				F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */,
 				F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */,
+				F1F9309F1845E83100F6FBA7 /* HMGNetworkManager.h */,
+				F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -784,6 +794,7 @@
 				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
 				260683A91819144500D390DA /* TemplateModelTests.m */,
 				F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */,
+				F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -1159,6 +1170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
+				F1F930A11845E83100F6FBA7 /* HMGNetworkManager.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				260683B1181D67F300D390DA /* HMGtakeCVCell.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HMGExploreTemplatesViewController.m in Sources */,
@@ -1197,6 +1209,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */,
+				F1F930A31845EE0000F6FBA7 /* NetworkManagerTests.m in Sources */,
 				260683AB181916E000D390DA /* HMGLog.m in Sources */,
 				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
