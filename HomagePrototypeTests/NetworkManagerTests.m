@@ -65,10 +65,40 @@ static NSString * const finishLineVideoName = @"Tikim_FinishLine_Export.mp4";
 }
 
 /*
+- (void)testRender
+{
+    NSURL *serverRender = [NSURL URLWithString:@"http://54.204.34.168:4567/render"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *fileOutputName = @"output";
+    __block BOOL jobDone = NO;
+    NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Test.aep", @"template_project", @"Test", @"template_folder", fileOutputName, @"output", nil];
+    
+    // Build POST request
+    NSURLRequest *request = [HMGNetworkManager createPostRequestURL:serverRender withParams:postParams];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error)
+        {
+            STFail(error.description);
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        STAssertTrue(httpResponse.statusCode == 200, nil);
+        
+        jobDone = YES;
+    }];
+    
+    [postDataTask resume];
+    
+    // Waiting 30 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 30);
+}
+
+
 - (void)testUpdateText
 {
     NSURLSession *session = [NSURLSession sharedSession];
-    NSString *text = @"Tomer";
+    NSString *text = @"My Text";
     __block BOOL jobDone = NO;
     NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:text, @"dynamic_text", @"Test", @"template_folder", @"DynamicText.txt", @"dynamic_text_file", nil];
     
