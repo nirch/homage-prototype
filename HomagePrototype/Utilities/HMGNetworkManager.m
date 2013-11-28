@@ -51,6 +51,25 @@
     return request;
 }
 
+// This method creates a POST request with given params
++ (NSURLRequest *)createPostRequestURL:(NSURL *)url withParams:(NSDictionary *)params
+{
+    // Creating a new request with the POST method
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    // Appending the params to the body
+    NSMutableData *body = [NSMutableData data];
+    for (NSString *key in [params allKeys]) {
+        NSString *value = [params objectForKey:key];
+        [body appendData:[[NSString stringWithFormat:@"&%@=%@", key, value] dataUsingEncoding:NSUTF8StringEncoding]];
+    }
+    
+    [request setHTTPBody:body];
+    
+    return request;
+}
+
 + (NSString*) fileMIMEType:(NSString*) file {
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (CFStringRef)CFBridgingRetain([file pathExtension]), NULL);
     CFStringRef MIMEType = UTTypeCopyPreferredTagWithClass (UTI, kUTTagClassMIMEType);

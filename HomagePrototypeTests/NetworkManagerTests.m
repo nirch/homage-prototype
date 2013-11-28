@@ -13,6 +13,7 @@
 @interface NetworkManagerTests : SenTestCase
 
 @property (strong, nonatomic) NSURL *serverUploadURL;
+@property (strong, nonatomic) NSURL *serverUpdateTextURL;
 @property (strong, nonatomic) NSURL *redVideo;
 @property (strong, nonatomic) NSURL *finishLineVideo;
 
@@ -30,6 +31,8 @@ static NSString * const finishLineVideoName = @"Tikim_FinishLine_Export.mp4";
     [super setUp];
     
     self.serverUploadURL = [NSURL URLWithString:@"http://54.204.34.168:4567/upload"];
+    
+    self.serverUpdateTextURL = [NSURL URLWithString:@"http://54.204.34.168:4567/update_text"];
     
     NSString *redVideoPath = [[NSBundle bundleForClass:[self class]] pathForResource:redVideoName ofType:nil];
     self.redVideo = [NSURL fileURLWithPath:redVideoPath];
@@ -54,15 +57,43 @@ static NSString * const finishLineVideoName = @"Tikim_FinishLine_Export.mp4";
     STAssertTrue([request HTTPBody].length > videoData.length, nil);
 }
 
--(void)testMIMEType
+- (void)testMIMEType
 {
     NSString *mimeType = [HMGNetworkManager fileMIMEType:self.redVideo.path];
     
     STAssertTrue([mimeType isEqualToString:@"video/quicktime"], nil);
 }
 
-
 /*
+- (void)testUpdateText
+{
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *text = @"Tomer";
+    __block BOOL jobDone = NO;
+    NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:text, @"dynamic_text", @"Test", @"template_folder", @"DynamicText.txt", @"dynamic_text_file", nil];
+    
+    // Build POST request
+    NSURLRequest *request = [HMGNetworkManager createPostRequestURL:self.serverUpdateTextURL withParams:postParams];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error)
+        {
+            STFail(error.description);
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        STAssertTrue(httpResponse.statusCode == 200, nil);
+        
+        jobDone = YES;
+    }];
+    
+    [postDataTask resume];
+    
+    // Waiting 3 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 3);
+}
+
+
 // Testing the upload of a small file (˜145KB)
 - (void)testUploadSmallFile
 {

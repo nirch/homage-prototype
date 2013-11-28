@@ -13,6 +13,9 @@
 // This method returns an NSURLRequest that will be used for uploading a file with parameters
 + (NSURLRequest*)requestToUploadURL:(NSURL *)url withFile:(NSURL *)file withParams:(NSDictionary *)params;
 
+// This method creates a POST request with given params
++ (NSURLRequest *)createPostRequestURL:(NSURL *)url withParams:(NSDictionary *)params;
+
 + (NSString*) fileMIMEType:(NSString*) file;
 
 @end
