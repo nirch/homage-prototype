@@ -9,6 +9,8 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "HMGNetworkManager.h"
 #import "AGWaitForAsyncTestHelper.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "HMGFileManager.h"
 
 @interface NetworkManagerTests : SenTestCase
 
@@ -80,6 +82,23 @@ static NSString * const finishLineVideoName = @"Tikim_FinishLine_Export.mp4";
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
         STAssertTrue(httpResponse.statusCode == 200, nil);
+        
+        // Copying the file to a new location
+        NSURL *downloadedVideo = [HMGFileManager copyResourceToNewURL:location forFileName:@"download" ofType:@"mp4"];
+        
+        // Getting the exported video URL and validating if we can save it
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:downloadedVideo])
+        {
+            // Saving the video. This is an asynchronous process. The completion block (which is implemented here inline) will be invoked once the saving process finished
+            [library writeVideoAtPathToSavedPhotosAlbum:downloadedVideo completionBlock:^(NSURL *assetURL, NSError *error){
+                if (error)
+                {
+                    STFail(error.description);
+                }
+            }];
+        }
+
         
         jobDone = YES;
     }];

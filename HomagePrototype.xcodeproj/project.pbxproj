@@ -249,6 +249,7 @@
 		F1F930A31845EE0000F6FBA7 /* NetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */; };
 		F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
 		F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
+		F1F930A6184A977A00F6FBA7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -496,6 +497,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930A6184A977A00F6FBA7 /* AssetsLibrary.framework in Frameworks */,
 				F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC6B18055DD10067DD0A /* QuartzCore.framework in Frameworks */,
 				F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */,
