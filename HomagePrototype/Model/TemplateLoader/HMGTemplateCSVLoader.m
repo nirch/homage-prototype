@@ -81,6 +81,8 @@ enum VideoSegmentFields {
     VideoSegmentTemplateID,
     VideoSegmentIndex,
     VideoSegmentRecordDuration,
+    VideoSegmentTemplateFolder,
+    VideoSegmentFile,
     NumOfVideoSegmentFields
 };
 
@@ -365,6 +367,20 @@ enum TextSegmentFields {
                 {
                     HMGVideoSegment *videoSegment = (HMGVideoSegment*) self.segment;
                     videoSegment.recordDuration = CMTimeMake([field integerValue], 1000);
+                }
+                break;
+            case VideoSegmentTemplateFolder:
+                if (self.templateIdMatched)
+                {
+                    HMGVideoSegment *videoSegment = (HMGVideoSegment*) self.segment;
+                    videoSegment.templateFolder = field;
+                }
+                break;
+            case VideoSegmentFile:
+                if (self.templateIdMatched)
+                {
+                    HMGVideoSegment *videoSegment = (HMGVideoSegment*) self.segment;
+                    videoSegment.segmentFile = field;
                 }
                 break;
             default:

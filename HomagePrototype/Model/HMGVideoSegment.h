@@ -12,4 +12,8 @@
 
 @property (nonatomic) CMTime recordDuration;
 
+@property (strong, nonatomic) NSString *templateFolder;
+@property (strong, nonatomic) NSString *segmentFile;
+
+
 @end
