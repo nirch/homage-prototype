@@ -65,6 +65,32 @@ static NSString * const finishLineVideoName = @"Tikim_FinishLine_Export.mp4";
 }
 
 /*
+- (void)testDownload
+{
+    NSURL *serverDownload = [NSURL URLWithString:@"http://54.204.34.168:4567/download/output.mp4"];
+    NSURLSession *session = [NSURLSession sharedSession];
+    __block BOOL jobDone = NO;
+
+    
+    NSURLSessionDownloadTask *videoDownloadTask = [session downloadTaskWithURL:serverDownload completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (error)
+        {
+            STFail(error.description);
+        }
+        
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        STAssertTrue(httpResponse.statusCode == 200, nil);
+        
+        jobDone = YES;
+    }];
+    
+    [videoDownloadTask resume];
+    
+    // Waiting 30 seconds for the above block to complete
+    WAIT_WHILE(!jobDone, 30);
+}
+
+
 - (void)testRender
 {
     NSURL *serverRender = [NSURL URLWithString:@"http://54.204.34.168:4567/render"];
