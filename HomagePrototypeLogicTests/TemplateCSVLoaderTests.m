@@ -30,7 +30,7 @@
 {
     HMGTemplateCSVLoader *templateLoader = [[HMGTemplateCSVLoader alloc] init];
     
-    HMGTemplate *template = [templateLoader templateAtIndex:3];
+    HMGTemplate *template = [templateLoader templateAtIndex:5];
     
     STAssertNil(template, @"Template Should be nil");
 }

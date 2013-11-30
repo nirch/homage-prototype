@@ -250,6 +250,10 @@
 		F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
 		F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 		F1F930A6184A977A00F6FBA7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */; };
+		F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A7184A9F0500F6FBA7 /* First.mp4 */; };
+		F1F930AA184A9F0500F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
+		F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A7184A9F0500F6FBA7 /* First.mp4 */; };
+		F1F930AC184AA07100F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,6 +477,8 @@
 		F1F9309F1845E83100F6FBA7 /* HMGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGNetworkManager.h; sourceTree = "<group>"; };
 		F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGNetworkManager.m; sourceTree = "<group>"; };
 		F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManagerTests.m; sourceTree = "<group>"; };
+		F1F930A7184A9F0500F6FBA7 /* First.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = First.mp4; path = Model/TemplateLoader/Resources/First.mp4; sourceTree = "<group>"; };
+		F1F930A8184A9F0500F6FBA7 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = First.png; path = Model/TemplateLoader/Resources/First.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -605,6 +611,8 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1F930A7184A9F0500F6FBA7 /* First.mp4 */,
+				F1F930A8184A9F0500F6FBA7 /* First.png */,
 				F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */,
 				F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */,
 				F1CBC47717E495DE00167772 /* he_told_me_enough.mov */,
@@ -971,10 +979,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AA184A9F0500F6FBA7 /* First.png in Resources */,
 				F1C8EED517CF38420093DB0A /* InfoPlist.strings in Resources */,
 				F1C8EEDD17CF38420093DB0A /* Default.png in Resources */,
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
 				F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */,
+				F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
 				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
@@ -1090,6 +1100,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */,
+				F1F930AC184AA07100F6FBA7 /* First.png in Resources */,
 				F1CBC47917E496E900167772 /* he_told_me_enough.mov in Resources */,
 				F1CBC47A17E496E900167772 /* finish.mov in Resources */,
 				F1CBC47B17E496E900167772 /* falling.mov in Resources */,

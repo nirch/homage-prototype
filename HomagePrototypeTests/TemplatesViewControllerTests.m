@@ -35,7 +35,7 @@
 
 - (void)testNumOfTemplates
 {
-    STAssertTrue(self.templatesViewController.templatesArray.count == 3, @"Expecting that num of templates to display will be 3, bubt it is %d", self.templatesViewController.templatesArray.count);
+    STAssertTrue(self.templatesViewController.templatesArray.count == 4, @"Expecting that num of templates to display will be 4, but it is %d", self.templatesViewController.templatesArray.count);
 }
 
 /*
