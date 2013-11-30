@@ -254,6 +254,8 @@
 		F1F930AA184A9F0500F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
 		F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A7184A9F0500F6FBA7 /* First.mp4 */; };
 		F1F930AC184AA07100F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
+		F1F930AD184AA7B100F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930AE184AA7D300F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -520,6 +522,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AE184AA7D300F6FBA7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC6C18055DD90067DD0A /* QuartzCore.framework in Frameworks */,
 				F1A2EC671805533F0067DD0A /* CoreVideo.framework in Frameworks */,
 				F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */,
@@ -1242,6 +1245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AD184AA7B100F6FBA7 /* HMGNetworkManager.m in Sources */,
 				260683B2181FE05600D390DA /* HMGTake.m in Sources */,
 				F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */,
 				65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */,

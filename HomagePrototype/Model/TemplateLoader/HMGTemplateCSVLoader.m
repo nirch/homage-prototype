@@ -101,6 +101,8 @@ enum TextSegmentFields {
     TextSegmentLocation,
     TextSegmentVideo,
     TextSegmentImage,
+    TextSegmentTemplateFolder,
+    TextSegmentDynamicText,
     NumOfTextSegmentFields
 };
 
@@ -469,6 +471,20 @@ enum TextSegmentFields {
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
                     
                     textSegment.imagePath = fullFilePath;
+                }
+                break;
+            case TextSegmentTemplateFolder:
+                if (self.templateIdMatched)
+                {
+                    HMGTextSegment *textSegment = (HMGTextSegment*) self.segment;
+                    textSegment.templateFolder = field;
+                }
+                break;
+            case TextSegmentDynamicText:
+                if (self.templateIdMatched)
+                {
+                    HMGTextSegment *textSegment = (HMGTextSegment*) self.segment;
+                    textSegment.dynamicText = field;
                 }
                 break;
             default:
