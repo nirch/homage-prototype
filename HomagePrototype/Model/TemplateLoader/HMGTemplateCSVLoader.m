@@ -50,6 +50,8 @@ enum TemplateFields {
     TemplateVideo,
     TemplateSoundtrack,
     TemplateThumbnail,
+    TemplateFolder,
+    TemplateProject,
     NumOfTemplateFields // Always ending with this value so we can know how many fields are there
 };
 
@@ -242,6 +244,12 @@ enum TextSegmentFields {
                 case TemplateThumbnail:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
                     self.template.thumbnailPath = fullFilePath;
+                    break;
+                case TemplateFolder:
+                    self.template.templateFolder = field;
+                    break;
+                case TemplateProject:
+                    self.template.templateProject = field;
                     break;
             }
         }

@@ -27,5 +27,10 @@ typedef enum {
 @property (strong, nonatomic) NSURL *soundtrack;
 @property (strong, nonatomic) NSString *thumbnailPath;
 
+@property (strong, nonatomic) NSString *templateFolder;
+@property (strong, nonatomic) NSString *templateProject;
+
+
+
 
 @end

@@ -43,10 +43,13 @@
             if (error)
             {
                 HMGLogError(error.description);
+                completion(nil, error);
             }
             else
             {
                 HMGLogDebug(@"Text updated successfully");
+                [self addVideoTake:textSegment.video];
+                completion(textSegment.video, error);
             }
         }];
 
