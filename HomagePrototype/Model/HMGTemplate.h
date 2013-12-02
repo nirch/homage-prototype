@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMGTemplate : NSObject
+@interface HMGTemplate : NSObject <NSCoding>
 
 typedef enum {
     Easy,
@@ -20,12 +20,12 @@ typedef enum {
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;
 @property (nonatomic) HMGTemplateLevel level;
-@property (strong,nonatomic, readonly) NSString *levelDescription;
 @property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) NSArray *remakes;
 @property (strong, nonatomic) NSArray *segments;
 @property (strong, nonatomic) NSURL *soundtrack;
 @property (strong, nonatomic) NSString *thumbnailPath;
 
+-(NSString *) levelDescription;
 
 @end

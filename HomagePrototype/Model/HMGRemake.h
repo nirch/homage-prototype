@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMGRemake : NSObject
+@interface HMGRemake : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSURL *video;
 @property (strong, nonatomic) NSString *thumbnailPath;

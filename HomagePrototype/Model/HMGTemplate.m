@@ -32,4 +32,44 @@
 
 }
 
+#pragma mark NSCoding
+
+#define kTemplateIDKey       @"TemplateID"
+#define kNameKey             @"TemaplteName"
+#define kDescriptionKey      @"TempalteDescription"
+#define kLevelKey            @"TempalteLevel"
+#define kVideoKey            @"TemplateVideo"
+#define kRemakesKey          @"TemplateRemakes"
+#define kSegmentsKey         @"TemmplateSegments"
+#define kSoundTrackKey       @"TemaplteSoundTrack"
+#define kthumbnailKey        @"TemplateThumbnail"
+
+
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.templateID forKey:kTemplateIDKey];
+    [encoder encodeObject:self.name forKey:kNameKey];
+    [encoder encodeObject:self.description forKey:kDescriptionKey];
+    [encoder encodeObject:self.video forKey:kVideoKey];
+    [encoder encodeObject:self.remakes forKey:kRemakesKey];
+    [encoder encodeObject:self.segments forKey:kSegmentsKey];
+    [encoder encodeObject:self.soundtrack forKey:kSoundTrackKey];
+    [encoder encodeObject:self.thumbnailPath forKey:kthumbnailKey];
+    [encoder encodeInteger:self.level forKey:kLevelKey];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    
+    self.templateID = [decoder decodeObjectForKey:kTemplateIDKey];
+    self.name = [decoder decodeObjectForKey:kNameKey];
+    self.description = [decoder decodeObjectForKey:kDescriptionKey];
+    self.video = [decoder decodeObjectForKey:kVideoKey];
+    self.remakes = [decoder decodeObjectForKey:kRemakesKey];
+    self.segments = [decoder decodeObjectForKey:kSegmentsKey];
+    self.soundtrack = [decoder decodeObjectForKey:kSoundTrackKey];
+    self.thumbnailPath = [decoder decodeObjectForKey:kthumbnailKey];
+    self.level = [decoder decodeIntegerForKey:kLevelKey];
+    return self;
+}
+
 @end

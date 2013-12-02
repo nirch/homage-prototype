@@ -41,6 +41,8 @@
     return self;
 }
 
+
+
 // Creating a SegmentRemake object from a given Segment object
 - (HMGSegmentRemake *)createSegmentRemakeFrom:(HMGSegment *)segment
 {
@@ -96,6 +98,25 @@
     }];
     
     HMGLogInfo(@"%s ended", __PRETTY_FUNCTION__);
+}
+
+#pragma mark NSCoding
+
+#define kTemplateKey        @"RemakeProjectTemplate"
+#define kUserKey            @"RemakeProjectUser"
+#define kSegmentRemakesKey  @"RemakeProjectSegmentRemakes"
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.templateObj forKey:kTemplateKey];
+    [encoder encodeObject:self.user forKey:kUserKey];
+    [encoder encodeObject:self.segmentRemakes forKey:kSegmentRemakesKey];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self.templateObj = [decoder decodeObjectForKey:kTemplateKey];
+    self.user = [decoder decodeObjectForKey:kUserKey];
+    self.segmentRemakes = [decoder decodeObjectForKey:kSegmentRemakesKey];
+    return [self initWithTemplate:self.templateObj];
 }
 
 

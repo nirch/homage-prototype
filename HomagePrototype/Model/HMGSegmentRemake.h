@@ -10,12 +10,11 @@
 #import "HMGSegment.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface HMGSegmentRemake : NSObject
+@interface HMGSegmentRemake : NSObject <NSCoding>
 
 // Array of NSURLs each item in the array holds a URL to a video represnting a processed take for this segment
 @property (strong, nonatomic,readonly) NSMutableArray *takes;
-@property (nonatomic) NSUInteger selectedTakeIndex;
-
+@property (nonatomic) NSInteger selectedTakeIndex;
 @property (strong, nonatomic) HMGSegment *segment;
 
 

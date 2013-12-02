@@ -115,6 +115,25 @@
     }
 }
 
+#pragma mark NSCoding
 
+#define kTakesKey              @"SegmentRemakeTakes"
+#define kSelectedTakeIndexKey  @"SegmentRemakeSelectedTakeIndex"
+#define kSegmentKey            @"SegmentRemakesegment"
+
+
+- (void) encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeObject:self.takes forKey:kTakesKey];
+    [encoder encodeInteger:self.selectedTakeIndex forKey:kSelectedTakeIndexKey];
+    [encoder encodeObject:self.segment forKey:kSegmentKey];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self.takes = [decoder decodeObjectForKey:kTakesKey];
+    self.selectedTakeIndex = [decoder decodeIntegerForKey:kSelectedTakeIndexKey];
+    self.segment = [decoder decodeObjectForKey:kSegmentKey];
+    //TODO:should there be a special init method?
+    return self;
+}
 
 @end

@@ -25,6 +25,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "Toast+UIView.h"
+#import "HMGFileManager.h"
 
 @interface HMGReviewSegmentsViewController : UIViewController <videoPassingDelegate>;
 

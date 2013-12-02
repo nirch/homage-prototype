@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HMGTemplate.h"
 
-@interface HMGRemakeProject : NSObject
+@interface HMGRemakeProject : NSObject <NSCoding>
 
 @property (strong, nonatomic) HMGTemplate *templateObj;
 @property (strong, nonatomic) NSString *user;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMGTake : NSObject
+@interface HMGTake : NSObject <NSCoding>
 
 @property (strong,nonatomic) NSURL   *videoURL;
 @property (strong,nonatomic) UIImage *thumbnail;

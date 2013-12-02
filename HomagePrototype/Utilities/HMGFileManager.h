@@ -19,4 +19,9 @@
 // Removes (deletes) a resource from a given URL
 + (BOOL)removeResourceAtURL:(NSURL *)resourceURL error:(NSError **)error;
 
+// Creates a URL in the documents librarys based on a given name (the given name is appended to the full path)
++ (NSString *)generatePath:(NSString *)fileNamePrefix ofType:(NSString *)fileType;
+
++ (BOOL)fileExistsAtPath:(NSString *)filePath;
+
 @end

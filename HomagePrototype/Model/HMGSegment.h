@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CMTime.h>
+#import <AVFoundation/AVTime.h>
 
-@interface HMGSegment : NSObject
+@interface HMGSegment : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;
