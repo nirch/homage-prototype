@@ -19,6 +19,7 @@
 #import "HMGTake.h"
 #import "HMGFileManager.h"
 #import "HMGLog.h"
+#import "HMGNetworkManager.h"
 
 @interface HMGRemakeProject ()
 

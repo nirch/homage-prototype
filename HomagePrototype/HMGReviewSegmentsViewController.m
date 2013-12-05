@@ -420,6 +420,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     {
         if (self.templateToDisplay.templateFolder.length == 0)
         {
+            
             // Getting the exported video URL and validating if we can save it
             ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
             if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:videoURL])
@@ -439,6 +440,8 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                             [alert show];
                             [self.makeVideoButton setEnabled:YES];
+                            
+                            [self.remakeProject deleteSavedProjectFile];
                         }
                     });
                 }];
@@ -446,25 +449,10 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
         }
         else
         {
-            // Saving the video. This is an asynchronous process. The completion block (which is implemented here inline) will be invoked once the saving process finished
-            [library writeVideoAtPathToSavedPhotosAlbum:videoURL completionBlock:^(NSURL *assetURL, NSError *error){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (error)
-                    {
-                        HMGLogError([error localizedDescription]);
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:NSLocalizedString(@"VIDEO_SAVING_FAILED", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-                        [alert show];
-                    }
-                    else
-                    {
-                        HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
-                        [alert show];
-                        [self.makeVideoButton setEnabled:YES];
-                        [self.remakeProject deleteSavedProjectFile];
-                    }
-                });
-            }];
+            // Streaming play
+            MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
+            moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+            [self presentMoviePlayerViewControllerAnimated:moviePlayer];
         }
     }
     else
