@@ -645,7 +645,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     return videoDurationText;
 }
 
--(BOOL) navigationShouldPopOnBackButton
+/*-(BOOL) navigationShouldPopOnBackButton
 {
 	self.discardRemakeAlertView = [[UIAlertView alloc] initWithTitle:@"Why like this?" message:@"going back will delete the project. isn't it a shame dude?"
 							   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
@@ -658,7 +658,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 	if(alertView == self.discardRemakeAlertView && buttonIndex==1) {
 		[self.navigationController popViewControllerAnimated:YES];
 	}
-}
+}*/
 
 -(void)SelectloadProjectOrStartNewAlertView
 {
