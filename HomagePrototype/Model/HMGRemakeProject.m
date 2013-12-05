@@ -17,8 +17,72 @@
 #import "HMGAVUtils.h"
 #import "HMGLog.h"
 #import "HMGTake.h"
+#import "HMGFileManager.h"
+#import "HMGLog.h"
+
+@interface HMGRemakeProject ()
+
+@property (strong,nonatomic) NSString *savedProjectDataFile;
+
+@end
 
 @implementation HMGRemakeProject
+
++ (BOOL)savedProjectFileExistsForTemplate:(NSString *)templateName
+{
+    NSString *savedProjectDataFile = [HMGRemakeProject genDataFilePath:templateName];
+    HMGLogDebug(@"project file is : %@" , savedProjectDataFile);
+    if ([HMGFileManager fileExistsAtPath:savedProjectDataFile])
+    {
+        return YES;
+    } else {
+        return NO;
+    }
+
+}
+
++(NSString *)genDataFilePath:(NSString *)templateName
+{
+    NSString *fileName = templateName;
+    fileName = [fileName stringByAppendingString:@"_data"];
+    NSString *savedProjectDataFile = [HMGFileManager generatePath:fileName ofType:@"plist"];
+    return savedProjectDataFile;
+}
+
+#pragma mark handle data
+
+#define kDataKey @"Data"
+
+- (void)saveData
+{
+    HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
+    
+    if (self == nil) return;
+    
+    self.savedProjectDataFile = [HMGRemakeProject genDataFilePath:self.templateObj.name];
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:self forKey:kDataKey];
+    [archiver finishEncoding];
+    HMGLogDebug(@"writing to file: %@",self.savedProjectDataFile);
+    BOOL success1 = [data writeToFile:self.savedProjectDataFile atomically:YES];
+    if (!success1) {
+        HMGLogDebug(@"writing of string failed");
+    }
+}
+
+- (id)initWithFileForTemplate:(NSString *)templateName
+{
+    self.savedProjectDataFile = [HMGRemakeProject genDataFilePath:templateName];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:self.savedProjectDataFile];
+    if (codedData == nil) return nil;
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+    self = [unarchiver decodeObjectForKey:kDataKey];
+    [unarchiver finishDecoding];
+    return self;
+}
+
 
 - (id)initWithTemplate:(HMGTemplate *) templateObj
 {
@@ -39,6 +103,17 @@
         self.segmentRemakes = [NSArray arrayWithArray:segmentRemakes];
     }
     return self;
+}
+
+-(void)deleteSavedProjectFile
+{
+    HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
+    NSError *error = [[NSError alloc] init];
+    BOOL success = [HMGFileManager removeResourceAtURL:[NSURL fileURLWithPath:self.savedProjectDataFile] error:&error];
+    if (!success) {
+        HMGLogWarning(@"%s was not deleted properly. error : %s" ,self.savedProjectDataFile ,error.description);
+    }
+    HMGLogDebug(@"%s finished",__PRETTY_FUNCTION__);
 }
 
 
@@ -116,7 +191,7 @@
     self.templateObj = [decoder decodeObjectForKey:kTemplateKey];
     self.user = [decoder decodeObjectForKey:kUserKey];
     self.segmentRemakes = [decoder decodeObjectForKey:kSegmentRemakesKey];
-    return [self initWithTemplate:self.templateObj];
+    return self;
 }
 
 

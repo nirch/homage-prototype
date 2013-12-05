@@ -27,6 +27,9 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *segmentsCView;
 @property (strong,nonatomic) NSString *projectDataFile;
+@property (nonatomic) UIAlertView *loadProjectAlertView;
+@property (nonatomic) UIAlertView *discardRemakeAlertView;
+@property BOOL loadProjectFromFile;
 
 @end
 
@@ -40,9 +43,14 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     [super viewDidLoad];
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     
-    self.remakeProjectLoaded = FALSE;
-    //self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
-    [self remakeProject];
+    if ([HMGRemakeProject savedProjectFileExistsForTemplate:self.templateToDisplay.name])
+    {
+        [self SelectloadProjectOrStartNewAlertView];
+        
+    } else {
+        self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
+    }
+    
     self.imageSelection = NO;
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 }
@@ -392,7 +400,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
         [alert show];
     } else {
         [self.segmentsCView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-        [self saveData];
+        [self.remakeProject saveData];
     }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
@@ -424,7 +432,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                         [alert show];
                         [self.makeVideoButton setEnabled:YES];
-                        [self deleteProjectFile];
+                        [self.remakeProject deleteSavedProjectFile];
                     }
                 });
             }];
@@ -576,6 +584,20 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
             [self videoProcessDidFinish:videoURL withError:error];
             
         }];
+        
+    } else if ( self.loadProjectAlertView == alertView) {
+        //NO?
+        if (buttonIndex == 0) {
+            self.loadProjectFromFile = FALSE;
+            self.remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
+            [self.segmentsCView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        }
+        //YES?
+        if (buttonIndex == 1) {
+            self.loadProjectFromFile = TRUE;
+            self.remakeProject = [[HMGRemakeProject alloc] initWithFileForTemplate:self.templateToDisplay.name];
+            [self.segmentsCView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        }
     }
     
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
@@ -608,81 +630,26 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 
 -(BOOL) navigationShouldPopOnBackButton
 {
-	[[[UIAlertView alloc] initWithTitle:@"Why like this?" message:@"going back will delete the project. isn't it a shame dude?"
-							   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil] show];
+	self.discardRemakeAlertView = [[UIAlertView alloc] initWithTitle:@"Why like this?" message:@"going back will delete the project. isn't it a shame dude?"
+							   delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    [self.discardRemakeAlertView show];
 	return NO;
 }
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-	if(buttonIndex==1) {
+	if(alertView == self.discardRemakeAlertView && buttonIndex==1) {
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
 
-#pragma mark handle data
-
-#define kDataKey @"Data"
-
-- (void)saveData {
-    
-    HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
-    
-    if (self.remakeProject == nil) return;
-
-    NSString *dataPath = self.projectDataFile;
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    [archiver encodeObject:_remakeProject forKey:kDataKey];
-    [archiver finishEncoding];
-    HMGLogDebug(@"writing to file: %@",dataPath);
-    BOOL success1 = [data writeToFile:dataPath atomically:YES];
-    if (!success1) {
-        HMGLogDebug(@"writing of string failed");
-    }
-    //BOOL success2 = [data writeToURL:self.projectDataFile atomically:YES];
-    //if (!success2) {
-    //    HMGLogDebug(@"writing of url failed");
-    //}
-    
+-(void)SelectloadProjectOrStartNewAlertView
+{
+    self.loadProjectAlertView = [[UIAlertView alloc] initWithTitle:@"reload project" message:@"would you like to load to last saved point or start new project?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+    //[self.loadProjectAlertView show];
+    [self.loadProjectAlertView  performSelectorOnMainThread:@selector(show)
+                            withObject:nil
+                         waitUntilDone:YES];
 }
-
-- (HMGRemakeProject *)remakeProject {
-    
-    HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
-    
-    if (!self.remakeProjectLoaded)
-    {
-        self.projectDataFile = [HMGFileManager generatePath:@"data" ofType:@"plist"];
-        HMGLogDebug(@"project file is : %@" , self.projectDataFile);
-        
-        if ([HMGFileManager fileExistsAtPath:self.projectDataFile])
-        {
-            HMGLogDebug(@"project data file exists! loading");
-            NSString *dataPath = self.projectDataFile;
-            NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
-            if (codedData == nil) return nil;
-            
-            NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
-            _remakeProject = [unarchiver decodeObjectForKey:kDataKey];
-            [unarchiver finishDecoding];
-            HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
-        } else {
-            _remakeProject = [[HMGRemakeProject alloc] initWithTemplate: self.templateToDisplay];
-        }
-        self.remakeProjectLoaded=true;
-    }
-    return _remakeProject;
-}
-
-- (void)deleteProjectFile {
-    HMGLogDebug(@"%s started",__PRETTY_FUNCTION__);
-    NSError *error = [[NSError alloc] init];
-    BOOL success = [HMGFileManager removeResourceAtURL:[NSURL fileURLWithPath:self.projectDataFile] error:&error];
-    HMGLogDebug(@"%s finished",__PRETTY_FUNCTION__);
-}
-
-
-
 
 @end

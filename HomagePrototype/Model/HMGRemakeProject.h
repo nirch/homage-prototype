@@ -15,6 +15,10 @@
 @property (strong, nonatomic) NSString *user;
 @property (strong, nonatomic) NSArray *segmentRemakes;
 
++ (BOOL)savedProjectFileExistsForTemplate:(NSString *)templateName;
+- (void)saveData;
+- (void)deleteSavedProjectFile;
+- (id)initWithFileForTemplate:(NSString *)templateName;
 - (id)initWithTemplate:(HMGTemplate *) templateObj;
 
 

@@ -21,7 +21,7 @@
 #define kNameKey             @"SegmentName"
 #define kDescriptionKey      @"SegmentDescription"
 #define kTimeKey             @"SegmentTime"
-#define kVideoKey            @"SegmentRafi"
+#define kVideoKey            @"SegmentVideo"
 #define kThumbnailKey        @"SegmentThumbnail"
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
@@ -29,7 +29,7 @@
     [encoder encodeObject:self.description forKey:kDescriptionKey];
     [encoder encodeObject:self.video forKey:kVideoKey];
     [encoder encodeObject:self.thumbnailPath forKey:kThumbnailKey];
-    [encoder encodeCMTime:self.duration forKey:kVideoKey];
+    [encoder encodeCMTime:self.duration forKey:kTimeKey];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
