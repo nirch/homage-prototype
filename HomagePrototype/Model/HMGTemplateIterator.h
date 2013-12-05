@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HMGTemplate.h"
 
-#define DEFUALT_TEMPLATES_PER_ITERATION 3
+#define DEFUALT_TEMPLATES_PER_ITERATION 4
 
 @interface HMGTemplateIterator : NSObject
 

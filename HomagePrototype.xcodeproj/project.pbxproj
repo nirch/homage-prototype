@@ -245,6 +245,17 @@
 		F1F04B3B17E48EFB00720C5C /* Tikim_Images.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2417E48EFB00720C5C /* Tikim_Images.png */; };
 		F1F04B3C17E48EFB00720C5C /* Tikim_Text.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2517E48EFB00720C5C /* Tikim_Text.mp4 */; };
 		F1F04B3D17E48EFB00720C5C /* Tikim_Text.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F04B2617E48EFB00720C5C /* Tikim_Text.png */; };
+		F1F930A11845E83100F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930A31845EE0000F6FBA7 /* NetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */; };
+		F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
+		F1F930A6184A977A00F6FBA7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A2EC6118017C240067DD0A /* AssetsLibrary.framework */; };
+		F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A7184A9F0500F6FBA7 /* First.mp4 */; };
+		F1F930AA184A9F0500F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
+		F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A7184A9F0500F6FBA7 /* First.mp4 */; };
+		F1F930AC184AA07100F6FBA7 /* First.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F930A8184A9F0500F6FBA7 /* First.png */; };
+		F1F930AD184AA7B100F6FBA7 /* HMGNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */; };
+		F1F930AE184AA7D300F6FBA7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -465,6 +476,11 @@
 		F1F04B2417E48EFB00720C5C /* Tikim_Images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tikim_Images.png; path = Model/TemplateLoader/Resources/Tikim_Images.png; sourceTree = "<group>"; };
 		F1F04B2517E48EFB00720C5C /* Tikim_Text.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tikim_Text.mp4; path = Model/TemplateLoader/Resources/Tikim_Text.mp4; sourceTree = "<group>"; };
 		F1F04B2617E48EFB00720C5C /* Tikim_Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Tikim_Text.png; path = Model/TemplateLoader/Resources/Tikim_Text.png; sourceTree = "<group>"; };
+		F1F9309F1845E83100F6FBA7 /* HMGNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGNetworkManager.h; sourceTree = "<group>"; };
+		F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGNetworkManager.m; sourceTree = "<group>"; };
+		F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManagerTests.m; sourceTree = "<group>"; };
+		F1F930A7184A9F0500F6FBA7 /* First.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = First.mp4; path = Model/TemplateLoader/Resources/First.mp4; sourceTree = "<group>"; };
+		F1F930A8184A9F0500F6FBA7 /* First.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = First.png; path = Model/TemplateLoader/Resources/First.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +505,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930A6184A977A00F6FBA7 /* AssetsLibrary.framework in Frameworks */,
+				F1F930A5184600E600F6FBA7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC6B18055DD10067DD0A /* QuartzCore.framework in Frameworks */,
 				F1A2EC661805532E0067DD0A /* CoreGraphics.framework in Frameworks */,
 				F1A2EC65180553120067DD0A /* CoreVideo.framework in Frameworks */,
@@ -504,6 +522,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AE184AA7D300F6FBA7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC6C18055DD90067DD0A /* QuartzCore.framework in Frameworks */,
 				F1A2EC671805533F0067DD0A /* CoreVideo.framework in Frameworks */,
 				F1C57B9617FACAA300158EC3 /* AVFoundation.framework in Frameworks */,
@@ -566,6 +585,8 @@
 				65215F8417F8685C00AB95F0 /* HMGFileManager.m */,
 				F1A1EEDC17F864B5008FDE54 /* HMGAVUtils.h */,
 				F1A1EEDD17F864B5008FDE54 /* HMGAVUtils.m */,
+				F1F9309F1845E83100F6FBA7 /* HMGNetworkManager.h */,
+				F1F930A01845E83100F6FBA7 /* HMGNetworkManager.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -593,6 +614,8 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1F930A7184A9F0500F6FBA7 /* First.mp4 */,
+				F1F930A8184A9F0500F6FBA7 /* First.png */,
 				F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */,
 				F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */,
 				F1CBC47717E495DE00167772 /* he_told_me_enough.mov */,
@@ -784,6 +807,7 @@
 				F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */,
 				260683A91819144500D390DA /* TemplateModelTests.m */,
 				F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */,
+				F1F930A21845EE0000F6FBA7 /* NetworkManagerTests.m */,
 			);
 			name = HomagePrototypeApplicationTests;
 			path = HomagePrototypeTests;
@@ -803,9 +827,9 @@
 			children = (
 				F19123CE17DE0C9300DE85DB /* TemplateLoader */,
 				F1C8EF0517CF3A230093DB0A /* HMGTemplate.h */,
+				F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */,
 				260683AC181D5E2600D390DA /* HMGTake.h */,
 				260683AD181D5E2600D390DA /* HMGTake.m */,
-				F1C8EF0617CF3A230093DB0A /* HMGTemplate.m */,
 				F1C8EF0917CF3ADC0093DB0A /* HMGRemake.h */,
 				F1C8EF0A17CF3ADC0093DB0A /* HMGRemake.m */,
 				F1C8EF0C17CF40280093DB0A /* HMGTemplateIterator.h */,
@@ -958,10 +982,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AA184A9F0500F6FBA7 /* First.png in Resources */,
 				F1C8EED517CF38420093DB0A /* InfoPlist.strings in Resources */,
 				F1C8EEDD17CF38420093DB0A /* Default.png in Resources */,
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
 				F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */,
+				F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
 				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
@@ -1077,6 +1103,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */,
+				F1F930AC184AA07100F6FBA7 /* First.png in Resources */,
 				F1CBC47917E496E900167772 /* he_told_me_enough.mov in Resources */,
 				F1CBC47A17E496E900167772 /* finish.mov in Resources */,
 				F1CBC47B17E496E900167772 /* falling.mov in Resources */,
@@ -1159,6 +1187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C8EED717CF38420093DB0A /* main.m in Sources */,
+				F1F930A11845E83100F6FBA7 /* HMGNetworkManager.m in Sources */,
 				F1C8EEDB17CF38420093DB0A /* HomageAppDelegate.m in Sources */,
 				260683B1181D67F300D390DA /* HMGtakeCVCell.m in Sources */,
 				F1C8EEE717CF38420093DB0A /* HMGExploreTemplatesViewController.m in Sources */,
@@ -1197,6 +1226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930A41845EE7400F6FBA7 /* HMGNetworkManager.m in Sources */,
+				F1F930A31845EE0000F6FBA7 /* NetworkManagerTests.m in Sources */,
 				260683AB181916E000D390DA /* HMGLog.m in Sources */,
 				F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */,
 				F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */,
@@ -1214,6 +1245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F930AD184AA7B100F6FBA7 /* HMGNetworkManager.m in Sources */,
 				260683B2181FE05600D390DA /* HMGTake.m in Sources */,
 				F1C57B9517FACA1E00158EC3 /* HMGAVUtils.m in Sources */,
 				65E467E817F966DC0009E641 /* HMGFileManager.m in Sources */,

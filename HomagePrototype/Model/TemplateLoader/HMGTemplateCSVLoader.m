@@ -50,6 +50,8 @@ enum TemplateFields {
     TemplateVideo,
     TemplateSoundtrack,
     TemplateThumbnail,
+    TemplateFolder,
+    TemplateProject,
     NumOfTemplateFields // Always ending with this value so we can know how many fields are there
 };
 
@@ -81,6 +83,8 @@ enum VideoSegmentFields {
     VideoSegmentTemplateID,
     VideoSegmentIndex,
     VideoSegmentRecordDuration,
+    VideoSegmentTemplateFolder,
+    VideoSegmentFile,
     NumOfVideoSegmentFields
 };
 
@@ -101,6 +105,8 @@ enum TextSegmentFields {
     TextSegmentLocation,
     TextSegmentVideo,
     TextSegmentImage,
+    TextSegmentTemplateFolder,
+    TextSegmentDynamicText,
     NumOfTextSegmentFields
 };
 
@@ -239,6 +245,12 @@ enum TextSegmentFields {
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
                     self.template.thumbnailPath = fullFilePath;
                     break;
+                case TemplateFolder:
+                    self.template.templateFolder = field;
+                    break;
+                case TemplateProject:
+                    self.template.templateProject = field;
+                    break;
             }
         }
     }
@@ -365,6 +377,20 @@ enum TextSegmentFields {
                     videoSegment.recordDuration = CMTimeMake([field integerValue], 1000);
                 }
                 break;
+            case VideoSegmentTemplateFolder:
+                if (self.templateIdMatched)
+                {
+                    HMGVideoSegment *videoSegment = (HMGVideoSegment*) self.segment;
+                    videoSegment.templateFolder = field;
+                }
+                break;
+            case VideoSegmentFile:
+                if (self.templateIdMatched)
+                {
+                    HMGVideoSegment *videoSegment = (HMGVideoSegment*) self.segment;
+                    videoSegment.segmentFile = field;
+                }
+                break;
             default:
                 [NSException raise:@"Invalid fieldIndex value for video segments CSV" format:@"value of %d is invalid (value must be < %d)", fieldIndex, NumOfVideoSegmentFields];
                 break;
@@ -469,6 +495,20 @@ enum TextSegmentFields {
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
                     
                     textSegment.imagePath = fullFilePath;
+                }
+                break;
+            case TextSegmentTemplateFolder:
+                if (self.templateIdMatched)
+                {
+                    HMGTextSegment *textSegment = (HMGTextSegment*) self.segment;
+                    textSegment.templateFolder = field;
+                }
+                break;
+            case TextSegmentDynamicText:
+                if (self.templateIdMatched)
+                {
+                    HMGTextSegment *textSegment = (HMGTextSegment*) self.segment;
+                    textSegment.dynamicText = field;
                 }
                 break;
             default:

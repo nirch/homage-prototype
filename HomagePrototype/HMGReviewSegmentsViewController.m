@@ -332,7 +332,7 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
 
 //this action will be called when the user wants to render the final product from the remakes
 - (IBAction)renderFinal:(id)sender {
-    
+
     NSArray *noRemakeSegments = [self segmentsWithNoRemakes];
     if ([noRemakeSegments count] > 0)
     {
@@ -340,7 +340,10 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:errormessage
                                                        delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
         [alert show];
-    } else {
+    }
+    else
+    {
+
         HMGLogDebug(@"%s started", __PRETTY_FUNCTION__);
         self.makeVideoButton = (UIButton *)sender;
         [self.makeVideoButton setEnabled:NO];
@@ -352,9 +355,11 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
             [self videoRenderDidFinish:videoURL withError:error];
         }];
         HMGLogDebug(@"%s finished", __PRETTY_FUNCTION__);
-    }
+   }
 
 }
+
+
 
 -(BOOL)segmentHasATake:(HMGSegmentRemake *)segmentRemake
 {
@@ -413,9 +418,33 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
     
     if (!error)
     {
-        // Getting the exported video URL and validating if we can save it
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:videoURL])
+        if (self.templateToDisplay.templateFolder.length == 0)
+        {
+            // Getting the exported video URL and validating if we can save it
+            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+            if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:videoURL])
+            {
+                // Saving the video. This is an asynchronous process. The completion block (which is implemented here inline) will be invoked once the saving process finished
+                [library writeVideoAtPathToSavedPhotosAlbum:videoURL completionBlock:^(NSURL *assetURL, NSError *error){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (error)
+                        {
+                            HMGLogError([error localizedDescription]);
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ERROR", nil) message:NSLocalizedString(@"VIDEO_SAVING_FAILED", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                            [alert show];
+                        }
+                        else
+                        {
+                            HMGLogNotice(@"Video <%@> saved successfully to photo album", videoURL.description);
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"VIDEO_SAVED", nil) message:NSLocalizedString(@"SAVED_TO_PHOTO_ALBUM", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                            [alert show];
+                            [self.makeVideoButton setEnabled:YES];
+                        }
+                    });
+                }];
+            }
+        }
+        else
         {
             // Saving the video. This is an asynchronous process. The completion block (which is implemented here inline) will be invoked once the saving process finished
             [library writeVideoAtPathToSavedPhotosAlbum:videoURL completionBlock:^(NSURL *assetURL, NSError *error){

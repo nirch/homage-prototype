@@ -12,7 +12,7 @@
 #import "HMGFileManager.h"
 #import "HMGAVUtils.h"
 #import "HMGLog.h"
-
+#import "HMGNetworkManager.h"
 
 #define PVIDEO_FILE_PREFIX @"videoSegmentProcessedVideo-"
 #define PVIDEO_FILE_TYPE @"mov"
@@ -38,10 +38,40 @@
     
     // TODO: (1) Do we need to check that the actual duration equals the recordDuration? What if it is not? (2) What about soundtrack?
 
-    // Scaling the raw video to the "play" duration
-    [HMGAVUtils scaleVideo:self.video toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
-        [self processVideoDidFinish:exporter withCompletion:completion];
-    }];
+    if (videoSegment.templateFolder.length == 0)
+    {
+        // Scaling the raw video to the "play" duration
+        [HMGAVUtils scaleVideo:self.video toDuration:playDuration completion:^(AVAssetExportSession *exporter) {
+            [self processVideoDidFinish:exporter withCompletion:completion];
+        }];
+    }
+    else
+    {
+        // Upload to server
+        NSURL *serverUploadURL = [NSURL URLWithString:@"http://54.204.34.168:4567/upload"];
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        NSDictionary *uploadParams = [NSDictionary dictionaryWithObjectsAndKeys:videoSegment.templateFolder, @"template_folder", videoSegment.segmentFile, @"segment_file", nil];
+        
+        NSURLRequest *request = [HMGNetworkManager requestToUploadURL:serverUploadURL withFile:self.video withParams:uploadParams];
+        
+        NSURLSessionUploadTask *uploadTask = [session uploadTaskWithRequest:request fromData:request.HTTPBody completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error)
+            {
+                HMGLogError(error.description);
+                completion(nil, error);
+            }
+            else
+            {
+                HMGLogDebug(@"Video Successfully uploaded");
+                [self addVideoTake:self.video];
+                completion(self.video, error);
+            }
+        }];
+        
+        HMGLogDebug(@"Video upload started");        
+        [uploadTask resume];
+    }
     
     
     // The following code creates a copy of the raw video, it will be needed once we will need the soundtrack (maybe a different SegmentRemake object?)

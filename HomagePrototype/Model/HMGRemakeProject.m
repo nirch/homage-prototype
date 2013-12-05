@@ -146,31 +146,62 @@
 {
     HMGLogInfo(@"%s started", __PRETTY_FUNCTION__);
     
-    NSMutableArray *videosToMerge = [[NSMutableArray alloc] init];
-    
-    // Looping over the project's segments to add thier videos to the videos to merge array
-    for (HMGSegmentRemake *segmentRemake in self.segmentRemakes)
+    if (self.templateObj.templateFolder.length == 0)
     {
-        // Checking that there are takes in this segment
-        if (segmentRemake.takes.count > 0)
+        NSMutableArray *videosToMerge = [[NSMutableArray alloc] init];
+        
+        // Looping over the project's segments to add thier videos to the videos to merge array
+        for (HMGSegmentRemake *segmentRemake in self.segmentRemakes)
         {
-            // Assigning the segment's selected take
-            HMGTake *segmentSelectedTake = segmentRemake.takes[segmentRemake.selectedTakeIndex];
-            NSURL *segmentSelectedVideo = segmentSelectedTake.videoURL;
-            [videosToMerge addObject:segmentSelectedVideo];
+            // Checking that there are takes in this segment
+            if (segmentRemake.takes.count > 0)
+            {
+                // Assigning the segment's selected take
+                HMGTake *segmentSelectedTake = segmentRemake.takes[segmentRemake.selectedTakeIndex];
+                NSURL *segmentSelectedVideo = segmentSelectedTake.videoURL;
+                [videosToMerge addObject:segmentSelectedVideo];
+            }
+            else
+            {
+                // throwing an exception that there is no video take in one of the segments
+                [NSException raise:@"InvalidArgumentException" format:@"Segment <%@> has no video/takes. Cannot proceed with rendering the video", segmentRemake.segment.name];
+            }
         }
-        else
-        {
-            // throwing an exception that there is no video take in one of the segments
-            [NSException raise:@"InvalidArgumentException" format:@"Segment <%@> has no video/takes. Cannot proceed with rendering the video", segmentRemake.segment.name];
-        }
+        
+        NSURL *soundtrack = self.templateObj.soundtrack;
+        
+        [HMGAVUtils mergeVideos:videosToMerge withSoundtrack:soundtrack completion:^(AVAssetExportSession *exporter) {
+            completion(exporter.outputURL, exporter.error);
+        }];
     }
-    
-    NSURL *soundtrack = self.templateObj.soundtrack;
-    
-    [HMGAVUtils mergeVideos:videosToMerge withSoundtrack:soundtrack completion:^(AVAssetExportSession *exporter) {
-        completion(exporter.outputURL, exporter.error);
-    }];
+    else
+    {
+        // Render on server
+        NSURL *serverRender = [NSURL URLWithString:@"http://54.204.34.168:4567/render"];
+        NSURLSession *session = [NSURLSession sharedSession];
+        NSString *uniqueString = [[NSUUID UUID] UUIDString];
+        NSString *fileOutputName = [NSString stringWithFormat:@"output-%@", uniqueString];
+        NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:self.templateObj.templateProject, @"template_project", self.templateObj.templateFolder, @"template_folder", fileOutputName, @"output", nil];
+        
+        // Build POST request
+        NSURLRequest *request = [HMGNetworkManager createPostRequestURL:serverRender withParams:postParams];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error)
+            {
+                HMGLogError(error.description);
+                completion(nil, error);
+            }
+            else
+            {
+                HMGLogDebug(@"Render on server finished successfully");
+                NSURL *downloadURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://54.204.34.168:4567/download/%@.mp4", fileOutputName]];
+                completion(downloadURL, error);
+            }
+        }];
+        
+        [postDataTask resume];
+    }
     
     HMGLogInfo(@"%s ended", __PRETTY_FUNCTION__);
 }

@@ -23,4 +23,7 @@ typedef enum {
 @property (nonatomic) HMGTextLocation location;
 @property (strong, nonatomic) NSString *imagePath;
 
+@property (nonatomic, strong) NSString *templateFolder;
+@property (nonatomic, strong) NSString *dynamicText;
+
 @end

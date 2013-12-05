@@ -11,6 +11,7 @@
 #import "HMGAVUtils.h"
 #import "HMGSegmentRemakeProtectedMethods.h"
 #import "HMGLog.h"
+#import "HMGNetworkManager.h"
 
 @implementation HMGTextSegmentRemake
 
@@ -21,9 +22,39 @@
     
     HMGTextSegment *textSegment = (HMGTextSegment *)self.segment;
 
-    [HMGAVUtils textOnVideo:textSegment.video withText:self.text withFontName:textSegment.font withFontSize:textSegment.fontSize completion:^(AVAssetExportSession *exporter) {
-        [self processVideoDidFinish:exporter withCompletion:completion];
-    }];
+    if (textSegment.templateFolder.length == 0)
+    {
+        [HMGAVUtils textOnVideo:textSegment.video withText:self.text withFontName:textSegment.font withFontSize:textSegment.fontSize completion:^(AVAssetExportSession *exporter) {
+            [self processVideoDidFinish:exporter withCompletion:completion];
+        }];
+    }
+    else
+    {
+        NSURL *serverUpdateTextURL = [NSURL URLWithString:@"http://54.204.34.168:4567/update_text"];
+
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:self.text, @"dynamic_text", textSegment.templateFolder, @"template_folder", textSegment.dynamicText, @"dynamic_text_file", nil];
+        
+        // Build POST request
+        NSURLRequest *request = [HMGNetworkManager createPostRequestURL:serverUpdateTextURL withParams:postParams];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error)
+            {
+                HMGLogError(error.description);
+                completion(nil, error);
+            }
+            else
+            {
+                HMGLogDebug(@"Text updated successfully");
+                [self addVideoTake:textSegment.video];
+                completion(textSegment.video, error);
+            }
+        }];
+
+        [postDataTask resume];
+    }
     
     HMGLogDebug(@"%s ended", __PRETTY_FUNCTION__);
 }

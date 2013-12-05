@@ -93,6 +93,9 @@
     STAssertTrue([templates count] == 1, @"next should return %d templates, whereas it returned %d templates", 1, templates.count);
 
     templates = self.templateIterator.next;
+    STAssertTrue([templates count] == 1, @"next should return %d templates, whereas it returned %d templates", 1, templates.count);
+    
+    templates = self.templateIterator.next;
     STAssertNil(templates, @"templates was supposed to be nil but it is not");
 
 }

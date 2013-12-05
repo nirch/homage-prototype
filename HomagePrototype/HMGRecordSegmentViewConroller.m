@@ -62,6 +62,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     self.captureSession = [[AVCaptureSession alloc] init];
+    self.captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
 	NSError *error;
     
 	// Set up hardware devices
@@ -80,6 +81,8 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 			[self.captureSession addInput:audioInput];
 		}
 	}
+    
+    /*
 	// Setup the still image file output
 	AVCaptureStillImageOutput *stillImageOutput = [[AVCaptureStillImageOutput alloc] init];
 	[stillImageOutput setOutputSettings:@{AVVideoCodecKey : AVVideoCodecJPEG}];
@@ -87,19 +90,37 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 	if ([self.captureSession canAddOutput:stillImageOutput]) {
 		[self.captureSession addOutput:stillImageOutput];
 	}
-    
-	// Start running session so preview is available
-	[self.captureSession startRunning];
+     */
     
 	// Set up preview layer
-	dispatch_async(dispatch_get_main_queue(), ^{
-		self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
-		self.previewLayer.frame = self.previewView.bounds;
-		self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-        
-		[[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
-		[self.previewView.layer addSublayer:self.previewLayer];
-	});
+    self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
+    self.previewLayer.frame = self.previewView.bounds;
+    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    
+    [[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
+    [self.previewView.layer addSublayer:self.previewLayer];
+    
+    
+    self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
+    if ([self.captureSession canAddOutput:self.captureOutput])
+    {
+        [self.captureSession addOutput:self.captureOutput];
+    }
+    
+    AVCaptureConnection *videoConnection = [self connectionWithMediaType:AVMediaTypeVideo fromConnections:self.captureOutput.connections];
+    
+    if ([videoConnection isVideoOrientationSupported]) {
+        videoConnection.videoOrientation = [self currentVideoOrientation];
+    }
+    
+    if ([videoConnection isVideoStabilizationSupported]) {
+        videoConnection.enablesVideoStabilizationWhenAvailable = YES;
+    }
+
+    
+    // Start running session so preview is available
+	[self.captureSession startRunning];
+    
     HMGLogDebug(@"%s finished" , __PRETTY_FUNCTION__);
 
 }
@@ -142,13 +163,10 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     {
 		[sender setSelected:YES];
         [sender setEnabled:NO];
-		if (!self.captureOutput)
-        {
-			self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
-			[self.captureSession addOutput:self.captureOutput];
-        }
-		[self.captureSession startRunning];
         
+        /*
+        self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
+        [self.captureSession addOutput:self.captureOutput];
         
 		AVCaptureConnection *videoConnection = [self connectionWithMediaType:AVMediaTypeVideo fromConnections:self.captureOutput.connections];
         
@@ -159,6 +177,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 		if ([videoConnection isVideoStabilizationSupported]) {
 			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
 		}
+         */
         
         self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
@@ -248,6 +267,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     if (self.remainingTicks <= 0) {
         HMGLogDebug(@"stop recording and invalidating timer");
         [self.captureOutput stopRecording];
+        [self.captureSession stopRunning];
         [self.remainingSecondsTimer invalidate];
         self.remainingSecondsTimer = nil;
     }
