@@ -25,6 +25,7 @@ typedef enum {
 @property (strong, nonatomic) NSArray *segments;
 @property (strong, nonatomic) NSURL *soundtrack;
 @property (strong, nonatomic) NSString *thumbnailPath;
+@property (strong, nonatomic) UIImage *thumbnail;
 
 -(NSString *) levelDescription;
 @property (strong, nonatomic) NSString *templateFolder;

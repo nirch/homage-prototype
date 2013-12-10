@@ -8,4 +8,5 @@ TemplateID,Index,RecordDuration(ms),TemplateFolder,SegmentFile
 3,5,9000,,
 3,6,20000,,
 3,7,6000,,
-4,1,7000,Test,Test.mov
+4,0,5000,Birthday,VID_20131020_173354.mp4
+5,1,7000,Test,Test.mov

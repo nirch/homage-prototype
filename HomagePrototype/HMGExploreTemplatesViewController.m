@@ -56,7 +56,17 @@
     if ([cell isKindOfClass: [HMGTemplateCVCell class]]) {
         HMGTemplateCVCell *templateCell = (HMGTemplateCVCell *) cell;
         templateCell.templateName.text              = template.name;
-        templateCell.templatePreviewImageView.image = [UIImage imageWithContentsOfFile:template.thumbnailPath];
+        
+        // Since getting the thumbnail might take time (network), doing this on a different thread
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            UIImage *thumbnail = template.thumbnail;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Update the UI
+                templateCell.templatePreviewImageView.image = thumbnail;
+            });
+        });
+
         templateCell.difficulty.text = template.levelDescription;
         //templateCell.uploaded                     = template.uploadDate;
         templateCell.numOfRemakes.text              = [NSString stringWithFormat:NSLocalizedString(@"NUM_OF_REMAKES", nil), [template.remakes count]];

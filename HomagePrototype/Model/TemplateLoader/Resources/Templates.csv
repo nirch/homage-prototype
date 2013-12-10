@@ -2,4 +2,5 @@ ID,Name,Description,Level,VideoURL,SoundtrackURL,ThumbnailURL,TemplateFolder,Tem
 1,Wrong Meeting,,0,Wrong_meeting.mp4,,wrong_meeting.png,,
 2,I am your father,,0,I_am_yor_father-Ran.mp4,,I_am_yor_father-Ran.png,,
 3,Tikim,,2,Homage_Tikim.mp4,Homage_Tikim.mp3,Homage_Tikim.png,,
-4,Test,This template takes a given video trims it from second 1 to second 4 and adds a text on the video,0,First.mp4,,First.png,Test,Test.aep
+4,Birthday,Create a video invitation to your Birthday!,1,https://s3.amazonaws.com/homageapp/Templates/Birthday/Birthday_Nir_Final.mp4,,https://s3.amazonaws.com/homageapp/Templates/Birthday/Birthday_Thumbnail.jpg,Birthday,Birthday.aep
+5,Test,This template takes a given video trims it from second 1 to second 4 and adds a text on the video,0,First.mp4,,First.png,Test,Test.aep

@@ -31,7 +31,19 @@
     
     //template player
     [self.templatePlayButton setBackgroundImage:[UIImage imageWithContentsOfFile:self.templateToDisplay.thumbnailPath] forState:UIControlStateNormal];
-    self.templatethumbnailImageView.image = [UIImage imageWithContentsOfFile:self.templateToDisplay.thumbnailPath];
+    
+    // Since getting the thumbnail might take time (network), doing this on a different thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        UIImage *thumbnail = self.templateToDisplay.thumbnail;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            self.templatethumbnailImageView.image = thumbnail;
+        });
+    });
+    
+    
+    //self.templatethumbnailImageView.image = [UIImage imageWithContentsOfFile:self.templateToDisplay.thumbnailPath];
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"pb_play_icon" ofType:@"png"];
     UIImage *playButtonImage = [UIImage imageWithContentsOfFile:imagePath];
     [self.templatePlayButton setImage:playButtonImage forState:UIControlStateNormal];

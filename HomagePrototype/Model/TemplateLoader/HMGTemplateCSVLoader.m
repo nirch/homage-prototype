@@ -235,7 +235,14 @@ enum TextSegmentFields {
                     break;
                 case TemplateVideo:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.template.video = [NSURL fileURLWithPath:fullFilePath];
+                    if (fullFilePath)
+                    {
+                        self.template.video = [NSURL fileURLWithPath:fullFilePath];
+                    }
+                    else
+                    {
+                        self.template.video = [NSURL URLWithString:field];
+                    }
                     break;
                 case TemplateSoundtrack:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
@@ -243,7 +250,11 @@ enum TextSegmentFields {
                     break;
                 case TemplateThumbnail:
                     fullFilePath = [[NSBundle bundleForClass:[self class]] pathForResource:field ofType:@""];
-                    self.template.thumbnailPath = fullFilePath;
+                    if (fullFilePath) {
+                        self.template.thumbnailPath = fullFilePath;
+                    } else {
+                        self.template.thumbnailPath = field;
+                    }
                     break;
                 case TemplateFolder:
                     self.template.templateFolder = field;

@@ -32,6 +32,36 @@
 
 }
 
+- (void)setThumbnailPath:(NSString *)thumbnailPath
+{
+    _thumbnailPath = thumbnailPath;
+    _thumbnail = nil;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        _thumbnail = self.thumbnail;
+    });
+}
+
+- (UIImage *)thumbnail
+{
+    if (_thumbnail)
+    {
+        return _thumbnail;
+    }
+    
+    _thumbnail = [UIImage imageWithContentsOfFile:self.thumbnailPath];
+    if (_thumbnail)
+    {
+        return _thumbnail;
+    }
+    
+    NSURL *imageURL = [NSURL URLWithString:self.thumbnailPath];
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    _thumbnail = [UIImage imageWithData:imageData];
+    
+    return _thumbnail;
+}
+
 #pragma mark NSCoding
 
 #define kTemplateIDKey       @"TemplateID"
