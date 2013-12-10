@@ -62,7 +62,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 {
     HMGLogDebug(@"%s started" , __PRETTY_FUNCTION__);
     self.captureSession = [[AVCaptureSession alloc] init];
-    self.captureSession.sessionPreset = AVCaptureSessionPresetMedium;
+    self.captureSession.sessionPreset = AVCaptureSessionPreset1280x720;
 	NSError *error;
     
 	// Set up hardware devices

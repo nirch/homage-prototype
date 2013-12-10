@@ -179,7 +179,10 @@
     {
         // Render on server
         NSURL *serverRender = [NSURL URLWithString:@"http://54.204.34.168:4567/render"];
-        NSURLSession *session = [NSURLSession sharedSession];
+        //NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        NSURLSessionConfiguration* defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        HMGLogDebug(@"%d", [defaultConfiguration timeoutIntervalForResource]);
         NSString *uniqueString = [[NSUUID UUID] UUIDString];
         NSString *fileOutputName = [NSString stringWithFormat:@"output-%@", uniqueString];
         NSDictionary *postParams = [NSDictionary dictionaryWithObjectsAndKeys:self.templateObj.templateProject, @"template_project", self.templateObj.templateFolder, @"template_folder", fileOutputName, @"output", nil];
