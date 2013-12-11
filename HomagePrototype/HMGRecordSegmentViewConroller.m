@@ -14,6 +14,8 @@
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureMovieFileOutput *captureOutput;
 @property (nonatomic, weak) AVCaptureDeviceInput *activeVideoInput;
+@property (nonatomic, weak) AVCaptureDevice *videoDevice;
+
 
 @property (nonatomic, strong)  AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic,strong) NSURL *tempUrl;
@@ -66,9 +68,9 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 	NSError *error;
     
 	// Set up hardware devices
-	AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-	if (videoDevice) {
-		AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+	self.videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	if (self.videoDevice) {
+		AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:self.videoDevice error:&error];
 		if (input) {
 			[self.captureSession addInput:input];
 			self.activeVideoInput = input;
@@ -178,6 +180,19 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
 		}
          */
+        
+        if (self.videoDevice.isFocusPointOfInterestSupported && [self.videoDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus])
+        {
+            NSError *error;
+            if ([self.videoDevice lockForConfiguration:&error])
+            {
+                [self.videoDevice setFocusPointOfInterest:CGPointMake(0.5, 0.5)];
+                [self.videoDevice setFocusMode:AVCaptureFocusModeAutoFocus];
+                [self.videoDevice unlockForConfiguration];
+            } else {
+                HMGLogError(error.description);
+            }
+        }
         
         self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
