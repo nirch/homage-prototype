@@ -449,10 +449,12 @@ const NSInteger SINGLE_SEGMENT_TAKES_CV_TAG = 20;
         }
         else
         {
+            /*
             // Streaming play
             MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
             moviePlayer.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
             [self presentMoviePlayerViewControllerAnimated:moviePlayer];
+             */
         }
     }
     else

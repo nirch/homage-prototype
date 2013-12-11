@@ -1,6 +1,6 @@
 TemplateID,Index,Font,FontSize,NumOfLines,Location,Video,Image,TemplateFolder,DynamicText
 3,0,Helvetica,36,1,1,Red.mov,,,
-4,1,Helvetica,36,1,1,First.mp4,,Birthday,Year.txt
-4,2,Helvetica,36,1,1,First.mp4,,Birthday,Name.txt
-4,3,Helvetica,36,1,1,First.mp4,,Birthday,Date.txt
+4,1,Helvetica,36,1,1,Red.mov,,Birthday,Year.txt
+4,2,Helvetica,36,1,1,Red.mov,,Birthday,Name.txt
+4,3,Helvetica,36,1,1,Red.mov,,Birthday,Date.txt
 5,0,Helvetica,36,1,1,First.mp4,,Test,DynamicText.txt

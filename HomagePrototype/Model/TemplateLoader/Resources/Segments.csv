@@ -10,9 +10,9 @@ TemplateID,Type,Name,Description,Duration(ms),Video,Thumbnail
 3,VideoSegment,Main actor still waiting,Main actor still on the startline,6000,Neta_juice.mov,Neta_juice.PNG
 3,VideoSegment,Finish Line,Main actor passes all the others to win the race,15300,finish.mov,finish.PNG
 3,VideoSegment,Sigh,Actors exhusted and falling after the race,3400,falling.mov,falling.PNG
-4,VideoSegment,What are you up to today?,Take a video showing you in present time,5000,First.mp4,First.png
-4,TextSegment,Birth Year,Enter the year you were born,3000,First.mp4,First.png
-4,TextSegment,Name,Enter your name,3000,First.mp4,First.png
-4,TextSegment,Date,Enter the date of the event,3000,First.mp4,First.png
+4,VideoSegment,What are you up to today?,Take a video showing you in present time,5000,Red.mov,Today.jpg
+4,TextSegment,Birth Year,Enter the year you were born,3000,Red.mov,Year.jpg
+4,TextSegment,Name,Enter your name,3000,Red.mov,Name.jpg
+4,TextSegment,Date,Enter the date of the event,3000,Red.mov,Date.jpg
 5,TextSegment,Text on Video,Enter the text that will be presented on the video,3000,First.mp4,First.png
 5,VideoSegment,Any Video,A video with at least 5 seconds,7000,First.mp4,First.png

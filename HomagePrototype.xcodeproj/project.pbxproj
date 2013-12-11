@@ -69,6 +69,18 @@
 		F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */; };
 		F10DBE5B17FC53CB000B69DB /* RemakeProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */; };
 		F1151F24181E6E1600918A8B /* TemplatesViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */; };
+		F122EC521858D89000AAB697 /* Date.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4E1858D89000AAB697 /* Date.jpg */; };
+		F122EC531858D89000AAB697 /* Date.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4E1858D89000AAB697 /* Date.jpg */; };
+		F122EC541858D89000AAB697 /* Date.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4E1858D89000AAB697 /* Date.jpg */; };
+		F122EC551858D89000AAB697 /* Name.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4F1858D89000AAB697 /* Name.jpg */; };
+		F122EC561858D89000AAB697 /* Name.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4F1858D89000AAB697 /* Name.jpg */; };
+		F122EC571858D89000AAB697 /* Name.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC4F1858D89000AAB697 /* Name.jpg */; };
+		F122EC581858D89000AAB697 /* Today.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC501858D89000AAB697 /* Today.jpg */; };
+		F122EC591858D89000AAB697 /* Today.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC501858D89000AAB697 /* Today.jpg */; };
+		F122EC5A1858D89000AAB697 /* Today.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC501858D89000AAB697 /* Today.jpg */; };
+		F122EC5B1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
+		F122EC5C1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
+		F122EC5D1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -347,6 +359,10 @@
 		F10DBE4517FC5375000B69DB /* Tikim_Images.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tikim_Images.mp4; sourceTree = "<group>"; };
 		F10DBE5A17FC53CB000B69DB /* RemakeProjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemakeProjectTests.m; sourceTree = "<group>"; };
 		F1151F23181E6E1600918A8B /* TemplatesViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TemplatesViewControllerTests.m; sourceTree = "<group>"; };
+		F122EC4E1858D89000AAB697 /* Date.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Date.jpg; path = Model/TemplateLoader/Resources/Date.jpg; sourceTree = "<group>"; };
+		F122EC4F1858D89000AAB697 /* Name.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Name.jpg; path = Model/TemplateLoader/Resources/Name.jpg; sourceTree = "<group>"; };
+		F122EC501858D89000AAB697 /* Today.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Today.jpg; path = Model/TemplateLoader/Resources/Today.jpg; sourceTree = "<group>"; };
+		F122EC511858D89000AAB697 /* Year.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Year.jpg; path = Model/TemplateLoader/Resources/Year.jpg; sourceTree = "<group>"; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
@@ -614,6 +630,10 @@
 		F19123D017DE13EE00DE85DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F122EC4E1858D89000AAB697 /* Date.jpg */,
+				F122EC4F1858D89000AAB697 /* Name.jpg */,
+				F122EC501858D89000AAB697 /* Today.jpg */,
+				F122EC511858D89000AAB697 /* Year.jpg */,
 				F1F930A7184A9F0500F6FBA7 /* First.mp4 */,
 				F1F930A8184A9F0500F6FBA7 /* First.png */,
 				F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */,
@@ -990,8 +1010,11 @@
 				F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
+				F122EC5B1858D89000AAB697 /* Year.jpg in Resources */,
 				F19123D817DE140D00DE85DB /* Homage_Tikim.mp4 in Resources */,
 				F19123D917DE140D00DE85DB /* Homage_Tikim.png in Resources */,
+				F122EC551858D89000AAB697 /* Name.jpg in Resources */,
+				F122EC581858D89000AAB697 /* Today.jpg in Resources */,
 				F10DBE4617FC5375000B69DB /* Tikim_Images.mp4 in Resources */,
 				F19123DA17DE140D00DE85DB /* I_am_yor_father-Ran.mp4 in Resources */,
 				F19123DB17DE140D00DE85DB /* I_am_yor_father-Ran.png in Resources */,
@@ -1065,6 +1088,7 @@
 				26508A3517EF29BC00728528 /* camera_bezel.png in Resources */,
 				26508A3617EF29BC00728528 /* camera_bezel@2x.png in Resources */,
 				26508A3717EF29BC00728528 /* camera_button_background.png in Resources */,
+				F122EC521858D89000AAB697 /* Date.jpg in Resources */,
 				26508A3817EF29BC00728528 /* camera_button_background@2x.png in Resources */,
 				26508A3917EF29BC00728528 /* camera_switch_icon.png in Resources */,
 				26508A3A17EF29BC00728528 /* camera_switch_icon@2x.png in Resources */,
@@ -1084,8 +1108,11 @@
 				F1A2EC68180558BA0067DD0A /* falling.PNG in Resources */,
 				F17B3C4118058F45007FA7A4 /* wood.jpg in Resources */,
 				F1A2EC69180558BA0067DD0A /* legs.png in Resources */,
+				F122EC561858D89000AAB697 /* Name.jpg in Resources */,
 				F1A2EC6A180558BA0067DD0A /* Neta_juice.PNG in Resources */,
+				F122EC5C1858D89000AAB697 /* Year.jpg in Resources */,
 				F10DBE4717FC5394000B69DB /* Tikim_Images.mp4 in Resources */,
+				F122EC531858D89000AAB697 /* Date.jpg in Resources */,
 				F1A2EC5D17FD42E00067DD0A /* Tikim_FinishLine_Export.mp4 in Resources */,
 				F1A2EC5E17FD42E00067DD0A /* Tikim_Hero_Export.mp4 in Resources */,
 				F1C57B9117F95E0100158EC3 /* Homage_Tikim.mp3 in Resources */,
@@ -1094,6 +1121,7 @@
 				F1A2EC5617FD40EE0067DD0A /* Tikim_Legs_Export.mov in Resources */,
 				F1A2EC5817FD41EC0067DD0A /* Tikim_Pre_Race_Export.mp4 in Resources */,
 				F1C57B8E17F8A6BD00158EC3 /* Tikim_Text.mp4 in Resources */,
+				F122EC591858D89000AAB697 /* Today.jpg in Resources */,
 				F1C8EEF917CF38420093DB0A /* InfoPlist.strings in Resources */,
 				F1A2EC5F17FD42E00067DD0A /* Tikim_Race_Export.mp4 in Resources */,
 			);
@@ -1105,11 +1133,13 @@
 			files = (
 				F1F930AB184AA07100F6FBA7 /* First.mp4 in Resources */,
 				F1F930AC184AA07100F6FBA7 /* First.png in Resources */,
+				F122EC541858D89000AAB697 /* Date.jpg in Resources */,
 				F1CBC47917E496E900167772 /* he_told_me_enough.mov in Resources */,
 				F1CBC47A17E496E900167772 /* finish.mov in Resources */,
 				F1CBC47B17E496E900167772 /* falling.mov in Resources */,
 				F1CBC47C17E496E900167772 /* falling.PNG in Resources */,
 				F1CBC47D17E496E900167772 /* finish.PNG in Resources */,
+				F122EC5D1858D89000AAB697 /* Year.jpg in Resources */,
 				F1CBC47E17E496E900167772 /* he_told_me_enough.PNG in Resources */,
 				F1CBC47F17E496E900167772 /* legs.mov in Resources */,
 				F1CBC48017E496E900167772 /* legs.png in Resources */,
@@ -1119,6 +1149,7 @@
 				F1CBC48417E496E900167772 /* Neta_juice.PNG in Resources */,
 				F1CBC48517E496E900167772 /* never_join_you.mov in Resources */,
 				F1CBC48617E496E900167772 /* never_join_you.PNG in Resources */,
+				F122EC5A1858D89000AAB697 /* Today.jpg in Resources */,
 				F1CBC48717E496E900167772 /* Race_Start.mov in Resources */,
 				F1CBC48817E496E900167772 /* Race_Start.PNG in Resources */,
 				F1CBC48917E496E900167772 /* Race.mov in Resources */,
@@ -1146,6 +1177,7 @@
 				F19123EC17DE8DA900DE85DB /* Wrong_meeting.mp4 in Resources */,
 				F19123ED17DE8DA900DE85DB /* wrong_meeting.png in Resources */,
 				F19123E717DE871A00DE85DB /* Templates.csv in Resources */,
+				F122EC571858D89000AAB697 /* Name.jpg in Resources */,
 				F1D42E9217D4915F00802D7C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
