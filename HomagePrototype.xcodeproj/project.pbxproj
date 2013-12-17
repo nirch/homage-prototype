@@ -81,6 +81,7 @@
 		F122EC5B1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
 		F122EC5C1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
 		F122EC5D1858D89000AAB697 /* Year.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F122EC511858D89000AAB697 /* Year.jpg */; };
+		F1605B0B18604B1E0039D55F /* silo.png in Resources */ = {isa = PBXBuildFile; fileRef = F1605B0A18604B1E0039D55F /* silo.png */; };
 		F163101F17DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */; };
 		F163102017DFCD6700A2F361 /* BT_meeting_gone_wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */; };
 		F163102117DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */; };
@@ -364,6 +365,7 @@
 		F122EC501858D89000AAB697 /* Today.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Today.jpg; path = Model/TemplateLoader/Resources/Today.jpg; sourceTree = "<group>"; };
 		F122EC511858D89000AAB697 /* Year.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Year.jpg; path = Model/TemplateLoader/Resources/Year.jpg; sourceTree = "<group>"; };
 		F149B4C417F034CB0031E288 /* HMGLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGLog.h; sourceTree = "<group>"; };
+		F1605B0A18604B1E0039D55F /* silo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo.png; sourceTree = "<group>"; };
 		F163101817DFCD6700A2F361 /* BT_meeting_gone_wrong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = BT_meeting_gone_wrong.mp4; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.mp4; sourceTree = "<group>"; };
 		F163101917DFCD6700A2F361 /* BT_meeting_gone_wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BT_meeting_gone_wrong.png; path = Model/TemplateLoader/Resources/BT_meeting_gone_wrong.png; sourceTree = "<group>"; };
 		F163101A17DFCD6700A2F361 /* Family_Guy_Wrong_Meeting.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Family_Guy_Wrong_Meeting.mp4; path = Model/TemplateLoader/Resources/Family_Guy_Wrong_Meeting.mp4; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 		6554A18F17F03EF000706D4D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1605B0A18604B1E0039D55F /* silo.png */,
 				26508A2B17EF29B300728528 /* camera_button_background.png */,
 				26508A2C17EF29B400728528 /* camera_button_background@2x.png */,
 				26508A2D17EF29B500728528 /* camera_switch_icon.png */,
@@ -1008,6 +1011,7 @@
 				F1C8EEDF17CF38420093DB0A /* Default@2x.png in Resources */,
 				F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */,
 				F1F930A9184A9F0500F6FBA7 /* First.mp4 in Resources */,
+				F1605B0B18604B1E0039D55F /* silo.png in Resources */,
 				F1C8EEE117CF38420093DB0A /* Default-568h@2x.png in Resources */,
 				F1C8EEE417CF38420093DB0A /* MainStoryboard.storyboard in Resources */,
 				F122EC5B1858D89000AAB697 /* Year.jpg in Resources */,

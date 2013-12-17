@@ -18,6 +18,7 @@
 
 
 @property (nonatomic, strong)  AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, strong)  CALayer *imageLayer;
 @property (nonatomic,strong) NSURL *tempUrl;
 
 @property (nonatomic) NSUInteger segmentDurationInSeconds;
@@ -77,8 +78,6 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 		}
 	}
     
-    //[self.videoDevice addObserver:self forKeyPath:@"exposurePointOfInterestSupported" options:NSKeyValueObservingOptionInitial context:nil];
-    
 	AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
 	if (audioDevice) {
 		AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
@@ -105,11 +104,13 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     [[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
     [self.previewView.layer addSublayer:self.previewLayer];
     
-    /*
-    // Image Layer
-    CALayer *imageLayer = [[CALayer alloc] init];
-    imageLayer.contents =
-    */
+    // Set up image layer (silhouette)
+    self.imageLayer = [[CALayer alloc] init];
+    self.imageLayer.frame = self.previewView.frame;
+    NSString *siloPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"silo" ofType:@"png"];
+    self.imageLayer.contents = (id)[UIImage imageWithContentsOfFile:siloPath].CGImage;
+    [self.previewView.layer addSublayer:self.imageLayer];
+    
      
     self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
     if ([self.captureSession canAddOutput:self.captureOutput])
@@ -174,7 +175,11 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 		[sender setSelected:YES];
         [sender setEnabled:NO];
         
+        // Locking the camera configuration (focus, exosure and white-balance)
         [self lockCameraConfiguration];
+        
+        // Removing the silhouette from the view
+        [self.imageLayer removeFromSuperlayer];
         
         self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
