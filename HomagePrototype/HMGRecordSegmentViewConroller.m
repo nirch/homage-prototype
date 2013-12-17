@@ -76,6 +76,9 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 			self.activeVideoInput = input;
 		}
 	}
+    
+    //[self.videoDevice addObserver:self forKeyPath:@"exposurePointOfInterestSupported" options:NSKeyValueObservingOptionInitial context:nil];
+    
 	AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
 	if (audioDevice) {
 		AVCaptureDeviceInput *audioInput = [AVCaptureDeviceInput deviceInputWithDevice:audioDevice error:&error];
@@ -102,7 +105,12 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     [[self.previewLayer connection] setVideoOrientation:[self currentVideoOrientation]];
     [self.previewView.layer addSublayer:self.previewLayer];
     
-    
+    /*
+    // Image Layer
+    CALayer *imageLayer = [[CALayer alloc] init];
+    imageLayer.contents =
+    */
+     
     self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
     if ([self.captureSession canAddOutput:self.captureOutput])
     {
@@ -166,33 +174,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
 		[sender setSelected:YES];
         [sender setEnabled:NO];
         
-        /*
-        self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
-        [self.captureSession addOutput:self.captureOutput];
-        
-		AVCaptureConnection *videoConnection = [self connectionWithMediaType:AVMediaTypeVideo fromConnections:self.captureOutput.connections];
-        
-		if ([videoConnection isVideoOrientationSupported]) {
-			videoConnection.videoOrientation = [self currentVideoOrientation];
-		}
-        
-		if ([videoConnection isVideoStabilizationSupported]) {
-			videoConnection.enablesVideoStabilizationWhenAvailable = YES;
-		}
-         */
-        
-        if (self.videoDevice.isFocusPointOfInterestSupported && [self.videoDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus])
-        {
-            NSError *error;
-            if ([self.videoDevice lockForConfiguration:&error])
-            {
-                [self.videoDevice setFocusPointOfInterest:CGPointMake(0.5, 0.5)];
-                [self.videoDevice setFocusMode:AVCaptureFocusModeAutoFocus];
-                [self.videoDevice unlockForConfiguration];
-            } else {
-                HMGLogError(error.description);
-            }
-        }
+        [self lockCameraConfiguration];
         
         self.tempUrl =[HMGFileManager uniqueUrlWithPrefix:VIDEO_FILE_PREFIX ofType:VIDEO_FILE_TYPE];
 		[self.captureOutput startRecordingToOutputFileURL:self.tempUrl recordingDelegate:self];
@@ -282,9 +264,88 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     if (self.remainingTicks <= 0) {
         HMGLogDebug(@"stop recording and invalidating timer");
         [self.captureOutput stopRecording];
+        [self continuousCameraConfiguration];
         [self.captureSession stopRunning];
         [self.remainingSecondsTimer invalidate];
         self.remainingSecondsTimer = nil;
+    }
+}
+
+// This method locks the camera configuration (focus, exposure and whitebalance)
+- (void)lockCameraConfiguration
+{
+    // Setting camera configuration: Focus, Exposure and WhiteBalance to be constant
+    NSError *error;
+    if ([self.videoDevice lockForConfiguration:&error])
+    {
+        // Locking the focus
+        if ([self.videoDevice isFocusModeSupported:AVCaptureFocusModeLocked]) {
+            [self.videoDevice setFocusMode:AVCaptureFocusModeLocked];
+            HMGLogDebug(@"Focus locked successfully");
+        } else {
+            HMGLogWarning(@"Cannot lock focus");
+        }
+        
+        // Locking the exposure
+        if ([self.videoDevice isExposureModeSupported:AVCaptureExposureModeLocked]) {
+            [self.videoDevice setExposureMode:AVCaptureExposureModeLocked];
+            HMGLogDebug(@"Exposure locked successfully");
+        } else {
+            HMGLogWarning(@"Cannot lock exposure");
+        }
+        
+        // Locking the white-balance
+        if ([self.videoDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeLocked]) {
+            [self.videoDevice setWhiteBalanceMode:AVCaptureWhiteBalanceModeLocked];
+            HMGLogDebug(@"white balance locked successfully");
+        } else {
+            HMGLogWarning(@"Cannot lock white balance");
+        }
+        
+        [self.videoDevice unlockForConfiguration];
+    }
+    else
+    {
+        HMGLogWarning(@"Cannot lock the camera video device for configuration. Error: %@", error.description);
+    }
+}
+
+// Changing the camera configuration back, from locked to continuous (focus, exposure and whitebalance)
+- (void)continuousCameraConfiguration
+{
+    // Setting camera configuration: Focus, Exposure and WhiteBalance to be continuous (back to default)
+    NSError *error;
+    if ([self.videoDevice lockForConfiguration:&error])
+    {
+        // Continuous focus
+        if ([self.videoDevice isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+            [self.videoDevice setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
+            HMGLogDebug(@"Continuous focus set successfully");
+        } else {
+            HMGLogWarning(@"Cannot set continuous focus");
+        }
+        
+        // Continuous exposure
+        if ([self.videoDevice isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+            [self.videoDevice setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+            HMGLogDebug(@"Continuous exposure set successfully");
+        } else {
+            HMGLogWarning(@"Cannot set continuous exposure");
+        }
+        
+        // Continuous white-balance
+        if ([self.videoDevice isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]) {
+            [self.videoDevice setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
+            HMGLogDebug(@"Continuous white balance set successfully");
+        } else {
+            HMGLogWarning(@"Cannot set continuous white balance");
+        }
+        
+        [self.videoDevice unlockForConfiguration];
+    }
+    else
+    {
+        HMGLogWarning(@"Cannot lock the camera video device for configuration. Error: %@", error.description);
     }
 }
 
