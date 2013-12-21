@@ -24,6 +24,19 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>FacebookAppID</key>
+	<string>447743458659084</string>
+	<key>FacebookDisplayName</key>
+	<string>Homage</string>
+	<key>URL types </key>
+	<array>
+		<dict>
+			<key>URL Schemes</key>
+			<array>
+				<string>fb447743458659084</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>

@@ -26,6 +26,7 @@
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "Toast+UIView.h"
 #import "HMGFileManager.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface HMGReviewSegmentsViewController : UIViewController <videoPassingDelegate>;
 
