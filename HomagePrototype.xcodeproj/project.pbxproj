@@ -59,6 +59,8 @@
 		2687FF56180EC4A100727DD7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */; };
 		268C9D1F183689DE00A169F8 /* HMGMyNavControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268C9D1E183689DE00A169F8 /* HMGMyNavControllerViewController.m */; };
 		26A0088E183D111B00E6AC34 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0088D183D111B00E6AC34 /* Toast+UIView.m */; };
+		26C0860818670079007D2B8D /* HMGShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C0860718670079007D2B8D /* HMGShareViewController.m */; };
+		26C0860A186709EA007D2B8D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C08609186709EA007D2B8D /* MessageUI.framework */; };
 		26F72FBF1863486E002AB09F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F72FBE1863486E002AB09F /* FacebookSDK.framework */; };
 		65215F8517F8685C00AB95F0 /* HMGFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65215F8417F8685C00AB95F0 /* HMGFileManager.m */; };
 		6554A18E17F0351100706D4D /* HMGRecordSegmentViewConroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 6554A18D17F0351100706D4D /* HMGRecordSegmentViewConroller.m */; };
@@ -349,6 +351,9 @@
 		268C9D1E183689DE00A169F8 /* HMGMyNavControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGMyNavControllerViewController.m; sourceTree = "<group>"; };
 		26A0088C183D111B00E6AC34 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
 		26A0088D183D111B00E6AC34 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
+		26C0860618670079007D2B8D /* HMGShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGShareViewController.h; sourceTree = "<group>"; };
+		26C0860718670079007D2B8D /* HMGShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGShareViewController.m; sourceTree = "<group>"; };
+		26C08609186709EA007D2B8D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		26F72FBE1863486E002AB09F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		65215F8317F8685C00AB95F0 /* HMGFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGFileManager.h; sourceTree = "<group>"; };
 		65215F8417F8685C00AB95F0 /* HMGFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGFileManager.m; sourceTree = "<group>"; };
@@ -508,6 +513,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C0860A186709EA007D2B8D /* MessageUI.framework in Frameworks */,
 				2687FF56180EC4A100727DD7 /* MobileCoreServices.framework in Frameworks */,
 				F1A2EC64180551740067DD0A /* CoreVideo.framework in Frameworks */,
 				F1A2EC6218017C240067DD0A /* AssetsLibrary.framework in Frameworks */,
@@ -731,6 +737,7 @@
 		F1C8EEC917CF38420093DB0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26C08609186709EA007D2B8D /* MessageUI.framework */,
 				26F72FBE1863486E002AB09F /* FacebookSDK.framework */,
 				2687FF55180EC4A100727DD7 /* MobileCoreServices.framework */,
 				F1A2EC63180551740067DD0A /* CoreVideo.framework */,
@@ -760,6 +767,8 @@
 				2655874817E618E30086D936 /* HMGRemakeCVCell.h */,
 				2655874917E618E30086D936 /* HMGRemakeCVCell.m */,
 				F1C8EEE217CF38420093DB0A /* MainStoryboard.storyboard */,
+				26C0860618670079007D2B8D /* HMGShareViewController.h */,
+				26C0860718670079007D2B8D /* HMGShareViewController.m */,
 				26508A4117EF620400728528 /* HMGsegmentCVCell.h */,
 				26508A4217EF620400728528 /* HMGsegmentCVCell.m */,
 				26508A2617EF274100728528 /* HMGReviewSegmentsViewController.h */,
@@ -1257,6 +1266,7 @@
 				F1A1EEDE17F864B5008FDE54 /* HMGAVUtils.m in Sources */,
 				F165B80017EED24B00647AF7 /* HMGImageSegmentRemake.m in Sources */,
 				F165B80317EED26B00647AF7 /* HMGTextSegmentRemake.m in Sources */,
+				26C0860818670079007D2B8D /* HMGShareViewController.m in Sources */,
 				26508A2817EF274100728528 /* HMGReviewSegmentsViewController.m in Sources */,
 				26508A4317EF620500728528 /* HMGsegmentCVCell.m in Sources */,
 			);
@@ -1398,6 +1408,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-objC",
+					"-lsqlite3.0",
+				);
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1422,6 +1436,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-objC",
+					"-lsqlite3.0",
+				);
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
