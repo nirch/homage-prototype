@@ -114,6 +114,8 @@
 		F17B3C471806A673007FA7A4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F17B3C491806A673007FA7A4 /* Localizable.strings */; };
 		F17B3C531806D947007FA7A4 /* ImageSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */; };
 		F17B3C55180A9957007FA7A4 /* TextSegmentRemakeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */; };
+		F183B590187AE6D80045D669 /* silo2.png in Resources */ = {isa = PBXBuildFile; fileRef = F183B58F187AE6D80045D669 /* silo2.png */; };
+		F183B592187AE7FF0045D669 /* silo3.png in Resources */ = {isa = PBXBuildFile; fileRef = F183B591187AE7FF0045D669 /* silo3.png */; };
 		F18DEF53183BC918003EBBFF /* Gal_Tikim.mov in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */; };
 		F18DEF55183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */; };
 		F19123CD17DE0C8900DE85DB /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F19123CC17DE0C8900DE85DB /* CHCSVParser.m */; };
@@ -396,6 +398,8 @@
 		F17B3C481806A673007FA7A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F17B3C521806D947007FA7A4 /* ImageSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSegmentRemakeTests.m; sourceTree = "<group>"; };
 		F17B3C54180A9957007FA7A4 /* TextSegmentRemakeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextSegmentRemakeTests.m; sourceTree = "<group>"; };
+		F183B58F187AE6D80045D669 /* silo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo2.png; sourceTree = "<group>"; };
+		F183B591187AE7FF0045D669 /* silo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = silo3.png; sourceTree = "<group>"; };
 		F18DEF52183BC918003EBBFF /* Gal_Tikim.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Gal_Tikim.mov; path = Model/TemplateLoader/Resources/Gal_Tikim.mov; sourceTree = "<group>"; };
 		F18DEF54183BC9B0003EBBFF /* Gal_Tikim_Thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Gal_Tikim_Thumbnail.png; path = Model/TemplateLoader/Resources/Gal_Tikim_Thumbnail.png; sourceTree = "<group>"; };
 		F19123CB17DE0C8900DE85DB /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHCSVParser.h; path = Model/TemplateLoader/CSVParser/CHCSVParser.h; sourceTree = "<group>"; };
@@ -567,6 +571,8 @@
 		6554A18F17F03EF000706D4D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F183B591187AE7FF0045D669 /* silo3.png */,
+				F183B58F187AE6D80045D669 /* silo2.png */,
 				F1605B0A18604B1E0039D55F /* silo.png */,
 				26508A2B17EF29B300728528 /* camera_button_background.png */,
 				26508A2C17EF29B400728528 /* camera_button_background@2x.png */,
@@ -1082,6 +1088,7 @@
 				F1F04B2A17E48EFB00720C5C /* finish.PNG in Resources */,
 				F1F04B2C17E48EFB00720C5C /* he_told_me_enough.PNG in Resources */,
 				F1F04B2D17E48EFB00720C5C /* legs.mov in Resources */,
+				F183B592187AE7FF0045D669 /* silo3.png in Resources */,
 				F1F04B2E17E48EFB00720C5C /* legs.png in Resources */,
 				F1F04B2F17E48EFB00720C5C /* letting_go.mov in Resources */,
 				F1F04B3017E48EFB00720C5C /* letting_go.PNG in Resources */,
@@ -1111,6 +1118,7 @@
 				26508A3A17EF29BC00728528 /* camera_switch_icon@2x.png in Resources */,
 				26508A3B17EF29BC00728528 /* record_indicator_off.png in Resources */,
 				26508A3C17EF29BC00728528 /* record_indicator_off@2x.png in Resources */,
+				F183B590187AE6D80045D669 /* silo2.png in Resources */,
 				26508A3D17EF29BC00728528 /* record_indicator_on_glow.png in Resources */,
 				26508A3E17EF29BC00728528 /* record_indicator_on_glow@2x.png in Resources */,
 				26508A3F17EF29BC00728528 /* record_indicator_on.png in Resources */,
