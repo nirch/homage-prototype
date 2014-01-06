@@ -109,7 +109,7 @@ static NSString * const VIDEO_FILE_TYPE = @"mov";
     self.imageLayer.frame = self.previewView.frame;
     NSString *siloPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"silo" ofType:@"png"];
     self.imageLayer.contents = (id)[UIImage imageWithContentsOfFile:siloPath].CGImage;
-    [self.previewView.layer addSublayer:self.imageLayer];
+    //[self.previewView.layer addSublayer:self.imageLayer];
     
      
     self.captureOutput = [[AVCaptureMovieFileOutput alloc] init];
